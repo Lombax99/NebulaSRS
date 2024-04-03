@@ -13,9 +13,15 @@ Application to implement an assistant tool for management of a [Nebula](https://
     <td><a href="https://github.com/LilPack99">LilPack99</a></td>
   </tr>
     <tr align="center">
-    <td><img width="75%" src=".\resources\LucaLombardi.jpg"></td>
-    <td><img width="150%" src=".\resources\StefanoPaparella.jpg"></td>
-    <td><img width="75%" src=".\resources\Pasquale.png"></td>
+    <td style="width:250px; height:250px;">
+	    <img width="100%" src=".\resources\LucaLombardi.jpg">
+	</td>
+    <td style="width:250px; height:250px;">
+	    <img width="100%" src=".\resources\StefanoPaparella.jpg">
+	</td>
+    <td style="width:250px; height:250px;">
+	    <img width="100%" src=".\resources\Pasquale.png">
+	</td>
   </tr>
   <tr align="center">
     <td><b>Luca Lombardi</b></td>
@@ -23,3 +29,4 @@ Application to implement an assistant tool for management of a [Nebula](https://
     <td><b>Pasquale</b></td>
   </tr>
 </table>
+
