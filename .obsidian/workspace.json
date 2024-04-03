@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f48e415270226165",
+            "id": "553e9ff6a7c18f75",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Doc/Vagrant setup.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Doc/Vagrant setup.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Doc/Vagrant setup.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "Doc/Vagrant setup.md"
               }
             }
           }
@@ -146,14 +146,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f48e415270226165",
+  "active": "553e9ff6a7c18f75",
   "lastOpenFiles": [
-    "resources/StefanoPaparella.jpg",
-    "resources/LucaLombardi.jpg",
+    "Doc/Sprint Template.md",
+    "Doc/Nebula Remote Access Tool.md",
+    "Doc/Nebula first network and useful commands.md",
     "README.md",
+    "Nebula security domain.md",
+    "Doc/Vagrant setup.md",
+    "Other issues.md",
+    "Doc",
+    "resources/LucaLombardi.jpg",
+    "resources/StefanoPaparella.jpg",
     "resources/StefanoPaparella.jpg.crdownload",
     "resources",
-    "Requirements.md",
     "Text File.txt"
   ]
 }
