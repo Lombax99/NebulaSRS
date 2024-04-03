@@ -14,13 +14,13 @@ Application to implement an assistant tool for management of a [Nebula](https://
   </tr>
     <tr align="center">
     <td style="width:250px; height:250px;">
-	    <img width="100%" src=".\resources\LucaLombardi.jpg">
+	    <img width="100%" src=".\resources\LucaLombardi.jpg" style="max-height:100%; max-width:100%">
 	</td>
     <td style="width:250px; height:250px;">
-	    <img width="100%" src=".\resources\StefanoPaparella.jpg">
+	    <img src=".\resources\StefanoPaparella.jpg" style="max-height:100%; max-width:100%">
 	</td>
     <td style="width:250px; height:250px;">
-	    <img width="100%" src=".\resources\Pasquale.png">
+	    <img width="100%" src=".\resources\Pasquale.png" style="max-height:100%; max-width:100%">
 	</td>
   </tr>
   <tr align="center">
