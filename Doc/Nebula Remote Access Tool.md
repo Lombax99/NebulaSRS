@@ -1,9 +1,9 @@
 Build an enterprise remote access tool leveraging Nebula: https://github.com/slackhq/nebula
 ### Requirements
-1) Build a database of remote machines by importing the Nebula certificates and the current Nebula firewall rules for reaching them
-2) Web interface protected by auth to access a portal showing all the available machines to the user
-3) Admin interface to define security roles for users and configure what machines can be available
-4) Generate on the fly a short-lived certificate to allow the user to connect to the desired machine
+1) Build a database of remote machines by importing the Nebula certificates and the current Nebula firewall rules for reaching them.
+2) Web interface protected by auth to access a portal showing all the available machines to the user.
+3) Admin interface to define security roles for users and configure what machines can be available.
+4) Generate on the fly a short-lived certificate to allow the user to connect to the desired machine.
 
 Resources
 - [nebula github](https://github.com/slackhq/nebula)
@@ -20,7 +20,7 @@ qua ci vanno le definizioni dei termini dei requisiti che passano da linguaggio 
 ##### Testbed
 Abbiamo bisogno di:
 	- un gestore
-	- tante piccole macchinine (3/4 laptop, 2 server, 1 lighthouse, qualche web service in una macchina)
+	- tante piccole macchinine (3/4 laptop, 2 server, 1 lighthouse o magari due se vogliamo essere molto fighi, qualche web service in una macchina)
 		--> Tocca studiare azure
 
 ##### Req 1 - Database: 
@@ -29,6 +29,8 @@ Abbiamo bisogno di:
 - per le regole di firewall?
 	- dobbiamo trovare un modo per rappresentarle e salvarle nel db
 	--> Possiamo salvare una regola per riga con tutti i parametri opzionali di firewall
+	- Un conto è se devo solo salvarmi quali regole ha un nodo e un conto è se devo anche generare le regole e i file yaml a partire dai dati nel db. (non è nei requisiti ma è una bella idea)
+	- Chiaramente salviamo solo i cert non le chiavi (anche se... forse forse... tanto i cert passano in chiaro nella rete... serve salvarli? se devo creare dei nodi nuovi...)
 
 ##### Req 2 - Web interface:
 - processo di auth
@@ -36,9 +38,12 @@ Abbiamo bisogno di:
 	- 2 tipi di utenti:
 		- normal user --> show only
 		- admin --> può anche modificare cose
+	- Per l'auth se usiamo il sistema di azure di base (che richiede necessariamente che un utente abbia un account microsoft) e far finta che tutti i nostri user abbiano account microsoft?
 
 ##### Req 3 - Admin role:
 - Cazzo è un security role? Ci sono altri gradi di permesso tra admin e normal user?
+	- Legato alle SecDom?
+	- Generare ruoli dinamicamente?
 - Quali casi gestire? Cosa si intende per "available machine" nel sistema?
 
 ##### Req 4 - short-lived cert: 
@@ -47,7 +52,9 @@ Abbiamo bisogno di:
 - Come gestiamo le regole di firewall? Dobbiamo aggiungerne una temporanea e poi eliminarla...
 
 ##### Hidden Req:
-- La nostra applicazione deve poter modificare le regole di firewall di tutte le macchine remote
+- La nostra applicazione deve poter modificare le regole di firewall di tutte le macchine remote?
+- Deve poter modificare il layout della network?
+- Deve poter generare nuove macchine dinamicamente?
 
 ##### IMPORTANTE
 - definire i test di sicurezza e i test di scalabilità
