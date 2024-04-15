@@ -42,6 +42,7 @@ Abbiamo bisogno di:
 	- **TT**: questa è una piattaforma pensata per utenti esperti (informatici puri); quindi non dobbiamo contare gli utenti finali. 
 
 ##### Req 3 - Admin role:
+<<<<<<< Updated upstream
 - Cazzo è un security role? Ci sono altri gradi di permesso tra admin e normal user?
 	- **TT**: gli utilizzatori della piattaforma non hanno tutti lo stesso ruolo --> Ci sono diversi tipi di admin. Dobbiamo trovare quanti più ruoli possibile
 	- Legato alle SecDom? 
@@ -54,12 +55,27 @@ Abbiamo bisogno di:
 - Quale "user"?
 - Cosa vuol dire "short-lived"? E' diverso dal concetto di ruolo? Dobbiamo dare sempre un nuovo cert?
 	- **TT**: Questo è un dettaglio implementativo. Idealmente, nessuno deve avere un cert permanente. Si generano i cert e la piattaforma li gestisce.
+=======
+- Cazzo è un security role? Ci sono altri gradi di permesso tra admin e normal user? SI vedi dopo
+	- Legato alle SecDom? possibilmente si
+	- Generare ruoli dinamicamente? non proprio...
+- Quali casi gestire? Cosa si intende per "available machine" nel sistema? Solo una questione dei permessi del tuo utente.
+
+Ruoli:
+- Un utente che può entrare in ssh in tutte le macchine (rdp invece che ssh cos'è?)
+- Un utente che ha i permessi per modificare i ruoli
+- In generale è pensato solo per gli amministratori di sistema e non tutti gli utenti di un'azienda
+
+##### Req 4 - short-lived cert: 
+- Quale "user"? si tratta solo di admin non di utenti comuni
+- Cosa vuol dire "short-lived"? 1 oretta ma modificabile forse...
+>>>>>>> Stashed changes
 - Come gestiamo le regole di firewall? Dobbiamo aggiungerne una temporanea e poi eliminarla...
 
 ##### Hidden Req:
-- La nostra applicazione deve poter modificare le regole di firewall di tutte le macchine remote?
-- Deve poter modificare il layout della network?
-- Deve poter generare nuove macchine dinamicamente?
+- La nostra applicazione deve poter modificare le regole di firewall di tutte le macchine remote? NO
+- Deve poter modificare il layout della network? NO
+- Deve poter generare nuove macchine dinamicamente? NO
 
 ##### IMPORTANTE
 - definire i test di sicurezza e i test di scalabilità
