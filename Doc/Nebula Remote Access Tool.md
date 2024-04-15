@@ -39,16 +39,21 @@ Abbiamo bisogno di:
 		- normal user --> show only
 		- admin --> può anche modificare cose
 	- Per l'auth se usiamo il sistema di azure di base (che richiede necessariamente che un utente abbia un account microsoft) e far finta che tutti i nostri user abbiano account microsoft?
+	- **TT**: questa è una piattaforma pensata per utenti esperti (informatici puri); quindi non dobbiamo contare gli utenti finali. 
 
 ##### Req 3 - Admin role:
 - Cazzo è un security role? Ci sono altri gradi di permesso tra admin e normal user?
-	- Legato alle SecDom?
-	- Generare ruoli dinamicamente?
+	- **TT**: gli utilizzatori della piattaforma non hanno tutti lo stesso ruolo --> Ci sono diversi tipi di admin. Dobbiamo trovare quanti più ruoli possibile
+	- Legato alle SecDom? 
+		- **TT**: Se riusciamo, possiamo tener conto dei SecDom. Tanto meglio se ci riusciamo.
+	- Generare ruoli dinamicamente? 
+		- **TT**:  ????
 - Quali casi gestire? Cosa si intende per "available machine" nel sistema?
 
 ##### Req 4 - short-lived cert: 
 - Quale "user"?
-- Cosa vuol dire "short-lived"?
+- Cosa vuol dire "short-lived"? E' diverso dal concetto di ruolo? Dobbiamo dare sempre un nuovo cert?
+	- **TT**: Questo è un dettaglio implementativo. Idealmente, nessuno deve avere un cert permanente. Si generano i cert e la piattaforma li gestisce.
 - Come gestiamo le regole di firewall? Dobbiamo aggiungerne una temporanea e poi eliminarla...
 
 ##### Hidden Req:
@@ -64,6 +69,11 @@ Abbiamo bisogno di:
 
 ### Test Plan
 - cosa usiamo per testare la nostra applicazione? su quali tecnologie ci appoggiamo?
+	- **TT**: test di scalabilità e sicurezza. possiamo mettere dei cert nei nostri pc.
+- In cosa consistono i nostri test?
+	- **TT**: 
+		- scalabilità --> Quello che possiamo verificare è: quanti admin può gestire/quanti certificati può firmare simmultaneamente
+		- sicurezza --> Accessi non autorizzati a macchine. Problemi di intrusion.
 
 ### Division of work
 - Divisione per sprint - data di consegna
