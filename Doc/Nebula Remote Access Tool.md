@@ -42,7 +42,6 @@ Abbiamo bisogno di:
 	- **TT**: questa è una piattaforma pensata per utenti esperti (informatici puri); quindi non dobbiamo contare gli utenti finali. 
 
 ##### Req 3 - Admin role:
-<<<<<<< Updated upstream
 - Cazzo è un security role? Ci sono altri gradi di permesso tra admin e normal user?
 	- **TT**: gli utilizzatori della piattaforma non hanno tutti lo stesso ruolo --> Ci sono diversi tipi di admin. Dobbiamo trovare quanti più ruoli possibile
 	- Legato alle SecDom? 
@@ -55,7 +54,7 @@ Abbiamo bisogno di:
 - Quale "user"?
 - Cosa vuol dire "short-lived"? E' diverso dal concetto di ruolo? Dobbiamo dare sempre un nuovo cert?
 	- **TT**: Questo è un dettaglio implementativo. Idealmente, nessuno deve avere un cert permanente. Si generano i cert e la piattaforma li gestisce.
-=======
+
 - Cazzo è un security role? Ci sono altri gradi di permesso tra admin e normal user? SI vedi dopo
 	- Legato alle SecDom? possibilmente si
 	- Generare ruoli dinamicamente? non proprio...
@@ -69,7 +68,8 @@ Ruoli:
 ##### Req 4 - short-lived cert: 
 - Quale "user"? si tratta solo di admin non di utenti comuni
 - Cosa vuol dire "short-lived"? 1 oretta ma modificabile forse...
->>>>>>> Stashed changes
+
+Stashed changes
 - Come gestiamo le regole di firewall? Dobbiamo aggiungerne una temporanea e poi eliminarla...
 
 ##### Hidden Req:
@@ -79,6 +79,9 @@ Ruoli:
 
 ##### IMPORTANTE
 - definire i test di sicurezza e i test di scalabilità
+
+##### La nostra macchina si può collegare a tutte le macchine che gestisce in ogni momento? Serve che lo faccia?
+
 
 ### Discussions with the commissioner
 - punti discussi con il committente
@@ -94,3 +97,5 @@ Ruoli:
 ### Division of work
 - Divisione per sprint - data di consegna
 	- Divisione dei membri nei vari sprint
+
+

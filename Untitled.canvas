@@ -1,0 +1,27 @@
+{
+	"nodes":[
+		{"id":"70a78ff2673e4b51","type":"group","x":-500,"y":-600,"width":380,"height":320,"label":"sottorete1"},
+		{"id":"733b1ea4f32abff2","type":"group","x":300,"y":-540,"width":400,"height":240,"label":"Sottorete2"},
+		{"id":"34366bc67ca330b4","type":"text","text":"laptop1","x":-480,"y":-580,"width":250,"height":60},
+		{"id":"80ac51cca7516e41","type":"text","text":"laptop2","x":-480,"y":-480,"width":250,"height":60},
+		{"id":"593dbb2f34a02ef1","type":"text","text":"laptop3","x":-480,"y":-380,"width":250,"height":60},
+		{"id":"6a3289fd9973cd2e","type":"text","text":"Lighthouse","x":-20,"y":-480,"width":250,"height":60},
+		{"id":"636b1a7cab262d14","type":"text","text":"server1","x":320,"y":-520,"width":250,"height":60},
+		{"id":"d728af9dce47075f","type":"text","text":"server2","x":320,"y":-430,"width":250,"height":60},
+		{"id":"29bec7704255e72d","type":"text","text":"Super macchina","x":-20,"y":-140,"width":250,"height":100},
+		{"id":"af24480b75447f76","type":"text","text":"Database","x":70,"y":20,"width":250,"height":60},
+		{"id":"c011b5a6b533874b","type":"text","text":"Generatore di file di conf\nSi occupa di creare i file con le regole appropriate e mandarli a tutte le macchine","x":-480,"y":20,"width":250,"height":260}
+	],
+	"edges":[
+		{"id":"c15322319757cb88","fromNode":"34366bc67ca330b4","fromSide":"right","toNode":"6a3289fd9973cd2e","toSide":"left"},
+		{"id":"6d34b8a9a9444b1d","fromNode":"80ac51cca7516e41","fromSide":"right","toNode":"6a3289fd9973cd2e","toSide":"left"},
+		{"id":"4a8a932bc6fe4df6","fromNode":"593dbb2f34a02ef1","fromSide":"right","toNode":"6a3289fd9973cd2e","toSide":"left"},
+		{"id":"356800314f109d37","fromNode":"29bec7704255e72d","fromSide":"top","toNode":"6a3289fd9973cd2e","toSide":"bottom"},
+		{"id":"5a7b087e3cd6593d","fromNode":"636b1a7cab262d14","fromSide":"left","toNode":"6a3289fd9973cd2e","toSide":"right"},
+		{"id":"5564a1ef6e8c0b6b","fromNode":"29bec7704255e72d","fromSide":"bottom","toNode":"af24480b75447f76","toSide":"top"},
+		{"id":"9ff3cdc4a6ac3c9f","fromNode":"c011b5a6b533874b","fromSide":"top","toNode":"6a3289fd9973cd2e","toSide":"bottom"},
+		{"id":"fa494c583e4ece55","fromNode":"c011b5a6b533874b","fromSide":"top","toNode":"593dbb2f34a02ef1","toSide":"bottom"},
+		{"id":"addae133953722dd","fromNode":"d728af9dce47075f","fromSide":"left","toNode":"6a3289fd9973cd2e","toSide":"right"},
+		{"id":"6826316f87122d44","fromNode":"c011b5a6b533874b","fromSide":"right","toNode":"29bec7704255e72d","toSide":"left"}
+	]
+}

@@ -8,6 +8,24 @@
         "type": "tabs",
         "children": [
           {
+            "id": "7fbf1e1d09fa6509",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "4a29f44ba6dc707c",
+        "type": "tabs",
+        "children": [
+          {
             "id": "553e9ff6a7c18f75",
             "type": "leaf",
             "state": {
@@ -18,8 +36,24 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "dae0ba4658953fb8",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Untitled.canvas",
+                "viewState": {
+                  "x": 112.82339485452036,
+                  "y": 17.666736382338662,
+                  "zoom": -0.3333333333333333
+                }
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/Nebula Remote Access Tool.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/Nebula Remote Access Tool.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +159,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/Nebula Remote Access Tool.md"
+                "file": "README.md"
               }
             }
           }
@@ -146,11 +180,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "553e9ff6a7c18f75",
+  "active": "7fbf1e1d09fa6509",
   "lastOpenFiles": [
-    "Doc/Vagrant setup.md",
-    "Doc/Nebula Remote Access Tool.md",
+    "Analisi dei Requisiti.md",
     "Doc/Nebula first network and useful commands.md",
+    "Doc/Vagrant setup.md",
+    "Untitled.canvas",
+    "Doc/Nebula Remote Access Tool.md",
+    "Untitled.md",
     "Doc/Sprint Template.md",
     "README.md",
     "Nebula security domain.md",
