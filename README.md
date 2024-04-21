@@ -15,11 +15,11 @@ Application to implement an assistant tool for management of a [Nebula](https://
     <tr align="center">
     <td><img width="75%" src=".\resources\LucaLombardi.jpg"></td>
     <td><img width="75%" src=".\resources\StefanoPaparella.jpg"></td>
-    <td><img width="75%" src=".\resources\Pasquale.png"></td>
+    <td><img width="75%" src=".\resources\Pasquale.jpg"></td>
   </tr>
   <tr align="center">
     <td><b>Luca Lombardi</b></td>
     <td><b>Stefano Paparella</b></td>
-    <td><b>Pasquale</b></td>
+    <td><b>Pasquale Basta</b></td>
   </tr>
 </table>
