@@ -4,24 +4,6 @@
     "type": "split",
     "children": [
       {
-        "id": "c1d3ed9460cd3041",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "7fbf1e1d09fa6509",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
         "id": "4a29f44ba6dc707c",
         "type": "tabs",
         "children": [
@@ -51,9 +33,21 @@
                 }
               }
             }
+          },
+          {
+            "id": "dd65c90fa856957f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Analisi dei Requisiti.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -119,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Analisi dei Requisiti.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +130,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Analisi dei Requisiti.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "Analisi dei Requisiti.md"
               }
             }
           }
@@ -180,17 +174,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "606efda66ae6e0fb",
+  "active": "dd65c90fa856957f",
   "lastOpenFiles": [
-    "resources/Pasquale.jpg",
-    "Analisi dei Requisiti.md",
-    "Doc/Nebula first network and useful commands.md",
-    "Doc/Vagrant setup.md",
-    "Untitled.canvas",
     "Doc/Nebula Remote Access Tool.md",
-    "Untitled.md",
+    "Analisi dei Requisiti.md",
+    "Untitled.canvas",
     "Doc/Sprint Template.md",
+    "Doc/Nebula first network and useful commands.md",
     "README.md",
+    "resources/Pasquale.jpg",
+    "Doc/Vagrant setup.md",
+    "Untitled.md",
     "Nebula security domain.md",
     "Other issues.md",
     "Doc",
