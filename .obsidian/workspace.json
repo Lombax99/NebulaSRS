@@ -18,36 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "dae0ba4658953fb8",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Untitled.canvas",
-                "viewState": {
-                  "x": 112.82339485452036,
-                  "y": 17.666736382338662,
-                  "zoom": -0.3333333333333333
-                }
-              }
-            }
-          },
-          {
-            "id": "dd65c90fa856957f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Analisi dei Requisiti.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -113,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Analisi dei Requisiti.md",
+                "file": "Doc/Nebula Remote Access Tool.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Analisi dei Requisiti.md",
+                "file": "Doc/Nebula Remote Access Tool.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -153,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Analisi dei Requisiti.md"
+                "file": "Doc/Nebula Remote Access Tool.md"
               }
             }
           }
@@ -174,16 +146,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "dd65c90fa856957f",
+  "active": "606efda66ae6e0fb",
   "lastOpenFiles": [
+    "Doc/Analisi dei Requisiti.md",
     "Doc/Nebula Remote Access Tool.md",
-    "Analisi dei Requisiti.md",
-    "Untitled.canvas",
-    "Doc/Sprint Template.md",
-    "Doc/Nebula first network and useful commands.md",
+    "Doc/BasicNetworkArchitecture.canvas",
+    "Doc/UtilityResources/Vagrant setup.md",
+    "Doc/UtilityResources/Sprint Template.md",
+    "Doc/UtilityResources/Nebula first network and useful commands.md",
+    "Doc/UtilityResources",
     "README.md",
     "resources/Pasquale.jpg",
-    "Doc/Vagrant setup.md",
     "Untitled.md",
     "Nebula security domain.md",
     "Other issues.md",
