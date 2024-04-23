@@ -21,7 +21,7 @@ tar -xzf nebula-linux-amd64.tar.gz
 ./nebula-cert ca -name "Myorg, Inc"
 ```
 
-> [!Note] 
+> [!Note]- 
 > Password used for encription: "swordfish"
 
 >[!Tip] info
