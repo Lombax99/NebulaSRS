@@ -23,6 +23,7 @@ Any machine of the virtual network including both Host and Lighthouse, those inc
 ##### Nebula Certificate
 It's a the host certificate. From the official doc: "A host certificate contains the name, IP address, group membership, and a number of other details about a host. Individual hosts cannot modify their own certificate, because doing so will invalidate it. This allows us to trust that a host cannot impersonate another host within a Nebula network. Each host will have its own private key, which is used to validate the identity of that host when Nebula tunnels are created."
 ##### Root Certification Autority
+The **root certificate** is a self signed Nebula Certificate that identifies the root authority of the entire certificate structure.
 ##### Hosts
 A Nebula host is simply any single node in the network, e.g. a server, laptop, phone, tablet. The Certificate Authority is used to sign keys for each host added to a Nebula network. A host certificate contains the name, IP address, group membership, and a number of other details about a host. Individual hosts cannot modify their own certificate, because doing so will invalidate it. This allows us to trust that a host cannot impersonate another host within a Nebula network. Each host will have its own private key, which is used to validate the identity of that host when Nebula tunnels are created.
 ##### Lighthouse
@@ -30,23 +31,34 @@ In Nebula, a lighthouse is a Nebula host that is responsible for keeping track o
 ##### Nebula firewall rules
 Firewall rules as defined in the nebula [official doc](https://nebula.defined.net/docs/config/firewall/). Any host has its own rules. Management of those rules is outside the scope of the project we will assume that those rules are defined and managed by someone outside of this system.
 ##### Auth
+The process of verifying the identity of a user, process, or device, often as a prerequisite to allowing access to resources in an information system. In our case is the ability to identify a user and its corresponding authorizations.
 ##### Portal
+Web service remotely available that allows a user to interface with the system.
 ##### Available machines
+Machines that are part of the nebula network and are available to the current user giving his/her authorizations.
 ##### Admin
+The user with the ability to modify authorizations of other users.
 ##### User
+In our case a user is a system admin of the nebula network or part of it. We will consider only user with a certain degree of knowledge in networking and system administration.
 ##### Security role
+A set of authorizations that are given to one or more user.
 ##### Short-lived certificate
-
+A dynamically generated certificate that allows a user with the necessary authorization to access temporarily a specific machine. Those certificates will have a valid period of some hours.
 
 
 ### Key-points
-##### Testbed
+#### Testbed
 Abbiamo bisogno di:
 	- un gestore
-	- tante piccole macchinine (3/4 laptop, 2 server, 1 lighthouse o magari due se vogliamo essere molto fighi, qualche web service in una macchina)
+	- tante piccole macchinine (3/4 laptop, 2 server, 1 lighthouse qualche web service in una macchina)
 		--> Tocca studiare azure
+			- Faccio le macchine come vm e faccio il setup del network tutto su azure.
+			- Il gestore è una web app.
 
 #### Req 1 - Database: 
+>[!Note] Requirement
+>Build a database of ==remote machines== by importing the ==Nebula certificates== and the current ==Nebula firewall rules== for reaching them.
+
 - database remoto su azure
 - i certificati sono file quindi possiamo caricarli e basta
 - per le regole di firewall?
@@ -66,10 +78,10 @@ Abbiamo bisogno di:
 | ID macchina | certificato | file di config |
 | ----------- | ----------- | -------------- |
 |             |             |                |
-Mi salvo i due file che mi interessano e ciccia.
-Voglio salvare anche la chiave dei certificati della macchina? Secondo me NO ma.
+#Sprint1 Mi salvo i due file che mi interessano e ciccia.
+#Sprint1 Voglio salvare anche la chiave dei certificati della macchina? Secondo me NO ma.
 ##### Come aggiorniamo i dati
-Nel primo sprint mi accontento di dire che chiunque modifichi i dati si debba prende la briga di modificarli anche nel database.
+#Sprint1 Nel primo sprint mi accontento di dire che chiunque modifichi i dati si debba prende la briga di modificarli anche nel database.
 Dobbiamo fare un'interfaccia carina per permettere tutto questo in modo scalabile. Posso mettere una funzione per caricare dati nel sistema, che controlli di sicurezza devono essere fatti?
 Yaml è Turing completo? Posso far entrare del codice malevolo? Posso mettere dei certificati falsi? Devo controllare da chi sono stati emessi i certificati. I file di conf sono firmati dalla root cert autority? non penso ma devo controllare.
 
@@ -80,6 +92,11 @@ Yaml è Turing completo? Posso far entrare del codice malevolo? Posso mettere de
 Stampiamo a schermo le regole di firewall e i certificati se richiesto.
 
 #### Req 2 - Web interface:
+>[!Note] Requirement
+>Web interface protected by ==auth== to access a ==portal== showing all the ==available machines== to the user.
+
+
+##### Auth
 - processo di auth
 	- fase di sicurezza (progettazione e testing)
 	- 2 tipi di utenti:
@@ -88,25 +105,25 @@ Stampiamo a schermo le regole di firewall e i certificati se richiesto.
 	- Per l'auth se usiamo il sistema di azure di base (che richiede necessariamente che un utente abbia un account microsoft) e far finta che tutti i nostri user abbiano account microsoft?
 	- **TT**: questa è una piattaforma pensata per utenti esperti (informatici puri); quindi non dobbiamo contare gli utenti finali. 
 
-Web interface protected by ==auth== to access a ==portal== showing all the ==available machines== to the user.
-##### Auth
-Spero che azure faccia il suo lavoro
+NOTE: Spero che azure faccia il suo lavoro e implementi un sistema di Auth decente.
 ##### Showing available machines
 Dipende dai security roles
 
 #### Req 3 - Admin role:
+>[!Note] Requirement
+>==Admin== interface to define ==security roles== for ==users== and configure what machines can be available.
+
 - Cazzo è un security role? Ci sono altri gradi di permesso tra admin e normal user?
 	- **TT**: gli utilizzatori della piattaforma non hanno tutti lo stesso ruolo --> Ci sono diversi tipi di admin. Dobbiamo trovare quanti più ruoli possibile
 	- Legato alle SecDom? 
 		- **TT**: Se riusciamo, possiamo tener conto dei SecDom. Tanto meglio se ci riusciamo.
 	- Generare ruoli dinamicamente? 
 		- **TT**:  ????
-- Quali casi gestire? Cosa si intende per "available machine" nel sistema?
 
 NOTA: Ruolo dell'admin supremo necessariamente deve esistere
 
 Si tratta solo di assegnare la visibilità delle macchine ad un utente specifico. Non è vero, ci sono anche ruoli che possono fare cose diverse con le macchine, qualcuno potrebbe avere il permesso di fare ssh mentre altri no...
-Decidiamo che per questo primo sprint ci limitiamo solo ad un discorso di visibilità.
+#Sprint1 Decidiamo che per questo primo sprint ci limitiamo solo ad un discorso di visibilità.
 
 Come assegniamo le macchine? Questi metodi non sono mutualmente esclusivi:
 - Posso assegnare un singolo ID
@@ -114,23 +131,23 @@ Come assegniamo le macchine? Questi metodi non sono mutualmente esclusivi:
 
 
 #### Req 4 - short-lived cert: 
-- Quale "user"? si tratta solo di admin non di utenti comuni
-- Cosa vuol dire "short-lived"? E' diverso dal concetto di ruolo? Dobbiamo dare sempre un nuovo cert?
-	- **TT**: Questo è un dettaglio implementativo. Idealmente, nessuno deve avere un cert permanente. Si generano i cert e la piattaforma li gestisce.
-	- 1 oretta ma modificabile forse...
+>[!Note] Requirement
+>Generate on the fly a ==short-lived certificate== to allow the user to connect to the desired machine.
+
 
 - Cazzo è un security role? Ci sono altri gradi di permesso tra admin e normal user? SI vedi dopo
 	- Legato alle SecDom? possibilmente si
 	- Generare ruoli dinamicamente? non proprio...
-- Quali casi gestire? Cosa si intende per "available machine" nel sistema? Solo una questione dei permessi del tuo utente.
 
 Ruoli:
-- Un utente che può entrare in ssh in tutte le macchine (rdp invece che ssh cos'è?)
+- Un utente che può entrare in ssh in tutte le macchine
+- Anche rdp (ha senso dare sia rdp che ssh o è meglio tenerli separati?)
 - Un utente che ha i permessi per modificare i ruoli
 - In generale è pensato solo per gli amministratori di sistema e non tutti gli utenti di un'azienda
 
 Stashed changes
 - Come gestiamo le regole di firewall? Non gestiamo noi le regole, non è compito nostro
+
 
 Primo problema è capire come fare a creare certificati mirati verso una macchina senza toccare le regole di firewall delle macchine stesse.
 
@@ -182,15 +199,15 @@ NebulaCertificate {
 - Seconda opzione è avere un sistema di CA dinamico in cui per ogni macchina creo e gestisco una CA con l'unico scopo di permettere l'accesso ad essa dinamicamente. Aggiornare ogni CA quando scade diventerebbe un trauma se non fosse automatizzato.
 - Mi appoggio ad un sistema esterno per richiedere la generazione di regole dinamicamente sulle macchine per cui richiedo un certificato.
 
-##### Hidden Req:
+#### Hidden Req:
 - La nostra applicazione deve poter modificare le regole di firewall di tutte le macchine remote? NO
 - Deve poter modificare il layout della network? NO
 - Deve poter generare nuove macchine dinamicamente? NO
 
-##### IMPORTANTE
+#### IMPORTANTE
 - definire i test di sicurezza e i test di scalabilità
 
-##### La nostra macchina si può collegare a tutte le macchine che gestisce in ogni momento? Serve che lo faccia?
+#### La nostra macchina si può collegare a tutte le macchine che gestisce in ogni momento? Serve che lo faccia?
 
 
 ### Discussions with the commissioner
@@ -201,7 +218,8 @@ NebulaCertificate {
 	- **TT**: test di scalabilità e sicurezza. possiamo mettere dei cert nei nostri pc.
 - In cosa consistono i nostri test?
 	- **TT**: 
-		- scalabilità --> Quello che possiamo verificare è: quanti admin può gestire/quanti certificati può firmare simmultaneamente
+		- scalabilità --> Quello che possiamo verificare è: quanti admin può gestire/quanti certificati può firmare simmultaneamente.
+			     --> Quanto è facile gestire un numero crescente di macchine ed utenti
 		- sicurezza --> Accessi non autorizzati a macchine. Problemi di intrusion.
 
 ### Division of work
