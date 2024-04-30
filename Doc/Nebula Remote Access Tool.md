@@ -14,6 +14,7 @@ Resources
 - [nebula config reference](https://nebula.defined.net/docs/config/)
 - [nebula official slack](https://join.slack.com/t/nebulaoss/shared_invite/enQtOTA5MDI4NDg3MTg4LTkwY2EwNTI4NzQyMzc0M2ZlODBjNWI3NTY1MzhiOThiMmZlZjVkMTI0NGY4YTMyNjUwMWEyNzNkZTJmYzQxOGU) 
 Resources Azure
+- [Super tutorial indiano](https://www.youtube.com/watch?v=tDuruX7XSac&t=2464s)
 - https://techcommunity.microsoft.com/t5/azure-database-support-blog/using-certificates-in-azure-sql-database-import/ba-p/368949
 
 
@@ -37,7 +38,7 @@ Web service remotely available that allows a user to interface with the system.
 ##### Available machines
 Machines that are part of the nebula network and are available to the current user giving his/her authorizations.
 ##### Admin
-The user with the ability to modify authorizations of other users.
+The user with the full authorization on the system.
 ##### User
 In our case a user is a system admin of the nebula network or part of it. We will consider only user with a certain degree of knowledge in networking and system administration.
 ##### Security role

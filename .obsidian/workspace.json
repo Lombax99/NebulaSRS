@@ -18,6 +18,40 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "d9f7e6921ca640f5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Sprint 1.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "aa5ad51dbf6cd541",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "06b9c16e2caf9d2e",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Doc/BasicNetworkArchitecture.canvas",
+                "viewState": {
+                  "x": 127.39602157622352,
+                  "y": -52.73259132878158,
+                  "zoom": -0.3333333333333333
+                }
+              }
+            }
           }
         ]
       }
@@ -85,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/Nebula Remote Access Tool.md",
+                "file": "Sprint 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/Nebula Remote Access Tool.md",
+                "file": "Sprint 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +159,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/Nebula Remote Access Tool.md"
+                "file": "Sprint 1.md"
               }
             }
           }
@@ -146,18 +180,19 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "553e9ff6a7c18f75",
+  "active": "d9f7e6921ca640f5",
   "lastOpenFiles": [
+    "Doc/BasicNetworkArchitecture.canvas",
+    "Sprint 1.md",
+    "Doc/Nebula Remote Access Tool.md",
+    "Untitled.canvas",
+    "Doc/UtilityResources/Sprint Template.md",
     "Doc/UtilityResources/Nebula first network and useful commands.md",
     "Doc/UtilityResources/Vagrant setup.md",
-    "Doc/Nebula Remote Access Tool.md",
     "Doc/Analisi dei Requisiti.md",
-    "Doc/BasicNetworkArchitecture.canvas",
-    "Doc/UtilityResources/Sprint Template.md",
     "Doc/UtilityResources",
     "README.md",
     "resources/Pasquale.jpg",
-    "Untitled.md",
     "Nebula security domain.md",
     "Other issues.md",
     "Doc",
