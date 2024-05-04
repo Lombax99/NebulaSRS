@@ -35,6 +35,13 @@ Anche perchè se perdi la chiave generi un nuovo cert, non la vai a recuperare i
 Separiamo i permessi di lettura e scrittura.
 - Scrittura: Solo l'Admin.
 - Lettura: Ogni utente può visualizzare solo le macchine a lui assegnato.
+
+##### Ipotesi di deployment (Sté)
+Tenendo comunque in conto che una valutazione sulla scalabilità della seguente soluzione sia necessaria, si può usare il BLOB Storage di Azure, che mette anche a disposizione delle API per accedervi: [Azure Storage REST API](https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api), [Azure PowerShell](https://learn.microsoft.com/en-us/powershell/module/az.storage), [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/storage), o la libreria client di Azure Storage.
+
+Link utili:
+- Azure BLOB Storage overview: https://azure.microsoft.com/en-us/products/storage/blobs
+- Introduction to Azure BLOB Storage: https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction
 ##### Come teniamo traccia dei permessi dei vari utenti?
 Bisogna salvarsi nel DB una tabella che associa utenti e macchine a cui possono accedere.
 molto probabilmente converrà fare una tabella con tutti gli utenti e per ogni utente segnarsi a quale macchina può accedere. Il motivo è che lo spazio in memoria di un DB non è un grosso problema, posso sprecarne quanto ne voglio mentre dato un utente loggato è possibile che questo mi richieda certificati per più macchine e quindi mi tengo i dati salvati in cache o qualcosa di simile per velocizzare la cosa.
