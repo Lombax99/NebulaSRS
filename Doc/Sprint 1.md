@@ -15,6 +15,7 @@ Resources
 Resources Azure
 - [Super tutorial indiano](https://www.youtube.com/watch?v=tDuruX7XSac&t=2464s)
 - https://techcommunity.microsoft.com/t5/azure-database-support-blog/using-certificates-in-azure-sql-database-import/ba-p/368949
+- https://learn.microsoft.com/it-it/azure/app-service/quickstart-python?tabs=flask%2Cwindows%2Cazure-cli%2Cazure-cli-deploy%2Cdeploy-instructions-azportal%2Cterminal-bash%2Cdeploy-instructions-zip-azcli
 
 
 ### Requirements analysis
@@ -48,6 +49,8 @@ molto probabilmente converrà fare una tabella con tutti gli utenti e per ogni u
 ##### Come gestiamo la fase di Auth
 Speriamo in azure... 🤞
 Auth a due fattori?? 👀
+- [ ] Chiedi al tutor perchè non possiamo accedere alle risorse di Azure sul login (Microsoft Merda):
+	- Micorsoft Entra ID
 ##### Che tipi di utenti esistono? Come li generiamo? Come gestiamo i permessi?
 Decidiamo che per questo primo sprint ci limitiamo solo ad un discorso di visibilità.
 Quindi oltre all'admin ho solo normal users. L'unica differenza tra i vari user è a quali macchine sono assegnati.
@@ -75,6 +78,7 @@ Abbiamo bisogno di:
 			- Il gestore è una web app.
 
 ### Design of the application
+##### Django vs Flask?
 il codice prodotto e le scelte di progettazione
 
 

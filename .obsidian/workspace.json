@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/UtilityResources/Azure Useful Data.md",
+                "file": "Doc/Sprint 1.md",
                 "mode": "source",
                 "source": false
               }
@@ -46,9 +46,9 @@
               "state": {
                 "file": "Doc/BasicNetworkArchitecture.canvas",
                 "viewState": {
-                  "x": 171.93867950805435,
-                  "y": -57.50503585572135,
-                  "zoom": -0.3333333333333333
+                  "x": 139.2807301275844,
+                  "y": 341.52005007229616,
+                  "zoom": -0.6666666666666666
                 }
               }
             }
@@ -114,12 +114,20 @@
         "type": "tabs",
         "children": [
           {
+            "id": "30070c213f712111",
+            "type": "leaf",
+            "state": {
+              "type": "online.larslockefeer.obsidian-plugin-todo",
+              "state": {}
+            }
+          },
+          {
             "id": "4b5ce2c890577eeb",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/UtilityResources/Azure Useful Data.md",
+                "file": "Doc/Sprint 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +144,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/UtilityResources/Azure Useful Data.md",
+                "file": "Doc/Sprint 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +167,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/UtilityResources/Azure Useful Data.md"
+                "file": "Doc/Sprint 1.md"
               }
             }
           }
@@ -167,8 +175,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 392.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -182,10 +189,11 @@
   },
   "active": "d9f7e6921ca640f5",
   "lastOpenFiles": [
-    "Sprint 1.md",
-    "Doc/UtilityResources/Azure Useful Data.md",
+    "Titolo.md",
+    "Doc/Sprint 1.md",
     "Doc/BasicNetworkArchitecture.canvas",
     "Doc/Nebula Remote Access Tool.md",
+    "Doc/UtilityResources/Delete before public availability and sharing.md",
     "Untitled.canvas",
     "Doc/UtilityResources/Sprint Template.md",
     "Doc/UtilityResources/Nebula first network and useful commands.md",
