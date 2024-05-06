@@ -4,23 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "4a29f44ba6dc707c",
+        "id": "5b6c380203a5cce9",
         "type": "tabs",
         "children": [
           {
-            "id": "553e9ff6a7c18f75",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Doc/Nebula Remote Access Tool.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d9f7e6921ca640f5",
+            "id": "b73839e3b83cd824",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -30,30 +18,21 @@
                 "source": false
               }
             }
-          }
-        ],
-        "currentTab": 1
-      },
-      {
-        "id": "aa5ad51dbf6cd541",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "06b9c16e2caf9d2e",
+            "id": "5e1bbfadee19b445",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Doc/BasicNetworkArchitecture.canvas",
-                "viewState": {
-                  "x": 139.2807301275844,
-                  "y": 341.52005007229616,
-                  "zoom": -0.6666666666666666
-                }
+                "file": "Richiesta 2 - Flask.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -92,7 +71,7 @@
             }
           },
           {
-            "id": "e126514be9a8c864",
+            "id": "0cbf9cd26f364426",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -114,20 +93,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "30070c213f712111",
-            "type": "leaf",
-            "state": {
-              "type": "online.larslockefeer.obsidian-plugin-todo",
-              "state": {}
-            }
-          },
-          {
             "id": "4b5ce2c890577eeb",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/Sprint 1.md",
+                "file": "Richiesta 2 - Flask.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -144,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/Sprint 1.md",
+                "file": "Richiesta 2 - Flask.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -167,15 +138,24 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/Sprint 1.md"
+                "file": "Richiesta 2 - Flask.md"
               }
+            }
+          },
+          {
+            "id": "cdd10dd30aa87cbc",
+            "type": "leaf",
+            "state": {
+              "type": "online.larslockefeer.obsidian-plugin-todo",
+              "state": {}
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 392.5
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -187,26 +167,27 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d9f7e6921ca640f5",
+  "active": "5e1bbfadee19b445",
   "lastOpenFiles": [
-    "Titolo.md",
     "Doc/Sprint 1.md",
-    "Doc/BasicNetworkArchitecture.canvas",
-    "Doc/Nebula Remote Access Tool.md",
-    "Doc/UtilityResources/Delete before public availability and sharing.md",
+    "Richiesta 2 - Flask.md",
+    "Sprint 1.md",
     "Untitled.canvas",
-    "Doc/UtilityResources/Sprint Template.md",
-    "Doc/UtilityResources/Nebula first network and useful commands.md",
+    "Doc/Nebula Remote Access Tool.md",
     "Doc/UtilityResources/Vagrant setup.md",
+    "Doc/UtilityResources/Sprint Template.md",
+    "Doc/UtilityResources/Azure Useful Data.md",
+    "Doc/UtilityResources/Nebula first network and useful commands.md",
+    "Doc/BasicNetworkArchitecture.canvas",
+    "resources/Pasquale.jpg",
+    "resources/StefanoPaparella.jpg",
+    "resources/LucaLombardi.jpg",
+    "README.md",
     "Doc/Analisi dei Requisiti.md",
     "Doc/UtilityResources",
-    "README.md",
-    "resources/Pasquale.jpg",
     "Nebula security domain.md",
     "Other issues.md",
     "Doc",
-    "resources/LucaLombardi.jpg",
-    "resources/StefanoPaparella.jpg",
     "resources/StefanoPaparella.jpg.crdownload",
     "resources",
     "Text File.txt"

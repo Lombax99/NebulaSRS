@@ -1,0 +1,7 @@
+Usare Flask per creare l'interfaccia web potrebbe essere una scelta ragionevole per diverse ragioni:
+
+1. **Semplicità e leggerezza**: Flask è un microframework web leggero per Python. È progettato per essere semplice da usare e facile da imparare. Data la natura specifica e mirata del tuo progetto, potresti non aver bisogno di tutte le funzionalità più avanzate di framework più complessi.
+2. **Integrazione con Nebula e Python**: Dal momento che Nebula è scritto in Go e Python è il linguaggio preferito per questo progetto, Flask offre una buona integrazione con Python. Puoi facilmente scrivere le funzioni necessarie per interagire con Nebula utilizzando Python.
+3. **Flessibilità**: Flask è altamente flessibile e modulare. Puoi aggiungere le estensioni necessarie per gestire l'autenticazione, la gestione delle sessioni e altre funzionalità senza dover adottare un intero framework con funzionalità preconfezionate che potrebbero non essere necessarie per il tuo progetto.
+4. **Documentazione e supporto della comunità**: Flask ha una documentazione completa e una grande comunità di sviluppatori attivi. Questo rende più facile trovare risorse e supporto in caso di necessità durante lo sviluppo del tuo progetto.
+5. **Azure e Flask**: Azure offre supporto per applicazioni Flask tramite Azure App Service, che semplifica il deployment e la gestione dell'applicazione web Flask su Azure.
