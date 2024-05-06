@@ -82,10 +82,14 @@ Abbiamo bisogno di:
 il codice prodotto e le scelte di progettazione
 
 
-
 ### Division of work
-- Divisione per sprint - data di consegna
-	- Divisione dei membri nei vari sprint
+- Stefano
+	- [ ] Postgres VS Mongo
+- Luca
+	- [ ] Finire di tirare su Nebula nelle vm su azure
+	- [ ] Fare un mini esempio di webapp con flask e DB (postgres al momento)
+- Pasquale
+	- [ ] HTML e frontend in generale
 
 
 
