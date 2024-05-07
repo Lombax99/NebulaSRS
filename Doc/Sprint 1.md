@@ -43,6 +43,13 @@ Tenendo comunque in conto che una valutazione sulla scalabilità della seguente 
 Link utili:
 - Azure BLOB Storage overview: https://azure.microsoft.com/en-us/products/storage/blobs
 - Introduction to Azure BLOB Storage: https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction
+
+##### MongoDB o PostgreSQL?
+![[Pasted image 20240507173320.png]]
+
+PostgreSQL sfrutta un DB relazionale --> Meglio, perché così basta sfruttare la sintassi di SQL e stiamo a posto, senza dover rappresentare i documenti come file JSON. Inoltre, è scalabile ed effettua il load balancing. Cosa molto importante: ==POSTGRESQL GARANTISCE ACID SEMPRE E COMUNQUE==, mentre MongoDB solo in scenari limitati e dalla versione 4.0 in poi (nabbo).
+
+Ergo, la migliore soluzione è usare PostgreSQL.
 ##### Come teniamo traccia dei permessi dei vari utenti?
 Bisogna salvarsi nel DB una tabella che associa utenti e macchine a cui possono accedere.
 molto probabilmente converrà fare una tabella con tutti gli utenti e per ogni utente segnarsi a quale macchina può accedere. Il motivo è che lo spazio in memoria di un DB non è un grosso problema, posso sprecarne quanto ne voglio mentre dato un utente loggato è possibile che questo mi richieda certificati per più macchine e quindi mi tengo i dati salvati in cache o qualcosa di simile per velocizzare la cosa.
