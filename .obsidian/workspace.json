@@ -20,27 +20,6 @@
             }
           }
         ]
-      },
-      {
-        "id": "aa5ad51dbf6cd541",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "06b9c16e2caf9d2e",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Doc/BasicNetworkArchitecture.canvas",
-                "viewState": {
-                  "x": 171.93867950805435,
-                  "y": -57.50503585572135,
-                  "zoom": -0.3333333333333333
-                }
-              }
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -148,6 +127,14 @@
               "state": {
                 "file": "Doc/Sprint 1.md"
               }
+            }
+          },
+          {
+            "id": "43a80eee80a5226c",
+            "type": "leaf",
+            "state": {
+              "type": "online.larslockefeer.obsidian-plugin-todo",
+              "state": {}
             }
           }
         ]
