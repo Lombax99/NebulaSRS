@@ -65,7 +65,7 @@ molto probabilmente converrà fare una tabella con tutti gli utenti e per ogni u
 ##### Come gestiamo la fase di Auth
 Speriamo in azure... 🤞
 Auth a due fattori?? 👀
-- [ ] Chiedi al tutor perchè non possiamo accedere alle risorse di Azure sul login (Microsoft Merda):
+- [x] Chiedi al tutor perchè non possiamo accedere alle risorse di Azure sul login (Microsoft Merda):
 	- Micorsoft Entra ID
 ##### Che tipi di utenti esistono? Come li generiamo? Come gestiamo i permessi?
 Decidiamo che per questo primo sprint ci limitiamo solo ad un discorso di visibilità.
