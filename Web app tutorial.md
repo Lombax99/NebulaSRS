@@ -10,3 +10,5 @@ The web app uses its system-assigned **[managed identity](https://learn.microso
 
 You can configure passwordless connections to Azure services using Service Connector or you can configure them manually. This tutorial shows how to use Service Connector. For more information about passwordless connections, see [Passwordless connections for Azure services](https://learn.microsoft.com/en-us/azure/developer/intro/passwordless-overview). For information about Service Connector, see the [Service Connector documentation](https://learn.microsoft.com/en-us/azure/service-connector/overview).
 
+
+

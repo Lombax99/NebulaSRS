@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "67861481f90c139d",
+        "id": "4a29f44ba6dc707c",
         "type": "tabs",
         "children": [
           {
-            "id": "e0a15bbaad3a404d",
+            "id": "553e9ff6a7c18f75",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Doc/UtilityResources/Terraform + Azure setup.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Doc/UtilityResources/Terraform + Azure setup.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Doc/UtilityResources/Terraform + Azure setup.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Doc/UtilityResources/Terraform + Azure setup.md"
+              }
             }
           },
           {
@@ -146,19 +154,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e0a15bbaad3a404d",
+  "active": "553e9ff6a7c18f75",
   "lastOpenFiles": [
-    "PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
     "PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
-    "PostgreSQL & Python",
-    "Doc/Sprint 1.md",
-    "img/Pasted image 20240507173320.png",
-    "resources/LucaLombardi.jpg",
-    "resources/Pasquale.jpg",
-    "resources/StefanoPaparella.jpg",
-    "Web app tutorial.md",
-    "img",
+    "PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
+    "Doc/UtilityResources/Terraform + Azure setup.md",
+    "Doc/UtilityResources/Vagrant setup.md",
     "Doc/Nebula Remote Access Tool.md",
+    "Doc/Sprint 1.md",
+    "PostgreSQL & Python",
+    "Web app tutorial.md",
+    "img/Pasted image 20240507173320.png",
+    "img",
     "Doc/UtilityResources/Azure Useful Data.md",
     "Richiesta 2 - Flask.md",
     "Doc/UtilityResources/Delete before public availability and sharing.md",
@@ -167,13 +174,15 @@
     "Untitled.canvas",
     "Doc/UtilityResources/Sprint Template.md",
     "Doc/UtilityResources/Nebula first network and useful commands.md",
-    "Doc/UtilityResources/Vagrant setup.md",
     "Doc/Analisi dei Requisiti.md",
     "Doc/UtilityResources",
     "README.md",
+    "resources/Pasquale.jpg",
     "Nebula security domain.md",
     "Other issues.md",
     "Doc",
+    "resources/LucaLombardi.jpg",
+    "resources/StefanoPaparella.jpg",
     "resources/StefanoPaparella.jpg.crdownload",
     "resources",
     "Text File.txt"
