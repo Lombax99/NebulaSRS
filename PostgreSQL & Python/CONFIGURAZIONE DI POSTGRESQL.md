@@ -1,0 +1,11 @@
+- Sistema utilizzato: Ubuntu 22.04
+- Installazione della libreria *postgresql*: `sudo apt-get install postgresql`
+- Configurazione automatica di *postgres-common*:
+	- `sudo apt install -y postgresql-common`  
+	- `sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh`
+- Diamo la possibilità al nostro utente in locale di poter usare i comandi di postgres.
+	- switchare all'utente postgres con `sudo su - postgres`
+	- lanciare il comando di creazione con l'utente `createuser -s <nome_utente> -P` --> Con *-P* ci chiederà di inserire una password per l'utente. Con *-s* ci farà creare un super user.  Sostituisci *<nome_utente>* con il tuo username su Ubuntu e il gioco è fatto: tornando al tuo user (CTRL+D) potrai operare con postgres.
+- Creiamo un database di prova: `createdb -h localhost -p 5432 -U nome_utente testdb`. Ti chiederà la password dell'utente e poi ti creerà il db una volta fatto il login.
+- Selezioniamo il db per il login `psql -h localhost -p 5432 -U nome_utente testdb` e ci aprirà la shell (dopo aver inserito la password corretta, **d'ora in poi diamo per scontato che bisogna loggarsi**). Una volta entrati, bisogna effettuare il collegamento in SSL con `\c testdb`. Se tutto va bene ci dirà *Sei collegato al database "testdb" con nome utente "nome_utente"*.
+Fatta questa piccolissima configurazione del db, andiamo a testare il [[COLLEGAMENTO A POSTGRESQL CON PYTHON]]!

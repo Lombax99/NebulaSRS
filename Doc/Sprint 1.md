@@ -100,12 +100,18 @@ il codice prodotto e le scelte di progettazione
 
 ### Division of work
 - Stefano
-	- [ ] Postgres VS Mongo
+	- [x] Postgres VS Mongo
+	- [ ] Tira giù DB Postgres
+	- [ ] Collegamento, creazione tabella, inserimento dati e queryù
+	- [ ] Documentazione del lavoro svolto ai passi precedenti
 - Luca
 	- [ ] Finire di tirare su Nebula nelle vm su azure
 	- [ ] Fare un mini esempio di webapp con flask e DB (postgres al momento)
 - Pasquale
 	- [ ] HTML e frontend in generale
+	- [ ] Tira giù DB Postgres
+	- [ ] Collegamento, creazione tabella, inserimento dati e query
+	- [ ] Documentazione del lavoro svolto ai passi precedenti
 
 
 
