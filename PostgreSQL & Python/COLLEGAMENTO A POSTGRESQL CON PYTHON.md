@@ -41,17 +41,31 @@
         - Spiegazione:
 	        - **REFERENCES TABELLA(id)** --> Fa riferimento alla chiave primaria di un'altra tabella
 	        - **UNIQUE (utente_id, macchina_id)** --> Non ci saranno mai due coppie uguali.
-- ##### Come inserire le righe nella tabella "MACCHINA"
+- ##### Come inserire una riga nella tabella "MACCHINA"
+  
 		 INSERT INTO MACCHINA (descrizione, cert, conf)
 		 VALUES (
 		 'Laptop_1',
 		 '~/Scrivania/Nebula_Esempio/laptop.crt',
 		 '~/Scrivania/Nebula_Esempio/config.yaml'
 		 );
-
-
-
-
+		 
+- ##### Come inserire una riga nella tabella "UTENTE"
+  
+		 INSERT INTO UTENTE (username)
+		 VALUES ('username');
+		 
+- ##### Come inserire una riga in "USA"
+  
+		INSERT INTO USA (macchina_id, utente_id)`
+		VALUES (1, 1);
+		
+#### QUERY: CONTROLLARE A QUALI MACCHINE HA ACCESSO UN UTENTE
+		SELECT M.descrizione
+		FROM MACCHINA AS M
+		JOIN USA AS U ON M.id= U.macchina_id
+		JOIN UTENTE AS UT ON U.utente_id = UT.id
+		WHERE UT.username = 'username';
 
 
 **N.B.**: Questa roba verrà automatizzata con gli script in Python

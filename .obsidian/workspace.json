@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+                "file": "PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+                "file": "PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+                "file": "PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md"
+                "file": "PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md"
               }
             }
           },
@@ -156,8 +156,13 @@
   },
   "active": "553e9ff6a7c18f75",
   "lastOpenFiles": [
-    "PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
+    "img/ER_MODEL.png",
+    "PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
+    "ER_MODEL.dia",
+    "img/ER_MODEL.png",
+    "Untitled",
     "PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+    "PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
     "Richiesta 2 - Flask.md",
     "Untitled.canvas",
     "Web app tutorial.md",
