@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
+                "file": "PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
+                "file": "PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
+                "file": "PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md"
+                "file": "PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md"
               }
             }
           },
@@ -156,8 +156,10 @@
   },
   "active": "553e9ff6a7c18f75",
   "lastOpenFiles": [
-    "img/ER_MODEL.png",
+    "img/Pasted image 20240517182247.png",
     "PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
+    "PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
+    "img/ER_MODEL.png",
     "ER_MODEL.dia",
     "img/ER_MODEL.png",
     "Untitled",
