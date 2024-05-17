@@ -41,6 +41,17 @@
         - Spiegazione:
 	        - **REFERENCES TABELLA(id)** --> Fa riferimento alla chiave primaria di un'altra tabella
 	        - **UNIQUE (utente_id, macchina_id)** --> Non ci saranno mai due coppie uguali.
-	    **N.B.**: Questa roba verrà automatizzata con gli script in Python
+- ##### Come inserire le righe nella tabella "MACCHINA"
+		 INSERT INTO MACCHINA (descrizione, cert, conf)
+		 VALUES (
+		 'Laptop_1',
+		 '~/Scrivania/Nebula_Esempio/laptop.crt',
+		 '~/Scrivania/Nebula_Esempio/config.yaml'
+		 );
 
-		 
+
+
+
+
+
+**N.B.**: Questa roba verrà automatizzata con gli script in Python
