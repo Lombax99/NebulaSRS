@@ -102,3 +102,10 @@ Therefore you can freely move the blocks from your `main.tf` file into as many s
 
 (There is a special case for [Override Files](https://www.terraform.io/docs/configuration/override.html) that makes the above not strictly true. As long as you avoid naming any of your files `override.tf` or with an `_override.tf` suffix that special case will not apply, but I'm mentioning it just for completeness.)
 
+##### Creating an azure web app
+
+
+##### Creating a postgres database
+
+
+

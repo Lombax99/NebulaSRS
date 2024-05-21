@@ -156,6 +156,7 @@
   },
   "active": "553e9ff6a7c18f75",
   "lastOpenFiles": [
+    "terraform/test/postgresDB.tf",
     "terraform/test/terraform.tfstate",
     "terraform/test/network.tf",
     "terraform/test/vm.tf",
@@ -192,7 +193,6 @@
     "Other issues.md",
     "Doc",
     "resources/LucaLombardi.jpg",
-    "resources/StefanoPaparella.jpg",
-    "resources/StefanoPaparella.jpg.crdownload"
+    "resources/StefanoPaparella.jpg"
   ]
 }
