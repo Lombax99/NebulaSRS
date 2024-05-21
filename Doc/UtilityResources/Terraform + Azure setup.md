@@ -86,7 +86,14 @@ The value can also be defined at runtime with the command
 - **terraform apply -var "var_name=value"**
 
 ##### Outputs
+To define an output for your configuration you need to create a file called output.tf in the same folder as the others and define the output parameter as follow:
+``` tf
+output "resource_group_id" {
+  value = azurerm_resource_group.rg.id
+}
+```
 
+The next **terraform apply** will print the defined parameter as output
 
 
 
