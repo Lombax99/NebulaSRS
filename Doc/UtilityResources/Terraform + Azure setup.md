@@ -89,11 +89,16 @@ The value can also be defined at runtime with the command
 To define an output for your configuration you need to create a file called output.tf in the same folder as the others and define the output parameter as follow:
 ``` tf
 output "resource_group_id" {
-  value = azurerm_resource_group.rg.id
+  value = data.azurerm_resource_group.resource_group.id
 }
 ```
 
 The next **terraform apply** will print the defined parameter as output
 
+##### File splitting in Terraform
+Terraform does not ascribe any special meaning to which filenames you use and how many files you have. Terraform instead reads all of the `.tf` files and considers their contents together.
 
+Therefore you can freely move the blocks from your `main.tf` file into as many separate `.tf` files in the same directory as you like, and Terraform will consider the configuration to be exactly equivalent as long as you change nothing in the contents of those blocks while you do it.
+
+(There is a special case for [Override Files](https://www.terraform.io/docs/configuration/override.html) that makes the above not strictly true. As long as you avoid naming any of your files `override.tf` or with an `_override.tf` suffix that special case will not apply, but I'm mentioning it just for completeness.)
 

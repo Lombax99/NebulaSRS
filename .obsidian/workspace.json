@@ -154,9 +154,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "606efda66ae6e0fb",
+  "active": "553e9ff6a7c18f75",
   "lastOpenFiles": [
+    "terraform/test/terraform.tfstate",
+    "terraform/test/network.tf",
+    "terraform/test/vm.tf",
+    "terraform/test/providers.tf",
     "Web app tutorial.md",
+    "Doc/UtilityResources/Terraform + Azure setup.md",
     "PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
     "Untitled.canvas",
     "img/ER_MODEL.png",
@@ -168,7 +173,6 @@
     "PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
     "PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
     "Richiesta 2 - Flask.md",
-    "Doc/UtilityResources/Terraform + Azure setup.md",
     "Doc/UtilityResources/Vagrant setup.md",
     "Doc/Nebula Remote Access Tool.md",
     "Doc/Sprint 1.md",
@@ -189,8 +193,6 @@
     "Doc",
     "resources/LucaLombardi.jpg",
     "resources/StefanoPaparella.jpg",
-    "resources/StefanoPaparella.jpg.crdownload",
-    "resources",
-    "Text File.txt"
+    "resources/StefanoPaparella.jpg.crdownload"
   ]
 }
