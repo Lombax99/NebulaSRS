@@ -156,8 +156,9 @@
   },
   "active": "553e9ff6a7c18f75",
   "lastOpenFiles": [
-    "terraform/test/postgresDB.tf",
+    "terraform/test/webapp.tf",
     "terraform/test/terraform.tfstate",
+    "terraform/test/postgresDB.tf",
     "terraform/test/network.tf",
     "terraform/test/vm.tf",
     "terraform/test/providers.tf",
@@ -191,7 +192,6 @@
     "resources/Pasquale.jpg",
     "Nebula security domain.md",
     "Other issues.md",
-    "Doc",
     "resources/LucaLombardi.jpg",
     "resources/StefanoPaparella.jpg"
   ]

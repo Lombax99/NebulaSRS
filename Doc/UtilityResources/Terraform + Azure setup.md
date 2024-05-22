@@ -104,6 +104,8 @@ Therefore you can freely move the blocks from your `main.tf` file into as many s
 
 ##### Creating an azure web app
 [Esempio 1](https://www.tiernok.com/posts/2021/terraform-for-an-azure-web-app-sql-stack)
+[Esempio 2](https://medium.com/@abhimanyubajaj98/your-first-azure-web-app-with-terraform-f8ef567f206b)
+[microsoft doc](https://learn.microsoft.com/it-it/azure/app-service/provision-resource-terraform)
 
 ##### Creating a postgres database
 [microsoft doc](https://learn.microsoft.com/en-us/azure/developer/terraform/deploy-postgresql-flexible-server-database?tabs=azure-cli)
