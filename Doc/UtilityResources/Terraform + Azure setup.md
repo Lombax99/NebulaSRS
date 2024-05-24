@@ -107,6 +107,130 @@ Therefore you can freely move the blocks from your `main.tf` file into as many s
 [Esempio 2](https://medium.com/@abhimanyubajaj98/your-first-azure-web-app-with-terraform-f8ef567f206b)
 [microsoft doc](https://learn.microsoft.com/it-it/azure/app-service/provision-resource-terraform)
 
+##### Configure auto deploy from github
+In [this tutorial](https://learn.microsoft.com/en-us/azure/app-service/quickstart-python?tabs=flask%2Cwindows%2Cazure-cli%2Cazure-cli-deploy%2Cdeploy-instructions-azportal%2Cterminal-bash%2Cdeploy-instructions-zip-azcli) a simple web app is given and deployed via local github, we want remote github deployment but it's better than nothing for now.
+
+SCM basic auth publishing credential need to be activate in some way, might become a problem with terraform configuration later
+
+OK sono riuscito, questo è il file di terraform:
+```
+# Create the Linux App Service Plan
+resource "azurerm_service_plan" "appserviceplan" {
+  name                = "webapp-asp-terraform"
+  location            = var.location
+  resource_group_name = var.rg_name
+  os_type             = "Linux"
+  sku_name            = "B1"
+}
+
+
+# Create the web app, pass in the App Service Plan ID
+resource "azurerm_linux_web_app" "webapp" {
+  name                  = "webapp124-terraform"
+  location              = var.location
+  resource_group_name   = var.rg_name
+  service_plan_id       = azurerm_service_plan.appserviceplan.id
+  https_only            = true
+  site_config { 
+    minimum_tls_version = "1.2"
+    application_stack {
+    	python_version = 3.9
+    }
+  }
+}
+
+#  Deploy code from a public GitHub repo
+resource "azurerm_app_service_source_control" "sourcecontrol" {
+  app_id             = azurerm_linux_web_app.webapp.id
+  repo_url           = "https://github.com/Lombax99/basic-flask-webapp"
+  branch             = "master"
+  use_manual_integration = true
+  use_mercurial      = false
+}
+```
+
+e questo è il file di github:
+
+```
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+# More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
+
+name: Build and deploy Python app to Azure Web App - basic-webapp-to-test-git-deployment
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python version
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.9'
+
+      - name: Create and start virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        
+      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
+
+      - name: Upload artifact for deployment jobs
+        uses: actions/upload-artifact@v3
+        with:
+          name: python-app
+          path: |
+            release.zip
+            !venv/
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: python-app
+
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
+
+      
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v2
+        id: deploy-to-webapp
+        with:
+          app-name: 'webapp124-terraform'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_124 }}
+```
+
+Ho dovuto preparare github un minimo per avere le azioni che fanno il deployment.
+Due punti fondamentali:
+- una variabile da definire come segreto su github
+	`publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_124 }}`
+	repo settings > secret and variables > action > create new
+	the value is defined in azure, from the home page: Download publish profile and copy the falue from the file in the variable on github
+- `app-name: 'webapp124-terraform'` che deve contenere il nome giusto di azure
+
 ##### Creating a postgres database
 [microsoft doc](https://learn.microsoft.com/en-us/azure/developer/terraform/deploy-postgresql-flexible-server-database?tabs=azure-cli)
 [hashicorp doc](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_database)

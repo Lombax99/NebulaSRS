@@ -8,12 +8,6 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~>3.0"
     }
-    
-    #used to generate random value, not a good practice, do i really need it?
-    random = {
-      source  = "hashicorp/random"
-      version = "~>3.0"
-    }
   }
 }
 
