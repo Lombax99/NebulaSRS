@@ -231,6 +231,8 @@ Due punti fondamentali:
 	the value is defined in azure, from the home page: Download publish profile and copy the falue from the file in the variable on github
 - `app-name: 'webapp124-terraform'` che deve contenere il nome giusto di azure
 
+Altra nota importante, usare repo private porta a problemi nel deployment...
+
 ##### Creating a postgres database
 [microsoft doc](https://learn.microsoft.com/en-us/azure/developer/terraform/deploy-postgresql-flexible-server-database?tabs=azure-cli)
 [hashicorp doc](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_database)
