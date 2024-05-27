@@ -20,7 +20,7 @@ resource "azurerm_subnet" "postgresDB-subnet" {
   name                 = "postgresDB-subnet"
   virtual_network_name = azurerm_virtual_network.vnet.name
   resource_group_name  = var.rg_name
-  address_prefixes     = ["10.0.2.0/24"]
+  address_prefixes     = ["10.0.1.0/24"]
   service_endpoints    = ["Microsoft.Storage"]
 
   delegation {
@@ -67,7 +67,7 @@ resource "azurerm_network_security_group" "postgresDB-sg" {
   resource_group_name = var.rg_name
 
   security_rule {
-    name                       = "test123"
+    name                       = "DB_Tcp_Allow"
     priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"

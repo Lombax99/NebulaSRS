@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "5fbfef9db8aa8b76",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Doc/Nebula Remote Access Tool.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/UtilityResources/Terraform + Azure setup.md",
+                "file": "Doc/Nebula Remote Access Tool.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/UtilityResources/Terraform + Azure setup.md",
+                "file": "Doc/Nebula Remote Access Tool.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/UtilityResources/Terraform + Azure setup.md"
+                "file": "Doc/Nebula Remote Access Tool.md"
               }
             }
           },
@@ -154,26 +167,32 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "553e9ff6a7c18f75",
+  "active": "5fbfef9db8aa8b76",
   "lastOpenFiles": [
-    "basic-flask-webapp/templates/index.html",
-    "basic-flask-webapp/templates/hello.html",
-    "basic-flask-webapp/templates",
-    "basic-flask-webapp/static/bootstrap/js/bootstrap.min.js.map",
-    "basic-flask-webapp/static/bootstrap/js/bootstrap.min.js",
-    "basic-flask-webapp/static/bootstrap/js/bootstrap.js.map",
-    "basic-flask-webapp/static/bootstrap/js/bootstrap.js",
-    "basic-flask-webapp/static/bootstrap/js/bootstrap.esm.min.js.map",
-    "basic-flask-webapp/static/bootstrap/js/bootstrap.esm.min.js",
-    "basic-flask-webapp/static/bootstrap/js/bootstrap.esm.js.map",
-    "basic-flask-webapp/static/bootstrap/js/bootstrap.esm.js",
+    "NebulaRAT_app/static/bootstrap/js/bootstrap.min.js.map",
+    "NebulaRAT_app/static/bootstrap/js/bootstrap.min.js",
+    "NebulaRAT_app/static/bootstrap/js/bootstrap.js.map",
+    "NebulaRAT_app/static/bootstrap/js/bootstrap.js",
+    "NebulaRAT_app/static/bootstrap/js/bootstrap.esm.min.js.map",
+    "NebulaRAT_app/static/bootstrap/js/bootstrap.esm.min.js",
+    "NebulaRAT_app/static/bootstrap/js/bootstrap.esm.js.map",
+    "NebulaRAT_app/static/bootstrap/js/bootstrap.esm.js",
+    "NebulaRAT_app/static/bootstrap/js/bootstrap.bundle.min.js.map",
+    "NebulaRAT_app/static/bootstrap/js/bootstrap.bundle.min.js",
+    "NebulaRAT_app/static/bootstrap/js/bootstrap.bundle.js.map",
+    "NebulaRAT_app/static/images/azure-icon.svg",
+    "NebulaRAT_app/README.md",
+    "NebulaRAT_app/LICENSE.md",
+    "NebulaRAT_app/CONTRIBUTING.md",
+    "NebulaRAT_app/CHANGELOG.md",
+    "Doc/Sprint 1.md",
+    "Doc/UtilityResources/Terraform + Azure setup.md",
     "basic-flask-webapp/static/images/azure-icon.svg",
     "basic-flask-webapp/README.md",
     "basic-flask-webapp/LICENSE.md",
     "basic-flask-webapp/CONTRIBUTING.md",
     "basic-flask-webapp/CHANGELOG.md",
     "Web app tutorial.md",
-    "Doc/UtilityResources/Terraform + Azure setup.md",
     "PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
     "Untitled.canvas",
     "img/ER_MODEL.png",
@@ -185,7 +204,6 @@
     "Richiesta 2 - Flask.md",
     "Doc/UtilityResources/Vagrant setup.md",
     "Doc/Nebula Remote Access Tool.md",
-    "Doc/Sprint 1.md",
     "Doc/UtilityResources/Azure Useful Data.md",
     "Doc/UtilityResources/Delete before public availability and sharing.md",
     "Sprint 1.md",
@@ -195,8 +213,6 @@
     "Doc/Analisi dei Requisiti.md",
     "README.md",
     "resources/Pasquale.jpg",
-    "Nebula security domain.md",
-    "Other issues.md",
     "resources/LucaLombardi.jpg",
     "resources/StefanoPaparella.jpg"
   ]

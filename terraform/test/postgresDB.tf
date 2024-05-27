@@ -6,8 +6,8 @@ resource "azurerm_postgresql_flexible_server" "postgresDB-FlexServer" {
   delegated_subnet_id    = azurerm_subnet.postgresDB-subnet.id
   private_dns_zone_id    = azurerm_private_dns_zone.postgresDB-pdns.id
   
-  administrator_login    = "adminTerraform"
-  administrator_password = "password"
+  administrator_login    = "sudo"
+  administrator_password = "sudo"
   
   zone                   = "1"
   storage_mb             = 32768
@@ -23,29 +23,4 @@ resource "azurerm_postgresql_flexible_server_database" "postgresDB-server-databa
   collation = "en_US.utf8"
   charset   = "UTF8"
 }
-
-
-
-/* This was the version given from the hashicorp doc, what's is the difference with the flexible server?
-resource "azurerm_postgresql_server" "postgresDB" {
-  name                = "psqlserver"
-  location            = var.location
-  resource_group_name = var.rg_name
-
-  administrator_login          = "psqladmin"
-  administrator_login_password = "H@Sh1CoR3!"
-
-  sku_name   = "GP_Gen5_4"
-  version    = "11"
-  storage_mb = 10240
-
-  backup_retention_days        = 7
-  #geo_redundant_backup_enabled = true
-  auto_grow_enabled            = true
-
-  public_network_access_enabled    = false
-  ssl_enforcement_enabled          = true
-  ssl_minimal_tls_version_enforced = "TLS1_2"
-}
-*/
 
