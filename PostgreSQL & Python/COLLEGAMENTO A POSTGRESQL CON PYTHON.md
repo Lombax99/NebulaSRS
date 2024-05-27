@@ -43,13 +43,9 @@
 	        - **UNIQUE (utente_id, macchina_id)** --> Non ci saranno mai due coppie uguali.
 - ##### Come inserire una riga nella tabella "MACCHINA"
   
-		 INSERT INTO MACCHINA (descrizione, cert, conf)
-		 VALUES (
-		 'Laptop_1',
-		 '~/Scrivania/Nebula_Esempio/laptop.crt',
-		 '~/Scrivania/Nebula_Esempio/config.yaml'
-		 );
-		 
+		 INSERT INTO MACCHINA (descrizione, cert, conf) VALUES ('Laptop_1', pg_read_file('/tmp/laptop.crt')::bytea, pg_read_file('/tmp/config.yaml')::bytea);
+
+	E' molto importante che file di config. e certificato si trovino all'interno della cartella /tmp/, poiché dato che tutti hanno il permesso di lettura per quella cartella, non ci sono problemi relativi ai permessi (= non scoreggia psql).
 - ##### Come inserire una riga nella tabella "UTENTE"
   
 		 INSERT INTO UTENTE (username)

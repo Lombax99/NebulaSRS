@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/UtilityResources/Terraform + Azure setup.md",
+                "file": "PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,11 @@
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< Updated upstream
                 "file": "Doc/Nebula Remote Access Tool.md",
+=======
+                "file": "PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+>>>>>>> Stashed changes
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +119,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+<<<<<<< Updated upstream
                 "file": "Doc/Nebula Remote Access Tool.md",
+=======
+                "file": "PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+>>>>>>> Stashed changes
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +146,11 @@
             "state": {
               "type": "outline",
               "state": {
+<<<<<<< Updated upstream
                 "file": "Doc/Nebula Remote Access Tool.md"
+=======
+                "file": "PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md"
+>>>>>>> Stashed changes
               }
             }
           },
@@ -169,6 +181,7 @@
   },
   "active": "5fbfef9db8aa8b76",
   "lastOpenFiles": [
+<<<<<<< Updated upstream
     "NebulaRAT_app/static/bootstrap/js/bootstrap.min.js.map",
     "NebulaRAT_app/static/bootstrap/js/bootstrap.min.js",
     "NebulaRAT_app/static/bootstrap/js/bootstrap.js.map",
@@ -194,13 +207,31 @@
     "basic-flask-webapp/CHANGELOG.md",
     "Web app tutorial.md",
     "PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
+=======
+    "PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
+    "PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
+    "PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
+    "PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+    "Doc/UtilityResources/Terraform + Azure setup.md",
+    "terraform/test/postgresDB.tf",
+    "terraform/test/terraform.tfstate",
+    "terraform/test/network.tf",
+    "terraform/test/vm.tf",
+    "terraform/test/providers.tf",
+    "Web app tutorial.md",
+>>>>>>> Stashed changes
     "Untitled.canvas",
     "img/ER_MODEL.png",
     "img/Pasted image 20240517182247.png",
     "img/Pasted image 20240507173320.png",
+<<<<<<< Updated upstream
     "PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
     "PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
     "PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
+=======
+    "ER_MODEL.dia",
+    "Untitled",
+>>>>>>> Stashed changes
     "Richiesta 2 - Flask.md",
     "Doc/UtilityResources/Vagrant setup.md",
     "Doc/Nebula Remote Access Tool.md",
@@ -213,6 +244,11 @@
     "Doc/Analisi dei Requisiti.md",
     "README.md",
     "resources/Pasquale.jpg",
+<<<<<<< Updated upstream
+=======
+    "Nebula security domain.md",
+    "Other issues.md",
+>>>>>>> Stashed changes
     "resources/LucaLombardi.jpg",
     "resources/StefanoPaparella.jpg"
   ]
