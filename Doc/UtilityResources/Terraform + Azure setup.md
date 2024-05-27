@@ -233,6 +233,85 @@ Due punti fondamentali:
 
 Altra nota importante, usare repo private porta a problemi nel deployment...
 
+Per far in modo che il progetto vanga deployato da una sottocartella il file di github deve essere modificato nel seguente modo:
+```
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+# More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
+# NebulaRAT_app is the directory with the project
+
+name: Build and deploy Python app to Azure Web App - NebulaSRS-git-deployment
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python version
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.12'
+
+      - name: Create and start virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+        working-directory: ./NebulaRAT_app     
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        working-directory: ./NebulaRAT_app
+        
+      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
+        working-directory: ./NebulaRAT_app
+
+      - name: Upload artifact for deployment jobs
+        uses: actions/upload-artifact@v3
+        with:
+          name: python-app
+          path: |
+            ./NebulaRAT_app/release.zip
+            !venv/
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: python-app
+          path: ./NebulaRAT_app
+
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
+        working-directory: ./NebulaRAT_app
+
+      
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v2
+        id: deploy-to-webapp
+        with:
+          app-name: 'NebulaRAT-webapp'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./NebulaRAT_app
+```
 ##### Creating a postgres database
 [microsoft doc](https://learn.microsoft.com/en-us/azure/developer/terraform/deploy-postgresql-flexible-server-database?tabs=azure-cli)
 [hashicorp doc](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_database)
