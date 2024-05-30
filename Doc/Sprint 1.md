@@ -67,6 +67,11 @@ Speriamo in azure... 🤞
 Auth a due fattori?? 👀
 - [x] Chiedi al tutor perchè non possiamo accedere alle risorse di Azure sul login (Microsoft Merda):
 	- Micorsoft Entra ID
+
+Opzioni per implementare il login senza azure:
+- [Flask-Login](https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login)
+
+
 ##### Che tipi di utenti esistono? Come li generiamo? Come gestiamo i permessi?
 Decidiamo che per questo primo sprint ci limitiamo solo ad un discorso di visibilità.
 Quindi oltre all'admin ho solo normal users. L'unica differenza tra i vari user è a quali macchine sono assegnati.
