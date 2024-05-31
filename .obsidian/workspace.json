@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "b11af09f1adbff0d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Piano di progettazione.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/Nebula Remote Access Tool.md",
+                "file": "Piano di progettazione.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/Nebula Remote Access Tool.md",
+                "file": "Piano di progettazione.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/Nebula Remote Access Tool.md"
+                "file": "Piano di progettazione.md"
               }
             }
           },
@@ -154,8 +167,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "962f935436be7726",
+  "active": "b11af09f1adbff0d",
   "lastOpenFiles": [
+    "Doc/Nebula Remote Access Tool.md",
+    "Piano di progettazione.md",
     "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
     "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
     "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
@@ -175,7 +190,6 @@
     "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
     "Doc/UtilityResources/Sprint Template.md",
     "Doc/UtilityResources/Nebula Tutorial",
-    "Doc/BasicNetworkArchitecture.canvas",
-    "Doc/Nebula Remote Access Tool.md"
+    "Doc/BasicNetworkArchitecture.canvas"
   ]
 }
