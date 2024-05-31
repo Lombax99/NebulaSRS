@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "e3a7f2bfc786fcf8",
+        "id": "218600c0e2d4ab9b",
         "type": "tabs",
         "children": [
           {
-            "id": "8359de33f5ab1a1f",
+            "id": "962f935436be7726",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/UtilityResources/Terraform + Azure setup.md",
+                "file": "Doc/Nebula Remote Access Tool.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/UtilityResources/Terraform + Azure setup.md",
+                "file": "Doc/Nebula Remote Access Tool.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/UtilityResources/Terraform + Azure setup.md",
+                "file": "Doc/Nebula Remote Access Tool.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/UtilityResources/Terraform + Azure setup.md"
+                "file": "Doc/Nebula Remote Access Tool.md"
               }
             }
           },
@@ -154,8 +154,27 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8359de33f5ab1a1f",
+  "active": "962f935436be7726",
   "lastOpenFiles": [
+    "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+    "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
+    "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
+    "Doc/PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
+    "Doc/PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
+    "Doc/Sprint 1.md",
+    "Doc/Framework utilizzato.md",
+    "Web app tutorial.md",
+    "CHANGELOG.md",
+    "README.md",
+    "CONTRIBUTING.md",
+    "Doc/UtilityResources/Terraform + Azure setup.md",
+    "resources/ER_MODEL.png",
+    "resources/Pasted image 20240507173320.png",
+    "resources/Pasted image 20240517182247.png",
+    "Doc/UtilityResources/Delete before public availability and sharing.md",
+    "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
+    "Doc/UtilityResources/Sprint Template.md",
+    "Doc/UtilityResources/Nebula Tutorial",
     "Doc/BasicNetworkArchitecture.canvas",
     "Doc/Nebula Remote Access Tool.md"
   ]

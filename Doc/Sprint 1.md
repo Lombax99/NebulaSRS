@@ -100,7 +100,7 @@ Abbiamo bisogno di:
 
 ### Design of the application
 ##### Django vs Flask?
-il codice prodotto e le scelte di progettazione
+guarda: [[Framework utilizzato]]
 
 
 ### Division of work
