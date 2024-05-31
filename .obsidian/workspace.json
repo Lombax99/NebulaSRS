@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/Nebula Remote Access Tool.md",
+                "file": "Doc/Framework utilizzato.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,14 +25,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Piano di progettazione.md",
+                "file": "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Piano di progettazione.md",
+                "file": "Doc/Framework utilizzato.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Piano di progettazione.md",
+                "file": "Doc/Framework utilizzato.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Piano di progettazione.md"
+                "file": "Doc/Framework utilizzato.md"
               }
             }
           },
@@ -167,15 +166,30 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b11af09f1adbff0d",
+  "active": "962f935436be7726",
   "lastOpenFiles": [
+    "venv/Lib/site-packages/pip/_vendor/rich/__pycache__/_windows_renderer.cpython-312.pyc",
+    "venv/Lib/site-packages/pip/_internal/commands/__pycache__/list.cpython-312.pyc",
+    "venv/Lib/site-packages/pip/__pycache__/__main__.cpython-312.pyc",
+    "venv/Lib/site-packages/Flask-2.2.2.dist-info/WHEEL",
+    "venv/Lib/site-packages/Flask-2.2.2.dist-info/top_level.txt",
+    "venv/Lib/site-packages/Flask-2.2.2.dist-info/REQUESTED",
+    "venv/Lib/site-packages/Flask-2.2.2.dist-info/RECORD",
+    "venv/Lib/site-packages/Flask-2.2.2.dist-info/METADATA",
+    "venv/Lib/site-packages/Flask-2.2.2.dist-info/LICENSE.rst",
+    "venv/Lib/site-packages/Flask-2.2.2.dist-info/INSTALLER",
+    "venv/Lib/site-packages/Flask-2.2.2.dist-info/entry_points.txt",
+    "venv/Lib/site-packages/werkzeug/debug/shared/more.png",
+    "venv/Lib/site-packages/werkzeug/debug/shared/less.png",
+    "venv/Lib/site-packages/werkzeug/debug/shared/console.png",
+    "venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
     "Doc/Nebula Remote Access Tool.md",
-    "Piano di progettazione.md",
-    "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
-    "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
     "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
-    "Doc/PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
+    "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
     "Doc/PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
+    "Doc/PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
+    "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+    "Piano di progettazione.md",
     "Doc/Sprint 1.md",
     "Doc/Framework utilizzato.md",
     "Web app tutorial.md",
@@ -189,7 +203,6 @@
     "Doc/UtilityResources/Delete before public availability and sharing.md",
     "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
     "Doc/UtilityResources/Sprint Template.md",
-    "Doc/UtilityResources/Nebula Tutorial",
     "Doc/BasicNetworkArchitecture.canvas"
   ]
 }
