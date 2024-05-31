@@ -65,3 +65,17 @@
 
 
 **N.B.**: Questa roba verrà automatizzata con gli script in Python
+
+
+QUERY: VEDERE QUALI MACCHINE A QUALI UTENTI SONO ASSOCIATI 
+Una cosa che il super admin potrebbe fare è quella di vedere, a quel determinato utente quali macchine sono associate. Questo viene fatto dal super admin, perchè un utente normale non ha bisogno di conoscere quali altre macchine siano assegnate ad altri utenti, poiché questo non è rilevante per le loro operazioni quotidiane. Da un punto di vista della sicurezza, le associazioni tra utenti e macchine, potrebbero avere delle informazioni sensibili , per esempio quali utenti sono responsabili di quali macchine. Quindi limitando l’accesso solo al superadmin si permette di ridurre il rischio di divulgare delle informazioni sensibili. Inoltre consente di mantenere una migliore tracciabilità delle azioni eseguite nel database. Se solo il superadmin ha accesso a questa informazione, è più facile identificare chi ha eseguito la query e quando è stata eseguita.
+
+La query che permette di verificare quel determinato utente a quali macchine è associato è:
+`SELECT u.username AS utente, string_agg(m.descrizione, ',') AS macchine_associate`
+`FROM UTENTE u`
+`JOIN USA us ON u.id = us.utente_id`
+`JOIN MACCHINA m ON us.macchina_id = m.id`
+`WHERE u.id = 'Id_utente'`
+`GROUP BY u.username;`
+
+Con la SELECT andiamo ad indicare quali colonne vogliamo selezionare nel risultato finale, e quindi stiamo selezionando il il nome utente dalla tabella UTENTE e usiamo la funzione string_agg per aggregare le descrizioni delle macchine dalla tabella Macchina. Con il FROM andiamo a selezionare da quali tabelle vogliamo selezionare i dati, e quindi li stiamo selezionando i dati dalla tabella UTENTE, dalla tabella USA, e da MACCHINA. Con la JOIN uniamo la tabella UTENTE con la tabella USA basandoci sull'ID dell'utente e uniamo la tabella USA con la tabella MACCHINA basandoci sull'ID della macchina. Con la where filtriamo i dati, ovvero limitiamo i risultati agli utenti con ID_Utente.`
