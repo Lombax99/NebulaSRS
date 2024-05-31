@@ -1,5 +1,5 @@
 resource "azurerm_postgresql_flexible_server" "postgresDB-FlexServer" {
-  name                   = "postgresdb-server"
+  name                   = "nebularat-postgresdb-server"
   resource_group_name    = var.rg_name
   location               = var.location
   version                = "13"
@@ -18,7 +18,7 @@ resource "azurerm_postgresql_flexible_server" "postgresDB-FlexServer" {
 }
 
 resource "azurerm_postgresql_flexible_server_database" "postgresDB-server-database" {
-  name      = "postgresServer-db"
+  name      = "nebularat-postgresServer-db"
   server_id = azurerm_postgresql_flexible_server.postgresDB-FlexServer.id
   collation = "en_US.utf8"
   charset   = "UTF8"
