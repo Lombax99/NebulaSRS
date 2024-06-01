@@ -27,7 +27,7 @@ users = {}
 
 @app.route('/')
 def root():
-    return render_template('login.html')
+    return render_template('index.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
