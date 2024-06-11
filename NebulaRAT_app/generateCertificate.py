@@ -1,23 +1,25 @@
 import os
 
 nebulaCert_path = "../nebulaScripts/nebula-cert"       # ./nebula-cert print -path somecert.crt    to see certificate
-nebulaScrptPath = "../nebulaScripts/nebula"            # ./nebula-cert sign -name "laptop" -ip "192.168.100.5/24" -groups "laptop,ssh"
+nebulaScrptPath = "../nebulaScripts/nebula"            # ./nebula-cert sign -name "laptop" -ip "192.168.100.5/24" -groups "laptop,ssh" to generate certificate
 certificatesPath = "../nebulaFiles/laptop1.crt"        # Path to store certificates
 
-machineName = "admin1"
+# Parameters for testing
+machineName = "admin2"
 duration = "8h"
 outputDir = "NebulaRAT_app/nebulaFiles/"
+machineID = "laptop1"
 
-
-def get_certificate_ip(name):
-    if name == "laptop1":
+#temporary function to get the required ip, TO BE REPLACED WITH ACTUAL FUNCTION
+def get_required_ip(machineID):
+    if machineID == "laptop1":
         return"192.168.100.100/24" 
-    elif name == "laptop2":
+    elif machineID == "laptop2":
         return "255.0.0.2/24"
-    elif name == "laptop3":
+    elif machineID == "laptop3":
         return "255.0.0.3/24"
     else:
-        raise ValueError("Invalid certificate name.")
+        raise ValueError("Invalid machine ID.")
 
 
 def print_certificate(certificate):
@@ -26,25 +28,33 @@ def print_certificate(certificate):
         # Run the script with parameters
         os.system(nebulaCert_path + " print -path " + certificate)
     else:
-        print("Script not found.")
+        print("Print Certificate Error - Script or Certificate not found.")
 
 
-def generateCertificate():
+def generateCertificate(machineName, requiredIP, duration):
     # Check if the script exists
     if os.path.exists(nebulaCert_path):
         # Run the script with parameters
         try:
-            os.system(nebulaCert_path + " sign -name \"" + machineName + "\" -ip \"" + get_certificate_ip("laptop1") + "\" -duration " + duration)
+            os.system(nebulaCert_path + " sign -name \"" + machineName + "\" -ip \"" + requiredIP + "\" -duration " + duration)
         except Exception as e:
-            print("invalid certificate name")
+            print("Generate Certificate Error - " + str(e))
     else:
         print("Script not found.")
 
 
-if os.path.exists("admin1.crt"):
-    os.remove("admin1.crt")
-if os.path.exists("admin1.key"):
-    os.remove("admin1.key")
-os.chdir(outputDir)
-generateCertificate()
-print_certificate(machineName + ".crt")
+
+
+
+def main():
+    os.chdir(outputDir)
+    if os.path.exists(machineName + ".crt"):
+        os.remove(machineName + ".crt")
+    if os.path.exists(machineName + ".key"):
+        os.remove(machineName + ".key")
+    requiredIP = get_required_ip(machineID)
+    generateCertificate(machineName, requiredIP, duration)
+    print_certificate(machineName + ".crt")
+
+if __name__ == "__main__":
+    main()

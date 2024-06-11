@@ -200,6 +200,19 @@ NebulaCertificate {
 - Seconda opzione è avere un sistema di CA dinamico in cui per ogni macchina creo e gestisco una CA con l'unico scopo di permettere l'accesso ad essa dinamicamente. Aggiornare ogni CA quando scade diventerebbe un trauma se non fosse automatizzato.
 - Mi appoggio ad un sistema esterno per richiedere la generazione di regole dinamicamente sulle macchine per cui richiedo un certificato.
 
+==Soluzione==: tramite cidr possiamo definire degli ip specifici in ogni macchina che ci aspettiamo un admin abbia quando prova a connettersi con un certificato temporaneo.
+Questo richiede che in fase di deployment della configurazione alcuni ip siano riservati (che non dovrebbe essere un problema) e che ad ogni macchina vengano assegnati questi ip extra, non è difficile da fare in modo automatico, se ho già dei tool per generare i file di conf delle macchine posso facilmente aggiungere una regola di firewall extra.
+- Come genero gli IP? Dovrebbero essere randomici / non predicibili? In realtà non mi interessa particolarmente, la sicurezza del processo ricade nella sicurezza dei certificati e dei processi che li generano non nei dati contenuti. Anche se un attaccante conoscesse l'ip necessario non potrebbe generarsi un certificato valido.
+
+``` yaml
+#esempio di regola di firewall
+    inbound:
+      - port: any
+        proto: any
+        cidr: 192.168.100.100/32
+        ca_name: Myorg, Inc
+```
+
 #### Hidden Req:
 - La nostra applicazione deve poter modificare le regole di firewall di tutte le macchine remote? NO
 - Deve poter modificare il layout della network? NO

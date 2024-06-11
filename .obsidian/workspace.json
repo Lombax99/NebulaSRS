@@ -4,28 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "218600c0e2d4ab9b",
+        "id": "d666f7f949bfd009",
         "type": "tabs",
         "children": [
           {
-            "id": "962f935436be7726",
+            "id": "a85ee6be7a87053e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/UtilityResources/Terraform + Azure setup.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "b11af09f1adbff0d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
+                "file": "Doc/Nebula Remote Access Tool.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/UtilityResources/Terraform + Azure setup.md",
+                "file": "Doc/Nebula Remote Access Tool.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/UtilityResources/Terraform + Azure setup.md",
+                "file": "Doc/Nebula Remote Access Tool.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/UtilityResources/Terraform + Azure setup.md"
+                "file": "Doc/Nebula Remote Access Tool.md"
               }
             }
           },
@@ -166,8 +154,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "962f935436be7726",
+  "active": "a85ee6be7a87053e",
   "lastOpenFiles": [
+    "Doc/Sprint 1.md",
+    "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
+    "Doc/UtilityResources/Terraform + Azure setup.md",
     "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/vendor/_rfs.scss",
     "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/utilities/_api.scss",
     "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_utilities.scss",
@@ -178,7 +169,6 @@
     "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_table-variants.scss",
     "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_reset-text.scss",
     "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_pagination.scss",
-    "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_lists.scss",
     "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/owl.video.play.png",
     "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/ajax-loader.gif",
     "NebulaRAT_app/darkpan-1.0.0/img/user.jpg",
@@ -188,9 +178,7 @@
     "Doc/PostgreSQL & Python/RAGIONAMENTI SU POSSIBILI RUOLI.md",
     "Doc/Nebula Remote Access Tool.md",
     "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
-    "Doc/Sprint 1.md",
     "Doc/Framework utilizzato.md",
-    "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
     "venv/Lib/site-packages/werkzeug/debug/shared/more.png",
     "venv/Lib/site-packages/werkzeug/debug/shared/less.png",
     "venv/Lib/site-packages/werkzeug/debug/shared/console.png",
@@ -204,7 +192,6 @@
     "CHANGELOG.md",
     "README.md",
     "CONTRIBUTING.md",
-    "Doc/UtilityResources/Terraform + Azure setup.md",
     "resources/ER_MODEL.png",
     "Doc/UtilityResources/Delete before public availability and sharing.md",
     "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
