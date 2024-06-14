@@ -1,10 +1,6 @@
 import psycopg2
 cnx = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
-query = (#"""
-#INSERT INTO TEST (descrizione)
-#VALUES ('pislelo');
-#""",
-"""
+query = ("""
 SELECT * FROM TEST;
 """)
 
@@ -13,7 +9,7 @@ def test():
         with cnx as conn:
             with conn.cursor() as cur:
                 #for q in query:
-                cur.execute(q)
+                cur.execute(query)
                 machine_data = cur.fetchall()  # Fetch all rows at once
                 # Convert data to a JSON-friendly format
                 data_list = []
