@@ -1,4 +1,5 @@
 import psycopg2
+import json
 cnx = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
 query = ("""
 SELECT * FROM TEST;
