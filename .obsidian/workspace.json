@@ -1,81 +1,35 @@
 {
   "main": {
-    "id": "b7679a1aaeb0d1d8",
+    "id": "785defedb3fa0ce2",
     "type": "split",
     "children": [
       {
-        "id": "d666f7f949bfd009",
+        "id": "9b5745ed3e75e98f",
         "type": "tabs",
         "children": [
           {
-            "id": "28022b8c42bd12df",
+            "id": "c3bd5929c09555ca",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-<<<<<<< Updated upstream
-                "file": "Doc/Sprint 1.md",
-=======
-                "file": "Doc/PostgreSQL & Python/DB structure v2.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "050b219ed54cd2ca",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
->>>>>>> Stashed changes
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-<<<<<<< Updated upstream
-        ]
-      },
-      {
-        "id": "cf6ab1be2432f483",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "a85ee6be7a87053e",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "aorganizzazioneCodice.canvas",
-                "viewState": {
-                  "x": -220.8922545584527,
-                  "y": -309.12440724045604,
-                  "zoom": -0.3333333333333332
-                }
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
-=======
-        ],
-        "currentTab": 1
->>>>>>> Stashed changes
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "0871d38c8156c2bf",
+    "id": "091d55b5e9ac4ac8",
     "type": "split",
     "children": [
       {
-        "id": "6e56e07c6218cfe0",
+        "id": "8b4d590fbf5370f4",
         "type": "tabs",
         "children": [
           {
-            "id": "818c802cddb5c785",
+            "id": "f1e6d9e03750b0af",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -85,7 +39,7 @@
             }
           },
           {
-            "id": "ef52dec21def2957",
+            "id": "88cb5cc2ca11365a",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -100,7 +54,7 @@
             }
           },
           {
-            "id": "696467943724f5b5",
+            "id": "646502a375d77441",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -111,28 +65,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 300
   },
   "right": {
-    "id": "4b87179b0d568b14",
+    "id": "f9cdbdc05e729996",
     "type": "split",
     "children": [
       {
-        "id": "de0f4c55bcacb248",
+        "id": "ead311508b4c201f",
         "type": "tabs",
         "children": [
           {
-            "id": "0e9a4841ddfb619b",
+            "id": "6f12c013d5b4ba9c",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-<<<<<<< Updated upstream
-                "file": "aorganizzazioneCodice.canvas",
-=======
-                "file": "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
->>>>>>> Stashed changes
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -144,23 +92,18 @@
             }
           },
           {
-            "id": "eaf7954eceee8b0b",
+            "id": "5cc4f5b5402771c3",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-<<<<<<< Updated upstream
-                "file": "aorganizzazioneCodice.canvas",
-=======
-                "file": "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
->>>>>>> Stashed changes
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "7c1be9bc7549ab8a",
+            "id": "d097d1e5f4bd3815",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -171,24 +114,10 @@
             }
           },
           {
-            "id": "9112475eeef40475",
+            "id": "33a7fcf154db820b",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-<<<<<<< Updated upstream
-                "file": "aorganizzazioneCodice.canvas"
-=======
-                "file": "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md"
->>>>>>> Stashed changes
-              }
-            }
-          },
-          {
-            "id": "e009e88f4e30af0e",
-            "type": "leaf",
-            "state": {
-              "type": "online.larslockefeer.obsidian-plugin-todo",
               "state": {}
             }
           }
@@ -209,67 +138,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "050b219ed54cd2ca",
-  "lastOpenFiles": [
-<<<<<<< Updated upstream
-    "NebulaRAT_app/templates/test.html",
-    "NebulaRAT_app/__pycache__/generateCertificate.cpython-312.pyc",
-    "Doc/Sprint 1.md",
-    "aorganizzazioneCodice.canvas",
-    "Piano di progettazione.md",
-    "SchemaDB.png",
-    "NebulaRAT_app/test.py",
-    "Doc/Nebula Remote Access Tool.md",
-    "Doc/PostgreSQL & Python/DB structure v2.md",
-    "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
-=======
-    "Doc/PostgreSQL & Python/DB structure v2.md",
-    "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
-    "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
-    "Doc/PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
-    "Doc/PostgreSQL & Python/RAGIONAMENTI SU POSSIBILI RUOLI.md",
-    "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
-    "Doc/PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
-    "Piano di progettazione.md",
-    "Doc/Nebula Remote Access Tool.md",
-    "Pasted image 20240612174529.png",
-    "Doc/Sprint 1.md",
->>>>>>> Stashed changes
-    "Doc/UtilityResources/Terraform + Azure setup.md",
-    "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/vendor/_rfs.scss",
-    "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/utilities/_api.scss",
-    "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_utilities.scss",
-    "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_transition.scss",
-    "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_visually-hidden.scss",
-    "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_text-truncate.scss",
-    "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_resize.scss",
-    "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_table-variants.scss",
-    "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/owl.video.play.png",
-    "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/ajax-loader.gif",
-    "NebulaRAT_app/darkpan-1.0.0/img/user.jpg",
-    "NebulaRAT_app/darkpan-1.0.0/img/testimonial-2.jpg",
-    "NebulaRAT_app/darkpan-1.0.0/img/testimonial-1.jpg",
-    "NebulaRAT_app/darkpan-1.0.0/bootstrap-5-admin-template.jpg",
-    "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
-    "Doc/Framework utilizzato.md",
-    "venv/Lib/site-packages/werkzeug/debug/shared/more.png",
-    "venv/Lib/site-packages/werkzeug/debug/shared/less.png",
-    "venv/Lib/site-packages/werkzeug/debug/shared/console.png",
-    "venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
-<<<<<<< Updated upstream
-    "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
-    "Doc/PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
-    "Doc/PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
-    "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
-=======
->>>>>>> Stashed changes
-    "Web app tutorial.md",
-    "CHANGELOG.md",
-    "README.md",
-    "CONTRIBUTING.md",
-    "Doc/UtilityResources/Delete before public availability and sharing.md",
-    "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
-    "Doc/UtilityResources/Sprint Template.md",
-    "Doc/BasicNetworkArchitecture.canvas"
-  ]
+  "active": "c3bd5929c09555ca",
+  "lastOpenFiles": []
 }
