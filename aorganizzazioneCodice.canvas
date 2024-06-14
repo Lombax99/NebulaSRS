@@ -1,0 +1,22 @@
+{
+	"nodes":[
+		{"id":"360e194ae045b6d7","type":"text","text":"Orchestratore","x":-300,"y":-600,"width":250,"height":60},
+		{"id":"9883e813f5f19bd5","type":"text","text":"Request al DB","x":-300,"y":-60,"width":250,"height":60},
+		{"id":"9a25dfa0b157fb5c","x":-580,"y":-760,"width":250,"height":60,"type":"text","text":"Main"},
+		{"id":"f788faec06c056c4","x":-120,"y":-400,"width":250,"height":140,"type":"text","text":"Tutta la parte dell'admin:\n- modificare i permessi degli users"},
+		{"id":"3be338e313c3b5ec","type":"text","text":"Print Firewall rules","x":180,"y":-400,"width":250,"height":50},
+		{"id":"a18036872e8f2172","type":"text","text":"Certificate Manipulation\n- Generate certificate\n- Print certificate info","x":-780,"y":-400,"width":250,"height":140,"color":"4"},
+		{"id":"218bcd6ea756e06c","x":-470,"y":-400,"width":280,"height":220,"type":"text","text":"Login\n- Flask Login\n\t- create new account\n\t- login to existing account"}
+	],
+	"edges":[
+		{"id":"c645a0981cebb2bc","fromNode":"360e194ae045b6d7","fromSide":"bottom","toNode":"a18036872e8f2172","toSide":"top"},
+		{"id":"eefacfb4900fb8aa","fromNode":"a18036872e8f2172","fromSide":"bottom","toNode":"9883e813f5f19bd5","toSide":"left"},
+		{"id":"3d642d3293bdf30e","fromNode":"360e194ae045b6d7","fromSide":"bottom","toNode":"3be338e313c3b5ec","toSide":"top"},
+		{"id":"1091cf138c75cf22","fromNode":"3be338e313c3b5ec","fromSide":"bottom","toNode":"9883e813f5f19bd5","toSide":"right"},
+		{"id":"321df56cc8d61b21","fromNode":"360e194ae045b6d7","fromSide":"bottom","toNode":"218bcd6ea756e06c","toSide":"top"},
+		{"id":"cdd5e78aa8bad40f","fromNode":"218bcd6ea756e06c","fromSide":"bottom","toNode":"9883e813f5f19bd5","toSide":"top"},
+		{"id":"a7a825e6a38a1eeb","fromNode":"9a25dfa0b157fb5c","fromSide":"right","toNode":"360e194ae045b6d7","toSide":"top"},
+		{"id":"7d1a7e69f6f7d379","fromNode":"f788faec06c056c4","fromSide":"bottom","toNode":"9883e813f5f19bd5","toSide":"top"},
+		{"id":"9c38494bc887298a","fromNode":"360e194ae045b6d7","fromSide":"bottom","toNode":"f788faec06c056c4","toSide":"top"}
+	]
+}

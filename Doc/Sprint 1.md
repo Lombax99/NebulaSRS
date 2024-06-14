@@ -101,6 +101,8 @@ Abbiamo bisogno di:
 ### Design of the application
 ##### Django vs Flask?
 guarda: [[Framework utilizzato]]
+**
+
 
 
 ### Division of work
