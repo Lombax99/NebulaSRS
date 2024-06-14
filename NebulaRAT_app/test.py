@@ -15,13 +15,18 @@ def test():
                 #for q in query:
                 cur.execute(q)
                 machine_data = cur.fetchall()  # Fetch all rows at once
+                # Convert data to a JSON-friendly format
+                data_list = []
+                for row in machine_data:
+                    data_list.append(dict(zip([col.name for col in cur.description], row)))
+
     except (psycopg2.DatabaseError, Exception) as error:
         print(error)
     finally:
         if cnx:
             cnx.close()
             print("Connessione al database chiusa")
-    return machine_data
+    return json.dumps(data_list)
 
 if __name__ == '__main__':
     test()

@@ -35,6 +35,15 @@
         <div class="container">
             <input type="text" id="result" class="textbox" readonly>
             <div class="button-row">
+                <button class="button" onclick="fetchData()">Invoke Function</button>
+                <button class="button" onclick="printResult()">Invoke Function</button>
+                <button class="button" onclick="printResult()">Invoke Function</button>
+                <button class="button" onclick="printResult()">Invoke Function</button>
+                <button class="button" onclick="printResult()">Invoke Function</button>
+                <button class="button" onclick="printResult()">Invoke Function</button>
+                <button class="button" onclick="printResult()">Invoke Function</button>
+                <button class="button" onclick="printResult()">Invoke Function</button>
+                <button class="button" onclick="printResult()">Invoke Function</button>
                 <button class="button" onclick="printResult()">Invoke Function</button>
                 <button class="button" onclick="printResult()">Invoke Function</button>
                 <button class="button" onclick="printResult()">Invoke Function</button>
@@ -45,15 +54,61 @@
     </div>
 
     <script>
+        function fetchData() {
+            fetch('../test.py') // python function path
+                .then(response => response.text())
+                .then(data => {
+                    try {
+                        const jsonData = JSON.parse(data);
+                        displayData(jsonData);
+                    } catch (error) {
+                        console.error("Error parsing JSON data:", error);
+                        document.getElementById("output").textContent = "Error processing data.";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                    document.getElementById("output").textContent = "Error fetching data from server.";
+                });
+        }
+
+        function displayData(data) {
+            const outputElement = document.getElementById("output");
+            outputElement.textContent = ""; // Clear previous content
+
+            if (data.length > 0) {
+                // Create a table or other visualization as needed
+                const table = document.createElement("table");
+                table.classList.add("data-table"); // Add CSS class if desired
+
+                // Create table header row
+                const headerRow = document.createElement("tr");
+                for (const key in data[0]) {
+                    const headerCell = document.createElement("th");
+                    headerCell.textContent = key;
+                    headerRow.appendChild(headerCell);
+                }
+                table.appendChild(headerRow);
+
+                // Create data rows
+                for (const row of data) {
+                    const dataRow = document.createElement("tr");
+                    for (const value in row) {
+                        const dataCell = document.createElement("td");
+                        dataCell.textContent = row[value];
+                        dataRow.appendChild(dataCell);
+                    }
+                    table.appendChild(dataRow);
+                }
+
+                outputElement.appendChild(table); // Append the table to the output element
+            } else {
+                outputElement.textContent = "No data found.";
+            }
+        }
         function printResult() {
             var resultTextbox = document.getElementById("result");
-            var jqXHR = $.ajax({
-            type: "POST",
-            url: "../test.py",
-            async: false,
-            });
-
-            resultTextbox.value = jqXHR.responseText;
+            resultTextbox.value = "Hello, World!";
         }
 
         function clearResult() {
