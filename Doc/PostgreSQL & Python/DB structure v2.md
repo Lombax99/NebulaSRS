@@ -1,1 +1,1 @@
-![[Pasted image 20240612174529.png]]
+![[SchemaDB.png]]

@@ -11,11 +11,9 @@
             "id": "a85ee6be7a87053e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Piano di progettazione.md",
-                "mode": "source",
-                "source": false
+                "file": "SchemaDB.png"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Piano di progettazione.md",
+                "file": "SchemaDB.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Piano di progettazione.md",
+                "file": "SchemaDB.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Piano di progettazione.md"
+                "file": "SchemaDB.png"
               }
             }
           },
@@ -154,11 +152,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a85ee6be7a87053e",
+  "active": "818c802cddb5c785",
   "lastOpenFiles": [
+    "Piano di progettazione.md",
+    "NebulaRAT_app/test.py",
     "Doc/Nebula Remote Access Tool.md",
     "Doc/PostgreSQL & Python/DB structure v2.md",
-    "Pasted image 20240612174529.png",
+    "SchemaDB.png",
     "Doc/Sprint 1.md",
     "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
     "Doc/UtilityResources/Terraform + Azure setup.md",
@@ -171,7 +171,6 @@
     "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_resize.scss",
     "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_table-variants.scss",
     "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_reset-text.scss",
-    "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_pagination.scss",
     "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/owl.video.play.png",
     "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/ajax-loader.gif",
     "NebulaRAT_app/darkpan-1.0.0/img/user.jpg",
@@ -189,7 +188,6 @@
     "Doc/PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
     "Doc/PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
     "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
-    "Piano di progettazione.md",
     "Web app tutorial.md",
     "CHANGELOG.md",
     "README.md",
