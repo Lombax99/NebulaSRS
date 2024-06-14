@@ -105,6 +105,8 @@
             } else {
                 outputElement.textContent = "No data found.";
             }
+            var resultTextbox = document.getElementById("result");
+            resultTextbox.value = outputElement;
         }
         function printResult() {
             var resultTextbox = document.getElementById("result");
