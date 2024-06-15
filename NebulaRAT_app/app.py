@@ -31,7 +31,7 @@ def testPythonFunctionString():
 
 @app.route('/test-python-function-Certificate')
 def testPythonFunctionCertificate():
-    return print_certificate(machineName + ".crt")
+    return get_certificate(machineName + ".crt")
 
 if __name__ == '__main__':
    app.run(debug=True)

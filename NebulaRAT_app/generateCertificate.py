@@ -31,7 +31,9 @@ def print_certificate(certificate):
     else:
         print("Print Certificate Error - Script or Certificate not found.")
 
+#the best option would be to return the certificate as a JSON object i need to see if there is a way to do it
 def get_certificate(certificate):
+    os.chdir(outputDir)
     # Check if the script exists
     if os.path.exists(nebulaCert_path) and os.path.exists(certificate):
         # Run the script with parameters
@@ -68,6 +70,7 @@ def main():
     requiredIP = get_required_ip(machineID)
     generateCertificate(machineName, requiredIP, duration)
     print_certificate(machineName + ".crt")
+    #print(get_certificate(machineName + ".crt"))
 
 if __name__ == "__main__":
     main()
