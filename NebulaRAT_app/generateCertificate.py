@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 nebulaCert_path = "../nebulaScripts/nebula-cert"       # ./nebula-cert print -path somecert.crt    to see certificate
 nebulaScrptPath = "../nebulaScripts/nebula"            # ./nebula-cert sign -name "laptop" -ip "192.168.100.5/24" -groups "laptop,ssh" to generate certificate
@@ -30,12 +31,24 @@ def print_certificate(certificate):
     else:
         print("Print Certificate Error - Script or Certificate not found.")
 
+def get_certificate(certificate):
+    # Check if the script exists
+    if os.path.exists(nebulaCert_path) and os.path.exists(certificate):
+        # Run the script with parameters
+        result = subprocess.run([nebulaCert_path, "print", "-path", certificate], capture_output=True, text=True)
+        return result.stdout.strip()
+    else:
+        print("Print Certificate Error - Script or Certificate not found.")
+        return None
 
 def generateCertificate(machineName, requiredIP, duration):
     # Check if the script exists
     if os.path.exists(nebulaCert_path):
         # Run the script with parameters
         try:
+            currentDir = os.getcwd()
+            print("Current Directory:", currentDir)
+            print(nebulaCert_path + " sign -name \"" + machineName + "\" -ip \"" + requiredIP + "\" -duration " + duration)
             os.system(nebulaCert_path + " sign -name \"" + machineName + "\" -ip \"" + requiredIP + "\" -duration " + duration)
         except Exception as e:
             print("Generate Certificate Error - " + str(e))

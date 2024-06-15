@@ -1,4 +1,4 @@
-from flask import (Flask, render_template)
+from flask import Flask, render_template, jsonify
 from generateCertificate import *
 
 app = Flask(__name__)
@@ -18,7 +18,22 @@ def testpage():
     print('Request for index page received')
     return render_template('test.html')
 
+@app.route('/test-python-function-JSON')
+def testPythonFunction():
+    data = {
+        'message': 'Hello, world!'
+    }
+    return jsonify(data)
+
+@app.route('/test-python-function-String')
+def testPythonFunctionString():
+    return 'Hello, world!'
+
+@app.route('/test-python-function-Certificate')
+def testPythonFunctionCertificate():
+    return print_certificate(machineName + ".crt")
+
 if __name__ == '__main__':
-   app.run()
+   app.run(debug=True)
 
 

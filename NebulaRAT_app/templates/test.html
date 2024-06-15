@@ -36,18 +36,18 @@
             <input type="text" id="result" class="textbox" readonly>
             <div class="button-row">
                 <button class="button" onclick="fetchData()">Invoke Function</button>
-                <button class="button" onclick="printResult()">Invoke Function</button>
-                <button class="button" onclick="printResult()">Invoke Function</button>
-                <button class="button" onclick="printResult()">Invoke Function</button>
-                <button class="button" onclick="printResult()">Invoke Function</button>
-                <button class="button" onclick="printResult()">Invoke Function</button>
-                <button class="button" onclick="printResult()">Invoke Function</button>
-                <button class="button" onclick="printResult()">Invoke Function</button>
-                <button class="button" onclick="printResult()">Invoke Function</button>
-                <button class="button" onclick="printResult()">Invoke Function</button>
-                <button class="button" onclick="printResult()">Invoke Function</button>
-                <button class="button" onclick="printResult()">Invoke Function</button>
-                <button class="button" onclick="printResult()">Invoke Function</button>
+                <button class="button" onclick="printResult()">printResult</button>
+                <button class="button" onclick="printResult()">tbd</button>
+                <button class="button" onclick="printResult()">tbd</button>
+                <button class="button" onclick="printResult()">tbd</button>
+                <button class="button" onclick="printResult()">tbd</button>
+                <button class="button" onclick="printResult()">tbd</button>
+                <button class="button" onclick="printResult()">tbd</button>
+                <button class="button" onclick="printResult()">tbd</button>
+                <button class="button" onclick="printResult()">tbd</button>
+                <button class="button" onclick="printCertificate()">print a certificate</button>
+                <button class="button" onclick="printPythonString()">print a string</button>
+                <button class="button" onclick="printPythonJSON()">This print a string from a JSON</button>
                 <button class="button" onclick="clearResult()">Clear</button>
             </div>
         </div>
@@ -61,15 +61,41 @@
             const eventSource = new EventSource('/sse-endpoint');
 
             eventSource.onmessage = (event) => {
-            const data = JSON.parse(event.data);
-            resultTextbox.value = data; // Print the data received from the Python server
-};
-
+                const data = JSON.parse(event.data);
+                resultTextbox.value = data; // Print the data received from the Python server
+            };
         }
 
         function clearResult() {
             var resultTextbox = document.getElementById("result");
             resultTextbox.value = "";
+        }
+
+        function printPythonString() {
+            var resultTextbox = document.getElementById("result");
+            fetch('/test-python-function-String')
+                .then(response => response.text())
+                .then(data => {
+                    resultTextbox.value = data;
+                });
+        }
+
+        function printPythonJSON() {
+            var resultTextbox = document.getElementById("result");
+            fetch('/test-python-function-JSON')
+                .then(response => response.json())
+                .then(data => {
+                    resultTextbox.value = data.message;
+                });
+        }
+
+        function printCertificate() {
+            var resultTextbox = document.getElementById("result");
+            fetch('/test-python-function-Certificate')
+                .then(response => response.text())
+                .then(data => {
+                    resultTextbox.value = data;
+                });
         }
     </script>
 </body>
