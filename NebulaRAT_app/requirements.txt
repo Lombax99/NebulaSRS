@@ -1,8 +1,4 @@
 Flask>=2.2.5
 gunicorn
-<<<<<<< Updated upstream
-Werkzeug>=2.2.3
-=======
 Werkzeug>=2.2.3
 psycopg2>=2.9.9
->>>>>>> Stashed changes
