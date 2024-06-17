@@ -29,12 +29,28 @@
             cursor: pointer;
         }
     </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#eseguiButton").click(function(){
+            $.ajax({
+                url: "test.py", // URL del tuo endpoint Python
+                data: {},
+                success: function(response) {
+                    $("#result").html(response.risultato);
+                }
+            });
+        });
+    });
+</script>
 </head>
 <body>
     <div class="container">
         <div class="container">
             <input type="text" id="result" class="textbox" readonly>
             <div class="button-row">
+                <button id="eseguiButton">TEST</button>
                 <button class="button" onclick="fetchData()">Invoke Function</button>
                 <button class="button" onclick="printResult()">printResult</button>
                 <button class="button" onclick="printResult()">tbd</button>
@@ -56,14 +72,7 @@
     <script>
         function printResult() {
             var resultTextbox = document.getElementById("result");
-            //resultTextbox.value = [{{','.join(templa)}}];
-            // JavaScript
-            const eventSource = new EventSource('/sse-endpoint');
-
-            eventSource.onmessage = (event) => {
-                const data = JSON.parse(event.data);
-                resultTextbox.value = data; // Print the data received from the Python server
-            };
+            resultTextbox.value = "Hello World!"
         }
 
         function clearResult() {
@@ -73,7 +82,7 @@
 
         function printPythonString() {
             var resultTextbox = document.getElementById("result");
-            fetch('/test-python-function-String')
+            fetch('/test-python-function-string')
                 .then(response => response.text())
                 .then(data => {
                     resultTextbox.value = data;
