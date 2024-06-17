@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify
 from generateCertificate import *
-import test
+from test import test
 app = Flask(__name__)
 
 @app.route('/')
@@ -20,12 +20,13 @@ def testpage():
 
 @app.route('/test-python-function-JSON')
 def testPythonFunction():
-    data = test.test()
+    data = test()
     return jsonify(data)
 
 @app.route('/test-python-function-String')
 def testPythonFunctionString():
-    return test.test()
+    data = test()
+    return data
 
 @app.route('/test-python-function-Certificate')
 def testPythonFunctionCertificate():

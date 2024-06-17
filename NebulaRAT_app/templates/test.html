@@ -29,21 +29,6 @@
             cursor: pointer;
         }
     </style>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $("#eseguiButton").click(function(){
-            $.ajax({
-                url: "test.py", // URL del tuo endpoint Python
-                data: {},
-                success: function(response) {
-                    $("#result").html(response.risultato);
-                }
-            });
-        });
-    });
-</script>
 </head>
 <body>
     <div class="container">
@@ -83,7 +68,7 @@
         function printPythonString() {
             var resultTextbox = document.getElementById("result");
             fetch('/test-python-function-string')
-                .then(response => response.text())
+                .then(response => response.statusText)
                 .then(data => {
                     resultTextbox.value = data;
                 });
@@ -94,7 +79,7 @@
             fetch('/test-python-function-JSON')
                 .then(response => response.json())
                 .then(data => {
-                    resultTextbox.value = data.message;
+                    resultTextbox.value = data;
                 });
         }
 

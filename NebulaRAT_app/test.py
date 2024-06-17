@@ -19,11 +19,14 @@ def test():
                 #for row in machine_data:
                     #data_list.append(dict(zip([col.name for col in cur.description], row)))
                 
-
     except (psycopg2.DatabaseError, Exception) as error:
         print(error)
     finally:
         if cnx:
             cnx.close()
             print("Connessione al database chiusa")
-    return machine_data
+
+        return machine_data
+    
+test()
+  
