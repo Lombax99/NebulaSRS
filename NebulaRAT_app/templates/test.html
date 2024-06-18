@@ -45,7 +45,7 @@
                 <button class="button" onclick="printResult()">tbd</button>
                 <button class="button" onclick="printResult()">tbd</button>
                 <button class="button" onclick="printResult()">tbd</button>
-                <button class="button" onclick="printResult()">tbd</button>
+                <button class="button" onclick="printFromDB()">printFromDB</button>
                 <button class="button" onclick="printCertificate()">print a certificate</button>
                 <button class="button" onclick="printPythonString()">print a string</button>
                 <button class="button" onclick="printPythonJSON()">This print a string from a JSON</button>
@@ -86,6 +86,15 @@
         function printCertificate() {
             var resultTextbox = document.getElementById("result");
             fetch('/test-python-function-Certificate')
+                .then(response => response.text())
+                .then(data => {
+                    resultTextbox.value = data;
+                });
+        }
+
+        function printFromDB() {
+            var resultTextbox = document.getElementById("result");
+            fetch('/test-python-function-DB')
                 .then(response => response.text())
                 .then(data => {
                     resultTextbox.value = data;
