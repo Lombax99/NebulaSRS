@@ -2,7 +2,7 @@ import psycopg2
 #from flask import Flask, render_template
 #import json
 
-cnx = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
+#cnx = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
 #query = ("""SELECT * FROM TEST;""")
 
 def prova():
