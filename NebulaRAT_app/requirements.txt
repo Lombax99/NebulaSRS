@@ -1,4 +1,9 @@
 Flask>=2.2.5
 gunicorn
 Werkzeug>=2.2.3
-psycopg2-binary>=2.9.9
+Flask-Migrate
+Flask-SQLAlchemy
+flask_wtf
+psycopg2
+python-dotenv
+SQLAlchemy
