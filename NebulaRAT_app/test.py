@@ -1,10 +1,10 @@
-import psycopg2
+#import psycopg2
 #from flask import Flask, render_template
 #import json
 
 
 def test():
-    cnx = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
+    '''cnx = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
     query = ("""SELECT * FROM TEST;""")
     #data_list = []
     try:
@@ -24,7 +24,8 @@ def test():
             cnx.close()
             print("Connessione al database chiusa")
 
-    return machine_data
+    return machine_data'''
+    pass
     
 #test()
   
