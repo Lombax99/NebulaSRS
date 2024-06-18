@@ -3,6 +3,8 @@ from flask import Flask, render_template, jsonify
 #from flask_login import LoginManager
 from generateCertificate import *
 #from test import prova
+from testDB import *
+
 
 
 app = Flask(__name__)
@@ -44,7 +46,7 @@ def testPythonFunctionCertificate():
 
 @app.route('/test-python-function-DB')
 def testPythonFunctionDB():
-    return "ciao"  #prova()
+    return prova()
 
 
 
