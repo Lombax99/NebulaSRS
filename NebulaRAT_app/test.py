@@ -5,10 +5,8 @@ import psycopg2
 
 def test():
     cnx = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
-    query = ("""
-    SELECT * FROM TEST;
-    """)
-    data_list = []
+    query = ("""SELECT * FROM TEST;""")
+    #data_list = []
     try:
         with cnx as conn:
             with conn.cursor() as cur:
@@ -26,7 +24,7 @@ def test():
             cnx.close()
             print("Connessione al database chiusa")
 
-        return machine_data
+    return machine_data
     
-test()
+#test()
   
