@@ -1,8 +1,8 @@
 from flask import Flask, render_template, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
+#from flask_sqlalchemy import SQLAlchemy
+#from flask_login import LoginManager
 from generateCertificate import *
-from test import *
+#from test import *
 
 
 app = Flask(__name__)
@@ -29,17 +29,18 @@ def testpage():
 
 @app.route('/test-python-function-JSON')
 def testPythonFunction():
-    data = test()
+    data = {
+        'message': 'Hello, world!'
+    }
     return jsonify(data)
 
-@app.route('/test-python-function-String')
+@app.route('/test-python-function-string')
 def testPythonFunctionString():
-    data = test()
-    return data
+    return 'Hello, world!'
 
 @app.route('/test-python-function-Certificate')
 def testPythonFunctionCertificate():
-    return get_certificate(machineName + ".crt")
+    return "ciao" #get_certificate(machineName + ".crt")
 
 if __name__ == '__main__':
    app.run(debug=True)

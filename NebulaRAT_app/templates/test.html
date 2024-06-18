@@ -68,7 +68,7 @@
         function printPythonString() {
             var resultTextbox = document.getElementById("result");
             fetch('/test-python-function-string')
-                .then(response => response.statusText)
+                .then(response => response.text())
                 .then(data => {
                     resultTextbox.value = data;
                 });
@@ -79,7 +79,7 @@
             fetch('/test-python-function-JSON')
                 .then(response => response.json())
                 .then(data => {
-                    resultTextbox.value = data;
+                    resultTextbox.value = data.message;
                 });
         }
 
