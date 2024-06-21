@@ -9,7 +9,7 @@ from azure.identity import DefaultAzureCredential
 
 def get_connection_uri():
 
-    # Read URI parameters from the environment
+    """# Read URI parameters from the environment
     dbhost = os.environ['DBHOST']
     dbname = os.environ['DBNAME']
     dbuser = urllib.parse.quote(os.environ['DBUSER'])
@@ -27,4 +27,4 @@ def get_connection_uri():
     password = credential.get_token("https://ossrdbms-aad.database.windows.net/.default").token
 
     db_uri = f"postgresql://{dbuser}:{password}@{dbhost}/{dbname}?sslmode={sslmode}"
-    return db_uri
+    return db_uri"""
