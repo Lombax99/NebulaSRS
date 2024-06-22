@@ -1,18 +1,19 @@
-#import psycopg2
-from flask import Flask, render_template
-import json
-#from get_conn import get_connection_uri
+import pyodbc
+import psycopg2
 
-def prova():
-    """conn_string = get_connection_uri()
 
-    conn = psycopg2.connect(conn_string)
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM TEST;")
+def test():
+    """cnxn = pyodbc.connect(
+        'DRIVER=' + DRIVER + ';PORT=5432;SERVER=' + SERVER +
+        ';PORT=5432;DATABASE=' + DATABASE + ';UID=' + USERNAME +
+        ';PWD=' + PASSWORD)
+    cursor = cnxn.cursor()
+    selectsql = "SELECT * FROM TEST;" # SALES is an example table name
+    cursor.execute(selectsql)
     rows = cursor.fetchall()
 
-    conn.commit()
+    cnxn.commit()
     cursor.close()
-    conn.close()
+    cnxn.close()
 
     return rows"""
