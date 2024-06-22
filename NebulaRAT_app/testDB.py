@@ -1,4 +1,3 @@
-import pyodbc
 import psycopg2
 
 
