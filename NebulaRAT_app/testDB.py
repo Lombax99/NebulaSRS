@@ -1,4 +1,4 @@
-import psycopg2
+from psycopg2 import *
 
 def test():
     """cnxn = pyodbc.connect(
