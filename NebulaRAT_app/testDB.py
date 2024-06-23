@@ -1,4 +1,4 @@
-from psycopg2 import *
+#from psycopg2 import *
 
 def prova():
     """cnxn = pyodbc.connect(
