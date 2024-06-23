@@ -15,6 +15,7 @@ def prova():
     cnxn.close()
 
     return rows"""
+    return "Hello World!"
 
 if __name__ == "__main__":
     prova()
