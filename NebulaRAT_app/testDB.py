@@ -1,6 +1,6 @@
 from psycopg2 import *
 
-def test():
+def prova():
     """cnxn = pyodbc.connect(
         'DRIVER=' + DRIVER + ';PORT=5432;SERVER=' + SERVER +
         ';PORT=5432;DATABASE=' + DATABASE + ';UID=' + USERNAME +
@@ -15,3 +15,6 @@ def test():
     cnxn.close()
 
     return rows"""
+
+if __name__ == "__main__":
+    prova()
