@@ -2,8 +2,8 @@ from flask import Flask, render_template, jsonify
 #from flask_sqlalchemy import SQLAlchemy
 #from flask_login import LoginManager
 from generateCertificate import *
-#import psycopg2
-from testDB import *
+import psycopg2
+#from testDB import *
 app = Flask(__name__)
 
 
