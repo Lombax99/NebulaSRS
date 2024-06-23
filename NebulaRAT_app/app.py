@@ -2,8 +2,8 @@ from flask import Flask, render_template, jsonify
 #from flask_sqlalchemy import SQLAlchemy
 #from flask_login import LoginManager
 from generateCertificate import *
-
-
+import psycopg2
+from testDB import prova
 app = Flask(__name__)
 
 
@@ -43,7 +43,7 @@ def testPythonFunctionCertificate():
 
 @app.route('/test-python-function-DB')
 def testPythonFunctionDB():
-    return prpva()
+    return prova()
 
 
 
