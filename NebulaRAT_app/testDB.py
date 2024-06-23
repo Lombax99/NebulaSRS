@@ -1,6 +1,6 @@
-
+"""
 def prova():
-    """cnxn = pyodbc.connect(
+    cnxn = pyodbc.connect(
         'DRIVER=' + DRIVER + ';PORT=5432;SERVER=' + SERVER +
         ';PORT=5432;DATABASE=' + DATABASE + ';UID=' + USERNAME +
         ';PWD=' + PASSWORD)
@@ -13,8 +13,8 @@ def prova():
     cursor.close()
     cnxn.close()
 
-    return rows"""
+    return rows
     return "Hello World!"
 
 if __name__ == "__main__":
-    prova()
+    prova()"""
