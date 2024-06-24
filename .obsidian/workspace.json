@@ -11,14 +11,11 @@
             "id": "a85ee6be7a87053e",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "aorganizzazioneCodice.canvas",
-                "viewState": {
-                  "x": -175,
-                  "y": -380,
-                  "zoom": 0
-                }
+                "file": "Piano di progettazione.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -88,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "aorganizzazioneCodice.canvas",
+                "file": "Piano di progettazione.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "aorganizzazioneCodice.canvas",
+                "file": "Piano di progettazione.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "aorganizzazioneCodice.canvas"
+                "file": "Piano di progettazione.md"
               }
             }
           },
@@ -159,14 +156,15 @@
   },
   "active": "a85ee6be7a87053e",
   "lastOpenFiles": [
-    "Doc/Nebula Remote Access Tool.md",
+    "Doc/Sprint 1.md",
+    "README.md",
     "aorganizzazioneCodice.canvas",
+    "Doc/Nebula Remote Access Tool.md",
     "SchemaDB.png",
     "NebulaRAT_app/test.py",
     "NebulaRAT_app/templates/test.html",
     "NebulaRAT_app/__pycache__/generateCertificate.cpython-312.pyc",
     "Doc/PostgreSQL & Python/DB structure v2.md",
-    "Doc/Sprint 1.md",
     "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
     "Doc/UtilityResources/Terraform + Azure setup.md",
     "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/vendor/_rfs.scss",
@@ -196,7 +194,6 @@
     "Piano di progettazione.md",
     "Web app tutorial.md",
     "CHANGELOG.md",
-    "README.md",
     "CONTRIBUTING.md",
     "Doc/UtilityResources/Delete before public availability and sharing.md",
     "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
