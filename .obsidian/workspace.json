@@ -156,6 +156,7 @@
   },
   "active": "a85ee6be7a87053e",
   "lastOpenFiles": [
+    "NebulaRAT_app/__pycache__/models.cpython-310.pyc.128400811524720",
     "NebulaRAT_app/__pycache__/app.cpython-310.pyc",
     "NebulaRAT_app/__pycache__/models.cpython-310.pyc",
     "NebulaRAT_app/models.py",
@@ -178,7 +179,6 @@
     "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/utilities/_api.scss",
     "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_utilities.scss",
     "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_transition.scss",
-    "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/mixins/_visually-hidden.scss",
     "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/owl.video.play.png",
     "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/ajax-loader.gif",
     "NebulaRAT_app/darkpan-1.0.0/img/user.jpg",
