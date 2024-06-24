@@ -155,18 +155,6 @@
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
 
     <!--Function print Firewall Rules-->
-    <!--<script>
-        function printFirewallRules() {
-            fetch('/print_firewall_rules')
-                .then(response => response.text())
-                .then(data => {
-                    // Sostituisci \n con <br>
-                    const formattedData = data.replace(/\n/g, '<br>');
-                    document.getElementById('firewallRulesContent').innerHTML = formattedData;
-                    var myModal = new bootstrap.Modal(document.getElementById('firewallModal'));
-                    myModal.show();
-                });
-        }
-    </script>-->
+    
 </body>
 </html>
