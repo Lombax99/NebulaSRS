@@ -2,23 +2,8 @@ from flask import Flask, render_template, jsonify
 #from flask_sqlalchemy import SQLAlchemy
 #from flask_login import LoginManager
 from generateCertificate import *
-import psycopg2 as ps
 app = Flask(__name__)
 
-
-def prova():
-    query = "SELECT * FROM TEST;"
-    cnx = ps.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
-    try:
-        with cnx as conn:
-            with conn.cursor() as cur:
-                cur.execute(query)
-                machine_data = cur.fetchall()  # Fetch all rows at once
-                return machine_data
-    except (ps.DatabaseError, Exception) as error:
-        print(error)
-    finally:
-        conn.close()
 
 
 
@@ -54,7 +39,7 @@ def testPythonFunctionCertificate():
 
 @app.route('/test-python-function-DB')
 def testPythonFunctionDB():
-    return prova()
+    return "hello world"
 
 
 
