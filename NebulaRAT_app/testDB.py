@@ -14,13 +14,18 @@ def get_connetion_uri():
 
 def prova():
     import psycopg2
-    conn_string = get_connetion_uri()
-    conn = psycopg2.connect(conn_string)
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM TEST;")
-    data = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    try:
+        conn_string = get_connetion_uri()
+        with psycopg2.connect(**conn_string) as conn:
+            with conn.cursor() as cursor:
+                cursor.execute("SELECT * FROM TEST;")
+                data = cursor.fetchall()
+    except (psycopg2.DatabaseError, Exception) as error:
+        print(error)
+    finally:
+        cursor.close()
+        conn.close()
+        
     return data
 
 if __name__ == '__main__':
