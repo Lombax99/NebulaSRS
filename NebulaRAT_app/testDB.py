@@ -8,4 +8,4 @@ def testQuery():
     conn.commit() 
     cur.close()
     conn.close()
-    return machine_data'
+    return machine_data
