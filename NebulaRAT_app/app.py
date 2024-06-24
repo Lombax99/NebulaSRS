@@ -36,7 +36,7 @@ def testPythonFunctionString():
 def testPythonFunctionCertificate():
     return get_certificate(machineName + ".crt")
 
-@app.route('/test-python-function-DB')
+@app.route('/test-python-function-DB', methods=['POST', 'GET'])
 def testPythonFunctionDB():
     return testDB.prova()
 
