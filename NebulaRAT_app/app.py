@@ -57,7 +57,7 @@ def testPythonFunctionCertificate():
 def testPythonFunctionDB():
     query = text("SELECT * FROM TEST;")
     result = db.session.execute(query)
-    names = [row[1] for row in result]
+    names = [row[1] for row in result] #trova le descr
     return names
 
 
