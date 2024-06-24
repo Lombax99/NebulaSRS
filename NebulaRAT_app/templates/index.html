@@ -8,7 +8,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{url_for('static', filename='img/favicon.ico')}}" rel="icon">
+    <link href=<img src="{{url_for('static', filename='img/favicon.ico')}}" rel="icon">
     
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -155,7 +155,7 @@
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
 
     <!--Function print Firewall Rules-->
-    <script>
+    <!--<script>
         function printFirewallRules() {
             fetch('/print_firewall_rules')
                 .then(response => response.text())
@@ -167,6 +167,6 @@
                     myModal.show();
                 });
         }
-    </script>
+    </script>-->
 </body>
 </html>
