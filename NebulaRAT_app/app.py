@@ -3,7 +3,7 @@ from flask import Flask, render_template, jsonify
 #from flask_login import LoginManager
 from generateCertificate import *
 app = Flask(__name__)
-import psycopg2
+
 
 
 @app.route('/')
@@ -38,7 +38,7 @@ def testPythonFunctionCertificate():
 
 @app.route('/test-python-function-DB')
 def testPythonFunctionDB():
-    #import psycopg2
+    import psycopg2
     
     try:
         with psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db") as conn:
