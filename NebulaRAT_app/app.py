@@ -5,12 +5,13 @@ from generateCertificate import *
 import yaml
 import os
 
-import psycopg2
+"""import psycopg2
 cnx = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
-    
+"""
+
 app = Flask(__name__)
 
-def prova():
+"""def prova():
     query = "SELECT * FROM TEST;"
     try:
         with cnx as conn:
@@ -21,7 +22,7 @@ def prova():
     except (psycopg2.DatabaseError, Exception) as error:
         print(error)
     finally:
-        conn.close()
+        conn.close()"""
 
 
 @app.route('/')
