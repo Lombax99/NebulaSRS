@@ -1,7 +1,7 @@
 #from generateCertificate import *
 from settings import postgresql as settings
 from flask import Flask, render_template, request, jsonify
-from flask_migrate import Migrate
+#from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from settings import postgresql as settings
 from sqlalchemy import text
@@ -13,7 +13,6 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 
 # initialize the database connection
-
 db.init_app(app)
 
 class Test(db.Model):
@@ -60,6 +59,7 @@ def testPythonFunctionDB():
     result = db.session.execute(query)
     names = [row[1] for row in result]
     return names
+
 
 
 
