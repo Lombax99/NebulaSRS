@@ -1,9 +1,11 @@
 Flask>=2.2.5
 gunicorn
 Werkzeug>=2.2.3
-Flask-Migrate
-Flask-SQLAlchemy
+#Flask-Migrate
+#Flask-SQLAlchemy
 #flask_wtf
 psycopg2>=2.7.1
 #python-dotenv
-SQLAlchemy
+#SQLAlchemy
+yaml
+os
