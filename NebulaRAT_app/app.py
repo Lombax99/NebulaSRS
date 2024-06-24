@@ -104,7 +104,7 @@ def testPythonFunctionCertificate():
 
 @app.route('/test-python-function-DB')
 def testPythonFunctionDB():
-    return prova()
+    return "Hello World"
 
 
 
