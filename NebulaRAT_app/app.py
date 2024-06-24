@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify
 #from flask_sqlalchemy import SQLAlchemy
 #from flask_login import LoginManager
 from generateCertificate import *
+<<<<<<< HEAD
 import yaml
 import os
 
@@ -9,10 +10,17 @@ import os
 cnx = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
 """
 
+=======
+import psycopg2
+>>>>>>> parent of a79f6a3 (prova2 con script inside app.py)
 app = Flask(__name__)
 
 """def prova():
     query = "SELECT * FROM TEST;"
+<<<<<<< HEAD
+=======
+    cnx = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
+>>>>>>> parent of a79f6a3 (prova2 con script inside app.py)
     try:
         with cnx as conn:
             with conn.cursor() as cur:
