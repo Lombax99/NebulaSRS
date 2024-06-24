@@ -23,7 +23,9 @@ app = Flask(__name__)
     finally:
         conn.close()"""
 
-
+@app.route('/')
+def root():
+    return render_template('index.html')
 """@app.route('/')
 def root():
     cursor = cnx.cursor()
@@ -33,6 +35,7 @@ def root():
     print('Request for index page received')
     return render_template('index.html',macchine=macchine)
 """
+
 """def load_firewall_config():
     current_directory = os.path.dirname(os.path.abspath(__file__))
     config_file_path = os.path.join(current_directory, 'config2.yaml')
