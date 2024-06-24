@@ -1,20 +1,27 @@
-"""
+import urllib.parse
+import os
+
+def get_connetion_uri():
+    dbhost = 'nebularat-postgresdb-server.postgres.database.azure.com'
+    dbname = 'nebularat-postgresServer-db'
+    dbuser = 'sudo'
+    password = 'sudo'
+    sslmode = 'require'
+
+    db_uri = f"postgresql://{dbuser}:{password}@{dbhost}/{dbname}?sslmode={sslmode}"
+
+    return db_uri
+
 def prova():
-    cnxn = pyodbc.connect(
-        'DRIVER=' + DRIVER + ';PORT=5432;SERVER=' + SERVER +
-        ';PORT=5432;DATABASE=' + DATABASE + ';UID=' + USERNAME +
-        ';PWD=' + PASSWORD)
-    cursor = cnxn.cursor()
-    selectsql = "SELECT * FROM TEST;" # SALES is an example table name
-    cursor.execute(selectsql)
-    rows = cursor.fetchall()
-
-    cnxn.commit()
+    import psycopg2
+    conn_string = get_connetion_uri()
+    conn = psycopg2.connect(conn_string)
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM TEST;")
+    data = cursor.fetchall()
     cursor.close()
-    cnxn.close()
+    conn.close()
+    return data
 
-    return rows
-    return "Hello World!"
-
-if __name__ == "__main__":
-    prova()"""
+if __name__ == '__main__':
+   prova()
