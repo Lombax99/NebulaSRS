@@ -35,9 +35,10 @@ def run_query():
     engine = get_engine_from_settings()
     try:
         with engine.connect() as connection_str:
-            print('Successfully connected to the PostgreSQL database')
+            return 'Successfully connected to the PostgreSQL database'
     except Exception as ex:
-        print(f'Sorry failed to connect: {ex}')
+        error = f'Sorry failed to connect: {ex}'
+        return error
 
 if __name__ == '__main__':
    run_query()
