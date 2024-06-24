@@ -4,6 +4,7 @@ Werkzeug>=2.2.3
 #Flask-Migrate
 #Flask-SQLAlchemy
 #flask_wtf
-psycopg
+psycopg2
 #python-dotenv
-#SQLAlchemy
+SQLAlchemy
+SQLAlchemy-Utils

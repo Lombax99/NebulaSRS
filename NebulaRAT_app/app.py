@@ -4,6 +4,7 @@ from flask import Flask, render_template, jsonify
 #from generateCertificate import *
 app = Flask(__name__)
 from testDB import *
+from settings import postgresql as settings
 
 
 
@@ -40,8 +41,7 @@ def testPythonFunctionCertificate():
 
 @app.route('/test-python-function-DB')
 def testPythonFunctionDB():
-    return testQuery()
-
+    return run_query()
 if __name__ == '__main__':
    app.run(debug=True)
 
