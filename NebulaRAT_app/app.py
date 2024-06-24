@@ -2,9 +2,27 @@ from flask import Flask, render_template, jsonify
 #from flask_sqlalchemy import SQLAlchemy
 #from flask_login import LoginManager
 from generateCertificate import *
+<<<<<<< Updated upstream
 import psycopg2 as ps
 app = Flask(__name__)
 
+=======
+<<<<<<< HEAD
+import psycopg2
+
+app = Flask(__name__)
+
+db_connection = psycopg2.connect(
+    database="testdb",
+    user="Pasquale",
+    password="1999",
+    host="localhost"
+)
+=======
+import psycopg2 as ps
+app = Flask(__name__)
+
+>>>>>>> Stashed changes
 
 def prova():
     query = "SELECT * FROM TEST;"
@@ -21,16 +39,30 @@ def prova():
         conn.close()
 
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> a79f6a3d03cb70ba931c3403211bd555b90c3420
+>>>>>>> Stashed changes
 
 @app.route('/')
 def root():
+    cursor = db_connection.cursor()
+    cursor.execute("SELECT id, descrizione, indirizzoip FROM MACCHINA_Disp")
+    macchine = cursor.fetchall()
+    cursor.close()
     print('Request for index page received')
-    return render_template('index.html')
+    return render_template('index.html',macchine=macchine)
 
-@app.route('/404')
-def errorPage():
+@app.route('/login')
+def login():
     print('Request for index page received')
-    return render_template('404.html')
+    return render_template('login.html')
+
+@app.route('/signup')
+def signup():
+    print('Request for index page received')
+    return render_template('signup.html')
+
 
 @app.route('/test')
 def testpage():
@@ -61,5 +93,9 @@ def testPythonFunctionDB():
 
 if __name__ == '__main__':
    app.run(debug=True)
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 
