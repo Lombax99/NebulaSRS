@@ -3,6 +3,7 @@ from flask import Flask, render_template, jsonify
 #from flask_login import LoginManager
 from generateCertificate import *
 <<<<<<< HEAD
+<<<<<<< HEAD
 import yaml
 import os
 
@@ -13,11 +14,18 @@ cnx = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-
 =======
 import psycopg2
 >>>>>>> parent of a79f6a3 (prova2 con script inside app.py)
+=======
+import psycopg2
+>>>>>>> parent of a79f6a3 (prova2 con script inside app.py)
 app = Flask(__name__)
 
 """def prova():
     query = "SELECT * FROM TEST;"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    cnx = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
+>>>>>>> parent of a79f6a3 (prova2 con script inside app.py)
 =======
     cnx = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
 >>>>>>> parent of a79f6a3 (prova2 con script inside app.py)

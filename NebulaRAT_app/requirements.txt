@@ -5,9 +5,15 @@ Werkzeug>=2.2.3
 #Flask-SQLAlchemy
 #flask_wtf
 <<<<<<< HEAD
+<<<<<<< HEAD
 #psycopg2>=2.7.1
 #python-dotenv
 #SQLAlchemy
+=======
+psycopg2
+#python-dotenv
+#SQLAlchemy
+>>>>>>> parent of a79f6a3 (prova2 con script inside app.py)
 =======
 psycopg2
 #python-dotenv
