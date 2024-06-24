@@ -1,9 +1,9 @@
 from flask import Flask, render_template, jsonify
 #from flask_sqlalchemy import SQLAlchemy
 #from flask_login import LoginManager
-from generateCertificate import *
+#from generateCertificate import *
 app = Flask(__name__)
-from test import *
+from testDB import *
 
 
 
@@ -35,11 +35,12 @@ def testPythonFunctionString():
 
 @app.route('/test-python-function-Certificate')
 def testPythonFunctionCertificate():
-    return get_certificate(machineName + ".crt")
+    #return get_certificate(machineName + ".crt")
+    return "ciao"
 
 @app.route('/test-python-function-DB')
 def testPythonFunctionDB():
-    return main()
+    return testQuery()
 
 if __name__ == '__main__':
    app.run(debug=True)
