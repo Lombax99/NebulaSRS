@@ -3,6 +3,7 @@ from flask import Flask, render_template, jsonify
 #from flask_login import LoginManager
 from generateCertificate import *
 app = Flask(__name__)
+from test import *
 
 
 
@@ -38,19 +39,7 @@ def testPythonFunctionCertificate():
 
 @app.route('/test-python-function-DB')
 def testPythonFunctionDB():
-    import psycopg2
-    conn = psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db")
-    cur = conn.cursor()                
-    cur.execute("SELECT * FROM TEST;")
-    machine_data = cur.fetchall()
-    conn.commit() 
-    cur.close()
-    conn.close()
-    return machine_data
-    
-
-
-
+    return main()
 
 if __name__ == '__main__':
    app.run(debug=True)
