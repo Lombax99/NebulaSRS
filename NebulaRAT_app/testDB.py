@@ -1,8 +1,8 @@
 import urllib.parse
 import os
-
+import psycopg2
 def prova():
-    import psycopg2
+    
     try:
         with psycopg2.connect(user="sudo", password="sudo", host="nebularat-postgresdb-server.postgres.database.azure.com", port=5432, database="nebularat-postgresServer-db") as conn:
             with conn.cursor() as cur:
