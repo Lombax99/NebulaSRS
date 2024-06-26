@@ -1,4 +1,4 @@
-#!/home/stefano/Documenti/GitHub/NebulaSRS/.venv/bin/python3
+#!/home/stefano/Documenti/GitHub/NebulaSRS/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
