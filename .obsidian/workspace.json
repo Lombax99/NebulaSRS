@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+                "file": "Piano di progettazione.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+                "file": "Piano di progettazione.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+                "file": "Piano di progettazione.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md"
+                "file": "Piano di progettazione.md"
               }
             }
           },
@@ -156,13 +156,28 @@
   },
   "active": "a85ee6be7a87053e",
   "lastOpenFiles": [
-    "NebulaRAT_app/__pycache__/settings.cpython-312.pyc",
-    "NebulaRAT_app/__pycache__/models.cpython-312.pyc",
-    "NebulaRAT_app/__pycache__/app.cpython-312.pyc",
-    "NebulaRAT_app/__pycache__/models.cpython-310.pyc.128400811524720",
-    "NebulaRAT_app/__pycache__/app.cpython-310.pyc",
-    "NebulaRAT_app/__pycache__/models.cpython-310.pyc",
-    "NebulaRAT_app/models.py",
+    "antenv/lib/python3.10/site-packages/pexpect/utils.py",
+    "antenv/lib/python3.10/site-packages/pexpect/spawnbase.py",
+    "antenv/lib/python3.10/site-packages/pexpect/socket_pexpect.py",
+    "antenv/lib/python3.10/site-packages/pexpect/screen.py",
+    "antenv/lib/python3.10/site-packages/pexpect/run.py",
+    "antenv/lib/python3.10/site-packages/pexpect/pxssh.py",
+    "antenv/lib/python3.10/site-packages/pexpect/replwrap.py",
+    "antenv/lib/python3.10/site-packages/pexpect/pty_spawn.py",
+    "antenv/lib/python3.10/site-packages/pexpect/popen_spawn.py",
+    "antenv/lib/python3.10/site-packages/pexpect/fdpexpect.py",
+    "antenv/lib/python3.10/site-packages/pexpect/expect.py",
+    "antenv/lib/python3.10/site-packages/msrest-0.7.1.dist-info/LICENSE.md",
+    "antenv/lib/python3.10/site-packages/ipykernel/resources/logo-svg.svg",
+    "antenv/lib/python3.10/site-packages/ipykernel/resources/logo-64x64.png",
+    "antenv/lib/python3.10/site-packages/ipykernel/resources/logo-32x32.png",
+    "antenv/lib/python3.10/site-packages/idna-3.7.dist-info/LICENSE.md",
+    "antenv/lib/python3.10/site-packages/flask/sansio/README.md",
+    "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+    "antenv/lib/python3.10/site-packages/debugpy/_vendored/pydevd/pydevd_plugins/extensions/README.md",
+    "antenv/lib/python3.10/site-packages/azure_mgmt_core-1.4.0.dist-info/LICENSE.md",
+    "antenv/lib/python3.10/site-packages/IPython/core/tests/2x2.png",
+    "antenv/lib/python3.10/site-packages/IPython/core/tests/2x2.jpg",
     "Doc/PostgreSQL & Python/RAGIONAMENTI SU POSSIBILI RUOLI.md",
     "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
     "Doc/PostgreSQL & Python/DB structure v2.md",
@@ -174,31 +189,20 @@
     "aorganizzazioneCodice.canvas",
     "Doc/Nebula Remote Access Tool.md",
     "SchemaDB.png",
-    "NebulaRAT_app/test.py",
-    "NebulaRAT_app/templates/test.html",
-    "NebulaRAT_app/__pycache__/generateCertificate.cpython-312.pyc",
     "Doc/UtilityResources/Terraform + Azure setup.md",
-    "NebulaRAT_app/darkpan-1.0.0/scss/bootstrap/scss/vendor/_rfs.scss",
     "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/owl.video.play.png",
     "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/ajax-loader.gif",
     "NebulaRAT_app/darkpan-1.0.0/img/user.jpg",
     "NebulaRAT_app/darkpan-1.0.0/img/testimonial-2.jpg",
-    "NebulaRAT_app/darkpan-1.0.0/img/testimonial-1.jpg",
-    "NebulaRAT_app/darkpan-1.0.0/bootstrap-5-admin-template.jpg",
     "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
     "Doc/Framework utilizzato.md",
-    "venv/Lib/site-packages/werkzeug/debug/shared/more.png",
-    "venv/Lib/site-packages/werkzeug/debug/shared/less.png",
-    "venv/Lib/site-packages/werkzeug/debug/shared/console.png",
     "venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
     "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
-    "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
     "Web app tutorial.md",
     "CHANGELOG.md",
     "CONTRIBUTING.md",
     "Doc/UtilityResources/Delete before public availability and sharing.md",
     "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
-    "Doc/UtilityResources/Sprint Template.md",
     "Doc/BasicNetworkArchitecture.canvas"
   ]
 }
