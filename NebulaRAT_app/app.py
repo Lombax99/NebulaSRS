@@ -1,7 +1,7 @@
 #from generateCertificate import *
 from settings import postgresql as settings
 from flask import Flask, render_template, request, jsonify
-from NebulaRAT_app.queryexe import execute_query
+from queryexe import execute_query
 from queryexe import execute_query
 app = Flask(__name__)
 
