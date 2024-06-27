@@ -1,26 +1,9 @@
 #from generateCertificate import *
 from settings import postgresql as settings
 from flask import Flask, render_template, request, jsonify
-#from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
-from settings import postgresql as settings
-from sqlalchemy import text
-#from models import Test
-
-db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
-db = SQLAlchemy()
+from NebulaRAT_app.queryexe import execute_query
+from queryexe import execute_query
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
-
-# initialize the database connection
-db.init_app(app)
-
-class Test(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    descrizione = db.Column(db.String(255))
-
-    def __init__(self, descrizione=None):
-        self.descrizione = descrizione
 
 @app.route('/')
 def root():
@@ -55,11 +38,7 @@ def testPythonFunctionCertificate():
 
 @app.route('/test-python-function-DB')
 def testPythonFunctionDB():
-    query = text("SELECT * FROM TEST;")
-    result = db.session.execute(query)
-    names = [row[1] for row in result] #trova le descr
-    return names
-
+    return execute_query()
 
 
 
