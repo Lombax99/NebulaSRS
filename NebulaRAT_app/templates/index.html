@@ -8,7 +8,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{url_for('static', filename='img/favicon.ico')}}" rel="icon">
+    <link href="{{url_for('static', filename='rat.ico')}}" rel="icon">
     
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@
     <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
     
     <!-- Template Stylesheet -->
-    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet"> 
+    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
 </head>
 <body>
     <div class="container-fluid position-relative d-flex p-0">
@@ -42,13 +42,16 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="/" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>NebulaRAT</h3>
+                <a href="/index" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary">NebulaRAT</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4"></div>
                 <div class="navbar-nav w-100">
-                    <a href="/" class="nav-item nav-link active"><i class="fa fa-home me-2"></i>Homepage</a>
+                    <a href="/login" class="nav-item nav-link"><i class="fa fa-sign-in-alt me-2"></i>Login</a>
+                    <a href="/signup" class="nav-item nav-link"><i class="fa fa-user-plus me-2"></i>Register</a>
+                    <a href="/test" class="nav-item nav-link"><i class="fa fa-vials me-2"></i>Test Page</a>
                     <a href="/login" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+
                 </div>
             </nav>
         </div>
@@ -69,7 +72,7 @@
                             <span class="d-none d-lg-inline-flex">Account</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="/login" class="dropdown-item">Log In</a>
+                            <a href="/login" class="dropdown-item">Login</a>
                         </div>
                     </div>
                 </div>
@@ -78,92 +81,30 @@
 
             <!-- Welcome Section Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary text-center rounded p-4">
+                <div class="bg-dark text-center rounded p-4">
                     <div class="text-center">
-                        <h1 class="text-primary">Benvenuto su Nebula RAT</h1>
-                        <p class="text-white">
-                            Nebula RAT è una piattaforma innovativa progettata per facilitare la gestione delle risorse remote. 
-                            Attraverso un’interfaccia web protetta, gli utenti possono accedere al nostro portale in cui è presente una tabella delle macchine 
-                            disponibili, e inoltre per ogni singola macchina può essere generato un certificato dinamico, e le rispettive regole di firewall, 
-                            per garantire una connessione sicura ed affidabile. 
-                        </p>
+                        <h1 class="text-primary text-center">Benvenuto su Nebula RAT</h1>
                     </div>
                 </div>
             </div>
             <!-- Welcome Section End -->
 
             <!-- Features Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Caratteristiche Principali</h6>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="bg-dark p-4 rounded">
-                                <i class="fa fa-lock fa-2x text-primary mb-3"></i>
-                                <h5 class="text-white">Sicurezza</h5>
-                                <p class="text-white">Accedi al portale tramite un'interfaccia web sicura e protetta da autenticazione.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="bg-dark p-4 rounded">
-                                <i class="fa fa-certificate fa-2x text-primary mb-3"></i>
-                                <h5 class="text-white">Certificati Dinamici</h5>
-                                <p class="text-white">Genera certificati a breve scadenza per connessioni rapide e sicure.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="bg-dark p-4 rounded">
-                                <i class="fa fa-print fa-2x text-primary mb-3"></i>
-                                <h5 class="text-white">Stampa delle Regole di Firewall</h5>
-                                <p class="text-white">Stampa le regole di firewall per un facile riferimento e gestione della sicurezza.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row text-center" style="padding-top: 20%; padding-left:25%; padding-bottom: 20%;">
+                <div class="col-lg-4">
+                    <form action="login">
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4"><h4>Login</h4></button>
+                    </form>
+                </div>
+                <div class="col-lg-4">
+                    <form action="signup">
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4"><h4>Register</h4></button>
+                    </form>
                 </div>
             </div>
             <!-- Features End -->
-
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Contatti</h6>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="bg-dark p-4 rounded">
-                                <i class="fa fa-envelope fa-2x text-primary mb-3"></i>
-                                <h5 class="text-white">Email</h5>
-                                <p class="text-white">
-                                    <a href="mailto:supporto@nebulasrs.com">supporto@nebularat.com</a>
-                                  </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="bg-dark p-4 rounded">
-                                <i class="fa fa-phone fa-2x text-primary mb-3"></i>
-                                <h5 class="text-white">Telefono</h5>
-                                <p class="text-white">+39 334 5674225</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="bg-dark p-4 rounded">
-                                <i class="fa fa-map-marker fa-2x text-primary mb-3"></i>
-                                <h5 class="text-white">Indirizzo</h5>
-                                <p class="text-white">Via del Risorgimento, 2, Bologna</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Contact Us End -->
         </div>
         <!-- Content End -->
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
     <!-- JavaScript Libraries -->

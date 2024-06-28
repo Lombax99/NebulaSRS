@@ -92,14 +92,21 @@
                         <table class="table text-center align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
-                                    <th></th> 
-                                    <th scope="col">ID Macchina</th>
-                                    <th scope="col">Descrizione</th>
+                                    <th scope="col">Nome</th>
                                     <th scope="col">Indirizzo IP</th>
                                     <th scope="col">Genera Certificato</th>
                                     <th scope="col">Stampa Regole di Firewall</th>
                                 </tr>
-                            </thead> <!--
+                            </thead> 
+                            <tbody>
+                                <tr>
+                                    <td>macchina1</td>
+                                    <td>127.0.0.1</td>
+                                    <td><a class="btn btn-sm btn-primary" href="#">Genera</a></td>
+                                    <td><button class="btn btn-sm btn-primary" onclick="printFirewallRules()">Stampa</button></td>
+                                </tr>
+                            </tbody>
+                            <!--
                             <tbody>
                                 
                                 {% for macchina in macchine %}

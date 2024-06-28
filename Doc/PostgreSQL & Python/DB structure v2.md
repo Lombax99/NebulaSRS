@@ -4,7 +4,8 @@ CREATE TABLE UTENTE (
 		  id SERIAL PRIMARY KEY,
 		  nome VARCHAR(255) NOT NULL,
 		  cognome VARCHAR(255) NOT NULL,
-		  username VARCHAR(255) UNIQUE NOT NULL
+		  username VARCHAR(255) UNIQUE NOT ,
+		  password VARCHAR(255)
 		 );
 
 CREATE TABLE MACCHINA(
@@ -42,6 +43,10 @@ CREATE TABLE REGOLA(
 			proto VARCHAR(10),
 			host VARCHAR(255),
 			ca_name VARCHAR(255),
-			group VARCHAR(500),
+			groups VARCHAR(500),
 			cidr VARCHAR(20),
 );
+
+### Query  da fare
+
+- mostrare le info nella tabella creata da pasquale: IP, descrizione, 
