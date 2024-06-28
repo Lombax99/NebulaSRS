@@ -12,9 +12,9 @@ def root():
     print('Request for index page received')
     return render_template('index.html')
 
-##def load_firewall_config():
+#def load_firewall_config():
 #    current_directory = os.path.dirname(os.path.abspath(__file__))
-#     config_file_path = os.path.join(current_directory, 'config2.yaml')
+#    config_file_path = os.path.join(current_directory, 'config2.yaml')
 #    with open(config_file_path, 'r') as file:
 #        config = yaml.safe_load(file)
 #    return config
@@ -22,13 +22,22 @@ def root():
 #def format_firewall_rules(rules, direction):
 #    formatted_rules = f"<strong>Firewall {direction} rules:</strong><br>"
 #    for rule in rules:
-#        action = rule.get('action', 'undefined')
-#        proto = rule.get('proto', 'any')
 #        port = rule.get('port', 'any')
-#        host = rule.get('host', 'any')
-#        groups = rule.get('groups', [])
-#        local_cidr = rule.get('local_cidr', 'any')
-#        formatted_rules += f"  - Action: <strong>{action}</strong>, Protocol: <strong>{proto}</strong>, Port: <strong>{port}</strong>, Host: <strong>{host}</strong>, Groups: <strong>{groups}</strong>, Local CIDR: <strong>{local_cidr}</strong><br>"
+#        proto = rule.get('proto', 'any')
+#        
+#        if 'group' in rule:  # If 'group' is present, use it
+#            groups = [rule['group']] if rule['group'] else ['any']
+#        else:  # Otherwise, use 'groups' (default to empty list if not present)
+#            groups = rule.get('groups', ['any']) if rule.get('groups') else ['any']
+#        
+#        cidr = rule.get('cidr', 'any')
+#        ca_name = rule.get('ca_name', 'any')
+#        
+#        # Convert groups to a string representation
+#        groups_str = ', '.join(groups) if groups != ['any'] else 'any'
+#        
+#        formatted_rules += f"  - Port: <strong>{port}</strong>, Protocol: <strong>{proto}</strong>, Groups: <strong>{groups_str}</strong>, CIDR: <strong>{cidr}</strong>, CA Name: <strong>{ca_name}</strong><br>"
+#    
 #    return formatted_rules
 
 #@app.route('/print_firewall_rules', methods=['GET'])
@@ -52,6 +61,16 @@ def root():
 def login():
     print('Request for index page received')
     return render_template('login.html')
+
+@app.route('/dashboard')
+def dashboard():
+    #cursor = cnx.cursor()
+    #cursor.execute("SELECT id, descrizione, indirizzoip FROM MACCHINA_Disp")
+    #macchine = cursor.fetchall()
+    #cursor.close()
+    print('Request for index page received')
+    return render_template('dashboard.html') #Aggiungere macchine=macchine
+
 
 @app.route('/signup')
 def signup():

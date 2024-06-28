@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Nebula SRS</title>
+    <title>Nebula RAT</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href=<img src="{{url_for('static', filename='img/favicon.ico')}}" rel="icon">
+    <link href="{{url_for('static', filename='img/favicon.ico')}}" rel="icon">
     
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,25 +39,21 @@
         </div>
         <!-- Spinner End -->
 
-
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
                 <a href="/" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>NebulaSRS</h3>
+                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>NebulaRAT</h3>
                 </a>
-                <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="ms-3">
-                        <span>Utente</span>
-                    </div>
-                </div>
+                <div class="d-flex align-items-center ms-4 mb-4"></div>
                 <div class="navbar-nav w-100">
-                    <a href="/" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="/" class="nav-item nav-link active"><i class="fa fa-home me-2"></i>Homepage</a>
+                    <a href="/login" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                 </div>
             </nav>
         </div>
+        
         <!-- Sidebar End -->
-
 
         <!-- Content Start -->
         <div class="content">
@@ -73,72 +69,99 @@
                             <span class="d-none d-lg-inline-flex">Account</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">Profilo</a>
-                            <a href="/login" class="dropdown-item">Log Out</a>
+                            <a href="/login" class="dropdown-item">Log In</a>
                         </div>
                     </div>
                 </div>
             </nav>
             <!-- Navbar End -->
 
-            <!--Start Table-->
+            <!-- Welcome Section Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="text-center">
+                        <h1 class="text-primary">Benvenuto su Nebula RAT</h1>
+                        <p class="text-white">
+                            Nebula RAT è una piattaforma innovativa progettata per facilitare la gestione delle risorse remote. 
+                            Attraverso un’interfaccia web protetta, gli utenti possono accedere al nostro portale in cui è presente una tabella delle macchine 
+                            disponibili, e inoltre per ogni singola macchina può essere generato un certificato dinamico, e le rispettive regole di firewall, 
+                            per garantire una connessione sicura ed affidabile. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Welcome Section End -->
+
+            <!-- Features Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Macchine Disponibili</h6>
+                        <h6 class="mb-0">Caratteristiche Principali</h6>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table text-center align-middle table-bordered table-hover mb-0">
-                            <thead>
-                                <tr class="text-white">
-                                    <th></th> 
-                                    <th scope="col">ID Macchina</th>
-                                    <th scope="col">Descrizione</th>
-                                    <th scope="col">Indirizzo IP</th>
-                                    <th scope="col">Genera Certificato</th>
-                                    <th scope="col">Stampa Regole di Firewall</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                                <!--{% for macchina in macchine %}
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>Macchina Codice: {{ macchina[0] }}</td>
-                                    <td>{{ macchina[1] }}</td>
-                                    <td>{{ macchina[2] }}</td>
-                                    <td><a class="btn btn-sm btn-primary" href="#">Genera</a></td>
-                                    <td><button class="btn btn-sm btn-primary" onclick="printFirewallRules()">Stampa</button></td>
-                                </tr>
-                                {% endfor %} -->
-                            </tbody>
-                        </table>
+                    <div class="row text-center">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="bg-dark p-4 rounded">
+                                <i class="fa fa-lock fa-2x text-primary mb-3"></i>
+                                <h5 class="text-white">Sicurezza</h5>
+                                <p class="text-white">Accedi al portale tramite un'interfaccia web sicura e protetta da autenticazione.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="bg-dark p-4 rounded">
+                                <i class="fa fa-certificate fa-2x text-primary mb-3"></i>
+                                <h5 class="text-white">Certificati Dinamici</h5>
+                                <p class="text-white">Genera certificati a breve scadenza per connessioni rapide e sicure.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="bg-dark p-4 rounded">
+                                <i class="fa fa-print fa-2x text-primary mb-3"></i>
+                                <h5 class="text-white">Stampa delle Regole di Firewall</h5>
+                                <p class="text-white">Stampa le regole di firewall per un facile riferimento e gestione della sicurezza.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--End Table-->
+            <!-- Features End -->
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Contatti</h6>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="bg-dark p-4 rounded">
+                                <i class="fa fa-envelope fa-2x text-primary mb-3"></i>
+                                <h5 class="text-white">Email</h5>
+                                <p class="text-white">
+                                    <a href="mailto:supporto@nebulasrs.com">supporto@nebularat.com</a>
+                                  </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="bg-dark p-4 rounded">
+                                <i class="fa fa-phone fa-2x text-primary mb-3"></i>
+                                <h5 class="text-white">Telefono</h5>
+                                <p class="text-white">+39 334 5674225</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="bg-dark p-4 rounded">
+                                <i class="fa fa-map-marker fa-2x text-primary mb-3"></i>
+                                <h5 class="text-white">Indirizzo</h5>
+                                <p class="text-white">Via del Risorgimento, 2, Bologna</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Us End -->
         </div>
         <!-- Content End -->
 
-        <!-- Modal -->
-        <!--
-        <div class="modal fade" id="firewallModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content bg-secondary text-white">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Firewall Rules</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body" id="firewallRulesContent"> -->
-                        <!-- Le regole del firewall verranno caricate qui -->
-                    <!--</div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div> 
-         -->
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
@@ -155,21 +178,5 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- Template Javascript -->
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
-
-    <!--Function print Firewall Rules-->
-    <!--
-    <script>
-        function printFirewallRules() {
-            fetch('/print_firewall_rules')
-                .then(response => response.text())
-                .then(data => {
-                    // Sostituisci \n con <br>
-                    const formattedData = data.replace(/\n/g, '<br>');
-                    document.getElementById('firewallRulesContent').innerHTML = formattedData;
-                    var myModal = new bootstrap.Modal(document.getElementById('firewallModal'));
-                    myModal.show();
-                });
-        }
-    </script> -->
 </body>
 </html>
