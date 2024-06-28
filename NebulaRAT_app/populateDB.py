@@ -3,37 +3,37 @@ from settings import postgresql as settings
 import time
 
 test_data = {
-    "TEST": [
-        (0, 'CULO'),
-        (1, 'PALLE'),
-        (2, "altre palle"),
-        (3, "più palle"),
-        (4, "ancora più palle")
-    ],
-    "MACCHINA": [
-        (0, 'macchina1', 0, 0),
-        (1, 'macchina2', 1, 1)
-    ],
-    "CONF": [
-        (0, '192.168.1.1', 'timeout_tcp', 'timeout_udp', 'timeout_def'),
-        (1, '192.168.1.2', 'timeout_tcp', 'timeout_udp', 'timeout_def')
-    ],
-    "USA":[
-        (0, 0, 0),
-        (1, 1, 1)
-    ],
     "UTENTE": [
-        (0, 'luca', 'L', 'xD_darkangelcraft_xD', 'dipartimento dei migliori'),
-        (1, 'marco', 'M', 'xX_MagicMikeLove_Xx', 'human resources wink wink'),
-        (2, 'stefano', 'S', 'xX_St3f4n0_Xx', 'dipartimento degli spritz')
+        ('luca', 'L', 'xD_darkangelcraft_xD', 'dipartimento dei migliori'),
+        ('marco', 'M', 'xX_MagicMikeLove_Xx', 'human resources wink wink'),
+        ('stefano', 'S', 'xX_St3f4n0_Xx', 'dipartimento degli spritz')
     ],
     "CERT": [
-        (0, 'hahahahnonleggeretemaicosahoscrittoinquestocodicesupersegretissimo'),
-        (1, 'enemmenoinquestocodicecisonoanchepasswordveresupersegretissime')
+        ('hahahahnonleggeretemaicosahoscrittoinquestocodicesupersegretissimo'),
+        ('enemmenoinquestocodicecisonoanchepasswordveresupersegretissime')
+    ],
+    "CONF": [
+        ('192.168.1.1', 'timeout_tcp', 'timeout_udp', 'timeout_def'),
+        ('192.168.1.2', 'timeout_tcp', 'timeout_udp', 'timeout_def')
     ],
     "REGOLA": [
-        (0, 'in', 37, 'PortStort', 'Prot1', 'Host_aggio', 'ca_name', 'group', 'cidr'),
-        (1, 'out', 73, 'PortDritt', 'Prot2', 'Host_ello', 'ca_name', 'group', 'cidr')
+        ('in', 1, 'PortStort', 'Prot1', 'Host_aggio', 'ca_name', 'group', 'cidr'),
+        ('out', 1, 'PortDritt', 'Prot2', 'Host_ello', 'ca_name', 'group', 'cidr')
+    ],
+    "MACCHINA": [
+        ('macchina1', 0, 0),
+        ('macchina2', 1, 1)
+    ],
+    "USA":[
+        (0, 0),
+        (1, 1)
+    ],
+    "TEST": [
+        ('CULO'),
+        ('PALLE'),
+        ("altre palle"),
+        ("più palle"),
+        ("ancora più palle")
     ]
 }
 
@@ -44,19 +44,19 @@ def insert_in_table(conn, table_name, data):
         
         # Define the SQL query to insert data
         if table_name == "MACCHINA":
-            query = f"INSERT INTO {table_name} (id, descrizione, cert, conf) VALUES (%s, %s, %s, %s)"
+            query = f"INSERT INTO {table_name} (descrizione, cert, conf) VALUES (%s, %s, %s)"
         elif table_name == "UTENTE":
-            query = f"INSERT INTO {table_name} (id, nome, cognome, username, password) VALUES (%s, %s, %s, %s, %s)"
+            query = f"INSERT INTO {table_name} (nome, cognome, username, password) VALUES (%s, %s, %s, %s)"
         elif table_name == "USA":
-            query = f"INSERT INTO {table_name} (id, utente_id, macchina_id) VALUES (%s, %s, %s)"
+            query = f"INSERT INTO {table_name} (utente_id, macchina_id) VALUES (%s, %s)"
         elif table_name == "CERT":
-            query = f"INSERT INTO {table_name} (id, descrizione) VALUES (%s, %s)"
+            query = f"INSERT INTO {table_name} (descrizione) VALUES (%s)"
         elif table_name == "REGOLA":
-            query = f"INSERT INTO {table_name} (id, inout, conf_id, port, proto, host, ca_name, gruppi, cidr) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            query = f"INSERT INTO {table_name} (inout, conf_id, port, proto, host, ca_name, gruppi, cidr) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
         elif table_name == "TEST":
-            query = f"INSERT INTO {table_name} (id, description) VALUES (%s, %s)"
+            query = f"INSERT INTO {table_name} (description) VALUES (%s)"
         elif table_name == "CONF":
-            query = f"INSERT INTO {table_name} (id, ip_addr, tcp_timeout, udp_timeout, def_timeout) VALUES (%s, %s, %s, %s, %s)"
+            query = f"INSERT INTO {table_name} (ip_addr, tcp_timeout, udp_timeout, def_timeout) VALUES (%s, %s, %s, %s)"
         else: 
             print("Table not found")
             return "Table not found"
@@ -79,14 +79,6 @@ def create_test_tables(conn):
     #this tables do not have the references and are just to test if the queries work correctly
     """ Create tables in the PostgreSQL database"""
     commands = (
-        """
-        CREATE TABLE MACCHINA(
-            id SERIAL PRIMARY KEY,
-            descrizione VARCHAR(255),
-            cert  INTEGER NOT NULL,
-            conf INTEGER NOT NULL
-        );
-        """,
         """ 
         CREATE TABLE UTENTE (
             id SERIAL PRIMARY KEY,
@@ -97,37 +89,10 @@ def create_test_tables(conn):
 		);
         """,
         """
-        CREATE TABLE USA (
-        	id SERIAL PRIMARY KEY,
-            utente_id INTEGER NOT NULL,
-            macchina_id INTEGER NOT NULL,
-            UNIQUE (utente_id, macchina_id)
-        );
-        """,
-        """
         CREATE TABLE CERT (
             id SERIAL PRIMARY KEY,
             descrizione VARCHAR(512) NOT NULL
-            );
-        """,
-        """
-        CREATE TABLE REGOLA (
-            id SERIAL NOT NULL,
-            inout VARCHAR(10) NOT NULL,
-            conf_id INTEGER NOT NULL,
-            port VARCHAR(10),
-            proto VARCHAR(10),
-            host VARCHAR(255),
-            ca_name VARCHAR(255),
-            gruppi VARCHAR(500),
-            cidr VARCHAR(20)
         );
-        """,
-        """
-        CREATE TABLE TEST (
-            id SERIAL PRIMARY KEY,
-            description VARCHAR(255) NOT NULL
-            );
         """,
         """
         CREATE TABLE CONF (
@@ -136,6 +101,41 @@ def create_test_tables(conn):
             tcp_timeout VARCHAR(255),
             udp_timeout VARCHAR(255),
             def_timeout VARCHAR(255)
+        );
+        """,
+        """
+        CREATE TABLE REGOLA(
+			id SERIAL NOT NULL,
+			inout varchar(10) NOT NULL,
+			conf_id INTEGER NOT NULL REFERENCES CONF(id),
+			port VARCHAR(10),
+			proto VARCHAR(10),
+			host VARCHAR(255),
+			ca_name VARCHAR(255),
+			gruppi VARCHAR(500),
+			cidr VARCHAR(20)
+        );
+        """,
+        """
+        CREATE TABLE MACCHINA (
+            id SERIAL PRIMARY KEY,
+            descrizione VARCHAR(255),
+            cert  INTEGER NOT NULL REFERENCES CERT(id),
+            conf INTEGER NOT NULL REFERENCES CONF(id)
+        );
+        """,
+        """
+        CREATE TABLE USA (
+        	id SERIAL PRIMARY KEY,
+            utente_id INTEGER NOT NULL REFERENCES UTENTE(id),
+            macchina_id INTEGER NOT NULL REFERENCES MACCHINA(id),
+            UNIQUE (utente_id, macchina_id)
+        );
+        """,
+        """
+        CREATE TABLE TEST (
+            id SERIAL PRIMARY KEY,
+            description VARCHAR(255) NOT NULL
         );
         """
     )
@@ -155,7 +155,7 @@ def upload_test_data(conn):
         cur = conn.cursor()
 
         # Drop all existing tables
-        cur.execute("DROP TABLE IF EXISTS MACCHINA, UTENTE, USA, CERT, REGOLA, TEST, CONF")
+        cur.execute("DROP TABLE IF EXISTS USA, REGOLA, MACCHINA, CONF, CERT, UTENTE, TEST")
         create_test_tables(conn)
 
         for table_name, data in test_data.items():

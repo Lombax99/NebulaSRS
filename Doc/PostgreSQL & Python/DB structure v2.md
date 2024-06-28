@@ -45,7 +45,6 @@ CREATE TABLE  CONF(
 );
 
 CREATE TABLE REGOLA(
-<<<<<<< Updated upstream
 			id SERIAL NOT NULL,
 			inout varchar(10) NOT NULL,
 			conf_id INTEGER NOT NULL REFERENCES CONF(id),
@@ -74,7 +73,7 @@ SELECT *
 FROM REGOLA AS R
 JOIN CONF AS C ON C.ID = R.CONF_ID
 WHERE C.IP_ADDR = 'IPADDR';
-=======
+
 	id SERIAL NOT NULL,
 	inout varchar(10) NOT NULL,
 	conf_id INTEGER NOT NULL REFERENCES CONF(id),
@@ -85,4 +84,3 @@ WHERE C.IP_ADDR = 'IPADDR';
 	gruppi VARCHAR(500),
 	cidr VARCHAR(20),
 );
->>>>>>> Stashed changes
