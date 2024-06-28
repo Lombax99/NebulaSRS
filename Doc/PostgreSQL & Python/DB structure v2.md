@@ -36,17 +36,31 @@ CREATE TABLE  CONF(
 );
 
 CREATE TABLE REGOLA(
-			id UNIQUE NOT NULL,
+			id SERIAL NOT NULL,
 			inout varchar(10) NOT NULL,
 			conf_id INTEGER NOT NULL REFERENCES CONF(id),
 			port VARCHAR(10),
 			proto VARCHAR(10),
 			host VARCHAR(255),
 			ca_name VARCHAR(255),
-			groups VARCHAR(500),
+			gruppi VARCHAR(500),
 			cidr VARCHAR(20),
 );
 
 ### Query  da fare
 
-- mostrare le info nella tabella creata da pasquale: IP, descrizione, 
+- mostrare le info nella tabella creata da pasquale: IP, descrizione
+  
+SELECT c.ip_addr, m.descrizione
+FROM UTENTE u
+JOIN USA as ua ON u.id = ua.macchina_id
+JOIN MACCHINA as m ON ua.macchina_id = m.id
+JOIN CONF as c ON m.conf = c.id
+WHERE u.username = 'NOME_UTENTE';
+
+- mostra le regole di firewall di una macchina di cui si conosce l'ip
+
+SELECT *
+FROM REGOLA AS R
+JOIN CONF AS C ON C.ID = R.CONF_ID
+WHERE C.IP_ADDR = 'IPADDR';

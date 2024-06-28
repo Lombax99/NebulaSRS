@@ -2,17 +2,13 @@
 from settings import postgresql as settings
 import psycopg2
 
-def execute_query():
-    command = "SELECT * FROM TEST;"
+def execute_query(query):
     try:
        with psycopg2.connect(user=settings['pguser'], password=settings['pgpassword'], host=settings['pghost'], port=settings['pgport'], database=settings['pgdb']) as conn:
             with conn.cursor() as cur:
                 # execute the statement
-                cur.execute(command)
+                cur.execute(query)
                 machine_data = cur.fetchall()
     except (psycopg2.DatabaseError, Exception) as error:
         return str(error)
     return machine_data
-
-if __name__ == "__main__":
-    print(execute_query())

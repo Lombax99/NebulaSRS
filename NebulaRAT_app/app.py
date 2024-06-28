@@ -3,6 +3,7 @@ from settings import postgresql as settings
 from flask import Flask, render_template, request, jsonify
 from queryexe import execute_query
 from queryexe import execute_query
+from queries import *
 #import yaml
 #import os
 app = Flask(__name__)
@@ -105,8 +106,15 @@ def testPythonFunctionCertificate():
 
 @app.route('/test-python-function-DB')
 def testPythonFunctionDB():
-    return execute_query()
+    return execute_query(test)
 
+@app.route('/mostra-ip-descr')
+def mostraIpDescr():
+    return execute_query(ipdescr)
+
+@app.route('/print-fw-rules')
+def printFwRules():
+    return execute_query(firerules)
 
 
 if __name__ == '__main__':
