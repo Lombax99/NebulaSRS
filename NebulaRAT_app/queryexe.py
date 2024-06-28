@@ -13,3 +13,6 @@ def execute_query():
     except (psycopg2.DatabaseError, Exception) as error:
         return str(error)
     return machine_data
+
+if __name__ == "__main__":
+    print(execute_query())
