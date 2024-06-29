@@ -118,7 +118,7 @@ def mostraIpDescr():
 def printFwRules():
     ip_addr = '192.168.1.1'
     query = build_query("firewall", ip_addr)
-    return execute_query(query)
+    return list(execute_query(query))
 
 
 if __name__ == '__main__':
