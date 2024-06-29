@@ -81,10 +81,40 @@
 
            
             <!-- Features Start -->
-            <div class="row text-center" style="padding-top: 20%; padding-left:25%; padding-bottom: 20%;">
-                {% for rule in rules %}
-                <p>{{ rule }}</p>
-                {% endfor %}
+            <div class="table-responsive" style="margin-top: 20%;">
+                <!-- Tabella regole-->
+                <table class="table text-center align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr class="text-white">
+                            <th scope="col">Type</th>
+                            <th scope="col">Port</th>
+                            <th scope="col">Protocol</th>
+                            <th scope="col">Host</th>
+                            <th scope="col">CA</th>
+                            <th scope="col">Groups</th>
+                            <th scope="col">CIDR</th>
+                            <th scope="col">TCP Timeout</th>
+                            <th scope="col">UDP Timeout</th>
+                            <th scope="col">Default Timeout</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for rule in rules %}
+                        <tr>
+                            <td>{{ rule[1] }}</td>
+                            <td>{{ rule[3] }}</td>
+                            <td>{{ rule[4] }}</td>
+                            <td>{{ rule[5] }}</td>
+                            <td>{{ rule[6] }}</td>
+                            <td>{{ rule[7] }}</td>
+                            <td>{{ rule[8] }}</td>
+                            <td>{{ rule[11] }}</td>
+                            <td>{{ rule[12] }}</td>
+                            <td>{{ rule[13] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
             <!-- Features End -->
         </div>

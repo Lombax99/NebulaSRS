@@ -67,11 +67,14 @@ def mostraIpDescr():
     query = build_query("utente", utente)
     return execute_query(query)
 
-@app.route('/print-fw-rules')
+@app.route('/firerules', methods=['POST'])
 def printFwRules():
-    ip_addr = '192.168.1.1'
+    ip_addr = str(request.form['bottone'])
     query = build_query("firewall", ip_addr)
-    return execute_query(query)
+    rules = execute_query(query)
+    print('Request for dashboard page received')
+    print(ip_addr)
+    return render_template('firerules.html', rules=rules)
 
 
 if __name__ == '__main__':
