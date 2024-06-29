@@ -42,7 +42,6 @@
                 <button class="button" onclick="printResult()">tbd</button>
                 <button class="button" onclick="printResult()">tbd</button>
                 <button class="button" onclick="printResult()">tbd</button>
-                <button class="button" onclick="printFwRules()">print firewall rules</button>
                 <button class="button" onclick="mostraIpDescr()">mostra ip e descr macchina</button>
                 <button class="button" onclick="printFromDB()">provaDB</button>
                 <button class="button" onclick="printCertificate()">print a certificate</button>
@@ -104,15 +103,6 @@
         function mostraIpDescr() {
             var resultTextbox = document.getElementById("result");
             fetch('/mostra-ip-descr')
-                .then(response => response.text())
-                .then(data => {
-                    resultTextbox.value = data;
-                });
-        }
-
-        function printFwRules() {
-            var resultTextbox = document.getElementById("result");
-            fetch('/print-fw-rules')
                 .then(response => response.text())
                 .then(data => {
                     resultTextbox.value = data;
