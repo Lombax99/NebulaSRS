@@ -1,4 +1,5 @@
 #from generateCertificate import *
+import string
 from settings import postgresql as settings
 from flask import Flask, render_template, request, jsonify
 from queryexe import execute_query
@@ -110,14 +111,17 @@ def testPythonFunctionDB():
 
 @app.route('/mostra-ip-descr')
 def mostraIpDescr():
-    return execute_query(ipdescr)
+    utente = "xX_MagicMikeLove_Xx"
+    query = build_query("utente", utente)
+    return execute_query(query)
 
 @app.route('/print-fw-rules')
 def printFwRules():
-    return execute_query(firerules)
+    ip_addr = '192.168.1.1'
+    query = build_query("firewall", ip_addr)
+    return execute_query(query)
 
 
 if __name__ == '__main__':
    app.run(debug=True)
-
 

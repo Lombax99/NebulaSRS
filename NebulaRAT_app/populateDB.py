@@ -9,8 +9,18 @@ test_data = {
         ('stefano', 'S', 'xX_St3f4n0_Xx', 'dipartimento degli spritz')
     ],
     "CERT": [
-        ('hahahahnonleggeretemaicosahoscrittoinquestocodicesupersegretissimo'),
-        ('enemmenoinquestocodicecisonoanchepasswordveresupersegretissime')
+        (1,"""-----BEGIN NEBULA CERTIFICATE-----
+            CmQKBmFkbWluMhIK5MihhQyA/v//DyiU3bezBjCUvrmzBjognides04bE5q5oLFu
+            b9DFRyw5F6ybQ06GSmKcZEVM1W5KIKEMXGhjCUfmR6zpDw5OE13aJqAZ5UBh6rbM
+            2PJe9OHuEkAuv+YZGe+AXTmS4B37npr1qURxWhwXJBkzth08Y5csRse8whAhNSCR
+            m/kjOt3u8F09VOszUJJsbNr/gHP8w0wC
+            -----END NEBULA CERTIFICATE-----"""),
+        (2,"""-----BEGIN NEBULA CERTIFICATE-----
+            CnkKB2xhcHRvcDESCovIoYUMgP7//w8iCExhcHRvcFNEIghTZXJ2ZXJTRCiqye2t
+            BjCQsPK8Bjogb5TKN0XccSK9B3hcUIywSUpVvbmsH8/ZkuHrOZNeki9KIKEMXGhj
+            CUfmR6zpDw5OE13aJqAZ5UBh6rbM2PJe9OHuEkBwSdgyl6y6/2yYGlFDRfzApCKu
+            vVps8qfR/QukM4827MJ77g/ACe/cturaT4BPfreS0IuQ2dOyMUzkkPgwKpcK
+            -----END NEBULA CERTIFICATE-----""")
     ],
     "CONF": [
         ('192.168.1.1', 'timeout_tcp', 'timeout_udp', 'timeout_def'),
@@ -21,19 +31,19 @@ test_data = {
         ('out', 1, 'PortDritt', 'Prot2', 'Host_ello', 'ca_name', 'group', 'cidr')
     ],
     "MACCHINA": [
-        ('macchina1', 0, 0),
+        ('macchina1', 1, 1),
         ('macchina2', 1, 1)
     ],
     "USA":[
-        (0, 0),
-        (1, 1)
+        (2, 1),
+        (1, 2)
     ],
     "TEST": [
-        ('CULO'),
-        ('PALLE'),
-        ("altre palle"),
-        ("più palle"),
-        ("ancora più palle")
+        (1,'CULO'),
+        (2,'PALLE'),
+        (3,"altre palle"),
+        (4,"più palle"),
+        (5,"ancora più palle")
     ]
 }
 
@@ -50,11 +60,11 @@ def insert_in_table(conn, table_name, data):
         elif table_name == "USA":
             query = f"INSERT INTO {table_name} (utente_id, macchina_id) VALUES (%s, %s)"
         elif table_name == "CERT":
-            query = f"INSERT INTO {table_name} (descrizione) VALUES (%s)"
+            query = f"INSERT INTO {table_name} (id, descrizione) VALUES (%s, %s)"
         elif table_name == "REGOLA":
             query = f"INSERT INTO {table_name} (inout, conf_id, port, proto, host, ca_name, gruppi, cidr) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
         elif table_name == "TEST":
-            query = f"INSERT INTO {table_name} (description) VALUES (%s)"
+            query = f"INSERT INTO {table_name} (id, description) VALUES (%s, %s)"
         elif table_name == "CONF":
             query = f"INSERT INTO {table_name} (ip_addr, tcp_timeout, udp_timeout, def_timeout) VALUES (%s, %s, %s, %s)"
         else: 
@@ -91,7 +101,7 @@ def create_test_tables(conn):
         """
         CREATE TABLE CERT (
             id SERIAL PRIMARY KEY,
-            descrizione VARCHAR(512) NOT NULL
+            descrizione VARCHAR(511) NOT NULL
         );
         """,
         """
@@ -161,7 +171,7 @@ def upload_test_data(conn):
         for table_name, data in test_data.items():
             
             # Truncate the table to remove all data
-            cur.execute(f"TRUNCATE TABLE {table_name}")
+            #cur.execute(f"TRUNCATE TABLE {table_name}")
             
             # Insert data into the table
             insert_in_table(conn, table_name, data)
