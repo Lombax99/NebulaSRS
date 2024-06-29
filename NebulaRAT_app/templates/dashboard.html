@@ -99,7 +99,7 @@
                                         <td>{{ macchina[1] }}</td>
                                         <td>{{ macchina[0] }}</td>
                                         <td><a class="btn btn-sm btn-primary" href="#">Genera</a></td>
-                                        <td><button name="bottone" class="btn btn-sm btn-primary" value="${{ macchina[1] }}"onclick="printFirewallRules()">Stampa</button></td>
+                                        <td><form name="passmachine" action="/firerules" method="post"><button name="bottone" type="submit" class="btn btn-sm btn-primary" value="{{ macchina[0] }}" >Stampa</button></form></td>
                                     </tr>
                                 {% endfor %}
                             </tbody>
@@ -146,21 +146,6 @@
 
     <!-- Template Javascript -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-
-    <!--Function print Firewall Rules-->
-    <script>
-        function printFirewallRules() {
-            fetch('/print-fw-rules')
-                .then(response => response.text())
-                .then(data => {
-                    // Sostituisci \n con <br>
-                    const formattedData = data.replace(/\n/g, '<br>');
-                    document.getElementById('firewallRulesContent').innerHTML = formattedData;
-                    var myModal = new bootstrap.Modal(document.getElementById('firewallModal'));
-                    myModal.show();
-                });
-        }
-    </script>
 
 </body>
 </html>
