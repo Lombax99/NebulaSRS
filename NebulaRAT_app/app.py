@@ -1,5 +1,4 @@
 #from generateCertificate import *
-import string
 from settings import postgresql as settings
 from flask import Flask, render_template, request, jsonify
 from queryexe import execute_query
