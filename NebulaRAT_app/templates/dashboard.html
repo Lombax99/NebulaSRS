@@ -99,7 +99,7 @@
                                         <td>{{ macchina[1] }}</td>
                                         <td>{{ macchina[0] }}</td>
                                         <td><a class="btn btn-sm btn-primary" href="#">Genera</a></td>
-                                        <td><button name="bottone" class="btn btn-sm btn-primary" onclick="printFirewallRules()">Stampa</button></td>
+                                        <td><button name="bottone" class="btn btn-sm btn-primary" value="${{ macchina[1] }}"onclick="printFirewallRules()">Stampa</button></td>
                                     </tr>
                                 {% endfor %}
                             </tbody>
@@ -150,7 +150,6 @@
     <!--Function print Firewall Rules-->
     <script>
         function printFirewallRules() {
-            
             fetch('/print-fw-rules')
                 .then(response => response.text())
                 .then(data => {
