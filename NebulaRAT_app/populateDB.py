@@ -28,15 +28,19 @@ test_data = {
     ],
     "REGOLA": [
         ('in', 1, 'PortStort', 'Prot1', 'Host_aggio', 'ca_name', 'group', 'cidr'),
-        ('out', 1, 'PortDritt', 'Prot2', 'Host_ello', 'ca_name', 'group', 'cidr')
+        ('out', 1, 'PortDritt', 'Prot2', 'Host_ello', 'ca_name', 'group', 'cidr'),
+        ('in', 2, 'PortStort2', 'Prot1_2', 'Host_enta', 'ca_name2', 'group2', 'cidr2'),
+        ('out', 2, 'PortDritt2', 'Prot2_2', 'Host_inato', 'ca_name2', 'group2', 'cidr2')
     ],
     "MACCHINA": [
         ('macchina1', 1, 1),
-        ('macchina2', 1, 1)
+        ('macchina2', 2, 2)
     ],
     "USA":[
+        (1, 1),
+        (1, 2),
         (2, 1),
-        (1, 2)
+        (2, 2)
     ],
     "TEST": [
         (1,'CULO'),

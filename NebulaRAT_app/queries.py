@@ -12,7 +12,7 @@ def build_query(type, x):
         transformed = f"""
         SELECT c.ip_addr, m.descrizione
         FROM UTENTE u
-        JOIN USA as ua ON u.id = ua.macchina_id
+        JOIN USA as ua ON u.id = ua.utente_id
         JOIN MACCHINA as m ON ua.macchina_id = m.id
         JOIN CONF as c ON m.conf = c.id
         WHERE u.username = '{x}';
