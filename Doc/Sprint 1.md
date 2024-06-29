@@ -71,6 +71,16 @@ Auth a due fattori?? 👀
 Opzioni per implementare il login senza azure:
 - [Flask-Login](https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login)
 
+> [!tip]- IDEA, zero trust login
+> Nebula nasce come una virtual network per Zero-Trust architecture, questo tool nella fase di login ha senso che segua gli stessi principi, come implementare Zero-Trust login settings.
+> - Perchè non usiamo lo stesso Nebula per implemetare una architettura Zero-Trust?
+> 	- Servirebbe che l'intera applicazione fosse hostata su una macchina dell'architettura di nebula stesso...
+> 	- Implementare la cosa su Azure potrebbe non essere così facile.
+> 	- A questo si può aggiungere una multi factor auth per gli utenti.
+> 	- [Two Factor Auth with Flask](https://blog.miguelgrinberg.com/post/two-factor-authentication-with-flask)
+> 	- [Flask Login example](https://github.com/theburntcity/flask-login/blob/master/app.py)
+> 	- [OneTimePass Lib](https://github.com/tadeck/onetimepass/)
+
 
 ##### Che tipi di utenti esistono? Come li generiamo? Come gestiamo i permessi?
 Decidiamo che per questo primo sprint ci limitiamo solo ad un discorso di visibilità.

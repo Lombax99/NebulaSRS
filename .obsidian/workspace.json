@@ -20,18 +20,34 @@
             }
           },
           {
-            "id": "a85ee6be7a87053e",
+            "id": "bd8c998964287c16",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+                "file": "Doc/Sprint 1.md",
                 "mode": "source",
                 "source": false
               }
             }
+          },
+          {
+            "id": "96b809d466d14f8c",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "aorganizzazioneCodice.canvas",
+                "viewState": {
+                  "x": -175,
+                  "y": -380,
+                  "zoom": 0
+                }
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -97,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/PostgreSQL & Python/DB structure v2.md",
+                "file": "Doc/Sprint 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +130,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/PostgreSQL & Python/DB structure v2.md",
+                "file": "Doc/Sprint 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/PostgreSQL & Python/DB structure v2.md"
+                "file": "Doc/Sprint 1.md"
               }
             }
           },
@@ -158,35 +174,36 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Apri selezione rapida": false,
-      "graph:Apri vista grafo": false,
-      "canvas:Crea nuova lavagna": false,
-      "daily-notes:Apri nota del giorno": false,
-      "templates:Inserisci modello": false,
-      "command-palette:Apri riquadro comandi": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
-  "active": "a3f82dc810d2d118",
+  "active": "bd8c998964287c16",
   "lastOpenFiles": [
-    "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
-    "Doc/PostgreSQL & Python/DB structure v2.md",
-    "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
-    "Doc/PostgreSQL & Python/RAGIONAMENTI SU POSSIBILI RUOLI.md",
-    "NebulaRAT_app/templates/dashboard.html",
-    "Doc/PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
-    "Doc/PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
-    "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
-    "SchemaDB.png",
+    "aorganizzazioneCodice.canvas",
     "Piano di progettazione.md",
+    "Doc/Sprint 1.md",
+    "Doc/PostgreSQL & Python/DB structure v2.md",
+    "NebulaRAT_app/nebulaFiles/networkConfig.json",
+    "NebulaRAT_app/static/rat.ico",
+    "NebulaRAT_app/queries.py",
+    "NebulaRAT_app/__pycache__/queryexe.cpython-311.pyc",
+    "NebulaRAT_app/__pycache__/queries.cpython-311.pyc",
+    "SchemaDB.png",
+    "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+    "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
+    "Doc/PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
+    "Doc/PostgreSQL & Python/RAGIONAMENTI SU POSSIBILI RUOLI.md",
+    "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
     "antenv/lib/python3.10/site-packages/pexpect/utils.py",
     "antenv/lib/python3.10/site-packages/pexpect/spawnbase.py",
     "antenv/lib/python3.10/site-packages/pexpect/socket_pexpect.py",
     "antenv/lib/python3.10/site-packages/pexpect/screen.py",
     "antenv/lib/python3.10/site-packages/pexpect/run.py",
-    "antenv/lib/python3.10/site-packages/pexpect/pxssh.py",
-    "antenv/lib/python3.10/site-packages/pexpect/replwrap.py",
-    "antenv/lib/python3.10/site-packages/pexpect/pty_spawn.py",
-    "antenv/lib/python3.10/site-packages/pexpect/popen_spawn.py",
     "antenv/lib/python3.10/site-packages/msrest-0.7.1.dist-info/LICENSE.md",
     "antenv/lib/python3.10/site-packages/ipykernel/resources/logo-svg.svg",
     "antenv/lib/python3.10/site-packages/ipykernel/resources/logo-64x64.png",
@@ -197,9 +214,8 @@
     "antenv/lib/python3.10/site-packages/azure_mgmt_core-1.4.0.dist-info/LICENSE.md",
     "antenv/lib/python3.10/site-packages/IPython/core/tests/2x2.png",
     "antenv/lib/python3.10/site-packages/IPython/core/tests/2x2.jpg",
-    "Doc/Sprint 1.md",
+    "Doc/PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
     "README.md",
-    "aorganizzazioneCodice.canvas",
     "Doc/Nebula Remote Access Tool.md",
     "Doc/UtilityResources/Terraform + Azure setup.md",
     "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/owl.video.play.png",
