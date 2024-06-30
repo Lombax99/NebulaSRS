@@ -5,7 +5,6 @@ from flask import Flask, redirect, render_template, request, jsonify, session, u
 from queryexe import execute_query
 from queryexe import execute_query
 from queries import *
-from classes import *
 from models import session
 from flask_sqlalchemy import SQLAlchemy
 #import yaml
