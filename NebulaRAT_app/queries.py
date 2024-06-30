@@ -20,13 +20,7 @@ def build_query(type, x):
         """
     elif type == 'search_login':
         transformed = f"""
-        SELECT username
-        FROM UTENTE
-        WHERE username = '{x}';
-        """
-    elif type == 'search_pss':
-        transformed = f"""
-        SELECT password
+        SELECT username, password, nome, cognome
         FROM UTENTE
         WHERE username = '{x}';
         """

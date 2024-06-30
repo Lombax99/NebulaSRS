@@ -6,12 +6,9 @@ from flask import Flask, redirect, render_template, request, jsonify, session, u
 from queryexe import execute_query
 from queryexe import execute_query
 from queries import *
+from models import session
 #import yaml
 #import os
-session = {
-    'username':''
-}
-
 
 username = "xX_MagicMikeLove_Xx"  #da modificare quando si crea la sessione di login
 app = Flask(__name__)
@@ -31,15 +28,14 @@ def login():
 def login_exe():
     email = request.form['email']
     password = request.form['password']
-    dbEmail = execute_query(build_query('search_login', email))
-    if dbEmail[0][0] == email: #if it has found the email in the db
+    dbCred = execute_query(build_query('search_login', email))
+    if dbCred[0][0] == email: #if it has found the email in the db
         error = 0
-        # retreive passwd
-        dbPss = execute_query(build_query('search_pss', email))
-        if dbPss[0][0] == password:
+        if dbCred[0][1] == password:
             error = 0
             session['username'] = email
-            print(f"session {session['username']}")
+            session['name'] = dbCred[0][2]
+            session['surname'] = dbCred[0][3]
             return redirect('dashboard')
         else: 
             error = 1
@@ -53,10 +49,11 @@ def login_exe():
 @app.route('/dashboard')
 def dashboard():
     username = session['username']
+    nominativo = ""+session['name']+" "+session['surname']
     query = build_query('utente', username)
     macchine = execute_query(query)
     print('Request for dashboard page received')
-    return render_template('dashboard.html', macchine=macchine, username=username)
+    return render_template('dashboard.html', macchine=macchine, username=nominativo)
 
 @app.route('/signup')
 def signup():
@@ -108,6 +105,12 @@ def printFwRules():
     print(ip_addr)
     return render_template('firerules.html', rules=rules)
 
+@app.route('/logout')
+def logout():
+    session['username'] = ''
+    session['name'] = ''
+    session['surname'] = ''
+    return redirect('/')
 
 if __name__ == '__main__':
    app.run(debug=True)
