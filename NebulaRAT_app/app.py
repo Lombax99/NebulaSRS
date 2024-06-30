@@ -1,5 +1,4 @@
 #from generateCertificate import *
-import identity.web
 import requests
 from settings import postgresql as settings
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for
