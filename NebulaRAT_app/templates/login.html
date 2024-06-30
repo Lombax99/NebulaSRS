@@ -52,16 +52,21 @@
                             </a>
                             <h3>Log In</h3>
                         </div>
-                            <form>
+                            <form action="{{ url_for('login_exe')}}" method="post">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Username</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="mariorossi12@example.it">
+                                    <label for="email" class="form-label">Username</label>
+                                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="mariorossi12@example.it">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                </div>  
-                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4" onclick="window.location.href = '/dashboard'">Log In</button>
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" name="password" placeholder="Password" required autofocus/>
+                                </div>
+                                <div class="mb-3">
+                                    {% if (msg != "") %}
+                                    <p class="text-primary">{{ msg }}</p>
+                                    {% endif %}
+                                </div>
+                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Log In</button>
                             </form>
                         <p class="text-center mb-0">Don't have an Account? <a href="/signup">Sign Up</a></p>
                     </div>
@@ -84,6 +89,7 @@
 
     <!-- Template Javascript -->
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    
 </body>
 
 </html>

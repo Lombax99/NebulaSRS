@@ -4,9 +4,9 @@ import time
 
 test_data = {
     "UTENTE": [
-        ('luca', 'L', 'xD_darkangelcraft_xD', 'dipartimento dei migliori'),
-        ('marco', 'M', 'xX_MagicMikeLove_Xx', 'human resources wink wink'),
-        ('stefano', 'S', 'xX_St3f4n0_Xx', 'dipartimento degli spritz')
+        ('luca', 'L', 'luca@nebularat.com', 'luca123'),
+        ('marco', 'M', 'marco@nebularat.com', 'marco123'),
+        ('stefano', 'S', 'stefano@nebularat.com', 'stefano123')
     ],
     "CERT": [
         (1,"""-----BEGIN NEBULA CERTIFICATE-----
@@ -40,7 +40,8 @@ test_data = {
         (1, 1),
         (1, 2),
         (2, 1),
-        (2, 2)
+        (2, 2),
+        (3, 1)
     ],
     "TEST": [
         (1,'CULO'),
@@ -99,7 +100,7 @@ def create_test_tables(conn):
             nome VARCHAR(255) NOT NULL,
             cognome VARCHAR(255) NOT NULL,
             username VARCHAR(255) UNIQUE NOT NULL,
-            password VARCHAR(255)
+            password VARCHAR(255) NOT NULL
 		);
         """,
         """

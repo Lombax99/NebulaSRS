@@ -1,12 +1,21 @@
 #from generateCertificate import *
+import identity.web
+import requests
 from settings import postgresql as settings
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, redirect, render_template, request, jsonify, session, url_for
 from queryexe import execute_query
 from queryexe import execute_query
 from queries import *
 #import yaml
 #import os
+session = {
+    'username':''
+}
+
+
+username = "xX_MagicMikeLove_Xx"  #da modificare quando si crea la sessione di login
 app = Flask(__name__)
+
 
 @app.route('/')
 def root():
@@ -16,15 +25,38 @@ def root():
 @app.route('/login')
 def login():
     print('Request for index page received')
-    return render_template('login.html')
+    return render_template('login.html', msg="")
+
+@app.route('/login_exe', methods=['POST'])
+def login_exe():
+    email = request.form['email']
+    password = request.form['password']
+    dbEmail = execute_query(build_query('search_login', email))
+    if dbEmail[0][0] == email: #if it has found the email in the db
+        error = 0
+        # retreive passwd
+        dbPss = execute_query(build_query('search_pss', email))
+        if dbPss[0][0] == password:
+            error = 0
+            session['username'] = email
+            print(f"session {session['username']}")
+            return redirect('dashboard')
+        else: 
+            error = 1
+            msg = "Nome utente o password errati: riprovare!"
+            return render_template('login.html', msg=msg)
+    else:
+        error = 1
+        msg = "Nome utente non esistente. Registrati ora!"
+        return render_template('login.html', msg=msg)
 
 @app.route('/dashboard')
 def dashboard():
-    username = "xX_MagicMikeLove_Xx"  #da modificare quando si crea la sessione di login
-    query = build_query("macchine", username)
+    username = session['username']
+    query = build_query('utente', username)
     macchine = execute_query(query)
     print('Request for dashboard page received')
-    return render_template('dashboard.html', macchine=macchine)
+    return render_template('dashboard.html', macchine=macchine, username=username)
 
 @app.route('/signup')
 def signup():

@@ -1,6 +1,7 @@
 test = "SELECT * FROM TEST;"
 
 def build_query(type, x):
+
     if type == "firewall":
         transformed =f"""
         SELECT *
@@ -8,7 +9,7 @@ def build_query(type, x):
         JOIN CONF AS C ON C.ID = R.CONF_ID
         WHERE C.IP_ADDR = '{x}';
         """
-    else:
+    elif type == 'utente':
         transformed = f"""
         SELECT c.ip_addr, m.descrizione
         FROM UTENTE u
@@ -16,5 +17,17 @@ def build_query(type, x):
         JOIN MACCHINA as m ON ua.macchina_id = m.id
         JOIN CONF as c ON m.conf = c.id
         WHERE u.username = '{x}';
+        """
+    elif type == 'search_login':
+        transformed = f"""
+        SELECT username
+        FROM UTENTE
+        WHERE username = '{x}';
+        """
+    elif type == 'search_pss':
+        transformed = f"""
+        SELECT password
+        FROM UTENTE
+        WHERE username = '{x}';
         """
     return transformed

@@ -118,15 +118,15 @@ guarda: [[Framework utilizzato]]
 ### Division of work
 - Stefano
 	- [x] Postgres VS Mongo
-	- [ ] Tira giù DB Postgres
-	- [ ] Collegamento, creazione tabella, inserimento dati e queryù
+	- [x] Tira giù DB Postgres
+	- [x] Collegamento, creazione tabella, inserimento dati e queryù
 	- [ ] Documentazione del lavoro svolto ai passi precedenti
 - Luca
 	- [ ] Finire di tirare su Nebula nelle vm su azure
 	- [ ] Fare un mini esempio di webapp con flask e DB (postgres al momento)
 - Pasquale
 	- [ ] HTML e frontend in generale
-	- [ ] Tira giù DB Postgres
+	- [x] Tira giù DB Postgres
 	- [ ] Collegamento, creazione tabella, inserimento dati e query
 	- [ ] Documentazione del lavoro svolto ai passi precedenti
 
