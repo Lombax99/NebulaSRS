@@ -5,12 +5,20 @@ from flask import Flask, redirect, render_template, request, jsonify, session, u
 from queryexe import execute_query
 from queryexe import execute_query
 from queries import *
+from classes import *
 from models import session
+from flask_sqlalchemy import SQLAlchemy
 #import yaml
 #import os
+from sqlalchemy import text
 
-username = "xX_MagicMikeLove_Xx"  #da modificare quando si crea la sessione di login
+db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
+db = SQLAlchemy()
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+# initialize the database connection
+db.init_app(app)
+
 
 
 @app.route('/')
@@ -27,7 +35,7 @@ def login():
 def login_exe():
     email = request.form['email']
     password = request.form['password']
-    dbCred = execute_query(build_query('search_login', email))
+    dbCred = db.session.execute(text(build_query('search_login', email))).all()
     if dbCred[0][0] == email: #if it has found the email in the db
         error = 0
         if dbCred[0][1] == password:
@@ -49,8 +57,7 @@ def login_exe():
 def dashboard():
     username = session['username']
     nominativo = ""+session['name']+" "+session['surname']
-    query = build_query('utente', username)
-    macchine = execute_query(query)
+    macchine = db.session.execute(text(build_query('utente', username)))
     print('Request for dashboard page received')
     return render_template('dashboard.html', macchine=macchine, username=nominativo)
 
@@ -98,8 +105,7 @@ def mostraIpDescr():
 @app.route('/firerules', methods=['POST'])
 def printFwRules():
     ip_addr = str(request.form['bottone'])
-    query = build_query("firewall", ip_addr)
-    rules = execute_query(query)
+    rules = db.session.execute(text(build_query('firewall', ip_addr)))
     print('Request for dashboard page received')
     print(ip_addr)
     return render_template('firerules.html', rules=rules)

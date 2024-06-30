@@ -1,4 +1,4 @@
-test = "SELECT * FROM TEST;"
+test = "SELECT ip_addr FROM CONF JOIN MACCHINA ON MACCHINA.CONF = CONF.ID WHERE MACCHINA.DESCRIZIONE = 'macchina1';"
 
 def build_query(type, x):
 
