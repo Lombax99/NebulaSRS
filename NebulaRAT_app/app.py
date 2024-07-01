@@ -88,7 +88,6 @@ def login():
 @app.route('/dashboard/<username>')
 @login_required
 def dashboard(username):
-
     macchine = db.session.execute(text(build_query('utente', username)))
     print('Request for dashboard page received')
     return render_template('dashboard.html', macchine=macchine, username=username)
