@@ -13,13 +13,51 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Doc/PostgreSQL & Python/DB structure v2.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "91f709b649e19cc4",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "SchemaDB.png"
+              }
+            }
+          },
+          {
+            "id": "bd8c998964287c16",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "Doc/Sprint 1.md",
                 "mode": "source",
                 "source": false
               }
             }
+          },
+          {
+            "id": "96b809d466d14f8c",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "aorganizzazioneCodice.canvas",
+                "viewState": {
+                  "x": -175,
+                  "y": -380,
+                  "zoom": 0
+                }
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -85,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/Sprint 1.md",
+                "file": "aorganizzazioneCodice.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +140,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/Sprint 1.md",
+                "file": "aorganizzazioneCodice.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +163,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/Sprint 1.md"
+                "file": "aorganizzazioneCodice.canvas"
               }
             }
           },
@@ -146,44 +184,36 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Apri selezione rapida": false,
-      "graph:Apri vista grafo": false,
-      "canvas:Crea nuova lavagna": false,
-      "daily-notes:Apri nota del giorno": false,
-      "templates:Inserisci modello": false,
-      "command-palette:Apri riquadro comandi": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
-  "active": "a3f82dc810d2d118",
+  "active": "96b809d466d14f8c",
   "lastOpenFiles": [
-    "NebulaRAT_app/__pycache__/app.cpython-311.pyc",
-    "NebulaRAT_app/classes.py",
-    "NebulaRAT_app/classes.pù",
-    "NebulaRAT_app/userClass.py",
-    "Doc/PostgreSQL & Python/DB structure v2.md",
-    "aorganizzazioneCodice.canvas",
-    "Piano di progettazione.md",
-    "SchemaDB.png",
     "Doc/Sprint 1.md",
-    "Doc/Nebula Remote Access Tool.md",
-    "Doc/Framework utilizzato.md",
-    "Doc/BasicNetworkArchitecture.canvas",
-    "Doc/UtilityResources/Terraform + Azure setup.md",
-    "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
-    "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
-    "Doc/PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
-    "Doc/PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
-    "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
-    "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
-    "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+    "Doc/PostgreSQL & Python/DB structure v2.md",
+    "SchemaDB.png",
+    "NebulaRAT_app/nebulaFiles/admin2.crt",
+    "NebulaRAT_app/nebulaFiles/admin2.key",
+    "aorganizzazioneCodice.canvas",
+    "NebulaRAT_app/nebulaFiles/testMachineFiles",
+    "NebulaRAT_app/nebulaFiles/machine",
+    "NebulaRAT_app/__pycache__/queries.cpython-310.pyc",
+    "NebulaRAT_app/__pycache__/models.cpython-311.pyc",
+    "NebulaRAT_app/__pycache__/classes.cpython-311.pyc",
+    "NebulaRAT_app/__pycache__/app.cpython-311.pyc",
+    "NebulaRAT_app/templates/firerules.html",
+    "Piano di progettazione.md",
     "NebulaRAT_app/nebulaFiles/networkConfig.json",
-    "NebulaRAT_app/static/rat.ico",
-    "NebulaRAT_app/queries.py",
-    "NebulaRAT_app/__pycache__/queryexe.cpython-311.pyc",
-    "NebulaRAT_app/__pycache__/queries.cpython-311.pyc",
+    "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+    "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
+    "Doc/PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
     "Doc/PostgreSQL & Python/RAGIONAMENTI SU POSSIBILI RUOLI.md",
-    "antenv/lib/python3.10/site-packages/pexpect/utils.py",
-    "antenv/lib/python3.10/site-packages/pexpect/spawnbase.py",
+    "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
     "antenv/lib/python3.10/site-packages/msrest-0.7.1.dist-info/LICENSE.md",
     "antenv/lib/python3.10/site-packages/ipykernel/resources/logo-svg.svg",
     "antenv/lib/python3.10/site-packages/ipykernel/resources/logo-64x64.png",
@@ -194,15 +224,22 @@
     "antenv/lib/python3.10/site-packages/azure_mgmt_core-1.4.0.dist-info/LICENSE.md",
     "antenv/lib/python3.10/site-packages/IPython/core/tests/2x2.png",
     "antenv/lib/python3.10/site-packages/IPython/core/tests/2x2.jpg",
+    "Doc/PostgreSQL & Python/TEST SCRIPT PER SCARICARE DI CONFIG E CERTIFICATO.md",
     "README.md",
+    "Doc/Nebula Remote Access Tool.md",
+    "Doc/UtilityResources/Terraform + Azure setup.md",
     "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/owl.video.play.png",
     "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/ajax-loader.gif",
     "NebulaRAT_app/darkpan-1.0.0/img/user.jpg",
     "NebulaRAT_app/darkpan-1.0.0/img/testimonial-2.jpg",
+    "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
+    "Doc/Framework utilizzato.md",
     "venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
     "Web app tutorial.md",
     "CHANGELOG.md",
     "CONTRIBUTING.md",
-    "Doc/UtilityResources/Delete before public availability and sharing.md"
+    "Doc/UtilityResources/Delete before public availability and sharing.md",
+    "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
+    "Doc/BasicNetworkArchitecture.canvas"
   ]
 }

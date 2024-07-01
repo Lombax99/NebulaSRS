@@ -1,44 +1,39 @@
 [
     {
-        "name": "lighthouse",
+        "descrizione": "lighthouse",
         "nebula_ip": "192.168.100.1/24",
         "machine_ip": "192.168.1.10",
-        "groups": []
+        "cert": "nebulaFiles/testMachineFiles/lighthouse.crt",
+        "config": "nebulaFiles/testMachineFiles/lighthouse.conf"
     },
     {
-        "name": "laptop1",
+        "descrizione": "laptop1",
         "nebula_ip": "192.168.100.11/24",
-        "groups": [
-            "serverAccessSD"
-        ]
+        "cert": "nebulaFiles/testMachineFiles/laptop1.crt",
+        "config": "nebulaFiles/testMachineFiles/laptop1.conf"
     },
     {
-        "name": "laptop2",
+        "descrizione": "laptop2",
         "nebula_ip": "192.168.100.12/24",
-        "groups": [
-            "serverAccessSD"
-        ]
+        "cert": "nebulaFiles/testMachineFiles/laptop2.crt",
+        "config": "nebulaFiles/testMachineFiles/laptop2.conf"
     },
     {
-        "name": "laptop3",
+        "descrizione": "laptop3",
         "nebula_ip": "192.168.100.13/24",
-        "groups": [
-            "serverAccessSD"
-        ]
+        "cert": "nebulaFiles/testMachineFiles/laptop3.crt",
+        "config": "nebulaFiles/testMachineFiles/laptop3.conf"
     },
     {
-        "name": "server1",
+        "descrizione": "server1",
         "nebula_ip": "192.168.100.21/24",
-        "groups": [
-            "serverSD",
-            "serverAccessSD"
-        ]
+        "cert": "nebulaFiles/testMachineFiles/server1.crt",
+        "config": "nebulaFiles/testMachineFiles/server1.conf"
     },
     {
-        "name": "server2",
+        "descrizione": "server2",
         "nebula_ip": "192.168.100.22/24",
-        "groups": [
-            "serverSD"
-        ]
+        "cert": "nebulaFiles/testMachineFiles/server2.crt",
+        "config": "nebulaFiles/testMachineFiles/server2.conf"
     }
 ]

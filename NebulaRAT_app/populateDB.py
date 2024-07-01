@@ -1,6 +1,7 @@
 import psycopg2
 from settings import postgresql as settings
 import time
+import json
 
 test_data = {
     "UTENTE": [
@@ -198,14 +199,33 @@ def upload_test_data(conn):
         print("Error while filling table:", error)
         return str(error)
 
-
 def upload_machines(conn, filepath):
     try:
-        data = []
-        insert_in_table(conn, "MACCHINA", data)        
+        # Read the data from networkConfig.json
+        with open("nebulaFiles/networkConfig.json") as file:
+            data = json.load(file)
+
+        # Extract the required values from the data
+        values = []
+        for machine in data:
+            values.append((machine["descrizione"], machine["cert"], machine["config"]))
+        
+        # Insert the values into the MACCHINA table
+        #insert_in_table(conn, "MACCHINA", values)
+
+        # upload of certificate values
+
+        # upload of config data in CONF table
+
+        # upload of single rules in REGOLA table
+
+
     except (psycopg2.DatabaseError, Exception) as error:
         print("Error while filling table:", error)
         return str(error)    
+
+
+
 
 def main():
     try:
@@ -221,35 +241,8 @@ def main():
         print("Error while connecting to PostgreSQL", error)
         return str(error)
     
-    upload_test_data(conn)
-    #upload_machines(conn, "file.json")
-
-    '''# Define your data to be inserted
-    data = [
-        (0, 'CULO'),
-        (1, 'PALLE'),
-        (2, "altre palle"),
-        (3, "più palle"),
-        (4, "ancora più palle")
-    ]
-
-    # Create a cursor object to execute SQL queries
-    cur = conn.cursor()
-    # Truncate the TEST table to remove all data
-    cur.execute("TRUNCATE TABLE TEST")
-
-    insert_in_table(conn, "TEST", data)
-
-    # Fetch all the data from the TEST table
-    cur.execute("SELECT * FROM TEST")
-    rows = cur.fetchall()
-
-    # Print the data
-    for row in rows:
-        print(row)
-
-    # Close the cursor and connection
-    cur.close()'''
+    #upload_test_data(conn)
+    upload_machines(conn, "file.json")
 
     # Close the connection
     conn.close()

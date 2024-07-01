@@ -59,6 +59,20 @@ Ergo, la migliore soluzione è usare PostgreSQL.
 > - Primary server/DB full consistency always (check differency between primary and master)
 > - Secondary server/DB consistency eventually (lazy consistency)
 > - Regola dei 3 backup (è una cosa diversa dalla distribuzione del DB)
+
+##### Upload dei file su DB?
+L'upload del DB non è parte dei requisiti fondamentali del progetto, è tuttavia logico credere che il sistema finale debba aver la possibilità di caricare e aggiornare i dati nel DB. In questo caso ci limiteremo a delle semplici funzionalità che caricano i dati presi da un json pre formato.
+
+```json
+{
+	"descrizione": "laptop1",
+	"nebula_ip": "192.168.100.11/24",
+	"cert": "/path/to/file",
+	"config": "/path/to/file"
+},
+```
+
+i parametri di "cert" e "config" indicano il percorso che identifica i corrispettivi file di certificato e configurazione della macchina. Questo perchè si suppone che la configurazione delle macchine venga fatta in automatico o con l'assistenza di tool, nascondendo la complessità all'utente di gestire grandi quantità di file. Questo ovviamente sarebbe dipendente dai tool usati la soluzione proposta prende in considerazione un possibile scenario senza insinuare che sia il metodo migliore.
 ##### Come teniamo traccia dei permessi dei vari utenti?
 Bisogna salvarsi nel DB una tabella che associa utenti e macchine a cui possono accedere.
 molto probabilmente converrà fare una tabella con tutti gli utenti e per ogni utente segnarsi a quale macchina può accedere. Il motivo è che lo spazio in memoria di un DB non è un grosso problema, posso sprecarne quanto ne voglio mentre dato un utente loggato è possibile che questo mi richieda certificati per più macchine e quindi mi tengo i dati salvati in cache o qualcosa di simile per velocizzare la cosa.
