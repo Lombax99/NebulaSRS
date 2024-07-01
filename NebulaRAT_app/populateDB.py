@@ -2,14 +2,14 @@ import psycopg2
 from settings import postgresql as settings
 import time
 import json
-from app import bcrypt
+#from app import bcrypt
 
 test_data = {
-    "UTENTE": [
-        ('luca', 'L', 'luca@nebularat.com', bcrypt.generate_password_hash('luca')),
-        ('marco', 'M', 'marco@nebularat.com', bcrypt.generate_password_hash('marco')),
-        ('stefano', 'S', 'stefano@nebularat.com', bcrypt.generate_password_hash('stefano'))
-    ],
+    #"UTENTE": [
+        #('luca', 'L', 'luca@nebularat.com', bcrypt.generate_password_hash('luca')),
+        #('marco', 'M', 'marco@nebularat.com', bcrypt.generate_password_hash('marco')),
+        #('stefano', 'S', 'stefano@nebularat.com', bcrypt.generate_password_hash('stefano'))
+    #],
     "CERT": [
         (1,"""-----BEGIN NEBULA CERTIFICATE-----
             CmQKBmFkbWluMhIK5MihhQyA/v//DyiU3bezBjCUvrmzBjognides04bE5q5oLFu
