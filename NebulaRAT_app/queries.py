@@ -6,16 +6,15 @@ def build_query(type, x):
         transformed =f"""
         SELECT *
         FROM REGOLA AS R
-        JOIN CONF AS C ON C.ID = R.CONF_ID
-        WHERE C.IP_ADDR = '{x}';
+        JOIN MACCHINA AS M ON M.ID = R.MACCHINA_ID
+        WHERE M.IP_ADDR = '{x}';
         """
     elif type == 'utente':
         transformed = f"""
-        SELECT c.ip_addr, m.descrizione
+        SELECT m.ip_addr, m.descrizione
         FROM UTENTE u
         JOIN USA as ua ON u.id = ua.utente_id
         JOIN MACCHINA as m ON ua.macchina_id = m.id
-        JOIN CONF as c ON m.conf = c.id
         WHERE u.username = '{x}';
         """
     elif type == 'search_login':

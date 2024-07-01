@@ -78,17 +78,15 @@ def login():
     if form.validate_on_submit():
         user = Utente.query.filter_by(username=form.username.data).first()
         if user:
-            passwd = db.session.execute(text(build_query('search_login', form.username.data))).all()
-            passwd2 = passwd[0][1]
-            if passwd2 == str(form.password.data):
-            #if bcrypt.check_password_hash(user.password, form.password.data):
+            if bcrypt.check_password_hash(bytes(user.password), form.password.data):
                 login_user(user)
-                return redirect(url_for('dashboard', username=passwd[0][0]))
+                return redirect(url_for('dashboard', username=form.username.data))
     return render_template('login.html', form=form)
 
 
 
 @app.route('/dashboard/<username>')
+@login_required
 def dashboard(username):
 
     macchine = db.session.execute(text(build_query('utente', username)))
@@ -99,7 +97,7 @@ def dashboard(username):
 def signup():
     formReg = RegisterForm()
     if formReg.validate_on_submit():
-        hashed_password = str(bcrypt.generate_password_hash(formReg.password.data))
+        hashed_password = bcrypt.generate_password_hash(formReg.password.data)
         nome = formReg.name.data
         cognome = formReg.surname.data
         username = formReg.username.data

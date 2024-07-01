@@ -1,17 +1,14 @@
 import psycopg2
 from settings import postgresql as settings
 import time
-<<<<<<< Updated upstream
 import json
+from app import bcrypt
 
-=======
-from NebulaRAT_app.app import bcrypt
->>>>>>> Stashed changes
 test_data = {
     "UTENTE": [
-        ('luca', 'L', 'luca@nebularat.com', str(bcrypt.generate_password_hash('luca'))),
-        ('marco', 'M', 'marco@nebularat.com', str(bcrypt.generate_password_hash('marco'))),
-        ('stefano', 'S', 'stefano@nebularat.com', str(bcrypt.generate_password_hash('stefano')))
+        ('luca', 'L', 'luca@nebularat.com', bcrypt.generate_password_hash('luca')),
+        ('marco', 'M', 'marco@nebularat.com', bcrypt.generate_password_hash('marco')),
+        ('stefano', 'S', 'stefano@nebularat.com', bcrypt.generate_password_hash('stefano'))
     ],
     "CERT": [
         (1,"""-----BEGIN NEBULA CERTIFICATE-----
@@ -27,15 +24,15 @@ test_data = {
             vVps8qfR/QukM4827MJ77g/ACe/cturaT4BPfreS0IuQ2dOyMUzkkPgwKpcK
             -----END NEBULA CERTIFICATE-----""")
     ],
+    "MACCHINA": [
+        ('macchina1', '192.168.1.1', 1),
+        ('macchina2', '192.168.1.2', 2)
+    ],
     "REGOLA": [
         ('in', 1, 'PortStort', 'Prot1', 'Host_aggio', 'ca_name', 'group', 'cidr'),
         ('out', 1, 'PortDritt', 'Prot2', 'Host_ello', 'ca_name', 'group', 'cidr'),
         ('in', 2, 'PortStort2', 'Prot1_2', 'Host_enta', 'ca_name2', 'group2', 'cidr2'),
         ('out', 2, 'PortDritt2', 'Prot2_2', 'Host_inato', 'ca_name2', 'group2', 'cidr2')
-    ],
-    "MACCHINA": [
-        ('macchina1', '192.168.1.1', 1),
-        ('macchina2', '192.168.1.2', 2)
     ],
     "USA":[
         (1, 1),
@@ -60,7 +57,7 @@ def insert_in_table(conn, table_name, data):
         
         # Define the SQL query to insert data
         if table_name == "MACCHINA":
-            query = f"INSERT INTO {table_name} (descrizione, ip_addr cert) VALUES (%s, %s %s)"
+            query = f"INSERT INTO {table_name} (descrizione, ip_addr, cert) VALUES (%s, %s, %s)"
         elif table_name == "UTENTE":
             query = f"INSERT INTO {table_name} (nome, cognome, username, password) VALUES (%s, %s, %s, %s)"
         elif table_name == "USA":
@@ -68,7 +65,7 @@ def insert_in_table(conn, table_name, data):
         elif table_name == "CERT":
             query = f"INSERT INTO {table_name} (id, descrizione) VALUES (%s, %s)"
         elif table_name == "REGOLA":
-            query = f"INSERT INTO {table_name} (inout, conf_id, port, proto, host, ca_name, gruppi, cidr) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+            query = f"INSERT INTO {table_name} (inout, macchina_id, port, proto, host, ca_name, gruppi, cidr) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
         elif table_name == "TEST":
             query = f"INSERT INTO {table_name} (id, description) VALUES (%s, %s)"
         else: 
@@ -99,13 +96,21 @@ def create_test_tables(conn):
             nome VARCHAR(255) NOT NULL,
             cognome VARCHAR(255) NOT NULL,
             username VARCHAR(255) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL
+            password BYTEA NOT NULL
 		);
         """,
         """
         CREATE TABLE CERT (
             id SERIAL PRIMARY KEY,
             descrizione VARCHAR(511) NOT NULL
+        );
+        """,
+        """
+        CREATE TABLE MACCHINA (
+            id SERIAL PRIMARY KEY,
+            descrizione VARCHAR(255),
+            ip_addr VARCHAR(20) UNIQUE NOT NULL,
+            cert  INTEGER NOT NULL REFERENCES CERT(id)
         );
         """,
         """
@@ -119,14 +124,6 @@ def create_test_tables(conn):
 			ca_name VARCHAR(255),
 			gruppi VARCHAR(500),
 			cidr VARCHAR(20)
-        );
-        """,
-        """
-        CREATE TABLE MACCHINA (
-            id SERIAL PRIMARY KEY,
-            descrizione VARCHAR(255),
-            ip_addr VARCHAR(20) UNIQUE NOT NULL,
-            cert  INTEGER NOT NULL REFERENCES CERT(id)
         );
         """,
         """
@@ -230,8 +227,8 @@ def main():
         print("Error while connecting to PostgreSQL", error)
         return str(error)
     
-    #upload_test_data(conn)
-    upload_machines(conn, "file.json")
+    upload_test_data(conn)
+    #upload_machines(conn, "file.json")
 
     # Close the connection
     conn.close()
