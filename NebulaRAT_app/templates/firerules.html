@@ -79,36 +79,47 @@
             </nav>
             <!-- Navbar End -->
 
-           
             <!-- Features Start -->
-            <div class="table-responsive" style="margin-top: 20%;">
-                <!-- Tabella regole-->
-                <table class="table text-center align-middle table-bordered table-hover mb-0">
-                    <thead>
-                        <tr class="text-white">
-                            <th scope="col">Type</th>
-                            <th scope="col">Port</th>
-                            <th scope="col">Protocol</th>
-                            <th scope="col">Host</th>
-                            <th scope="col">CA</th>
-                            <th scope="col">Groups</th>
-                            <th scope="col">CIDR</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for rule in rules %}
-                        <tr>
-                            <td>{{ rule[1] }}</td>
-                            <td>{{ rule[3] }}</td>
-                            <td>{{ rule[4] }}</td>
-                            <td>{{ rule[5] }}</td>
-                            <td>{{ rule[6] }}</td>
-                            <td>{{ rule[7] }}</td>
-                            <td>{{ rule[8] }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Regole del Firewall</h6>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-center align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Port</th>
+                                    <th scope="col">Protocol</th>
+                                    <th scope="col">Host</th>
+                                    <th scope="col">CA</th>
+                                    <th scope="col">Groups</th>
+                                    <th scope="col">CIDR</th>
+                                    <th scope="col">TCP Timeout</th>
+                                    <th scope="col">UDP Timeout</th>
+                                    <th scope="col">Default Timeout</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for rule in rules %}
+                                    <tr>
+                                        <td>{{ rule[1] }}</td>
+                                        <td>{{ rule[3] }}</td>
+                                        <td>{{ rule[4] }}</td>
+                                        <td>{{ rule[5] }}</td>
+                                        <td>{{ rule[6] }}</td>
+                                        <td>{{ rule[7] }}</td>
+                                        <td>{{ rule[8] }}</td>
+                                        <td>{{ rule[11] }}</td>
+                                        <td>{{ rule[12] }}</td>
+                                        <td>{{ rule[13] }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
             <!-- Features End -->
         </div>
