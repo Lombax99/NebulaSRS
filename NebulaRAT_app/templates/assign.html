@@ -48,7 +48,7 @@
                 <div class="d-flex align-items-center ms-4 mb-4"></div>
                 <div class="navbar-nav w-100">
                     <a href="/logout" class="nav-item nav-link"><i class="fa fa-sign-out-alt me-2"></i>Logout</a>
-                    <a href="/signup" class="nav-item nav-link"><i class="fa fa-user-plus me-2"></i>Add new user</a>
+                    <a href="/adduser" class="nav-item nav-link"><i class="fa fa-user-plus me-2"></i>Add new user</a>
                     <a href="{{url_for('dashboard_admin', username=username)}}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                 </div>
             </nav>
@@ -113,7 +113,7 @@
                                     {% endfor %}
                                 </tbody>
                             </table>
-                            <button type="submit" class="btn btn-primary py-3 w-45 mb-4 mt-5">Assign!</button>
+                            <button type="submit" class="btn btn-primary py-3 w-45 mb-4 mt-5">Assign</button>
                     </form>
                     </div>
                 </div>
@@ -122,24 +122,6 @@
         </div>
         <!-- Content End -->
         
-        <!-- Modal -->
-        <div class="modal fade" id="firewallModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content bg-secondary text-white">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Firewall Rules</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body" id="firewallRulesContent">
-                        <!-- Le regole del firewall verranno caricate qui -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div> 
-
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>

@@ -120,8 +120,8 @@ def dashboard_admin(username):
     macchine = db.session.execute(text(tutte))
     return render_template('dashboard_admin.html', macchine=macchine, username=current_user.nome)
 
-@app.route('/signup', methods=['GET','POST'])
-def signup():
+@app.route('/adduser', methods=['GET','POST'])
+def adduser():
     # Crea oggetto per il form
     formReg = RegisterForm()
     # Retreiving dei valori 
@@ -229,6 +229,24 @@ def assignment(idut):
     return redirect(url_for('dashboard_admin', username=current_user.nome))
 
 
+@app.route('/revoke', methods=['POST'])
+def revoke():
+    # Riceve il nome e il cognome dell'utente
+    email = str(request.form['user'])
+    nomeC = db.session.execute(text(build_query("whois", email))).first()
+    # Ricava le lista delle macchine a cui l'utente già accede
+    accede = db.session.execute(text(build_query("revocation", email))).all()
+    return render_template('revoke.html', email=email, nomeC=nomeC, accede=accede, username=current_user.nome)
+
+@app.route('/revokation/<idut>', methods=['GET','POST'])
+def revokation(idut):
+    checked_machines = request.form.getlist('macc')
+    # For each machine id retreived, revokes the machine to the user
+    for idmac in checked_machines:
+        usa = db.session.get(Usa, idmac)
+        db.session.delete(usa)
+        db.session.commit()
+    return redirect(url_for('dashboard_admin', username=current_user.nome))
 
 @app.route('/logout')
 def logout():
