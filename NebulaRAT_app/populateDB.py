@@ -2,14 +2,15 @@ import psycopg2
 from settings import postgresql as settings
 import time
 import json
-#from app import bcrypt
+from app import bcrypt
 
 test_data = {
-    #"UTENTE": [
-        #('luca', 'L', 'luca@nebularat.com', bcrypt.generate_password_hash('luca')),
-        #('marco', 'M', 'marco@nebularat.com', bcrypt.generate_password_hash('marco')),
-        #('stefano', 'S', 'stefano@nebularat.com', bcrypt.generate_password_hash('stefano'))
-    #],
+    "UTENTE": [
+        ('luca', 'L', 'luca@nebularat.com', bcrypt.generate_password_hash('luca')),
+        ('marco', 'M', 'marco@nebularat.com', bcrypt.generate_password_hash('marco')),
+        ('stefano', 'S', 'stefano@nebularat.com', bcrypt.generate_password_hash('stefano')),
+        ('admin', 'admin', 'administration@admin.nebularat.com', bcrypt.generate_password_hash('admin'))
+    ],
     "CERT": [
         (1,"""-----BEGIN NEBULA CERTIFICATE-----
             CmQKBmFkbWluMhIK5MihhQyA/v//DyiU3bezBjCUvrmzBjognides04bE5q5oLFu
@@ -22,17 +23,25 @@ test_data = {
             BjCQsPK8Bjogb5TKN0XccSK9B3hcUIywSUpVvbmsH8/ZkuHrOZNeki9KIKEMXGhj
             CUfmR6zpDw5OE13aJqAZ5UBh6rbM2PJe9OHuEkBwSdgyl6y6/2yYGlFDRfzApCKu
             vVps8qfR/QukM4827MJ77g/ACe/cturaT4BPfreS0IuQ2dOyMUzkkPgwKpcK
+            -----END NEBULA CERTIFICATE-----"""),
+        (3, """-----BEGIN NEBULA CERTIFICATE-----
+            CjwKCk15b3JnLCBJbmMokcntrQYwkbDyvAY6IFxDdM4weRdch/weZFibIWzp3GAR
+            GC2k+wF0UuzEFYkIQAESQFM9qMuKKRXKPmmxWdcEt2xT++oShUZlURDPLa0b9Hk1
+            jzPw370QRwAggKolbxCxhhDw6GoF6AZRxVdbKgUYHAA=
             -----END NEBULA CERTIFICATE-----""")
     ],
     "MACCHINA": [
         ('macchina1', '192.168.1.1', 1),
-        ('macchina2', '192.168.1.2', 2)
+        ('macchina2', '192.168.1.2', 2),
+        ('macchina3', '192.168.1.3', 3)
     ],
     "REGOLA": [
         ('in', 1, 'PortStort', 'Prot1', 'Host_aggio', 'ca_name', 'group', 'cidr'),
         ('out', 1, 'PortDritt', 'Prot2', 'Host_ello', 'ca_name', 'group', 'cidr'),
         ('in', 2, 'PortStort2', 'Prot1_2', 'Host_enta', 'ca_name2', 'group2', 'cidr2'),
-        ('out', 2, 'PortDritt2', 'Prot2_2', 'Host_inato', 'ca_name2', 'group2', 'cidr2')
+        ('out', 2, 'PortDritt2', 'Prot2_2', 'Host_inato', 'ca_name2', 'group2', 'cidr2'),
+        ('in', 3, 'PortStort3', 'Never', 'gonna', 'give', 'you', 'up'),
+        ('out', 3, 'PortDritt3', 'Never', 'gonna', 'let', 'you', 'down')
     ],
     "USA":[
         (1, 1),

@@ -45,14 +45,11 @@
             "id": "96b809d466d14f8c",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "aorganizzazioneCodice.canvas",
-                "viewState": {
-                  "x": -175,
-                  "y": -380,
-                  "zoom": 0
-                }
+                "file": "Doc/Sprint 1.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -123,7 +120,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "aorganizzazioneCodice.canvas",
+                "file": "Doc/Sprint 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +137,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "aorganizzazioneCodice.canvas",
+                "file": "Doc/Sprint 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -163,7 +160,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "aorganizzazioneCodice.canvas"
+                "file": "Doc/Sprint 1.md"
               }
             }
           },
@@ -194,12 +191,14 @@
   },
   "active": "96b809d466d14f8c",
   "lastOpenFiles": [
+    "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
+    "Doc/BasicNetworkArchitecture.canvas",
+    "aorganizzazioneCodice.canvas",
     "Doc/Sprint 1.md",
     "Doc/PostgreSQL & Python/DB structure v2.md",
     "SchemaDB.png",
     "NebulaRAT_app/nebulaFiles/admin2.crt",
     "NebulaRAT_app/nebulaFiles/admin2.key",
-    "aorganizzazioneCodice.canvas",
     "NebulaRAT_app/nebulaFiles/testMachineFiles",
     "NebulaRAT_app/nebulaFiles/machine",
     "NebulaRAT_app/__pycache__/queries.cpython-310.pyc",
@@ -232,14 +231,12 @@
     "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/ajax-loader.gif",
     "NebulaRAT_app/darkpan-1.0.0/img/user.jpg",
     "NebulaRAT_app/darkpan-1.0.0/img/testimonial-2.jpg",
-    "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
     "Doc/Framework utilizzato.md",
     "venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
     "Web app tutorial.md",
     "CHANGELOG.md",
     "CONTRIBUTING.md",
     "Doc/UtilityResources/Delete before public availability and sharing.md",
-    "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
-    "Doc/BasicNetworkArchitecture.canvas"
+    "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md"
   ]
 }

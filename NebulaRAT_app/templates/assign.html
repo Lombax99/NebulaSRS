@@ -48,6 +48,8 @@
                 <div class="d-flex align-items-center ms-4 mb-4"></div>
                 <div class="navbar-nav w-100">
                     <a href="/logout" class="nav-item nav-link"><i class="fa fa-sign-out-alt me-2"></i>Logout</a>
+                    <a href="/signup" class="nav-item nav-link"><i class="fa fa-user-plus me-2"></i>Add new user</a>
+                    <a href="{{url_for('dashboard_admin', username=username)}}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                 </div>
             </nav>
         </div>
@@ -56,16 +58,13 @@
 
         <!-- Content Start -->
         <div class="content">
-            <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
-                </a>
+             <!-- Navbar Start -->
+             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
                 <a href="#" class="sidebar-toggler flex-shrink-0"><i class="fa fa-bars"></i></a>
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <span class="d-none d-lg-inline-flex">Ciao {{ username }}</span>
+                            <span class="d-none d-lg-inline-flex">{{ username }}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="/logout" class="dropdown-item">Logout</a>
@@ -79,25 +78,37 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">{{ username }} - Macchine Disponibili</h6>
+                        <h6 class="mb-0">Machines assignment for {{ nomeC[0] }} {{ nomeC[1] }} {{ accede }}</h6>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-center align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
-                                    <th scope="col">Descrizione</th>
-                                    <th scope="col">Indirizzo IP</th>
-                                    <th scope="col">Genera Certificato</th>
-                                    <th scope="col">Stampa Regole di Firewall</th>
+                                    <th scope="col">IP Address</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for macchina in macchine %}
+                                {% set ns = namespace(found = False) %}
                                     <tr>
                                         <td>{{ macchina[1] }}</td>
-                                        <td>{{ macchina[0] }}</td>
-                                        <td><a class="btn btn-sm btn-primary" href="#">Genera</a></td>
-                                        <td><form name="passmachine" action="/firerules" method="post"><button name="bottone" type="submit" class="btn btn-sm btn-primary" value="{{ macchina[0] }}" >Stampa</button></form></td>
+                                        <td>{{ macchina[2] }}</td>
+                                        <td>
+                                            {% for row in accede if ns.found == False %}
+                                            {% if row[0] == macchina[1] %}
+                                            {% set ns.found = True %}
+                                            {% endif %}
+                                            {% endfor %}
+                                                <form name="passmachine" action="assign" method="post">
+                                                    {% if ns.found %}
+                                                      <input type="checkbox" class="form-check-input" name="macc_checked" value="{{ macchina[0] }}" checked>
+                                                    {% else %}
+                                                        <input type="checkbox" class="form-check-input" name="macc" value="{{ macchina[0] }}">
+                                                    {% endif %}
+                                                </form>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

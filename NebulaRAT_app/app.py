@@ -74,13 +74,23 @@ def root():
 
 @app.route('/login/', methods=['GET','POST'])
 def login():
+    # if user is logged, we go to dashboard
+    if current_user.is_authenticated:
+        if current_user.username == 'administration@admin.nebularat.com':
+            return redirect(url_for('dashboard_admin', username=current_user.nome))
+        else:
+            return redirect(url_for('dashboard', username=current_user.nome))
+    
     form = LoginForm()
     if form.validate_on_submit():
         user = Utente.query.filter_by(username=form.username.data).first()
         if user:
             if bcrypt.check_password_hash(bytes(user.password), form.password.data):
                 login_user(user)
-                return redirect(url_for('dashboard', username=form.username.data))
+                if form.username.data == 'administration@admin.nebularat.com':
+                    return redirect(url_for('dashboard_admin', username=user.nome))
+                else:
+                    return redirect(url_for('dashboard', username=user.nome))
     return render_template('login.html', form=form)
 
 
@@ -88,23 +98,39 @@ def login():
 @app.route('/dashboard/<username>')
 @login_required
 def dashboard(username):
-    macchine = db.session.execute(text(build_query('utente', username)))
-    print('Request for dashboard page received')
-    return render_template('dashboard.html', macchine=macchine, username=username)
+    # Mostra solo le macchine a cui ha il permesso di accedere
+    macchine = db.session.execute(text(build_query("utente", current_user.username)))
+    return render_template('dashboard.html', macchine=macchine, username=current_user.nome)
+
+@app.route('/dashboard_admin/<username>')
+@login_required
+def dashboard_admin(username):
+    # Mostra tutte le macchine nel sistema
+    macchine = db.session.execute(text(tutte))
+    return render_template('dashboard_admin.html', macchine=macchine, username=current_user.nome)
 
 @app.route('/signup', methods=['GET','POST'])
 def signup():
+    # Crea oggetto per il form
     formReg = RegisterForm()
+    # Retreiving dei valori 
     if formReg.validate_on_submit():
+        # password hashata
         hashed_password = bcrypt.generate_password_hash(formReg.password.data)
+        # nome
         nome = formReg.name.data
+        # cognome
         cognome = formReg.surname.data
+        # email
         username = formReg.username.data
+        # Crea un nuovo utente
         new_user = Utente(nome=nome, cognome=cognome, username=username, password=hashed_password)
-        print(f"new User: {nome} {cognome} {username} {hashed_password}")
+        # lo aggiunge al db
         db.session.add(new_user)
         db.session.commit()
-        return redirect('/login')
+        # reindirizza verso la dashboard dell'admin, visto che è
+        # l'unico che può aggiungere nuovi utenti
+        return redirect(url_for('dashboard_admin', username=current_user.nome))
 
     return render_template('signup.html', form=formReg)
 
@@ -113,6 +139,10 @@ def signup():
 def errorPage():
     print('Request for index page received')
     return render_template('404.html')
+
+######################## TEST END #################################
+###################################################################
+
 
 @app.route('/test')
 def testpage():
@@ -144,14 +174,38 @@ def mostraIpDescr():
     utente = "xX_MagicMikeLove_Xx"
     query = build_query("utente", utente)
     return execute_query(query)
+######################## TEST END #################################
+###################################################################
 
 @app.route('/firerules', methods=['POST'])
 def printFwRules():
+    # Riceve il valore dell'IP della macchina da cercare
     ip_addr = str(request.form['bottone'])
-    rules = db.session.execute(text(build_query('firewall', ip_addr)))
-    print('Request for dashboard page received')
-    print(ip_addr)
-    return render_template('firerules.html', rules=rules)
+    # Ricava le rules dall'IP della macchina
+    rules = db.session.execute(text(build_query("firewall", ip_addr)))
+
+    # Differenziazione tra admin e basic user
+    if current_user.username == 'administration@admin.nebularat.com':
+        return render_template('firerules_admin.html', rules=rules, username=current_user.nome)
+    else:
+        return render_template('firerules.html', rules=rules, username=current_user.nome)
+        
+@app.route('/list')
+def list():
+    # Retrieving degli utenti escluso l'admin
+    users = db.session.execute(text(utenti))
+    return render_template('list_users.html', users=users, username=current_user.nome)
+
+@app.route('/assign', methods=['POST'])
+def assignment():
+    # Riceve il nome e il cognome dell'utente
+    email = str(request.form['user'])
+    nomeC = db.session.execute(text(build_query("whois", email))).first()
+    # Ricava le lista delle macchine a cui l'utente già accede
+    accede = db.session.execute(text(build_query("acc", email))).all()
+    # Ricava tutte le macchine
+    macchine  = db.session.execute(text(mac))
+    return render_template('assign.html', email=email, nomeC=nomeC, accede=accede, macchine=macchine, username=current_user.nome)
 
 @app.route('/logout')
 def logout():

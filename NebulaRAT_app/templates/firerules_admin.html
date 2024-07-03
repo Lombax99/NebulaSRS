@@ -47,9 +47,10 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4"></div>
                 <div class="navbar-nav w-100">
-                    <a href="/login" class="nav-item nav-link"><i class="fa fa-sign-in-alt me-2"></i>Login</a>
-                    <a href="/test" class="nav-item nav-link"><i class="fa fa-vials me-2"></i>Test Page</a>
-                    <a href="{{url_for('dashboard', username=username)}}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="/logout" class="nav-item nav-link"><i class="fa fa-sign-out-alt me-2"></i>Logout</a>
+                    <a href="/signup" class="nav-item nav-link"><i class="fa fa-user-plus me-2"></i>Add new user</a>
+                    <a href="/list" class="nav-item nav-link"><i class="fas fa-laptop me-2"></i>Assign Machines</a>
+                    <a href="{{url_for('dashboard_admin', username=username)}}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                 </div>
             </nav>
         </div>
@@ -58,8 +59,8 @@
 
         <!-- Content Start -->
         <div class="content">
-            <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+             <!-- Navbar Start -->
+             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
                 <a href="#" class="sidebar-toggler flex-shrink-0"><i class="fa fa-bars"></i></a>
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
