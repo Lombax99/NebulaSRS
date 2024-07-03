@@ -78,7 +78,7 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Machines assignment for {{ nomeC[0] }} {{ nomeC[1] }} {{ accede }}</h6>
+                        <h6 class="mb-0">Machines assignment for {{ nomeC[0] }} {{ nomeC[1] }}</h6>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-center align-middle table-bordered table-hover mb-0">
@@ -103,7 +103,7 @@
                                             {% endfor %}
                                                 <form name="passmachine" action="assign" method="post">
                                                     {% if ns.found %}
-                                                      <input type="checkbox" class="form-check-input" name="macc_checked" value="{{ macchina[0] }}" checked>
+                                                      <input type="checkbox" class="form-check-input" name="macc_checked" value="{{ macchina[0] }}" checked disabled readonly>
                                                     {% else %}
                                                         <input type="checkbox" class="form-check-input" name="macc" value="{{ macchina[0] }}">
                                                     {% endif %}

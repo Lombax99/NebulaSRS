@@ -3,7 +3,7 @@ from settings import postgresql as settings
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for, flash
 from queryexe import execute_query
 from queries import *
-from models import session, secret
+from models import secret
 from flask_wtf import FlaskForm
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from wtforms import StringField, PasswordField, SubmitField
@@ -80,7 +80,6 @@ def login():
             return redirect(url_for('dashboard_admin', username=current_user.nome))
         else:
             return redirect(url_for('dashboard', username=current_user.nome))
-    
     form = LoginForm()
     if form.validate_on_submit():
         user = Utente.query.filter_by(username=form.username.data).first()
