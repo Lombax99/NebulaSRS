@@ -83,6 +83,14 @@
     transition: 0.5s;
 }
 
+.content1 {
+    margin-left: 0;
+    min-height: 100vh;
+    background: var(--dark);
+    transition: 0.5s;
+}
+
+
 @media (min-width: 992px) {
     .sidebar {
         margin-left: 0;

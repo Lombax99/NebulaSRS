@@ -42,13 +42,13 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="/index" class="navbar-brand mx-4 mb-3">
+                <div class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary">NebulaRAT</h3>
-                </a>
+                </div>                
                 <div class="d-flex align-items-center ms-4 mb-4"></div>
                 <div class="navbar-nav w-100">
                     <a href="/logout" class="nav-item nav-link"><i class="fa fa-sign-out-alt me-2"></i>Logout</a>
-                    <a href="/adduser" class="nav-item nav-link"><i class="fa fa-user-plus me-2"></i>Add new user</a>
+                    <a href="/adduser" class="nav-item nav-link"><i class="fa fa-user-plus me-2"></i>Add New User</a>
                     <a href="{{url_for('list')}}" class="nav-item nav-link"><i class="fas fa-laptop me-2"></i>Management</a>
                 </div>
             </nav>
@@ -64,7 +64,7 @@
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <span class="d-none d-lg-inline-flex">Hi{{ username }}!</span>
+                            <span class="d-none d-lg-inline-flex">Hi {{ username }}!</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="/logout" class="dropdown-item">Logout</a>
@@ -78,14 +78,14 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Lista Macchine</h6>
+                        <h6 class="mb-0">Machine List</h6>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-center align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
-                                    <th scope="col">Descrizione</th>
-                                    <th scope="col">Indirizzo IP</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">IP Address</th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>
                                 </tr>
