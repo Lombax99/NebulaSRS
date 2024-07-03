@@ -13,6 +13,8 @@ from flask_sqlalchemy import SQLAlchemy
 #import yaml
 #import os
 from sqlalchemy import text
+from sqlalchemy.orm import Mapped
+from sqlalchemy.orm import relationship
 
 db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
 app = Flask(__name__)
@@ -38,6 +40,15 @@ class Utente(db.Model, UserMixin):
     username = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
 
+class Usa(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    macchina_id = db.Column(db.Integer)
+    utente_id = db.Column(db.Integer)
+
+    def __init__(self, macchina_id=None, utente_id=None):
+        self.macchina_id = macchina_id
+        self.utente_id = utente_id
+
 class RegisterForm(FlaskForm):
     
     name = StringField(validators=[InputRequired()], render_kw={"class":"form-control","placeholder": "Mario"})
@@ -56,6 +67,7 @@ class RegisterForm(FlaskForm):
         if existing_user_username:
             raise ValidationError(
                 'Nome utente già esistente. Riprova con un nome utente diverso.')
+        
 
 class LoginForm(FlaskForm):
     username = StringField(validators=[InputRequired()], render_kw={"type":"email", "class":"form-control","aria-describedby":"emailHelp", "placeholder":"mariorossi12@nebularat.com"})
@@ -196,7 +208,7 @@ def list():
     return render_template('list_users.html', users=users, username=current_user.nome)
 
 @app.route('/assign', methods=['POST'])
-def assignment():
+def assig():
     # Riceve il nome e il cognome dell'utente
     email = str(request.form['user'])
     nomeC = db.session.execute(text(build_query("whois", email))).first()
@@ -205,6 +217,18 @@ def assignment():
     # Ricava tutte le macchine
     macchine  = db.session.execute(text(mac))
     return render_template('assign.html', email=email, nomeC=nomeC, accede=accede, macchine=macchine, username=current_user.nome)
+
+@app.route('/assignment/<idut>', methods=['GET','POST'])
+def assignment(idut):
+    checked_machines = request.form.getlist('macc')
+    # For each machine id retreived, adds the machine to the user
+    for idmac in checked_machines:
+        new_usa = Usa(utente_id = idut, macchina_id=idmac)
+        db.session.add(new_usa)
+        db.session.commit()
+    return redirect(url_for('dashboard_admin', username=current_user.nome))
+
+
 
 @app.route('/logout')
 def logout():

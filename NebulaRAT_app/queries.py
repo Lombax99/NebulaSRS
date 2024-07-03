@@ -28,7 +28,7 @@ def build_query(type, x):
         """
     elif type == "whois":
         transformed = f"""
-        SELECT nome, cognome
+        SELECT id, nome, cognome
         FROM UTENTE
         WHERE username = '{x}';
         """
@@ -39,6 +39,4 @@ def build_query(type, x):
         JOIN MACCHINA as m ON ua.macchina_id = m.id
         WHERE u.username = '{x}';
         """
-
-
     return transformed

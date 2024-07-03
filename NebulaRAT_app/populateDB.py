@@ -2,15 +2,17 @@ import psycopg2
 from settings import postgresql as settings
 import time
 import json
-#from app import bcrypt
+from app import bcrypt
 
 test_data = {
-    #"UTENTE": [
-        #('luca', 'L', 'luca@nebularat.com', bcrypt.generate_password_hash('luca')),
-        #('marco', 'M', 'marco@nebularat.com', bcrypt.generate_password_hash('marco')),
-        #('stefano', 'S', 'stefano@nebularat.com', bcrypt.generate_password_hash('stefano')),
-        #('admin', 'admin', 'administration@admin.nebularat.com', bcrypt.generate_password_hash('admin'))
-    #],
+    "UTENTE": [
+        ('Luca', 'Lombardi', 'luca@nebularat.com', bcrypt.generate_password_hash('luca')),
+        ('Marco', 'Marchi', 'marco@nebularat.com', bcrypt.generate_password_hash('marco')),
+        ('Stefano', 'Paparella', 'stefano@nebularat.com', bcrypt.generate_password_hash('stefano')),
+        ('admin', 'admin', 'administration@admin.nebularat.com', bcrypt.generate_password_hash('admin')),
+        ('Antonio', 'Monelli', 'antonio@nebularat.com', bcrypt.generate_password_hash('antonio')),
+        ('Pasquale', 'Basta', 'pasquale@nebularat.com', bcrypt.generate_password_hash('pasquale'))
+    ],
     "CERT": [
         (1,"""-----BEGIN NEBULA CERTIFICATE-----
             CmQKBmFkbWluMhIK5MihhQyA/v//DyiU3bezBjCUvrmzBjognides04bE5q5oLFu
