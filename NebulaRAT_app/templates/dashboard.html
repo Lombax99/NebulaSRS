@@ -65,7 +65,7 @@
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <span class="d-none d-lg-inline-flex">Ciao {{ username }}</span>
+                            <span class="d-none d-lg-inline-flex">Hi {{ username }}!</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="/logout" class="dropdown-item">Logout</a>
@@ -79,16 +79,16 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">{{ username }} - Macchine Disponibili</h6>
+                        <h6 class="mb-0">{{ username }} - Available Machines</h6>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-center align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
-                                    <th scope="col">Descrizione</th>
-                                    <th scope="col">Indirizzo IP</th>
-                                    <th scope="col">Genera Certificato</th>
-                                    <th scope="col">Stampa Regole di Firewall</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">IP Address</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,8 +96,8 @@
                                     <tr>
                                         <td>{{ macchina[1] }}</td>
                                         <td>{{ macchina[0] }}</td>
-                                        <td><a class="btn btn-sm btn-primary" href="#">Genera</a></td>
-                                        <td><form name="passmachine" action="/firerules" method="post"><button name="bottone" type="submit" class="btn btn-sm btn-primary" value="{{ macchina[0] }}" >Stampa</button></form></td>
+                                        <td><a class="btn btn-sm btn-primary" href="#">Generate Certificate</a></td>
+                                        <td><form name="passmachine" action="/firerules" method="post"><button name="bottone" type="submit" class="btn btn-sm btn-primary" value="{{ macchina[0] }}" >Show Firewall Rules</button></form></td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

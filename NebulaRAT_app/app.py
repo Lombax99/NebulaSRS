@@ -226,7 +226,7 @@ def assignment(idut):
         new_usa = Usa(utente_id = idut, macchina_id=idmac)
         db.session.add(new_usa)
         db.session.commit()
-    return redirect(url_for('dashboard_admin', username=current_user.nome))
+    return redirect(url_for('list'))
 
 
 @app.route('/revoke', methods=['POST'])
@@ -246,7 +246,7 @@ def revokation(idut):
         usa = db.session.get(Usa, idmac)
         db.session.delete(usa)
         db.session.commit()
-    return redirect(url_for('dashboard_admin', username=current_user.nome))
+    return redirect(url_for('list'))
 
 @app.route('/logout')
 def logout():
