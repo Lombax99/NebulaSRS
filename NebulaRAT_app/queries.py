@@ -37,21 +37,16 @@ def build_query(type, x):
         FROM UTENTE u
         JOIN USA as ua ON u.id = ua.utente_id
         JOIN MACCHINA as m ON ua.macchina_id = m.id
-        WHERE u.username = '{x}';
+        WHERE u.username = '{x}'
+        ORDER BY m.id;
         """
     elif type == "revocation":
         transformed = f"""SELECT ua.id, m.ip_addr, m.descrizione
         FROM UTENTE u
         JOIN USA as ua ON u.id = ua.utente_id
         JOIN MACCHINA as m ON ua.macchina_id = m.id
-        WHERE u.username = '{x}';
+        WHERE u.username = '{x}'
+        ORDER BY m.id;
         """
         
-    return transformed
-
-def delete(x, y):
-    transformed = f"""DELETE
-        FROM USA
-        WHERE utente_id = {x} AND macchina_id = {y};
-        """
     return transformed
