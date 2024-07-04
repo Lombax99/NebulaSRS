@@ -48,13 +48,20 @@ def generateCertificate(username, requiredIP, duration):
     if os.path.exists(nebulaCert_path):
         # Run the script with parameters
         try:
+            print(nebulaCert_path + " sign -name \"" + username + "\"" 
+                                  + " -ip \"" + requiredIP + "\"" 
+                                  + " -duration " + duration 
+                                  + " -ca-crt " + os.path.join(outputDir, "ca.crt")
+                                  + " -ca-key " + os.path.join(outputDir, "ca.key")
+                                  + " -out-crt " + os.path.join(outputDir, username + ".crt")
+                                  + " -out-key " + os.path.join(outputDir, username + ".key"))
             os.system(nebulaCert_path + " sign -name \"" + username + "\"" 
-                      + " -ip \"" + requiredIP + "\"" 
-                      + " -duration " + duration 
-                      + " -ca-crt " + outputDir + "ca.crt"
-                      + " -ca-key " + outputDir + "ca.key"
-                      + " -out-crt " + outputDir + username + ".crt"
-                      + " -out-key " + outputDir + username + ".key")
+                                  + " -ip \"" + requiredIP + "\"" 
+                                  + " -duration " + duration 
+                                  + " -ca-crt " + os.path.join(outputDir, "ca.crt")
+                                  + " -ca-key " + os.path.join(outputDir, "ca.key")
+                                  + " -out-crt " + os.path.join(outputDir, username + ".crt")
+                                  + " -out-key " + os.path.join(outputDir, username + ".key"))
         except Exception as e:
             raise Exception("Generate Certificate Error - " + str(e))
     else:
@@ -95,6 +102,22 @@ def main():
     pathOfCert = generateCertificate(username, requiredIP, duration)
     print(pathOfCert)
     print_certificate(pathOfCert)
+
+    # this is used to generate multiple certificates at once as per example given in the json file
+    '''ip_addresses = ["192.168.100.101", "192.168.100.111", "192.168.100.112", "192.168.100.113", "192.168.100.121", "192.168.100.122"]
+    for ip in ip_addresses:
+        username = "admin_" + ip.split(".")[3]
+        ip = ip + "/24"
+        if os.path.exists(outputDir + username + ".crt"):
+            os.remove(outputDir + username + ".crt")
+            print("removed " + outputDir + username + ".crt")
+        if os.path.exists(outputDir + username + ".key"):
+            os.remove(outputDir + username + ".key")
+            print("removed " + outputDir + username + ".key")
+
+        filepath = generateCertificate(username, ip, "8h")
+        print(filepath)
+        print_certificate(filepath)'''
 
 if __name__ == "__main__":
     main()

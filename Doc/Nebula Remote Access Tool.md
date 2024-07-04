@@ -213,6 +213,9 @@ Questo richiede che in fase di deployment della configurazione alcuni ip siano r
         ca_name: Myorg, Inc
 ```
 
+> [!Tip]- Possiamo estendere i controlli impostando anche come un utente si collega?
+> Esiste un modo senza andare a modificare dinamicamente i file di conf delle varie macchine per definire anche come un admin si collega (ssh invece che rdp)?
+
 #### Hidden Req:
 - La nostra applicazione deve poter modificare le regole di firewall di tutte le macchine remote? NO
 - Deve poter modificare il layout della network? NO
