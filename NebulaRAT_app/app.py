@@ -97,28 +97,33 @@ def login():
         user = Utente.query.filter_by(username=form.username.data).first()
         if user:
             if bcrypt.check_password_hash(bytes(user.password), form.password.data):
+                session["id"] = user.id
+                session["nome"] = user.nome
+                session["cognome"] = user.cognome
+                session["username"] = user.username
                 login_user(user)
                 if form.username.data == 'administration@admin.nebularat.com':
-                    return redirect(url_for('dashboard_admin', username=user.nome))
+                    return redirect(url_for('dashboard_admin'))
                 else:
-                    return redirect(url_for('dashboard', username=user.nome))
+                    return redirect(url_for('dashboard'))
     return render_template('login.html', form=form)
 
 
 
-@app.route('/dashboard/<username>')
+@app.route('/dashboard')
 @login_required
-def dashboard(username):
+def dashboard():
     # Mostra solo le macchine a cui ha il permesso di accedere
-    macchine = db.session.execute(text(build_query("utente", current_user.username)))
-    return render_template('dashboard.html', macchine=macchine, username=current_user.nome)
+    username = session["nome"] + " " + session["cognome"]
+    macchine = db.session.execute(text(build_query("utente", session["username"])))
+    return render_template('dashboard.html', macchine=macchine, username=username)
 
-@app.route('/dashboard_admin/<username>')
+@app.route('/dashboard_admin')
 @login_required
-def dashboard_admin(username):
+def dashboard_admin():
     # Mostra tutte le macchine nel sistema
     macchine = db.session.execute(text(tutte))
-    return render_template('dashboard_admin.html', macchine=macchine, username=current_user.nome)
+    return render_template('dashboard_admin.html', macchine=macchine, username=session["nome"])
 
 @app.route('/adduser', methods=['GET','POST'])
 def adduser():
@@ -141,7 +146,7 @@ def adduser():
         db.session.commit()
         # reindirizza verso la dashboard dell'admin, visto che è
         # l'unico che può aggiungere nuovi utenti
-        return redirect(url_for('dashboard_admin', username=current_user.nome))
+        return redirect(url_for('dashboard_admin'))
 
     return render_template('signup.html', form=formReg)
 
@@ -250,9 +255,14 @@ def revokation(idut):
 
 @app.route('/logout')
 def logout():
+    session.pop("id", None)
+    session.pop("nome", None)
+    session.pop("cognome", None)
+    session.pop("username", None)
     logout_user()
     flash("Logout effettuato!")
     return redirect('/')
+
 
 if __name__ == '__main__':
    app.run(debug=True)
