@@ -54,6 +54,18 @@
             }
           },
           {
+            "id": "891e14a93e582cb8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Doc/UtilityResources/credentials.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "96b809d466d14f8c",
             "type": "leaf",
             "state": {
@@ -69,7 +81,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -135,7 +147,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
+                "file": "Doc/UtilityResources/credentials.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,7 +164,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
+                "file": "Doc/UtilityResources/credentials.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -175,7 +187,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md"
+                "file": "Doc/UtilityResources/credentials.md"
               }
             }
           },
@@ -204,8 +216,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "79450933195a194a",
+  "active": "818c802cddb5c785",
   "lastOpenFiles": [
+    "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
+    "Doc/UtilityResources/credentials.md",
+    "credentials",
     "organizzazioneCodice.canvas",
     "NebulaRAT_app/nebulaFiles/admin_122.crt",
     "NebulaRAT_app/nebulaFiles/admin_122.key",
@@ -216,8 +231,6 @@
     "NebulaRAT_app/nebulaFiles/admin_112.crt",
     "NebulaRAT_app/nebulaFiles/admin_112.key",
     "NebulaRAT_app/nebulaFiles/admin_111.crt",
-    "NebulaRAT_app/nebulaFiles/admin_111.key",
-    "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
     "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
     "Doc/UtilityResources/Terraform + Azure setup.md",
     "Doc/Nebula Remote Access Tool.md",

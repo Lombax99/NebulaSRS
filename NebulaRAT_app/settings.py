@@ -5,3 +5,5 @@ postgresql = {
     'pgport': 5432,
     'pgdb': 'nebularat-postgresServer-db'
 }
+
+path="nebulaFiles"

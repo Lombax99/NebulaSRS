@@ -1,4 +1,4 @@
-#from generateCertificate import *
+from generateCertificate import *
 from settings import postgresql as settings
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for, flash
 from queryexe import execute_query
@@ -10,11 +10,12 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError, DataRequired
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
-#import yaml
-#import os
+import os
+import tkinter as tk
 from sqlalchemy import text
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import relationship
+from tkinter import filedialog
 
 db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
 app = Flask(__name__)
@@ -252,6 +253,40 @@ def revokation(idut):
         db.session.delete(usa)
         db.session.commit()
     return redirect(url_for('list'))
+
+@app.route('/generate', methods=['POST'])
+def generate():
+    # Riceve il valore dell'IP della macchina
+    ip_addr = str(request.form['genbtn'])
+    duration = str(request.form['dur'])
+    # Genera il certificato per la macchina
+    pathcrt, pathkey = generateCertificate(session["nome"], ip_addr, duration)
+    crtName = os.path.basename(pathcrt)
+    keyName = os.path.basename(pathkey)
+    #Apre una finestra di dialogo per la selezione della cartella.
+    finestra = tk.Tk()
+    finestra.title("Seleziona cartella")
+    save_path = filedialog.askdirectory()
+    finestra.destroy()
+    #Salva il certificato nella cartella selezionata
+    percorso_salvataggio = os.path.join(save_path, crtName)
+    with open(percorso_salvataggio, "wb") as file_oggetto:
+        with open(pathcrt, "rb") as f:
+            file_oggetto.write(f.read())
+    #Salva la chiave nella cartella selezionata
+    percorso_salvataggio = os.path.join(save_path, keyName)
+    with open(percorso_salvataggio, "wb") as file_oggetto:
+        with open(pathkey, "rb") as f:
+            file_oggetto.write(f.read())
+
+    # Controlla se si tratta dell'admin o di un utente base
+    if current_user.username == 'administration@admin.nebularat.com':
+        return redirect(url_for('dashboard_admin'))
+    else:
+        return redirect(url_for('dashboard'))
+
+    
+
 
 @app.route('/logout')
 def logout():
