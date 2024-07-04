@@ -46,6 +46,7 @@ def print_certificate(certificate_path):
 def generateCertificate(username, requiredIP, duration):
     from settings import path
     nebulaCert_path = os.path.join("nebulaScripts", "nebula-cert")
+    outputDir = "nebulaFiles"
     # Check if the script exists
     print(os.getcwd())
     if os.path.exists(nebulaCert_path):
@@ -69,7 +70,8 @@ def generateCertificate(username, requiredIP, duration):
             raise Exception("Generate Certificate Error - " + str(e))
     else:
         raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), nebulaCert_path)
-    return os.path.join(outputDir, username + ".crt")
+    
+    return os.path.join(outputDir, username + ".crt"), os.path.join(outputDir, username + ".key")
 
 
 # the best option would be to return the certificate as a JSON object i need to see if there is a way to do it

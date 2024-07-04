@@ -16,6 +16,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import relationship
 from tkinter import filedialog
+import shutil
 
 db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
 app = Flask(__name__)
@@ -257,28 +258,26 @@ def revokation(idut):
 @app.route('/generate', methods=['POST'])
 def generate():
     # Riceve il valore dell'IP della macchina
+
+    #### DA CAMBIARE CON LA RICERCA DEL CIDR ####
     ip_addr = str(request.form['genbtn'])
+    ip_addr = ip_addr+"/24"
+    #### FINE CAMBIO ####
+
     duration = str(request.form['dur'])
     # Genera il certificato per la macchina
     pathcrt, pathkey = generateCertificate(session["nome"], ip_addr, duration)
-    crtName = os.path.basename(pathcrt)
-    keyName = os.path.basename(pathkey)
     #Apre una finestra di dialogo per la selezione della cartella.
     finestra = tk.Tk()
     finestra.title("Seleziona cartella")
     save_path = filedialog.askdirectory()
     finestra.destroy()
-    #Salva il certificato nella cartella selezionata
-    percorso_salvataggio = os.path.join(save_path, crtName)
-    with open(percorso_salvataggio, "wb") as file_oggetto:
-        with open(pathcrt, "rb") as f:
-            file_oggetto.write(f.read())
-    #Salva la chiave nella cartella selezionata
-    percorso_salvataggio = os.path.join(save_path, keyName)
-    with open(percorso_salvataggio, "wb") as file_oggetto:
-        with open(pathkey, "rb") as f:
-            file_oggetto.write(f.read())
-
+    # Copia il file nella cartella selezionata
+    shutil.copy(pathcrt, save_path)
+    shutil.copy(pathkey, save_path)
+    # Rimuove i file temporanei
+    os.remove(pathcrt)
+    os.remove(pathkey)
     # Controlla se si tratta dell'admin o di un utente base
     if current_user.username == 'administration@admin.nebularat.com':
         return redirect(url_for('dashboard_admin'))
