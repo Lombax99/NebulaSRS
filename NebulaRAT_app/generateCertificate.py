@@ -1,13 +1,14 @@
 import errno
 import os
 
+
 # Path to the scripts
-nebulaCert_path = "nebulaScripts/nebula-cert"       # ./nebula-cert print -path somecert.crt    to see certificate
-nebulaScrptPath = "nebulaScripts/nebula"            # ./nebula-cert sign -name "laptop" -ip "192.168.100.5/24" -groups "laptop,ssh" to generate certificate
-certificatesPath = "nebulaFiles/laptop1.crt"        # Path to store certificates
+nebulaCert_path = os.path.join("nebulaScripts", "nebula-cert")       # ./nebula-cert print -path somecert.crt    to see certificate
+nebulaScrptPath = os.path.join("nebulaScripts", "nebula")            # ./nebula-cert sign -name "laptop" -ip "192.168.100.5/24" -groups "laptop,ssh" to generate certificate
+certificatesPath = os.path.join("nebulaFiles", "laptop1.crt")        # Path to store certificates
 
 # output directory path
-outputDir = "nebulaFiles/"
+outputDir = "nebulaFiles"
 
 # Parameters for testing
 username = "admin2"
@@ -58,11 +59,12 @@ def generateCertificate(username, requiredIP, duration):
             raise Exception("Generate Certificate Error - " + str(e))
     else:
         raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), nebulaCert_path)
-    return outputDir + username + ".crt"
+    return os.path.join(outputDir, username + ".crt")
 
 
 # the best option would be to return the certificate as a JSON object i need to see if there is a way to do it
-# do we really need to print the certificate on the web page? If not this function is not required
+# do we really need to print t
+# he certificate on the web page? If not this function is not required
 def get_certificate(certificate):
     # outdated
     '''os.chdir(outputDir)
@@ -90,8 +92,9 @@ def main():
 
     # get the required IP for the machine, generate the certificate and print it
     requiredIP = get_required_ip(machineID)
-    generateCertificate(username, requiredIP, duration)
-    print_certificate(outputDir + username + ".crt")
+    pathOfCert = generateCertificate(username, requiredIP, duration)
+    print(pathOfCert)
+    print_certificate(pathOfCert)
 
 if __name__ == "__main__":
     main()
