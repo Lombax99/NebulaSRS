@@ -112,6 +112,13 @@ Per il primo sprint ci limitiamo a dare la chiave della rootCA alla nostra super
 Mettiamo durante la generazione la possibilità di definire il periodo di tempo di validità all'utente entro certi parametri, per questo primo sprint diciamo tra 1 e 8 ore.
 ##### La nostra macchina si può collegare a tutte le macchine che gestisce in ogni momento? Serve che lo faccia?
 Per come è impostata al momento il nostro servizio non ha nessun bisogno di collegarsi con le macchine nella rete. Se volessi fornire servizi extra tipo monitorare lo stato delle macchine (se solo online o meno) le cose cambierebbero.
+##### Gestione dei segreti nell'app
+L'app possiede una serie di segreti che devono essere mantenuti tali ad esempio:
+- Credenziali google per mandare mail per l'autenticazione a due fattori
+- Credenziali del db (username, password, host, pgdb)
+- Segreto di Flask-BCrypt
+- Forse credenziali del superuser
+
 
 ### Test
 #### Testbed
