@@ -94,6 +94,9 @@ Opzioni per implementare il login senza azure:
 > 	- [Two Factor Auth with Flask](https://blog.miguelgrinberg.com/post/two-factor-authentication-with-flask)
 > 	- [Flask Login example](https://github.com/theburntcity/flask-login/blob/master/app.py)
 > 	- [OneTimePass Lib](https://github.com/tadeck/onetimepass/)
+> 	
+> 	"Account recovery is harder when two factor authentication is used. If an application allows users to regain access to their accounts without having a valid token, then an attacker can take advantage of this facility as well. Typically users that are locked out of their accounts have to contact an administrator and have their accounts reset manually. You can also opt to add another form of verification, such as security questions, but of course this in part undermines the increased account security."
+> 	"As mentioned in the [reddit discussion of this article](http://www.reddit.com/r/Python/comments/2wtfc6/two_factor_authentication_with_flask/), there are a couple of implementation details that can be improved to make the application more secure. Storing the OTP secret and the hashed passwords in the same table can be seen as a security risk, because in the event of a security breach that gives the attacker access to the database, both will be accessible. To mitigate this risk, you could choose to store these two sensitive items in different database tables, or even better, different databases altogether. Encrypting the OTP secret, maybe using Flask's `SECRET_KEY` as encryption key, can also help. In all cases secure HTTP must be used for all communications that include passwords and the OTP secret (which is encoded in the QR code)."
 
 
 ##### Che tipi di utenti esistono? Come li generiamo? Come gestiamo i permessi?
@@ -132,24 +135,7 @@ Abbiamo bisogno di:
 ### Design of the application
 ##### Django vs Flask?
 guarda: [[Framework utilizzato]]
-**
 
-
-
-### Division of work
-- Stefano
-	- [x] Postgres VS Mongo
-	- [x] Tira giù DB Postgres
-	- [x] Collegamento, creazione tabella, inserimento dati e queryù
-	- [ ] Documentazione del lavoro svolto ai passi precedenti
-- Luca
-	- [ ] Finire di tirare su Nebula nelle vm su azure
-	- [ ] Fare un mini esempio di webapp con flask e DB (postgres al momento)
-- Pasquale
-	- [ ] HTML e frontend in generale
-	- [x] Tira giù DB Postgres
-	- [ ] Collegamento, creazione tabella, inserimento dati e query
-	- [ ] Documentazione del lavoro svolto ai passi precedenti
 
 
 

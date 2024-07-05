@@ -38,10 +38,10 @@ test_data = {
         ('macchina3', '192.168.1.3', 3)
     ],
     "REGOLA": [
-        ('in', 1, 'PortStort', 'Prot1', 'Host_aggio', 'ca_name', 'group', 'cidr'),
-        ('out', 1, 'PortDritt', 'Prot2', 'Host_ello', 'ca_name', 'group', 'cidr'),
-        ('in', 2, 'PortStort2', 'Prot1_2', 'Host_enta', 'ca_name2', 'group2', 'cidr2'),
-        ('out', 2, 'PortDritt2', 'Prot2_2', 'Host_inato', 'ca_name2', 'group2', 'cidr2'),
+        ('in', 1, 'PortStort', 'Prot1', 'Host_aggio', 'Myorg, Inc', 'group', '192.168.100.111'),
+        ('out', 1, 'PortDritt', 'Prot2', 'Host_ello', 'ca_name', 'group', '192.168.100.112'),
+        ('in', 2, 'PortStort2', 'Prot1_2', 'Host_enta', 'Myorg, Inc', 'group2', '192.168.100.113'),
+        ('out', 2, 'PortDritt2', 'Prot2_2', 'Host_inato', 'ca_name2', 'group2', '192.168.100.121'),
         ('in', 3, 'PortStort3', 'Never', 'gonna', 'give', 'you', 'up'),
         ('out', 3, 'PortDritt3', 'Never', 'gonna', 'let', 'you', 'down')
     ],

@@ -81,7 +81,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -147,7 +147,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/UtilityResources/credentials.md",
+                "file": "Doc/Sprint 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -164,7 +164,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/UtilityResources/credentials.md",
+                "file": "Doc/Sprint 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -187,7 +187,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/UtilityResources/credentials.md"
+                "file": "Doc/Sprint 1.md"
               }
             }
           },
@@ -216,8 +216,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "818c802cddb5c785",
+  "active": "bd8c998964287c16",
   "lastOpenFiles": [
+    "NebulaRAT_app/__pycache__/queries.cpython-312.pyc",
+    "NebulaRAT_app/__pycache__/queryexe.cpython-312.pyc",
+    "NebulaRAT_app/__pycache__/generateCertificate.cpython-312.pyc",
+    "Doc/PostgreSQL & Python/DB structure v2.md",
     "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
     "Doc/UtilityResources/credentials.md",
     "credentials",
@@ -229,8 +233,6 @@
     "NebulaRAT_app/nebulaFiles/admin_113.crt",
     "NebulaRAT_app/nebulaFiles/admin_113.key",
     "NebulaRAT_app/nebulaFiles/admin_112.crt",
-    "NebulaRAT_app/nebulaFiles/admin_112.key",
-    "NebulaRAT_app/nebulaFiles/admin_111.crt",
     "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
     "Doc/UtilityResources/Terraform + Azure setup.md",
     "Doc/Nebula Remote Access Tool.md",
@@ -238,7 +240,6 @@
     "Doc/Sprint 1.md",
     "SchemaDB.png",
     "Pasted image 20240702172108.png",
-    "Doc/PostgreSQL & Python/DB structure v2.md",
     "Piano di progettazione.md",
     "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
     "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
@@ -264,7 +265,6 @@
     "venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
     "Web app tutorial.md",
     "CHANGELOG.md",
-    "CONTRIBUTING.md",
     "Doc/BasicNetworkArchitecture.canvas"
   ]
 }
