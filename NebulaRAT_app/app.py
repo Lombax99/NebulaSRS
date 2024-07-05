@@ -11,7 +11,7 @@ from wtforms.validators import InputRequired, Length, ValidationError, DataRequi
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 import os
-import tk
+#import tk
 from sqlalchemy import text
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import relationship
@@ -322,7 +322,7 @@ def generate():
     # Genera il certificato per la macchina
     pathcrt, pathkey = generateCertificate(session["nome"], cidr, duration)
     #Apre una finestra di dialogo per la selezione della cartella.
-    finestra = tk.Tk()
+    '''finestra = tk.Tk()
     finestra.title("Seleziona cartella")
     save_path = filedialog.askdirectory()
     finestra.destroy()
@@ -331,7 +331,7 @@ def generate():
     shutil.copy(pathkey, save_path)
     # Rimuove i file temporanei
     os.remove(pathcrt)
-    os.remove(pathkey)
+    os.remove(pathkey)'''
     # Controlla se si tratta dell'admin o di un utente base
     if current_user.username == 'administration@admin.nebularat.com':
         return redirect(url_for('dashboard_admin'))
