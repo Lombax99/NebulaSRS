@@ -17,7 +17,7 @@ MarkupSafe==2.1.5
 psycopg2==2.9.9
 pyodbc==5.1.0
 SQLAlchemy==2.0.31
-python3-tk
 typing_extensions==4.12.2
+tk==0.1.0
 Werkzeug==3.0.3
 WTForms==3.1.2

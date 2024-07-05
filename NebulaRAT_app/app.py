@@ -11,7 +11,7 @@ from wtforms.validators import InputRequired, Length, ValidationError, DataRequi
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 import os
-import tkinter as tk
+import tk
 from sqlalchemy import text
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import relationship
@@ -41,6 +41,7 @@ class Utente(db.Model, UserMixin):
     cognome = db.Column(db.String(255), nullable=False)
     username = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
+    oldpw = db.Column(db.String(255), nullable=False)
 
 class Usa(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -78,6 +79,16 @@ class LoginForm(FlaskForm):
 
     submit = SubmitField('Login', render_kw={"type":"submit", "class":"btn btn-primary py-3 w-100 mb-4"})
 
+class ChangePw(FlaskForm):
+    oldpassword = PasswordField(validators=[InputRequired()], render_kw={"type":"password", "class":"form-control", "placeholder": "Old password"})
+
+    password = PasswordField(validators=[InputRequired()], render_kw={"type":"password", "class":"form-control", "placeholder": "New password"})
+
+    repeat = PasswordField(validators=[InputRequired()], render_kw={"type":"password", "class":"form-control", "placeholder": "Repeat password"})
+
+    submit = SubmitField('Change Password', render_kw={"type":"submit", "class":"btn btn-primary py-3 w-100 mb-4"})
+
+
 
 @app.route('/')
 def root():
@@ -103,51 +114,90 @@ def login():
                 session["nome"] = user.nome
                 session["cognome"] = user.cognome
                 session["username"] = user.username
+                # Checks if the user is currently using the old password
+                if bcrypt.check_password_hash(bytes(user.oldpw), form.password.data):
+                    session["change"] = True
+                else:
+                    session["change"] = False
                 login_user(user)
                 if form.username.data == 'administration@admin.nebularat.com':
                     return redirect(url_for('dashboard_admin'))
                 else:
                     return redirect(url_for('dashboard'))
+        else:
+            flash("Invalid username or password")
+            return redirect(url_for('login'))
     return render_template('login.html', form=form)
 
-
+@app.route('/change_password', methods=['GET','POST'])
+@login_required
+def change_password():
+    form = ChangePw()
+    if form.validate_on_submit():
+        user = Utente.query.filter_by(username=session["username"]).first()
+        # Controls if the old password is correct (he is who he says to be)
+        if bcrypt.check_password_hash(bytes(user.password), form.oldpassword.data):
+            # Checks if the new password and its replica are equals
+            if form.password.data != form.repeat.data:
+                flash("Passwords don't match")
+                return redirect(url_for('change_password'))
+            else:
+                # Hashes the new password and updates the db
+                hashed_password = bcrypt.generate_password_hash(form.password.data)
+                user.password = hashed_password
+                db.session.commit()
+                # Password changed, the user is not using the old password anymore
+                session["change"] = False
+                # Chooses where to go after the password change
+                if session["username"] == 'administration@admin.nebularat.com':
+                    return redirect(url_for('dashboard_admin'))
+                else:
+                    return redirect(url_for('dashboard'))
+    return render_template('change_password.html', form=form)
 
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    # Mostra solo le macchine a cui ha il permesso di accedere
+    # Username to show in the dashboard
     username = session["nome"] + " " + session["cognome"]
+    # Checks if it's the first login
+    if session["change"]:
+        return redirect(url_for('change_password'))
+    # Show only the machines that the user has permission to access
     macchine = db.session.execute(text(build_query("utente", session["username"])))
     return render_template('dashboard.html', macchine=macchine, username=username)
 
 @app.route('/dashboard_admin')
 @login_required
 def dashboard_admin():
-    # Mostra tutte le macchine nel sistema
+    # Shows all the machines
     macchine = db.session.execute(text(tutte))
+    # Checks if it's the first login
+    if session["change"]:
+        return redirect(url_for('change_password'))
     return render_template('dashboard_admin.html', macchine=macchine, username=session["nome"])
 
 @app.route('/adduser', methods=['GET','POST'])
+@login_required
 def adduser():
-    # Crea oggetto per il form
+    # Creates form object
     formReg = RegisterForm()
     # Retreiving dei valori 
     if formReg.validate_on_submit():
-        # password hashata
+        # password 
         hashed_password = bcrypt.generate_password_hash(formReg.password.data)
-        # nome
+        # name
         nome = formReg.name.data
-        # cognome
+        # surname
         cognome = formReg.surname.data
         # email
         username = formReg.username.data
-        # Crea un nuovo utente
-        new_user = Utente(nome=nome, cognome=cognome, username=username, password=hashed_password)
-        # lo aggiunge al db
+        # Creates new user
+        new_user = Utente(nome=nome, cognome=cognome, username=username, password=hashed_password, oldpw=hashed_password)
+        # adds it to the db
         db.session.add(new_user)
         db.session.commit()
-        # reindirizza verso la dashboard dell'admin, visto che è
-        # l'unico che può aggiungere nuovi utenti
+        # redirect to the admin dashboard, as only the admin can add new users
         return redirect(url_for('dashboard_admin'))
 
     return render_template('signup.html', form=formReg)
@@ -196,6 +246,7 @@ def mostraIpDescr():
 ###################################################################
 
 @app.route('/firerules', methods=['POST'])
+@login_required
 def printFwRules():
     # Riceve il valore dell'IP della macchina da cercare
     ip_addr = str(request.form['bottone'])
@@ -209,12 +260,14 @@ def printFwRules():
         return render_template('firerules.html', rules=rules, username=current_user.nome)
         
 @app.route('/list')
+@login_required
 def list():
     # Retrieving degli utenti escluso l'admin
     users = db.session.execute(text(utenti))
     return render_template('list_users.html', users=users, username=current_user.nome)
 
 @app.route('/assign', methods=['POST'])
+@login_required
 def assig():
     # Riceve il nome e il cognome dell'utente
     email = str(request.form['user'])
@@ -237,6 +290,7 @@ def assignment(idut):
 
 
 @app.route('/revoke', methods=['POST'])
+@login_required
 def revoke():
     # Riceve il nome e il cognome dell'utente
     email = str(request.form['user'])
@@ -256,6 +310,7 @@ def revokation(idut):
     return redirect(url_for('list'))
 
 @app.route('/generate', methods=['POST'])
+@login_required
 def generate():
     # Riceve il valore dell'IP della macchina
 
@@ -287,11 +342,13 @@ def generate():
 
 
 @app.route('/logout')
+@login_required
 def logout():
     session.pop("id", None)
     session.pop("nome", None)
     session.pop("cognome", None)
     session.pop("username", None)
+    session.pop("change", None)
     logout_user()
     flash("Logout effettuato!")
     return redirect('/')
