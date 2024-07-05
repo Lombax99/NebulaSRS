@@ -15,7 +15,7 @@ import os
 from sqlalchemy import text
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import relationship
-from tkinter import filedialog
+#from tkinter import filedialog
 import shutil
 
 db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
