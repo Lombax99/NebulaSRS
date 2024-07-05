@@ -89,7 +89,7 @@
                                         <td>{{ macchina[1] }}</td>
                                         <td>{{ macchina[0] }}</td>
                                         <td>
-                                            <button name="button" class="btn btn-sm btn-primary" value="{{ macchina[0] }}" onclick="showModal('{{ macchina[0] }}')">Generate Certificate</button>
+                                            <button name="button" class="btn btn-sm btn-primary" value="{{ macchina[2] }}" onclick="showModal('{{ macchina[2] }}')">Generate Certificate</button>
                                         </td>
                                         <td><form name="passmachine" action="/firerules" method="post"><button name="bottone" type="submit" class="btn btn-sm btn-primary" value="{{ macchina[0] }}" >Show Firewall Rules</button></form></td>
                                     </tr>
@@ -111,7 +111,7 @@
                         <h5 class="modal-title" id="exampleModalLabel">Choose Duration</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body pt-4 pb-3" id="firewallRulesContent">
+                    <div class="modal-body pt-4 pb-3" id="certModalContent">
                         <form name="gen" action="/generate" method="post">
                             <div class="pt-3 text-center">
                                 <input type="radio" id="2h" class="form-check-input" name="dur" value="2h">
@@ -122,7 +122,7 @@
                                 <label for="8h">8 hours</label>
                             </div>
                             <div class="pt-3 text-center">
-                                <button id="genbtn" name="genbtn" type="submit" class="btn btn-sm btn-primary" value="{{ ip_addr }}">Generate</button>
+                                <button id="genbtn" name="genbtn" type="submit" class="btn btn-sm btn-primary" value="{{ cidr }}">Generate</button>
                                 
                             </div>
                             
@@ -139,10 +139,10 @@
 
     <!--Function print modal-->
     <script>
-        function showModal(ip_addr){
+        function showModal(cidr){
             var myModal = new bootstrap.Modal(document.getElementById('certModal'));
             myModal.show();
-            document.getElementById('genbtn').value = ip_addr;
+            document.getElementById('genbtn').value = cidr;
         }
     </script>
     <!-- JavaScript Libraries -->

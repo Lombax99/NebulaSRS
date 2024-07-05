@@ -14,11 +14,13 @@ def build_query(type, x):
         """
     elif type == "utente":
         transformed = f"""
-        SELECT m.ip_addr, m.descrizione
+        SELECT m.ip_addr, m.descrizione, r.cidr
         FROM UTENTE u
         JOIN USA as ua ON u.id = ua.utente_id
         JOIN MACCHINA as m ON ua.macchina_id = m.id
-        WHERE u.username = '{x}';
+        JOIN REGOLA as r ON r.macchina_id = m.id
+        WHERE u.username = '{x}'
+        AND r.ca_name='Myorg, Inc';
         """
     elif type == "search_login":
         transformed = f"""

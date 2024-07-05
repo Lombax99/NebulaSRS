@@ -259,14 +259,13 @@ def revokation(idut):
 def generate():
     # Riceve il valore dell'IP della macchina
 
-    #### DA CAMBIARE CON LA RICERCA DEL CIDR ####
-    ip_addr = str(request.form['genbtn'])
-    ip_addr = ip_addr+"/24"
-    #### FINE CAMBIO ####
+    # Lo script di generazione del certificato si aspetta un CIDR
+    cidr = str(request.form['genbtn'])
+    cidr = cidr+"/24"
 
     duration = str(request.form['dur'])
     # Genera il certificato per la macchina
-    pathcrt, pathkey = generateCertificate(session["nome"], ip_addr, duration)
+    pathcrt, pathkey = generateCertificate(session["nome"], cidr, duration)
     #Apre una finestra di dialogo per la selezione della cartella.
     finestra = tk.Tk()
     finestra.title("Seleziona cartella")
