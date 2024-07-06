@@ -71,7 +71,7 @@ def generateCertificate(username, requiredIP, duration):
     else:
         raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), nebulaCert_path)
     
-    return os.path.join(outputDir, username + ".crt"), os.path.join(outputDir, username + ".key")
+    return os.path.join(outputDir, username + ".crt"), os.path.join(outputDir, username + ".key"), outputDir
 
 
 # the best option would be to return the certificate as a JSON object i need to see if there is a way to do it
