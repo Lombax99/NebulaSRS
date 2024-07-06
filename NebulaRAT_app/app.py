@@ -312,12 +312,11 @@ def generate():
     duration = str(request.form['dur'])
     # Genera il certificato per la macchina
     pathcrt, pathkey = generateCertificate(session["nome"], cidr, duration)
-    # Salva i file nella home directory
-    save_path = os.path.expanduser('~')
-    print("Save path: ", save_path)
-    # Save the files from remote server to local pc
-    shutil.copy(pathcrt, save_path)
-    shutil.copy(pathkey, save_path)
+    # Retrieves the base name of the files
+    cert_filename = os.path.basename(pathcrt)
+    key_filename = os.path.basename(pathkey)
+    # Download Cert e Key
+    download(pathcrt, cert_filename)
     # Rimuove i file temporanei
     os.remove(pathcrt)
     os.remove(pathkey)
@@ -342,6 +341,8 @@ def logout():
     flash("Logout effettuato!")
     return redirect('/')
 
+def download(path,filename):
+    return send_file(path, as_attachment=True, download_name=filename)
 
 if __name__ == '__main__':
    app.run(debug=True)
