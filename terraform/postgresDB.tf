@@ -6,8 +6,8 @@ resource "azurerm_postgresql_flexible_server" "postgresDB-FlexServer" {
   #delegated_subnet_id    = azurerm_subnet.postgresDB-subnet.id
   #private_dns_zone_id    = azurerm_private_dns_zone.postgresDB-pdns.id
   
-  administrator_login    = "sudo"
-  administrator_password = "sudo"
+  administrator_login    = var.db_username
+  administrator_password = var.db_password
   
   zone                   = "1"
   storage_mb             = 32768

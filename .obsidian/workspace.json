@@ -69,7 +69,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -135,7 +135,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
+                "file": "Doc/Sprint 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,7 +152,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
+                "file": "Doc/Sprint 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -175,7 +175,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md"
+                "file": "Doc/Sprint 1.md"
               }
             }
           },
@@ -204,8 +204,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "79450933195a194a",
+  "active": "bd8c998964287c16",
   "lastOpenFiles": [
+    "NebulaRAT_app/2faTest.py",
+    "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
+    "NebulaRAT_app/~",
     "Doc/PostgreSQL & Python/Scelte progettuali di Sté.md",
     "NebulaRAT_app/nebulaFiles/testMachineFiles/tmpCert_4_SRSProject/admin_122.crt",
     "NebulaRAT_app/nebulaFiles/testMachineFiles/tmpCert_4_SRSProject/admin_122.key",
@@ -216,10 +219,8 @@
     "NebulaRAT_app/nebulaFiles/testMachineFiles/tmpCert_4_SRSProject/admin_112.crt",
     "NebulaRAT_app/nebulaFiles/testMachineFiles/tmpCert_4_SRSProject/admin_112.key",
     "NebulaRAT_app/nebulaFiles/testMachineFiles/tmpCert_4_SRSProject/admin_111.key",
-    "NebulaRAT_app/nebulaFiles/testMachineFiles/tmpCert_4_SRSProject/admin_111.crt",
     "Doc/UtilityResources/credentials.md",
     "organizzazioneCodice.canvas",
-    "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
     "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
     "Doc/UtilityResources/Terraform + Azure setup.md",
     "Doc/Nebula Remote Access Tool.md",
@@ -252,7 +253,6 @@
     "Doc/Framework utilizzato.md",
     "venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
     "Web app tutorial.md",
-    "CHANGELOG.md",
     "Doc/BasicNetworkArchitecture.canvas"
   ]
 }

@@ -24,6 +24,13 @@ resource "azurerm_linux_web_app" "webapp" {
 
   app_settings = {
     "SCM_DO_BUILD_DURING_DEPLOYMENT" = true
+    "GOOGLE_USERNAME" = var.google_username
+    "GOOGLE_PASSWORD" = var.google_password
+    "DB_USERNAME" = var.db_username
+    "DB_PASSWORD" = var.db_password
+    "DB_HOST" = var.db_host
+    "DB_PGDB" = var.db_pgdb
+    "FLASK_SECRET" = var.flask_secret
   }
 }
 
