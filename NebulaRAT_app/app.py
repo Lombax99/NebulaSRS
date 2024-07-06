@@ -14,8 +14,8 @@ import os
 from sqlalchemy import text
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import relationship
-import shutil
 from flask import send_file
+import zipfile
 
 db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
 app = Flask(__name__)
@@ -302,30 +302,23 @@ def revokation(idut):
         db.session.commit()
     return redirect(url_for('list'))
 
+def download(path):
+    return send_file(path, as_attachment=True)  
+
 @app.route('/generate', methods=['POST'])
 @login_required
 def generate():
-    # Riceve il valore dell'IP della macchina
-
     # Lo script di generazione del certificato si aspetta un CIDR
     cidr = str(request.form['genbtn'])
     duration = str(request.form['dur'])
     # Genera il certificato per la macchina
-    pathcrt, pathkey = generateCertificate(session["nome"], cidr, duration)
-    # Retrieves the base name of the files
-    cert_filename = os.path.basename(pathcrt)
-    key_filename = os.path.basename(pathkey)
-    # Download Cert e Key
-    download(pathcrt, cert_filename)
-    # Rimuove i file temporanei
-    os.remove(pathcrt)
-    os.remove(pathkey)
-    # Controlla se si tratta dell'admin o di un utente base
-    if current_user.username == 'administration@admin.nebularat.com':
-        return redirect(url_for('dashboard_admin'))
-    else:
-        return redirect(url_for('dashboard'))
-
+    pathcrt, pathkey, outputDir = generateCertificate(session["nome"], cidr, duration)
+    # Download del certificato
+    zip_path = os.path.join(outputDir, session["nome"].lower() + ".zip")
+    with zipfile.ZipFile(zip_path, 'w') as zip_file:
+        zip_file.write(pathcrt, os.path.basename(pathcrt).lower())
+        zip_file.write(pathkey, os.path.basename(pathkey).lower())
+    return send_file(zip_path, as_attachment=True)
     
 
 
@@ -341,8 +334,6 @@ def logout():
     flash("Logout effettuato!")
     return redirect('/')
 
-def download(path,filename):
-    return send_file(path, as_attachment=True, download_name=filename)
 
 if __name__ == '__main__':
    app.run(debug=True)
