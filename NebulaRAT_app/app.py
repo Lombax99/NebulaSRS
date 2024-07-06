@@ -313,11 +313,12 @@ def generate():
     duration = str(request.form['dur'])
     # Genera il certificato per la macchina
     pathcrt, pathkey, outputDir = generateCertificate(session["nome"], cidr, duration)
-    # Download del certificato
+    # Fa uno zip dei file di cert e key
     zip_path = os.path.join(outputDir, session["nome"].lower() + ".zip")
     with zipfile.ZipFile(zip_path, 'w') as zip_file:
         zip_file.write(pathcrt, os.path.basename(pathcrt).lower())
         zip_file.write(pathkey, os.path.basename(pathkey).lower())
+    # Download del file zip
     return send_file(zip_path, as_attachment=True)
     
 
