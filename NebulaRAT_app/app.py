@@ -15,9 +15,6 @@ from sqlalchemy import text
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import relationship
 import shutil
-from pathlib import Path
-from tkinter import Tk
-from tkinter.filedialog import askdirectory
 
 db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
 app = Flask(__name__)
@@ -314,11 +311,8 @@ def generate():
     duration = str(request.form['dur'])
     # Genera il certificato per la macchina
     pathcrt, pathkey = generateCertificate(session["nome"], cidr, duration)
-    # Ottieni il percorso della cartella Downloads
-    # Prompt the user to select a directory
-    Tk().withdraw()
-    save_path = askdirectory()
-    # Copia il file nella cartella selezionata
+    # Salva i file nella home directory
+    save_path = os.path.join(os.path.expanduser('~'))
     shutil.copy(pathcrt, save_path)
     shutil.copy(pathkey, save_path)
     # Rimuove i file temporanei
