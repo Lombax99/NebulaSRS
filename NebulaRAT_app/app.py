@@ -15,6 +15,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import relationship
 import shutil
+from flask import send_file
 
 db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
 app = Flask(__name__)
@@ -312,7 +313,9 @@ def generate():
     # Genera il certificato per la macchina
     pathcrt, pathkey = generateCertificate(session["nome"], cidr, duration)
     # Salva i file nella home directory
-    save_path = os.path.join(os.path.expanduser('~'))
+    save_path = os.path.expanduser('~')
+    print("Save path: ", save_path)
+    # Save the files from remote server to local pc
     shutil.copy(pathcrt, save_path)
     shutil.copy(pathkey, save_path)
     # Rimuove i file temporanei
