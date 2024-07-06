@@ -15,6 +15,9 @@ from sqlalchemy import text
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import relationship
 import shutil
+from pathlib import Path
+from tkinter import Tk
+from tkinter.filedialog import askdirectory
 
 db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
 app = Flask(__name__)
@@ -39,7 +42,6 @@ class Utente(db.Model, UserMixin):
     cognome = db.Column(db.String(255), nullable=False)
     username = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
-    oldpw = db.Column(db.String(255), nullable=False)
 
 class Usa(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -112,11 +114,6 @@ def login():
                 session["nome"] = user.nome
                 session["cognome"] = user.cognome
                 session["username"] = user.username
-                # Checks if the user is currently using the old password
-                if bcrypt.check_password_hash(bytes(user.oldpw), form.password.data):
-                    session["change"] = True
-                else:
-                    session["change"] = False
                 login_user(user)
                 if form.username.data == 'administration@admin.nebularat.com':
                     return redirect(url_for('dashboard_admin'))
@@ -135,22 +132,28 @@ def change_password():
         user = Utente.query.filter_by(username=session["username"]).first()
         # Controls if the old password is correct (he is who he says to be)
         if bcrypt.check_password_hash(bytes(user.password), form.oldpassword.data):
-            # Checks if the new password and its replica are equals
-            if form.password.data != form.repeat.data:
-                flash("Passwords don't match")
-                return redirect(url_for('change_password'))
-            else:
-                # Hashes the new password and updates the db
-                hashed_password = bcrypt.generate_password_hash(form.password.data)
-                user.password = hashed_password
-                db.session.commit()
-                # Password changed, the user is not using the old password anymore
-                session["change"] = False
-                # Chooses where to go after the password change
-                if session["username"] == 'administration@admin.nebularat.com':
-                    return redirect(url_for('dashboard_admin'))
+            # Checks if the user hasn't used the old password
+            if not bcrypt.check_password_hash(bytes(user.password), form.password.data):
+                # Checks if the new password and its replica are equals
+                if form.password.data != form.repeat.data:
+                    flash("Passwords don't match")
+                    return redirect(url_for('change_password'))
                 else:
-                    return redirect(url_for('dashboard'))
+                    # Hashes the new password and updates the db
+                    hashed_password = bcrypt.generate_password_hash(form.password.data)
+                    user.password = hashed_password
+                    db.session.commit()
+                    # Password changed, the user is not using the old password anymore
+                    session["change"] = False
+                    # Chooses where to go after the password change
+                    if session["username"] == 'administration@admin.nebularat.com':
+                        return redirect(url_for('dashboard_admin'))
+                    else:
+                        return redirect(url_for('dashboard'))
+            else:
+                flash("You can't use the old password")
+                return redirect(url_for('change_password'))
+            
     return render_template('change_password.html', form=form)
 
 @app.route('/dashboard')
@@ -158,9 +161,6 @@ def change_password():
 def dashboard():
     # Username to show in the dashboard
     username = session["nome"] + " " + session["cognome"]
-    # Checks if it's the first login
-    if session["change"]:
-        return redirect(url_for('change_password'))
     # Show only the machines that the user has permission to access
     macchine = db.session.execute(text(build_query("utente", session["username"])))
     return render_template('dashboard.html', macchine=macchine, username=username)
@@ -170,9 +170,6 @@ def dashboard():
 def dashboard_admin():
     # Shows all the machines
     macchine = db.session.execute(text(tutte))
-    # Checks if it's the first login
-    if session["change"]:
-        return redirect(url_for('change_password'))
     return render_template('dashboard_admin.html', macchine=macchine, username=session["nome"])
 
 @app.route('/adduser', methods=['GET','POST'])
@@ -314,22 +311,19 @@ def generate():
 
     # Lo script di generazione del certificato si aspetta un CIDR
     cidr = str(request.form['genbtn'])
-    cidr = cidr+"/24"
-
     duration = str(request.form['dur'])
     # Genera il certificato per la macchina
     pathcrt, pathkey = generateCertificate(session["nome"], cidr, duration)
-    #Apre una finestra di dialogo per la selezione della cartella.
-    '''finestra = tk.Tk()
-    finestra.title("Seleziona cartella")
-    save_path = filedialog.askdirectory()
-    finestra.destroy()
+    # Ottieni il percorso della cartella Downloads
+    # Prompt the user to select a directory
+    Tk().withdraw()
+    save_path = askdirectory()
     # Copia il file nella cartella selezionata
     shutil.copy(pathcrt, save_path)
     shutil.copy(pathkey, save_path)
     # Rimuove i file temporanei
     os.remove(pathcrt)
-    os.remove(pathkey)'''
+    os.remove(pathkey)
     # Controlla se si tratta dell'admin o di un utente base
     if current_user.username == 'administration@admin.nebularat.com':
         return redirect(url_for('dashboard_admin'))

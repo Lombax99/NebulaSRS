@@ -1,5 +1,5 @@
 test = "SELECT ip_addr FROM CONF JOIN MACCHINA ON MACCHINA.CONF = CONF.ID WHERE MACCHINA.DESCRIZIONE = 'macchina1';"
-tutte = "SELECT m.ip_addr, m.descrizione FROM MACCHINA m;"
+tutte = "SELECT m.ip_addr, m.descrizione, r.cidr FROM MACCHINA m JOIN REGOLA as r ON r.macchina_id = m.id WHERE r.ca_name = 'Myorg, Inc';"
 utenti = "SELECT nome, cognome, username FROM UTENTE WHERE username != 'administration@admin.nebularat.com';"
 mac  = "SELECT id, ip_addr, descrizione FROM MACCHINA;"
 

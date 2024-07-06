@@ -6,12 +6,12 @@ from app import bcrypt
 
 test_data = {
     "UTENTE": [
-        ('Luca', 'Lombardi', 'luca@nebularat.com', bcrypt.generate_password_hash('luca'),  bcrypt.generate_password_hash('luca')),
-        ('Marco', 'Marchi', 'marco@nebularat.com', bcrypt.generate_password_hash('marco'),  bcrypt.generate_password_hash('marco')),
-        ('Stefano', 'Paparella', 'stefano@nebularat.com', bcrypt.generate_password_hash('stefano'),  bcrypt.generate_password_hash('stefano')),
-        ('admin', 'admin', 'administration@admin.nebularat.com', bcrypt.generate_password_hash('admin'), bcrypt.generate_password_hash('admin')),
-        ('Antonio', 'Monelli', 'antonio@nebularat.com', bcrypt.generate_password_hash('antonio'),  bcrypt.generate_password_hash('antonio')),
-        ('Pasquale', 'Basta', 'pasquale@nebularat.com', bcrypt.generate_password_hash('pasquale'), bcrypt.generate_password_hash('pasquale'))
+        ('Luca', 'Lombardi', 'luca@nebularat.com', bcrypt.generate_password_hash('luca')),
+        ('Marco', 'Marchi', 'marco@nebularat.com', bcrypt.generate_password_hash('marco')),
+        ('Stefano', 'Paparella', 'stefano@nebularat.com', bcrypt.generate_password_hash('stefano')),
+        ('admin', 'admin', 'administration@admin.nebularat.com', bcrypt.generate_password_hash('admin')),
+        ('Antonio', 'Monelli', 'antonio@nebularat.com', bcrypt.generate_password_hash('antonio')),
+        ('Pasquale', 'Basta', 'pasquale@nebularat.com', bcrypt.generate_password_hash('pasquale'))
     ],
     "CERT": [
         (1,"""-----BEGIN NEBULA CERTIFICATE-----
@@ -38,12 +38,12 @@ test_data = {
         ('macchina3', '192.168.1.3', 3)
     ],
     "REGOLA": [
-        ('in', 1, 'PortStort', 'Prot1', 'Host_aggio', 'Myorg, Inc', 'group', '192.168.100.111/24'),
-        ('out', 1, 'PortDritt', 'Prot2', 'Host_ello', 'ca_name', 'group', '192.168.100.112/24'),
-        ('in', 2, 'PortStort2', 'Prot1_2', 'Host_enta', 'Myorg, Inc', 'group2', '192.168.100.113/24'),
-        ('out', 2, 'PortDritt2', 'Prot2_2', 'Host_inato', 'ca_name2', 'group2', '192.168.100.121/24'),
-        ('in', 3, 'PortStort3', 'Prot3_1', 'Host_aggio', 'Myorg, Inc', 'rickrolls', '192.168.100.114/24'),
-        ('out', 3, 'PortDritt3', 'Never', 'Host_inato', 'ca_name3', 'rickrolls', '192.168.100.122/24')
+        ('in', 1, 'PortStort', 'Prot1', 'Host_aggio', 'Myorg, Inc', 'group', '192.168.100.111/32'),
+        ('out', 1, 'PortDritt', 'Prot2', 'Host_ello', 'ca_name', 'group', '192.168.100.112/32'),
+        ('in', 2, 'PortStort2', 'Prot1_2', 'Host_enta', 'Myorg, Inc', 'group2', '192.168.100.113/32'),
+        ('out', 2, 'PortDritt2', 'Prot2_2', 'Host_inato', 'ca_name2', 'group2', '192.168.100.121/32'),
+        ('in', 3, 'PortStort3', 'Prot3_1', 'Host_aggio', 'Myorg, Inc', 'rickrolls', '192.168.100.114/32'),
+        ('out', 3, 'PortDritt3', 'Never', 'Host_inato', 'ca_name3', 'rickrolls', '192.168.100.122/32')
     ],
     "USA":[
         (1, 1),
@@ -70,7 +70,7 @@ def insert_in_table(conn, table_name, data):
         if table_name == "MACCHINA":
             query = f"INSERT INTO {table_name} (descrizione, ip_addr, cert) VALUES (%s, %s, %s)"
         elif table_name == "UTENTE":
-            query = f"INSERT INTO {table_name} (nome, cognome, username, password, oldpw) VALUES (%s, %s, %s, %s, %s)"
+            query = f"INSERT INTO {table_name} (nome, cognome, username, password) VALUES (%s, %s, %s, %s)"
         elif table_name == "USA":
             query = f"INSERT INTO {table_name} (utente_id, macchina_id) VALUES (%s, %s)"
         elif table_name == "CERT":
@@ -107,8 +107,7 @@ def create_test_tables(conn):
             nome VARCHAR(255) NOT NULL,
             cognome VARCHAR(255) NOT NULL,
             username VARCHAR(255) UNIQUE NOT NULL,
-            password BYTEA NOT NULL,
-            oldpw BYTEA NOT NULL
+            password BYTEA NOT NULL
 		);
         """,
         """
