@@ -18,6 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "860b87f29652f131",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "organizzazioneCodice.canvas",
+                "viewState": {
+                  "x": -369.23494052598176,
+                  "y": 240.28395689241705,
+                  "zoom": 0.4871869580258574
+                }
+              }
+            }
           }
         ]
       }
@@ -157,8 +172,8 @@
   "active": "663c50c4a2ba14f2",
   "lastOpenFiles": [
     "organizzazioneCodice.canvas",
-    "Doc/BasicNetworkArchitecture.canvas",
     "Piano di progettazione.md",
+    "Doc/BasicNetworkArchitecture.canvas",
     "Doc/Sprint 1.md",
     "Doc/UtilityResources/credentials.md",
     "Autenticazione a due fattori.md",

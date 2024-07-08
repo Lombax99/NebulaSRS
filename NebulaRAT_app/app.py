@@ -148,7 +148,6 @@ def user_authentication():
         else:
             # If the code is incorrect, the user is redirected to the 2fa page again
             msg="Invalid 2FA code. Please try again."
-            return redirect(url_for('user_authentication'))
     return render_template('user_authentication.html', form=form, msg=msg)
             
 
