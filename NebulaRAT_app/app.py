@@ -118,7 +118,6 @@ def login():
         if user:
             if bcrypt.check_password_hash(bytes(user.password), form.password.data):
                 session["username"] = user.username
-                session["code"] = str(send_2fa(totp, session["username"])) #Sends the 2fa code to the user
                 return redirect(url_for('user_authentication'))
         else:
             flash("Invalid username or password")
@@ -128,17 +127,17 @@ def login():
 @app.route('/user_authentication', methods=['GET','POST'])
 def user_authentication():
     msg = ""
+    code = send_2fa(totp, session["username"])
     # Creates the form object
     form = FactorAuth()
     if form.validate_on_submit():
         # Checks if the code is correct
-        if check_2fa(totp, str(form.code.data)):
+        if check_2fa(totp, form.code.data):
             # If the code is correct, the user is logged in
-            user = Utente.query.filter_by(username=form.username.data).first()
+            user = Utente.query.filter_by(username=session["username"]).first()
             session["id"] = user.id
             session["nome"] = user.nome
             session["cognome"] = user.cognome
-            session["username"] = user.username
             # Logs the user in
             login_user(user)
             # We don't need the user object anymore
