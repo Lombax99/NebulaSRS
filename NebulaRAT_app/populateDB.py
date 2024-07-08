@@ -11,7 +11,8 @@ test_data = {
         ('Stefano', 'Paparella', 'stefano@nebularat.com', bcrypt.generate_password_hash('stefano')),
         ('admin', 'admin', 'administration@admin.nebularat.com', bcrypt.generate_password_hash('admin')),
         ('Antonio', 'Monelli', 'antonio@nebularat.com', bcrypt.generate_password_hash('antonio')),
-        ('Pasquale', 'Basta', 'pasquale@nebularat.com', bcrypt.generate_password_hash('pasquale'))
+        ('Pasquale', 'Basta', 'pasquale@nebularat.com', bcrypt.generate_password_hash('pasquale')),
+        ('Test', 'RealUser', 'nebulasrs@gmail.com', bcrypt.generate_password_hash('test'))
     ],
     "CERT": [
         (1,"""-----BEGIN NEBULA CERTIFICATE-----

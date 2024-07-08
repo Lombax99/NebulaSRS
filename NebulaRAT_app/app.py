@@ -112,7 +112,7 @@ def login():
         user = Utente.query.filter_by(username=form.username.data).first()
         if user:
             if bcrypt.check_password_hash(bytes(user.password), form.password.data):
-                session["user"] = user
+                session["username"] = user.username
                 return redirect(url_for('user_authentication'))
         else:
             flash("Invalid username or password")
@@ -125,19 +125,20 @@ def user_authentication():
     msg = ""
     totp = gen_2fa()
     # Sends the 2fa code to the user
-    code = send_2fa(totp, session["user"].username)
+    code = send_2fa(totp, session["username"])
     # Creates the form object
     form = FactorAuth()
     if form.validate_on_submit():
         # Checks if the code is correct
         if totp.verify(str(form.code.data), valid_window=1):
             # If the code is correct, the user is logged in
-            session["id"] = session["user"].id
-            session["nome"] = session["user"].nome
-            session["cognome"] = session["user"].cognome
-            session["username"] = session["user"].username
+            user = Utente.query.filter_by(username=form.username.data).first()
+            session["id"] = user.id
+            session["nome"] = user.nome
+            session["cognome"] = user.cognome
+            session["username"] = user.username
             # Logs the user in
-            login_user(session["user"])
+            login_user(user)
             # We don't need the user object anymore
             session.pop("user", None)
             # Redirects to the dashboard
