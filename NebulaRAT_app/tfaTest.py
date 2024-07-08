@@ -33,7 +33,7 @@ def send_2fa(totp, receiver_email):
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
     smtp_username = os.environ.get('GOOGLE_USERNAME')
-    smtp_password = os.environ.get('GOOGLE_USERNAME')
+    smtp_password = os.environ.get('GOOGLE_PASSWORD')
     print(f"smtp_username: {smtp_username}")
     print(f"smtp_password: {smtp_password}")
     
