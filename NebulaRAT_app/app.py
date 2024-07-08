@@ -129,6 +129,8 @@ def user_authentication():
     form = FactorAuth()
     if form.validate_on_submit():
         # Checks if the code is correct
+        print(f"Code: {form.code.data}")
+        print(f"Valid code: {code}")
         if totp.verify(str(form.code.data), valid_window=1):
             # If the code is correct, the user is logged in
             user = Utente.query.filter_by(username=form.username.data).first()
