@@ -17,7 +17,7 @@ from email.mime.text import MIMEText
 
 def send_2fa(totp, receiver_email):    
     # Generate the code
-    code = totp.now()
+    code = str(totp.now())
     
     # Send the code via email
     sender_email = os.environ.get('GOOGLE_USERNAME')
@@ -45,9 +45,7 @@ def send_2fa(totp, receiver_email):
     
     return code
 
-def check_2fa(totp):
-    # Ask for the code from the user
-    user_code = input("Enter the code: ")
+def check_2fa(totp, user_code):
     
     # Check if the code is correct
     if totp.verify(user_code, valid_window=1):
@@ -56,11 +54,3 @@ def check_2fa(totp):
     else:
         print("Code is incorrect or too old!")
         return False
-
-def gen_2fa():
-     # Generate a secret key
-    secret_key = pyotp.random_base32()
-    
-    # Create a TOTP object
-    totp = pyotp.TOTP(secret_key)
-    return totp

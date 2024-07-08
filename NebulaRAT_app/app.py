@@ -24,6 +24,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 app.config['SECRET_KEY'] = secret
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+ # Generate a secret key
+secret_key = pyotp.random_base32()
+    
+# Create a TOTP object
+totp = pyotp.TOTP(secret_key)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -113,6 +118,7 @@ def login():
         if user:
             if bcrypt.check_password_hash(bytes(user.password), form.password.data):
                 session["username"] = user.username
+                session["code"] = str(send_2fa(totp, session["username"])) #Sends the 2fa code to the user
                 return redirect(url_for('user_authentication'))
         else:
             flash("Invalid username or password")
@@ -122,16 +128,11 @@ def login():
 @app.route('/user_authentication', methods=['GET','POST'])
 def user_authentication():
     msg = ""
-    totp = gen_2fa()
-    # Sends the 2fa code to the user
-    code = send_2fa(totp, session["username"])
     # Creates the form object
     form = FactorAuth()
     if form.validate_on_submit():
         # Checks if the code is correct
-        print(f"Code: {form.code.data}")
-        print(f"Valid code: {code}")
-        if totp.verify(str(form.code.data), valid_window=1):
+        if check_2fa(totp, str(form.code.data)):
             # If the code is correct, the user is logged in
             user = Utente.query.filter_by(username=form.username.data).first()
             session["id"] = user.id
