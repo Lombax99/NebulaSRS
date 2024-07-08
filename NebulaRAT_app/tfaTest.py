@@ -15,13 +15,12 @@ from email.mime.text import MIMEText
 #------------------------------------------------
 
 
-def send_2fa():    
+def send_2fa(totp, receiver_email):    
     # Generate the code
     code = totp.now()
     
     # Send the code via email
     sender_email = os.environ.get('google_username')
-    receiver_email = 'lombax99.ll@gmail.com'
     subject = '2FA Code'
     message = f'Your 2FA code is: {code}'
     
@@ -41,8 +40,10 @@ def send_2fa():
         server.starttls()
         server.login(smtp_username, smtp_password)
         server.send_message(msg)
+    
+    return code
 
-def check_2fa():
+def check_2fa(totp):
     # Ask for the code from the user
     user_code = input("Enter the code: ")
     
@@ -54,12 +55,10 @@ def check_2fa():
         print("Code is incorrect or too old!")
         return False
 
-if __name__ == '__main__':
+def gen_2fa():
      # Generate a secret key
     secret_key = pyotp.random_base32()
     
     # Create a TOTP object
     totp = pyotp.TOTP(secret_key)
-
-    send_2fa()
-    check_2fa()
+    return totp

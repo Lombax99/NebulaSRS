@@ -16,6 +16,7 @@ from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import relationship
 from flask import send_file
 import zipfile
+from tfaTest import *
 
 db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
 app = Flask(__name__)
@@ -60,7 +61,7 @@ class RegisterForm(FlaskForm):
 
     password = PasswordField(validators=[InputRequired()], render_kw={"type":"password", "class":"form-control", "placeholder": "Password"})
 
-    submit = SubmitField('Register', render_kw={"type":"submit", "class":"btn btn-primary py-3 w-100 mb-4"})
+    submit = SubmitField('Add user', render_kw={"type":"submit", "class":"btn btn-primary py-3 w-100 mb-4"})
 
     def validate_username(self, username):
         existing_user_username = Utente.query.filter_by(
@@ -86,7 +87,10 @@ class ChangePw(FlaskForm):
 
     submit = SubmitField('Change Password', render_kw={"type":"submit", "class":"btn btn-primary py-3 w-100 mb-4"})
 
+class FactorAuth(FlaskForm):
+    code = StringField(validators=[InputRequired()], render_kw={"type":"text", "class":"form-control", "placeholder":"2FA code here"})
 
+    submit = SubmitField('Submit', render_kw={"type":"submit", "class":"btn btn-primary py-3 w-100 mb-4"})
 
 @app.route('/')
 def root():
@@ -108,19 +112,46 @@ def login():
         user = Utente.query.filter_by(username=form.username.data).first()
         if user:
             if bcrypt.check_password_hash(bytes(user.password), form.password.data):
-                session["id"] = user.id
-                session["nome"] = user.nome
-                session["cognome"] = user.cognome
-                session["username"] = user.username
-                login_user(user)
-                if form.username.data == 'administration@admin.nebularat.com':
-                    return redirect(url_for('dashboard_admin'))
-                else:
-                    return redirect(url_for('dashboard'))
+                session["user"] = user
+                return redirect(url_for('user_authentication'))
         else:
             flash("Invalid username or password")
             return redirect(url_for('login'))
     return render_template('login.html', form=form)
+
+@app.route('/user_authentication', methods=['GET','POST'])
+@login_required
+def user_authentication():
+    msg = ""
+    totp = gen_2fa()
+    # Sends the 2fa code to the user
+    code = send_2fa(totp, session["user"].username)
+    # Creates the form object
+    form = FactorAuth()
+    if form.validate_on_submit():
+        # Checks if the code is correct
+        if totp.verify(str(form.code.data), valid_window=1):
+            # If the code is correct, the user is logged in
+            session["id"] = session["user"].id
+            session["nome"] = session["user"].nome
+            session["cognome"] = session["user"].cognome
+            session["username"] = session["user"].username
+            # Logs the user in
+            login_user(session["user"])
+            # We don't need the user object anymore
+            session.pop("user", None)
+            # Redirects to the dashboard
+            if session["username"] == 'administration@admin.nebularat.com':
+                return redirect(url_for('dashboard_admin'))
+            else:
+                return redirect(url_for('dashboard'))
+        else:
+            # If the code is incorrect, the user is redirected to the 2fa page again
+            msg="Invalid 2FA code. Please try again."
+            return redirect(url_for('user_authentication'))
+    return render_template('user_authentication.html', form=form, msg=msg)
+            
+
 
 @app.route('/change_password', methods=['GET','POST'])
 @login_required
