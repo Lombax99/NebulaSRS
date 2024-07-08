@@ -20,6 +20,18 @@
             }
           },
           {
+            "id": "352417526537a3a6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Doc/Testing phase.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "860b87f29652f131",
             "type": "leaf",
             "state": {
@@ -27,14 +39,15 @@
               "state": {
                 "file": "organizzazioneCodice.canvas",
                 "viewState": {
-                  "x": -369.23494052598176,
-                  "y": 240.28395689241705,
-                  "zoom": 0.4871869580258574
+                  "x": -313.7426768368947,
+                  "y": 202.08327588206322,
+                  "zoom": -0.8461463753074758
                 }
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -100,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Piano di progettazione.md",
+                "file": "Doc/Testing phase.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +130,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Piano di progettazione.md",
+                "file": "Doc/Testing phase.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -140,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Piano di progettazione.md"
+                "file": "Doc/Testing phase.md"
               }
             }
           },
@@ -169,10 +182,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "663c50c4a2ba14f2",
+  "active": "352417526537a3a6",
   "lastOpenFiles": [
-    "organizzazioneCodice.canvas",
     "Piano di progettazione.md",
+    "organizzazioneCodice.canvas",
+    "Doc/Testing phase.md",
     "Doc/BasicNetworkArchitecture.canvas",
     "Doc/Sprint 1.md",
     "Doc/UtilityResources/credentials.md",
@@ -216,7 +230,6 @@
     "NebulaRAT_app/darkpan-1.0.0/lib/owlcarousel/assets/ajax-loader.gif",
     "NebulaRAT_app/darkpan-1.0.0/img/user.jpg",
     "Doc/Framework utilizzato.md",
-    "venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
-    "Web app tutorial.md"
+    "venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md"
   ]
 }
