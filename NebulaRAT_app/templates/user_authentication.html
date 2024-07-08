@@ -53,6 +53,11 @@
                                 </div>
                                 {{ form.submit }}
                             </form>
+                        {{% if msg != "" %}}
+                            <div class="alert alert-danger" role="alert">
+                                <h3>{{ msg }}</h3>
+                            </div>
+                        {{% endif %}}
                     </div>
                 </div>
             </div>
