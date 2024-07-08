@@ -20,7 +20,7 @@ def send_2fa(totp, receiver_email):
     code = totp.now()
     
     # Send the code via email
-    sender_email = os.environ.get('google_username')
+    sender_email = os.environ.get('GOOGLE_USERNAME')
     subject = '2FA Code'
     message = f'Your 2FA code is: {code}'
     
@@ -32,8 +32,8 @@ def send_2fa(totp, receiver_email):
     # Replace the SMTP server details with your own
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
-    smtp_username = os.environ.get('google_username')
-    smtp_password = os.environ.get('google_password')
+    smtp_username = os.environ.get('GOOGLE_USERNAME')
+    smtp_password = os.environ.get('GOOGLE_USERNAME')
     print(f"smtp_username: {smtp_username}")
     print(f"smtp_password: {smtp_password}")
     

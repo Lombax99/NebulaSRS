@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/UtilityResources/credentials.md",
+                "file": "Piano di progettazione.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/UtilityResources/credentials.md",
+                "file": "Piano di progettazione.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/UtilityResources/credentials.md",
+                "file": "Piano di progettazione.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/UtilityResources/credentials.md"
+                "file": "Piano di progettazione.md"
               }
             }
           },
@@ -154,12 +154,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "818c802cddb5c785",
+  "active": "2f89889594089de3",
   "lastOpenFiles": [
+    "Doc/Sprint 1.md",
+    "Doc/UtilityResources/credentials.md",
     "Autenticazione a due fattori.md",
     "Doc/PostgreSQL & Python/DB structure v2.md",
     "SchemaDB.png",
-    "Doc/Sprint 1.md",
     "NebulaRAT_app/2faTest.py",
     "Doc/UtilityResources/Nebula Tutorial/Nebula first network and useful commands.md",
     "NebulaRAT_app/~",
@@ -172,7 +173,6 @@
     "NebulaRAT_app/nebulaFiles/testMachineFiles/tmpCert_4_SRSProject/admin_113.key",
     "NebulaRAT_app/nebulaFiles/testMachineFiles/tmpCert_4_SRSProject/admin_112.crt",
     "NebulaRAT_app/nebulaFiles/testMachineFiles/tmpCert_4_SRSProject/admin_112.key",
-    "Doc/UtilityResources/credentials.md",
     "organizzazioneCodice.canvas",
     "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
     "Doc/UtilityResources/Terraform + Azure setup.md",
