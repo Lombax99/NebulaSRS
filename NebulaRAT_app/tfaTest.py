@@ -34,6 +34,8 @@ def send_2fa(totp, receiver_email):
     smtp_port = 587
     smtp_username = os.environ.get('google_username')
     smtp_password = os.environ.get('google_password')
+    print(smtp_username)
+    print(smtp_password)
     
     # Send the email with the code to the user via Google's SMTP server
     with smtplib.SMTP(smtp_server, smtp_port) as server:
