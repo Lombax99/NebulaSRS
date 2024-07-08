@@ -120,7 +120,6 @@ def login():
     return render_template('login.html', form=form)
 
 @app.route('/user_authentication', methods=['GET','POST'])
-@login_required
 def user_authentication():
     msg = ""
     totp = gen_2fa()
