@@ -378,21 +378,18 @@ def generate():
     
 @app.route('/profile')
 def profile():
-    print(f"Rendered auth: {current_user.auth}")
     return render_template("profile.html", nome=session["nome"], cognome=session["cognome"], username=session["username"], auth=session["auth"])
 
 @app.route('/activate', methods=['GET','POST'])
 def activate():
     switch = request.form.get("authSwitch")
     user = Utente.query.filter_by(username=session["username"]).first()
-    print(f"Swtich value: {switch}")
     if switch == "1":
         user.auth = 1
     else:
         user.auth = 0
     db.session.commit()
     session["auth"]=user.auth
-    print(f"auth: {user.auth}")
     return redirect(url_for('profile'))
 
 @app.route('/logout')
