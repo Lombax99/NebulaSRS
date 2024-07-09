@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/Testing phase.md",
+                "file": "Doc/Nebula Remote Access Tool.md",
                 "mode": "source",
                 "source": false
               }
@@ -39,15 +39,14 @@
               "state": {
                 "file": "organizzazioneCodice.canvas",
                 "viewState": {
-                  "x": -313.7426768368947,
-                  "y": 202.08327588206322,
-                  "zoom": -0.8461463753074758
+                  "x": -59.29973791822704,
+                  "y": 243.0446402910519,
+                  "zoom": -0.17947970864080925
                 }
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -113,7 +112,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/Testing phase.md",
+                "file": "Piano di progettazione.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,7 +129,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/Testing phase.md",
+                "file": "Piano di progettazione.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -153,7 +152,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/Testing phase.md"
+                "file": "Piano di progettazione.md"
               }
             }
           },
@@ -182,13 +181,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "352417526537a3a6",
+  "active": "663c50c4a2ba14f2",
   "lastOpenFiles": [
-    "Piano di progettazione.md",
+    "Doc/Nebula Remote Access Tool.md",
     "organizzazioneCodice.canvas",
-    "Doc/Testing phase.md",
-    "Doc/BasicNetworkArchitecture.canvas",
     "Doc/Sprint 1.md",
+    "Doc/Testing phase.md",
+    "Piano di progettazione.md",
+    "Doc/BasicNetworkArchitecture.canvas",
     "Doc/UtilityResources/credentials.md",
     "Autenticazione a due fattori.md",
     "Doc/PostgreSQL & Python/DB structure v2.md",
@@ -207,7 +207,6 @@
     "NebulaRAT_app/nebulaFiles/testMachineFiles/tmpCert_4_SRSProject/admin_112.key",
     "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
     "Doc/UtilityResources/Terraform + Azure setup.md",
-    "Doc/Nebula Remote Access Tool.md",
     "Pasted image 20240702172108.png",
     "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
     "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
