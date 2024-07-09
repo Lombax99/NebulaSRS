@@ -43,7 +43,6 @@ def send_2fa(totp, receiver_email):
         server.login(smtp_username, smtp_password)
         server.send_message(msg)
     
-    return code
 
 def check_2fa(totp, user_code):
     

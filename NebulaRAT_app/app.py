@@ -131,6 +131,7 @@ def login():
                 session["username"] = user.username
                 # Checks if the user has the 2fa activated
                 if user.auth == 1:
+                    send_2fa(totp, session["username"])
                     return redirect(url_for('user_authentication'))
                 else:
                     # Directly logs in
@@ -152,8 +153,7 @@ def login():
 
 @app.route('/user_authentication', methods=['GET','POST'])
 def user_authentication():
-    msg = ""
-    code = send_2fa(totp, session["username"])
+    msg = "" 
     # Creates the form object
     form = FactorAuth()
     if form.validate_on_submit():
@@ -174,6 +174,7 @@ def user_authentication():
                 return redirect(url_for('dashboard'))
         else:
             # If the code is incorrect, the user is redirected to the 2fa page again
+            send_2fa(totp, session["username"])
             msg="Invalid 2FA code. Please try again."
     return render_template('user_authentication.html', form=form, msg=msg)
             
@@ -399,7 +400,7 @@ def logout():
     session.pop("nome", None)
     session.pop("cognome", None)
     session.pop("username", None)
-    session.pop("change", None)
+    session.pop("auth", None)
     logout_user()
     flash("Logout effettuato!")
     return redirect('/')
