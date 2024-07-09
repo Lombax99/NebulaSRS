@@ -108,7 +108,8 @@ def create_test_tables(conn):
             nome VARCHAR(255) NOT NULL,
             cognome VARCHAR(255) NOT NULL,
             username VARCHAR(255) UNIQUE NOT NULL,
-            password BYTEA NOT NULL
+            password BYTEA NOT NULL,
+            auth INTEGER DEFAULT 0
 		);
         """,
         """

@@ -39,14 +39,19 @@ login_manager.login_view = 'login'
 def load_user(user_id):
     return Utente.query.get(int(user_id))
 
+#############################################################################################################################################
+############################################################### CLASSES START ###############################################################
 
+
+# User class
 class Utente(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
     nome = db.Column(db.String(255), nullable=False)
     cognome = db.Column(db.String(255), nullable=False)
     username = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
-
+    auth = db.Column(db.Integer, nullable=False)
+# Class that links machines and users
 class Usa(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     macchina_id = db.Column(db.Integer)
@@ -56,6 +61,7 @@ class Usa(db.Model):
         self.macchina_id = macchina_id
         self.utente_id = utente_id
 
+# Form for registering a new user
 class RegisterForm(FlaskForm):
     
     name = StringField(validators=[InputRequired()], render_kw={"class":"form-control","placeholder": "Mario"})
@@ -73,9 +79,9 @@ class RegisterForm(FlaskForm):
             username=username.data).first()
         if existing_user_username:
             raise ValidationError(
-                'Nome utente già esistente. Riprova con un nome utente diverso.')
-        
+                'Username already exists. Please try a different username.')
 
+# Form for login       
 class LoginForm(FlaskForm):
     username = StringField(validators=[InputRequired()], render_kw={"type":"email", "class":"form-control","aria-describedby":"emailHelp", "placeholder":"mariorossi12@nebularat.com"})
 
@@ -83,6 +89,7 @@ class LoginForm(FlaskForm):
 
     submit = SubmitField('Login', render_kw={"type":"submit", "class":"btn btn-primary py-3 w-100 mb-4"})
 
+# Form for changing the password
 class ChangePw(FlaskForm):
     oldpassword = PasswordField(validators=[InputRequired()], render_kw={"type":"password", "class":"form-control", "placeholder": "Old password"})
 
@@ -92,10 +99,14 @@ class ChangePw(FlaskForm):
 
     submit = SubmitField('Change Password', render_kw={"type":"submit", "class":"btn btn-primary py-3 w-100 mb-4"})
 
+# Form for the 2FA
 class FactorAuth(FlaskForm):
     code = StringField(validators=[InputRequired()], render_kw={"type":"text", "class":"form-control", "placeholder":"2FA code here"})
 
     submit = SubmitField('Submit', render_kw={"type":"submit", "class":"btn btn-primary py-3 w-100 mb-4"})
+
+#############################################################################################################################################
+################################################################ CLASSES END ################################################################ 
 
 @app.route('/')
 def root():
@@ -118,7 +129,22 @@ def login():
         if user:
             if bcrypt.check_password_hash(bytes(user.password), form.password.data):
                 session["username"] = user.username
-                return redirect(url_for('user_authentication'))
+                # Checks if the user has the 2fa activated
+                if user.auth == 1:
+                    return redirect(url_for('user_authentication'))
+                else:
+                    # Directly logs in
+                    session["id"] = user.id
+                    session["nome"] = user.nome
+                    session["cognome"] = user.cognome
+                    session["auth"] = user.auth
+                    # Logs the user in
+                    login_user(user)
+                    # Redirects to the dashboard
+                    if session["username"] == 'administration@admin.nebularat.com':
+                        return redirect(url_for('dashboard_admin'))
+                    else:
+                        return redirect(url_for('dashboard'))
         else:
             flash("Invalid username or password")
             return redirect(url_for('login'))
@@ -138,10 +164,9 @@ def user_authentication():
             session["id"] = user.id
             session["nome"] = user.nome
             session["cognome"] = user.cognome
+            session["auth"] = user.auth
             # Logs the user in
             login_user(user)
-            # We don't need the user object anymore
-            session.pop("user", None)
             # Redirects to the dashboard
             if session["username"] == 'administration@admin.nebularat.com':
                 return redirect(url_for('dashboard_admin'))
@@ -153,9 +178,7 @@ def user_authentication():
     return render_template('user_authentication.html', form=form, msg=msg)
             
 
-
 @app.route('/change_password', methods=['GET','POST'])
-@login_required
 def change_password():
     form = ChangePw()
     if form.validate_on_submit():
@@ -173,8 +196,6 @@ def change_password():
                     hashed_password = bcrypt.generate_password_hash(form.password.data)
                     user.password = hashed_password
                     db.session.commit()
-                    # Password changed, the user is not using the old password anymore
-                    session["change"] = False
                     # Chooses where to go after the password change
                     if session["username"] == 'administration@admin.nebularat.com':
                         return redirect(url_for('dashboard_admin'))
@@ -217,8 +238,10 @@ def adduser():
         cognome = formReg.surname.data
         # email
         username = formReg.username.data
+        # A2F is disativated by default
+        a2f = 0
         # Creates new user
-        new_user = Utente(nome=nome, cognome=cognome, username=username, password=hashed_password, oldpw=hashed_password)
+        new_user = Utente(nome=nome, cognome=cognome, username=username, password=hashed_password, oldpw=hashed_password, auth=a2f)
         # adds it to the db
         db.session.add(new_user)
         db.session.commit()
@@ -353,7 +376,24 @@ def generate():
     # Download del file zip
     return send_file(zip_path, as_attachment=True)
     
+@app.route('/profile')
+def profile():
+    print(f"Rendered auth: {current_user.auth}")
+    return render_template("profile.html", nome=session["nome"], cognome=session["cognome"], username=session["username"], auth=session["auth"])
 
+@app.route('/activate', methods=['GET','POST'])
+def activate():
+    switch = request.form.get("authSwitch")
+    user = Utente.query.filter_by(username=session["username"]).first()
+    print(f"Swtich value: {switch}")
+    if switch == "1":
+        user.auth = 1
+    else:
+        user.auth = 0
+    db.session.commit()
+    session["auth"]=user.auth
+    print(f"auth: {user.auth}")
+    return redirect(url_for('profile'))
 
 @app.route('/logout')
 @login_required
