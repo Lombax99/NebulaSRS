@@ -72,7 +72,7 @@ class RegisterForm(FlaskForm):
 
     password = PasswordField(validators=[InputRequired()], render_kw={"type":"password", "class":"form-control", "placeholder": "Password"})
 
-    submit = SubmitField('Add user', render_kw={"type":"submit", "class":"btn btn-primary py-3 w-100 mb-4"})
+    submit = SubmitField('Add user', render_kw={"type":"submit", "class":"btn btn-primary py-3 mb-4"})
 
     def validate_username(self, username):
         existing_user_username = Utente.query.filter_by(
@@ -97,7 +97,7 @@ class ChangePw(FlaskForm):
 
     repeat = PasswordField(validators=[InputRequired()], render_kw={"type":"password", "class":"form-control", "placeholder": "Repeat password"})
 
-    submit = SubmitField('Change Password', render_kw={"type":"submit", "class":"btn btn-primary py-3 w-100 mb-4"})
+    submit = SubmitField('Change Password', render_kw={"type":"submit", "class":"btn btn-primary py-3 mb-4"})
 
 # Form for the 2FA
 class FactorAuth(FlaskForm):
@@ -118,6 +118,7 @@ def root():
 @app.route('/login/', methods=['GET','POST'])
 def login():
     # if user is logged, we go to dashboard
+    msg=""
     if current_user.is_authenticated:
         if current_user.username == 'administration@admin.nebularat.com':
             return redirect(url_for('dashboard_admin', username=current_user.nome))
@@ -146,10 +147,11 @@ def login():
                         return redirect(url_for('dashboard_admin'))
                     else:
                         return redirect(url_for('dashboard'))
+            else:
+                msg="Wrong password! Try again!"
         else:
-            flash("Invalid username or password")
-            return redirect(url_for('login'))
-    return render_template('login.html', form=form)
+            msg="User doesn't exist!"
+    return render_template('login.html', form=form, msg=msg)
 
 @app.route('/user_authentication', methods=['GET','POST'])
 def user_authentication():
@@ -181,6 +183,7 @@ def user_authentication():
 
 @app.route('/change_password', methods=['GET','POST'])
 def change_password():
+    msg=""
     form = ChangePw()
     if form.validate_on_submit():
         user = Utente.query.filter_by(username=session["username"]).first()
@@ -190,8 +193,7 @@ def change_password():
             if not bcrypt.check_password_hash(bytes(user.password), form.password.data):
                 # Checks if the new password and its replica are equals
                 if form.password.data != form.repeat.data:
-                    flash("Passwords don't match")
-                    return redirect(url_for('change_password'))
+                    msg="Passwords don't match"
                 else:
                     # Hashes the new password and updates the db
                     hashed_password = bcrypt.generate_password_hash(form.password.data)
@@ -203,10 +205,10 @@ def change_password():
                     else:
                         return redirect(url_for('dashboard'))
             else:
-                flash("You can't use the old password")
-                return redirect(url_for('change_password'))
-            
-    return render_template('change_password.html', form=form)
+                msg="You can't use the old password"
+        else:
+            msg="Wrong password!"
+    return render_template('change_password.html', form=form, username=session["username"], msg=msg)
 
 @app.route('/dashboard')
 @login_required
@@ -227,6 +229,7 @@ def dashboard_admin():
 @app.route('/adduser', methods=['GET','POST'])
 @login_required
 def adduser():
+    msg=""
     # Creates form object
     formReg = RegisterForm()
     # Retreiving dei valori 
@@ -239,17 +242,20 @@ def adduser():
         cognome = formReg.surname.data
         # email
         username = formReg.username.data
-        # A2F is disativated by default
-        a2f = 0
-        # Creates new user
-        new_user = Utente(nome=nome, cognome=cognome, username=username, password=hashed_password, oldpw=hashed_password, auth=a2f)
-        # adds it to the db
-        db.session.add(new_user)
-        db.session.commit()
-        # redirect to the admin dashboard, as only the admin can add new users
-        return redirect(url_for('dashboard_admin'))
-
-    return render_template('signup.html', form=formReg)
+        user = Utente.query.filter_by(username=username).first()
+        if user:
+            msg="User already exists!"
+        else:
+            # A2F is disativated by default
+            a2f = 0
+            # Creates new user
+            new_user = Utente(nome=nome, cognome=cognome, username=username, password=hashed_password, auth=a2f)
+            # adds it to the db
+            db.session.add(new_user)
+            db.session.commit()
+            # redirect to the admin dashboard, as only the admin can add new users
+            return redirect(url_for('dashboard_admin'))
+    return render_template('signup.html', form=formReg, username=session["username"], msg=msg)
 
 
 @app.route('/404')

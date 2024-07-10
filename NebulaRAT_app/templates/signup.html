@@ -64,8 +64,21 @@
                                 <label for="exampleInputPassword1" class="form-label">Password</label>
                                 {{ form.password }}
                             </div>                            
-                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4 mt-4">Add user</button>
+                            <div class="mb-3 text-center">
+                                {{ form.submit }} 
+                                &nbsp;
+                                {% if username=="administration@admin.nebularat.com" %}
+                                <a href="{{url_for('dashboard_admin')}}" class="btn btn-primary py-3 mb-4">Back</a>
+                                {% else %}
+                                <a href="{{url_for('dashboard')}}" class="btn btn-primary py-3 mb-4">Back</a>
+                                {% endif %}
+                            </div>
                         </form>
+                        {% if msg != "" %}
+                            <div class="d-flex align-items-center mb-3">
+                                <h3>{{ msg }}</h3>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

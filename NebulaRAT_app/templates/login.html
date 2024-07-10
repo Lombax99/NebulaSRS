@@ -57,6 +57,11 @@
                                 </div>
                                 {{ form.submit }}
                             </form>
+                            {% if msg != "" %}
+                            <div class="d-flex align-items-center mb-3">
+                                <h3>{{ msg }}</h3>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
