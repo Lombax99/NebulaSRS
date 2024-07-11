@@ -33,8 +33,6 @@ def send_2fa(totp, receiver_email):
     smtp_port = 587
     smtp_username = os.environ.get('GOOGLE_USERNAME')
     smtp_password = os.environ.get('GOOGLE_PASSWORD')
-    print(f"smtp_username: {smtp_username}")
-    print(f"smtp_password: {smtp_password}")
     
     # Send the email with the code to the user via Google's SMTP server
     with smtplib.SMTP(smtp_server, smtp_port) as server:
@@ -44,11 +42,8 @@ def send_2fa(totp, receiver_email):
     
 
 def check_2fa(totp, user_code):
-    
     # Check if the code is correct
     if totp.verify(user_code, valid_window=1):
-        print("Code is correct!")
         return True
     else:
-        print("Code is incorrect or too old!")
         return False
