@@ -1,5 +1,4 @@
 import os
-import pyotp
 import smtplib
 from email.mime.text import MIMEText
 

@@ -7,8 +7,6 @@ postgresql = {
     'pgdb': os.environ.get('DB_PGDB')
 }
 
-path="nebulaFiles"
-
 # Path to the scripts
 nebulaCert_path = os.path.join("nebulaScripts", "nebula-cert")       # ./nebula-cert print -path somecert.crt    to see certificate
 

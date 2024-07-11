@@ -13,7 +13,7 @@ import os
 from sqlalchemy import text
 from flask import send_file
 import zipfile
-from tfaTest import *
+from tfaLib import *
 
 # Database URI
 db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
