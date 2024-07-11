@@ -264,12 +264,6 @@ def adduser():
             return redirect(url_for('dashboard_admin'))
     return render_template('signup.html', form=formReg, username=session["username"], msg=msg)
 
-
-@app.route('/404')
-def errorPage():
-    print('Request for index page received')
-    return render_template('404.html')
-
 ######################## TEST END #################################
 ###################################################################
 
@@ -380,13 +374,25 @@ def generate():
     duration = str(request.form['dur'])
     # Genera il certificato per la macchina
     pathcrt, pathkey, outputDir = generateCertificate(session["nome"], cidr, duration)
+    # Ottiene i path safe, per mitigare il problema di path traversal
+    safe_pathcrt = os.path.realpath(pathcrt) #Crt
+    safe_pathkey = os.path.realpath(pathkey) #Key
     # Fa uno zip dei file di cert e key
     zip_path = os.path.join(outputDir, session["nome"].lower() + ".zip")
-    with zipfile.ZipFile(zip_path, 'w') as zip_file:
-        zip_file.write(pathcrt, os.path.basename(pathcrt).lower())
-        zip_file.write(pathkey, os.path.basename(pathkey).lower())
+    # Safe path dello zip
+    safe_zip_path = os.path.realpath(zip_path)
+    # Path traversal check
+    if os.path.commonprefix((pathcrt ,safe_pathcrt)) != safe_pathcrt or os.path.commonprefix((pathkey ,safe_pathkey)) != safe_pathkey or os.path.commonprefix((zip_path ,safe_zip_path)) != safe_zip_path: 
+        return redirect(url_for('errorPage')) #Bad user!
+    #Bad user!
+    with zipfile.ZipFile(safe_zip_path, 'w') as zip_file:
+        zip_file.write(safe_pathcrt, os.path.basename(safe_pathcrt).lower())
+        zip_file.write(safe_pathkey, os.path.basename(safe_pathkey).lower())
+    # Rimuove i file crt e key
+    os.remove(safe_pathcrt)
+    os.remove(safe_pathkey)
     # Download del file zip
-    return send_file(zip_path, as_attachment=True)
+    return send_file(safe_zip_path, as_attachment=True)
     
 @app.route('/profile')
 def profile():
@@ -415,6 +421,10 @@ def deleteUser():
     flash("User correctly deleted!", "info")
     return redirect(url_for('list'))
 
+@app.route('/errorPage')
+def errorPage():
+    return render_template('404.html')
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -424,9 +434,7 @@ def logout():
     session.pop("username", None)
     session.pop("auth", None)
     logout_user()
-    flash("Logout effettuato!", category="success")
     return redirect('/')
-
 
 if __name__ == '__main__':
    app.run(debug=True)

@@ -45,8 +45,8 @@ def print_certificate(certificate_path):
 # "duration" is the duration is the time for which the certificate is valid
 def generateCertificate(username, requiredIP, duration):
     from settings import path
-    nebulaCert_path = os.path.join("nebulaScripts", "nebula-cert")
-    outputDir = "nebulaFiles"
+    nebulaCert_path = os.path.realpath(os.path.join("nebulaScripts", "nebula-cert"))
+    outputDir = os.path.realpath("nebulaFiles")
     # Check if the script exists
     print(os.getcwd())
     if os.path.exists(nebulaCert_path):
