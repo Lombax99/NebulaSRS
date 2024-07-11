@@ -9,4 +9,10 @@ postgresql = {
 
 path="nebulaFiles"
 
+# Path to the scripts
+nebulaCert_path = os.path.join("nebulaScripts", "nebula-cert")       # ./nebula-cert print -path somecert.crt    to see certificate
+
+# output directory path
+outputDir = "nebulaFiles"
+
 secret = os.environ.get('FLASK_SECRET')
