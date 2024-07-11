@@ -4,45 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "b1490e3a5f2dce48",
+        "id": "ad54986ae1846074",
         "type": "tabs",
         "children": [
           {
-            "id": "663c50c4a2ba14f2",
+            "id": "a666b8b65c6114fa",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Piano di progettazione.md",
+                "file": "Doc/Testing phase.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "352417526537a3a6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Doc/Nebula Remote Access Tool.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "860b87f29652f131",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "organizzazioneCodice.canvas",
-                "viewState": {
-                  "x": -59.29973791822704,
-                  "y": 243.0446402910519,
-                  "zoom": -0.17947970864080925
-                }
               }
             }
           }
@@ -112,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Piano di progettazione.md",
+                "file": "Doc/Testing phase.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Piano di progettazione.md",
+                "file": "Doc/Testing phase.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -152,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Piano di progettazione.md"
+                "file": "Doc/Testing phase.md"
               }
             }
           },
@@ -181,15 +154,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "663c50c4a2ba14f2",
+  "active": "a666b8b65c6114fa",
   "lastOpenFiles": [
-    "Doc/Nebula Remote Access Tool.md",
-    "organizzazioneCodice.canvas",
+    "NebulaRAT_app/__pycache__/app.cpython-310.pyc.131286820539104",
     "Doc/Sprint 1.md",
-    "Doc/Testing phase.md",
-    "Piano di progettazione.md",
-    "Doc/BasicNetworkArchitecture.canvas",
+    "Doc/Nebula Remote Access Tool.md",
+    "Doc/UtilityResources/Terraform + Azure setup.md",
     "Doc/UtilityResources/credentials.md",
+    "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
+    "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
+    "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
+    "organizzazioneCodice.canvas",
+    "Piano di progettazione.md",
+    "Doc/Testing phase.md",
+    "Doc/BasicNetworkArchitecture.canvas",
     "Autenticazione a due fattori.md",
     "Doc/PostgreSQL & Python/DB structure v2.md",
     "SchemaDB.png",
@@ -206,13 +184,9 @@
     "NebulaRAT_app/nebulaFiles/testMachineFiles/tmpCert_4_SRSProject/admin_112.crt",
     "NebulaRAT_app/nebulaFiles/testMachineFiles/tmpCert_4_SRSProject/admin_112.key",
     "Doc/UtilityResources/Nebula Tutorial/Vagrant setup.md",
-    "Doc/UtilityResources/Terraform + Azure setup.md",
     "Pasted image 20240702172108.png",
-    "Doc/PostgreSQL & Python/COLLEGAMENTO A POSTGRESQL CON PYTHON.md",
-    "Doc/PostgreSQL & Python/CONFIGURAZIONE DI POSTGRESQL.md",
     "Doc/PostgreSQL & Python/SCELTE IMPLEMENTATIVE.md",
     "Doc/PostgreSQL & Python/RAGIONAMENTI SU POSSIBILI RUOLI.md",
-    "Doc/PostgreSQL & Python/Possibilità per lo sprint2.md",
     "antenv/lib/python3.10/site-packages/msrest-0.7.1.dist-info/LICENSE.md",
     "antenv/lib/python3.10/site-packages/ipykernel/resources/logo-svg.svg",
     "antenv/lib/python3.10/site-packages/ipykernel/resources/logo-64x64.png",

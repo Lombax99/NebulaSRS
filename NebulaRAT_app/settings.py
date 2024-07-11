@@ -1,9 +1,12 @@
+import os
 postgresql = {
-    'pguser':'sudo',
-    'pgpassword':'sudo',
-    'pghost':'nebularat-postgresdb-server.postgres.database.azure.com',
+    'pguser':os.environ.get('DB_USERNAME'),
+    'pgpassword':os.environ.get('DB_PASSWORD'),
+    'pghost':os.environ.get('DB_HOST'),
     'pgport': 5432,
-    'pgdb': 'nebularat-postgresServer-db'
+    'pgdb': os.environ.get('DB_PGDB')
 }
 
 path="nebulaFiles"
+
+secret = os.environ.get('FLASK_SECRET')

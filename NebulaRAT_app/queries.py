@@ -1,54 +1,37 @@
-test = "SELECT ip_addr FROM CONF JOIN MACCHINA ON MACCHINA.CONF = CONF.ID WHERE MACCHINA.DESCRIZIONE = 'macchina1';"
 tutte = "SELECT m.ip_addr, m.descrizione, r.cidr FROM MACCHINA m JOIN REGOLA as r ON r.macchina_id = m.id WHERE r.ca_name = 'Myorg, Inc';"
-utenti = "SELECT nome, cognome, username FROM UTENTE WHERE username != 'administration@admin.nebularat.com';"
+utenti = f"SELECT nome, cognome, username FROM UTENTE WHERE admin != '%s';"
 mac  = "SELECT id, ip_addr, descrizione FROM MACCHINA;"
-
-def build_query(type, x):
-
-    if type == "firewall":
-        transformed =f"""
-        SELECT *
-        FROM REGOLA AS R
-        JOIN MACCHINA AS M ON M.ID = R.MACCHINA_ID
-        WHERE M.IP_ADDR = '{x}';
-        """
-    elif type == "utente":
-        transformed = f"""
+sel_macchine = f"""
         SELECT m.ip_addr, m.descrizione, r.cidr
         FROM UTENTE u
         JOIN USA as ua ON u.id = ua.utente_id
         JOIN MACCHINA as m ON ua.macchina_id = m.id
         JOIN REGOLA as r ON r.macchina_id = m.id
-        WHERE u.username = '{x}'
+        WHERE u.username = '%s'
         AND r.ca_name='Myorg, Inc';
         """
-    elif type == "search_login":
-        transformed = f"""
-        SELECT username, password, nome, cognome
-        FROM UTENTE
-        WHERE username = '{x}';
+firewall = f"""
+        SELECT *
+        FROM REGOLA AS R
+        JOIN MACCHINA AS M ON M.ID = R.MACCHINA_ID
+        WHERE M.IP_ADDR = '%s';
         """
-    elif type == "whois":
-        transformed = f"""
+whois = f"""
         SELECT id, nome, cognome
         FROM UTENTE
-        WHERE username = '{x}';
+        WHERE username = '%s';
         """
-    elif type == "acc":
-        transformed = f"""SELECT m.ip_addr
+acc = f"""SELECT m.ip_addr
         FROM UTENTE u
         JOIN USA as ua ON u.id = ua.utente_id
         JOIN MACCHINA as m ON ua.macchina_id = m.id
-        WHERE u.username = '{x}'
+        WHERE u.username = '%s'
         ORDER BY m.id;
         """
-    elif type == "revocation":
-        transformed = f"""SELECT ua.id, m.ip_addr, m.descrizione
+revocation = f"""SELECT ua.id, m.ip_addr, m.descrizione
         FROM UTENTE u
         JOIN USA as ua ON u.id = ua.utente_id
         JOIN MACCHINA as m ON ua.macchina_id = m.id
-        WHERE u.username = '{x}'
+        WHERE u.username = '%s'
         ORDER BY m.id;
         """
-        
-    return transformed

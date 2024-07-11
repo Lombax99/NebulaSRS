@@ -109,7 +109,8 @@ def create_test_tables(conn):
             cognome VARCHAR(255) NOT NULL,
             username VARCHAR(255) UNIQUE NOT NULL,
             password BYTEA NOT NULL,
-            auth INTEGER DEFAULT 0
+            auth INTEGER DEFAULT 0,
+            admin INTEGER DEFAULT 0
 		);
         """,
         """
@@ -142,8 +143,8 @@ def create_test_tables(conn):
         """
         CREATE TABLE USA (
         	id SERIAL PRIMARY KEY,
-            utente_id INTEGER NOT NULL REFERENCES UTENTE(id),
-            macchina_id INTEGER NOT NULL REFERENCES MACCHINA(id),
+            utente_id INTEGER NOT NULL REFERENCES UTENTE(id) ON DELETE CASCADE,
+            macchina_id INTEGER NOT NULL REFERENCES MACCHINA(id) ON DELETE CASCADE,
             UNIQUE (utente_id, macchina_id)
         );
         """,

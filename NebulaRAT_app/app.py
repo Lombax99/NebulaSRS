@@ -1,30 +1,31 @@
 from generateCertificate import *
 from settings import postgresql as settings
+from settings import secret
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for, flash
-from queryexe import execute_query
 from queries import *
-from models import secret
 from flask_wtf import FlaskForm
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired, Length, ValidationError, DataRequired
+from wtforms.validators import InputRequired, ValidationError
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 import os
 from sqlalchemy import text
-from sqlalchemy.orm import Mapped
-from sqlalchemy.orm import relationship
 from flask import send_file
 import zipfile
 from tfaTest import *
 
+# Database URI
 db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
+# App configuration
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 app.config['SECRET_KEY'] = secret
+# Istantiates DB
 db = SQLAlchemy(app)
+# Bcrypt object
 bcrypt = Bcrypt(app)
- # Generate a secret key
+# Generate a secret key
 secret_key = pyotp.random_base32()
     
 # Create a TOTP object
@@ -51,6 +52,8 @@ class Utente(db.Model, UserMixin):
     username = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
     auth = db.Column(db.Integer, nullable=False)
+    admin = db.Column(db.Integer, nullable=False)
+
 # Class that links machines and users
 class Usa(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -120,7 +123,7 @@ def login():
     # if user is logged, we go to dashboard
     msg=""
     if current_user.is_authenticated:
-        if current_user.username == 'administration@admin.nebularat.com':
+        if session["admin"] == 1:
             return redirect(url_for('dashboard_admin', username=current_user.nome))
         else:
             return redirect(url_for('dashboard', username=current_user.nome))
@@ -140,10 +143,11 @@ def login():
                     session["nome"] = user.nome
                     session["cognome"] = user.cognome
                     session["auth"] = user.auth
+                    session["admin"] = user.admin
                     # Logs the user in
                     login_user(user)
                     # Redirects to the dashboard
-                    if session["username"] == 'administration@admin.nebularat.com':
+                    if session["admin"] == 1:
                         return redirect(url_for('dashboard_admin'))
                     else:
                         return redirect(url_for('dashboard'))
@@ -167,10 +171,11 @@ def user_authentication():
             session["nome"] = user.nome
             session["cognome"] = user.cognome
             session["auth"] = user.auth
+            session["admin"] = user.admin
             # Logs the user in
             login_user(user)
             # Redirects to the dashboard
-            if session["username"] == 'administration@admin.nebularat.com':
+            if session["admin"] == 1:
                 return redirect(url_for('dashboard_admin'))
             else:
                 return redirect(url_for('dashboard'))
@@ -200,7 +205,7 @@ def change_password():
                     user.password = hashed_password
                     db.session.commit()
                     # Chooses where to go after the password change
-                    if session["username"] == 'administration@admin.nebularat.com':
+                    if session["admin"] == 1:
                         return redirect(url_for('dashboard_admin'))
                     else:
                         return redirect(url_for('dashboard'))
@@ -208,7 +213,7 @@ def change_password():
                 msg="You can't use the old password"
         else:
             msg="Wrong password!"
-    return render_template('change_password.html', form=form, username=session["username"], msg=msg)
+    return render_template('change_password.html', form=form, admin=session["admin"], msg=msg)
 
 @app.route('/dashboard')
 @login_required
@@ -216,7 +221,7 @@ def dashboard():
     # Username to show in the dashboard
     username = session["nome"] + " " + session["cognome"]
     # Show only the machines that the user has permission to access
-    macchine = db.session.execute(text(build_query("utente", session["username"])))
+    macchine = db.session.execute(text(sel_macchine % session["username"]))
     return render_template('dashboard.html', macchine=macchine, username=username)
 
 @app.route('/dashboard_admin')
@@ -248,8 +253,10 @@ def adduser():
         else:
             # A2F is disativated by default
             a2f = 0
+            # It's not an admin
+            admin = 0
             # Creates new user
-            new_user = Utente(nome=nome, cognome=cognome, username=username, password=hashed_password, auth=a2f)
+            new_user = Utente(nome=nome, cognome=cognome, username=username, password=hashed_password, auth=a2f, admin=admin)
             # adds it to the db
             db.session.add(new_user)
             db.session.commit()
@@ -290,13 +297,11 @@ def testPythonFunctionCertificate():
 
 @app.route('/test-python-function-DB')
 def testPythonFunctionDB():
-    return execute_query(test)
+    return "hello world"
 
 @app.route('/mostra-ip-descr')
 def mostraIpDescr():
-    utente = "xX_MagicMikeLove_Xx"
-    query = build_query("utente", utente)
-    return execute_query(query)
+    return "hello world"
 ######################## TEST END #################################
 ###################################################################
 
@@ -306,10 +311,10 @@ def printFwRules():
     # Riceve il valore dell'IP della macchina da cercare
     ip_addr = str(request.form['bottone'])
     # Ricava le rules dall'IP della macchina
-    rules = db.session.execute(text(build_query("firewall", ip_addr)))
+    rules = db.session.execute(text(firewall % ip_addr))
 
     # Differenziazione tra admin e basic user
-    if current_user.username == 'administration@admin.nebularat.com':
+    if current_user.admin == 1:
         return render_template('firerules_admin.html', rules=rules, username=current_user.nome)
     else:
         return render_template('firerules.html', rules=rules, username=current_user.nome)
@@ -318,17 +323,17 @@ def printFwRules():
 @login_required
 def list():
     # Retrieving degli utenti escluso l'admin
-    users = db.session.execute(text(utenti))
+    users = db.session.execute(text(utenti % session["admin"]))
     return render_template('list_users.html', users=users, username=current_user.nome)
 
 @app.route('/assign', methods=['POST'])
 @login_required
-def assig():
+def assign():
     # Riceve il nome e il cognome dell'utente
     email = str(request.form['user'])
-    nomeC = db.session.execute(text(build_query("whois", email))).first()
+    nomeC = db.session.execute(text(whois % email)).first()
     # Ricava le lista delle macchine a cui l'utente già accede
-    accede = db.session.execute(text(build_query("acc", email))).all()
+    accede = db.session.execute(text(acc % email)).all()
     # Ricava tutte le macchine
     macchine  = db.session.execute(text(mac))
     return render_template('assign.html', email=email, nomeC=nomeC, accede=accede, macchine=macchine, username=current_user.nome)
@@ -349,9 +354,9 @@ def assignment(idut):
 def revoke():
     # Riceve il nome e il cognome dell'utente
     email = str(request.form['user'])
-    nomeC = db.session.execute(text(build_query("whois", email))).first()
+    nomeC = db.session.execute(text(whois % email)).first()
     # Ricava le lista delle macchine a cui l'utente già accede
-    accede = db.session.execute(text(build_query("revocation", email))).all()
+    accede = db.session.execute(text(revocation % email)).all()
     return render_template('revoke.html', email=email, nomeC=nomeC, accede=accede, username=current_user.nome)
 
 @app.route('/revokation/<idut>', methods=['GET','POST'])
@@ -385,7 +390,7 @@ def generate():
     
 @app.route('/profile')
 def profile():
-    return render_template("profile.html", nome=session["nome"], cognome=session["cognome"], username=session["username"], auth=session["auth"])
+    return render_template("profile.html", nome=session["nome"], cognome=session["cognome"], username=session["username"], auth=session["auth"], admin=session["admin"])
 
 @app.route('/activate', methods=['GET','POST'])
 def activate():
