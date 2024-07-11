@@ -182,6 +182,9 @@ def upload_test_data(conn):
             # Insert data into the table
             insert_in_table(conn, table_name, data)
 
+            # Sets the admin flag
+            cur.execute("UPDATE UTENTE SET admin = 1 WHERE username = 'administration@admin.nebularat.com'")
+
             # Fetch all the data from the current table
             cur.execute(f"SELECT * FROM {table_name}")
             rows = cur.fetchall()

@@ -404,6 +404,17 @@ def activate():
     session["auth"]=user.auth
     return redirect(url_for('profile'))
 
+@app.route('/deleteUser', methods=['POST'])
+def deleteUser():
+    email = str(request.form['utente'])
+    # Deletes the user from the db
+    user = Utente.query.filter_by(username=email).first()
+    db.session.delete(user)
+    db.session.commit()
+    # Print a message of correctly deleted user on the page
+    flash("User correctly deleted!", "info")
+    return redirect(url_for('list'))
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -413,7 +424,7 @@ def logout():
     session.pop("username", None)
     session.pop("auth", None)
     logout_user()
-    flash("Logout effettuato!")
+    flash("Logout effettuato!", category="success")
     return redirect('/')
 
 

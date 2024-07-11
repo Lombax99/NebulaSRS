@@ -82,6 +82,7 @@
                                     <th scope="col">Surname</th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -91,6 +92,7 @@
                                         <td>{{ user[1] }}</td>
                                         <td><form name="passut" action="/assign" method="post"><button name="user" type="submit" class="btn btn-sm btn-primary" value="{{ user[2] }}" >Assign machines</button></form></td>
                                         <td><form name="passut" action="/revoke" method="post"><button name="user" type="submit" class="btn btn-sm btn-primary" value="{{ user[2] }}" >Revoke machines</button></form></td>
+                                        <td> <button name="button" class="btn btn-sm btn-primary" value="{{ user[2] }}" onclick="showModal('{{ user[2] }}')">Delete user</button></td>
                                     </tr>
                                 {% endfor %}
                             </tbody>
@@ -102,7 +104,43 @@
         </div>
         <!-- Content End -->
         
+        <!-- Modal -->
+        <div class="modal fade" id="userModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-secondary text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Choose Duration</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pt-4 pb-3" id="userModalContent">
+                        <form name="gen" action="/deleteUser" method="post">
+                            <div class="pt-3 text-center">
+                                <h3>Are you sure you want to delete this user?</h3>
+                            </div>
+                            <div class="pt-3 text-center">
+                                <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal">No</button>
+                                <button id="utente" name="utente" type="submit" class="btn btn-sm btn-primary" value="{{ email }}">Yes</button> 
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!-- Modal End -->
+    </div>
 
+    <!--Function print modal-->
+    <script>
+        function showModal(email){
+            var myModal = new bootstrap.Modal(document.getElementById('userModal'));
+            myModal.show();
+            document.getElementById('utente').value = email;
+        }
+    </script>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -117,5 +155,10 @@
     <!-- Template Javascript -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
+    <!-- Flashes a message if the user was successfully delete-->
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+    <script>alert('{{ message }}')</script>
+    {% endfor %}
+    <!-- End of alert script -->
 </body>
 </html>

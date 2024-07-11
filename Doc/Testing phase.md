@@ -31,11 +31,11 @@ Dopo aver effettuato l'accesso su Snyk tramite GitHub, e dopo aver importato la 
 >
 >Il problema è stato risolto sanificando l'input passato alla funzione adibita all'esecuzione delle query e utilizzando il parametro '%s' all'interno del codice SQL. In pratica, si è passati da un'esecuzione del tipo
 >
->macchine = db.session.execute(text(build_query("utente", session["username"])))
+>	macchine = db.session.execute(text(build_query("utente", session["username"])))
 >	
 >ad una come
 >
->macchine = db.session.execute(text(sel_macchine % session["username"]))
+>	macchine = db.session.execute(text(sel_macchine % session["username"]))
 >
 >inserendo il parametro di cui sopra al posto di una variabile. Ciò ci ha anche permesso di eliminare quella farraginosa e grezza funzione che si occupava di sostituire i valori necessari nelle query.
 >
