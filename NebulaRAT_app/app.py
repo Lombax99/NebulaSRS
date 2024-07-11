@@ -1,8 +1,11 @@
-from generateCertificate import *
+import generateCertificate
+import pyotp
+import zipfile
+import queries
+
 from settings import postgresql as settings
 from settings import secret
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for, flash
-from queries import *
 from flask_wtf import FlaskForm
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from wtforms import StringField, PasswordField, SubmitField
@@ -12,7 +15,6 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from sqlalchemy import text
 from flask import send_file
-import zipfile
 from tfaLib import *
 
 # Database URI
@@ -221,14 +223,14 @@ def dashboard():
     # Username to show in the dashboard
     username = session["nome"] + " " + session["cognome"]
     # Show only the machines that the user has permission to access
-    macchine = db.session.execute(text(sel_macchine % session["username"]))
+    macchine = db.session.execute(text(queries.sel_macchine % session["username"]))
     return render_template('dashboard.html', macchine=macchine, username=username)
 
 @app.route('/dashboard_admin')
 @login_required
 def dashboard_admin():
     # Shows all the machines
-    macchine = db.session.execute(text(tutte))
+    macchine = db.session.execute(text(queries.tutte))
     return render_template('dashboard_admin.html', macchine=macchine, username=session["nome"])
 
 @app.route('/adduser', methods=['GET','POST'])
@@ -305,7 +307,7 @@ def printFwRules():
     # Riceve il valore dell'IP della macchina da cercare
     ip_addr = str(request.form['bottone'])
     # Ricava le rules dall'IP della macchina
-    rules = db.session.execute(text(firewall % ip_addr))
+    rules = db.session.execute(text(queries.firewall % ip_addr))
 
     # Differenziazione tra admin e basic user
     if current_user.admin == 1:
@@ -317,7 +319,7 @@ def printFwRules():
 @login_required
 def list():
     # Retrieving degli utenti escluso l'admin
-    users = db.session.execute(text(utenti % session["admin"]))
+    users = db.session.execute(text(queries.utenti % session["admin"]))
     return render_template('list_users.html', users=users, username=current_user.nome)
 
 @app.route('/assign', methods=['POST'])
@@ -325,11 +327,11 @@ def list():
 def assign():
     # Riceve il nome e il cognome dell'utente
     email = str(request.form['user'])
-    nomeC = db.session.execute(text(whois % email)).first()
+    nomeC = db.session.execute(text(queries.whois % email)).first()
     # Ricava le lista delle macchine a cui l'utente già accede
-    accede = db.session.execute(text(acc % email)).all()
+    accede = db.session.execute(text(queries.acc % email)).all()
     # Ricava tutte le macchine
-    macchine  = db.session.execute(text(mac))
+    macchine  = db.session.execute(text(queries.mac))
     return render_template('assign.html', email=email, nomeC=nomeC, accede=accede, macchine=macchine, username=current_user.nome)
 
 @app.route('/assignment/<idut>', methods=['GET','POST'])
@@ -348,9 +350,9 @@ def assignment(idut):
 def revoke():
     # Riceve il nome e il cognome dell'utente
     email = str(request.form['user'])
-    nomeC = db.session.execute(text(whois % email)).first()
+    nomeC = db.session.execute(text(queries.whois % email)).first()
     # Ricava le lista delle macchine a cui l'utente già accede
-    accede = db.session.execute(text(revocation % email)).all()
+    accede = db.session.execute(text(queries.revocation % email)).all()
     return render_template('revoke.html', email=email, nomeC=nomeC, accede=accede, username=current_user.nome)
 
 @app.route('/revokation/<idut>', methods=['GET','POST'])
