@@ -433,6 +433,7 @@ def logout():
     session.pop("cognome", None)
     session.pop("username", None)
     session.pop("auth", None)
+    session.pop("admin", None)
     logout_user()
     return redirect('/')
 
