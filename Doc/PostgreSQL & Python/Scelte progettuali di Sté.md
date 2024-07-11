@@ -13,11 +13,15 @@ Le possibilità erano due:
 > 
 > Inoltre, si verifica che l'utente stia effettuando il primo accesso, in modo tale da chiedergli di cambiare la password: dato che è l'admin a creare dei nuovi profili per gli utenti, esso creerà anche una password temporanea. Nel db gestiremo due password: quella effettiva e quella assegnata dall'admin. La password effettiva è uguale a quella assegnata dall'admin, allora si chiederà di cambiare la password, controllando che non sia pari a quella vecchia.
 
->[!question] GENERAZIONE E DOWNLOAD CERTIFICATI TEMPORANEI
+>[!check] GENERAZIONE E DOWNLOAD CERTIFICATI TEMPORANEI
 >
 >L'idea sarebbe quella di utilizzare Tkinter per far scegliere all'utente dove salvare i cert tramite UI. Tuttavia, Azure presenta problemi nella import di tale libreria, sebbene il download viene eseguito con successo. 
 >
 >Bisognerebbe trovare un modo per far salvare direttamente tutto nella cartella di download, rendendo il suo percorso system independent...
+>
+>**SOLUZIONE**: non appena genera cert e key, li pone in un file zip e li fa scaricare direttamente nella cartella dei Download, attraverso l'utilizzo del metodo *send_file* di Flask.
+
+
 
 
 
