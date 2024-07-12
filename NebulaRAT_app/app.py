@@ -1,9 +1,9 @@
-import generateCertificate
+from generateCertificate import *
 import pyotp
 import zipfile
 import queries
-from settings import postgresql as settings
-from settings import secret
+from settings import postgresql as psql
+from settings import secret, outputDir
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for, flash
 from flask_wtf import FlaskForm
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
@@ -17,7 +17,7 @@ from flask import send_file
 from tfaLib import *
 
 # Database URI
-db_uri = f"postgresql+psycopg2://{settings['pguser']}:{settings['pgpassword']}@{settings['pghost']}:{settings['pgport']}/{settings['pgdb']}"
+db_uri = f"postgresql+psycopg2://{psql['pguser']}:{psql['pgpassword']}@{psql['pghost']}:{psql['pgport']}/{psql['pgdb']}"
 # App configuration
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
@@ -371,17 +371,19 @@ def generate():
     # The certificate generation script expects a CIDR and a duration
     cidr = str(request.form['genbtn'])
     duration = str(request.form['dur'])
+    print(f"cidr: {cidr}")
+    print(f"duration: {duration}")
     # Generates the certificate for the machine
-    pathcrt, pathkey, outputDir = generateCertificate(session["nome"], cidr, duration)
-    # Gets safe paths to mitigate the path traversal issue
-    safe_pathcrt = os.path.realpath(pathcrt) #Crt
-    safe_pathkey = os.path.realpath(pathkey) #Key
+    pathcrt, pathkey, outputDir = generate_Certificate(session["nome"], cidr, duration)
+    # Safe paths for cert and key
+    safe_pathcrt = os.getcwd()
+    safe_pathkey = os.getcwd() 
     # Creates a zip file with crt and key 
-    zip_path = os.path.join(outputDir, session["nome"].lower() + ".zip")
+    zip_path = os.path.join(outputDir, session["nome"] + ".zip")
     # Zip file safe path
-    safe_zip_path = os.path.realpath(zip_path)
+    safe_zip_path = os.getcwd()
     # Path traversal check
-    if os.path.commonprefix((pathcrt ,safe_pathcrt)) != safe_pathcrt or os.path.commonprefix((pathkey ,safe_pathkey)) != safe_pathkey or os.path.commonprefix((zip_path ,safe_zip_path)) != safe_zip_path: 
+    if os.path.commonprefix((pathcrt, )) != safe_pathcrt or os.path.commonprefix((pathkey ,safe_pathkey)) != safe_pathkey or os.path.commonprefix((zip_path ,safe_zip_path)) != safe_zip_path: 
         return redirect(url_for('errorPage')) #Bad user!
     #Bad user!
     with zipfile.ZipFile(safe_zip_path, 'w') as zip_file:

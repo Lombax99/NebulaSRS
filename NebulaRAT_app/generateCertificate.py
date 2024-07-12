@@ -5,9 +5,9 @@ import os
 # "username" is the name of the machine that the certificate is being generated for
 # "requiredIP" is the IP address of the machine that the certificate is being generated for
 # "duration" is the duration is the time for which the certificate is valid
-def generateCertificate(username, requiredIP, duration):
-    nebulaCert_path = os.path.realpath(os.path.join("nebulaScripts", "nebula-cert"))
-    outputDir = os.path.realpath("nebulaFiles")
+def generate_Certificate(username, requiredIP, duration):
+    nebulaCert_path = os.path.join("nebulaScripts", "nebula-cert")
+    outputDir = "nebulaFiles"
     # Check if the script exists
     if os.path.exists(nebulaCert_path):
         # Run the script with parameters
