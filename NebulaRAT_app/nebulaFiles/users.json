@@ -1,9 +1,34 @@
 [
   {
-    "nome": "Mario",
-    "cognome": "Rossi",
-    "username": "mario.rossi@example.com",
-    "password": "mario123",
+    "nome": "Gianmarco",
+    "cognome": "Marpioni",
+    "username": "administration@admin.nebularat.com",
+    "password": "admin",
+    "auth": "0",
     "admin": "1"
+  },
+  {
+    "nome": "Paolo",
+    "cognome": "Verdi",
+    "username": "budino83@nebularat.com",
+    "password": "paolo",
+    "auth": "0",
+    "admin": "0"
+  },
+  {
+    "nome": "Luca",
+    "cognome": "Lombardi",
+    "username": "luca@nebularat.com",
+    "password": "luca",
+    "auth": "0",
+    "admin": "0"
+  },
+  {
+    "nome": "Stefano",
+    "cognome": "Paparella",
+    "username": "stefano@nebularat.com",
+    "password": "stefano",
+    "auth": "0",
+    "admin": "0"
   }
 ]

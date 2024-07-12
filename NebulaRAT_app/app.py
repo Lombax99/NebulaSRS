@@ -2,7 +2,6 @@ import generateCertificate
 import pyotp
 import zipfile
 import queries
-
 from settings import postgresql as settings
 from settings import secret
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for, flash
@@ -117,8 +116,6 @@ class FactorAuth(FlaskForm):
 def root():
     print('Request for index page received')
     return render_template('index.html')
-
-
 
 @app.route('/login/', methods=['GET','POST'])
 def login():
@@ -330,7 +327,7 @@ def assign():
     nomeC = db.session.execute(text(queries.whois % email)).first()
     # Ricava le lista delle macchine a cui l'utente già accede
     accede = db.session.execute(text(queries.acc % email)).all()
-    # Ricava tutte le macchine
+    # Retrieves all machines
     macchine  = db.session.execute(text(queries.mac))
     return render_template('assign.html', email=email, nomeC=nomeC, accede=accede, macchine=macchine, username=current_user.nome)
 
@@ -348,10 +345,10 @@ def assignment(idut):
 @app.route('/revoke', methods=['POST'])
 @login_required
 def revoke():
-    # Riceve il nome e il cognome dell'utente
+    # Receives the name and surname of the user
     email = str(request.form['user'])
     nomeC = db.session.execute(text(queries.whois % email)).first()
-    # Ricava le lista delle macchine a cui l'utente già accede
+    # Retrieves the list of machines that the user already has access to
     accede = db.session.execute(text(queries.revocation % email)).all()
     return render_template('revoke.html', email=email, nomeC=nomeC, accede=accede, username=current_user.nome)
 
@@ -371,17 +368,17 @@ def download(path):
 @app.route('/generate', methods=['POST'])
 @login_required
 def generate():
-    # Lo script di generazione del certificato si aspetta un CIDR
+    # The certificate generation script expects a CIDR and a duration
     cidr = str(request.form['genbtn'])
     duration = str(request.form['dur'])
-    # Genera il certificato per la macchina
+    # Generates the certificate for the machine
     pathcrt, pathkey, outputDir = generateCertificate(session["nome"], cidr, duration)
-    # Ottiene i path safe, per mitigare il problema di path traversal
+    # Gets safe paths to mitigate the path traversal issue
     safe_pathcrt = os.path.realpath(pathcrt) #Crt
     safe_pathkey = os.path.realpath(pathkey) #Key
-    # Fa uno zip dei file di cert e key
+    # Creates a zip file with crt and key 
     zip_path = os.path.join(outputDir, session["nome"].lower() + ".zip")
-    # Safe path dello zip
+    # Zip file safe path
     safe_zip_path = os.path.realpath(zip_path)
     # Path traversal check
     if os.path.commonprefix((pathcrt ,safe_pathcrt)) != safe_pathcrt or os.path.commonprefix((pathkey ,safe_pathkey)) != safe_pathkey or os.path.commonprefix((zip_path ,safe_zip_path)) != safe_zip_path: 
@@ -390,10 +387,10 @@ def generate():
     with zipfile.ZipFile(safe_zip_path, 'w') as zip_file:
         zip_file.write(safe_pathcrt, os.path.basename(safe_pathcrt).lower())
         zip_file.write(safe_pathkey, os.path.basename(safe_pathkey).lower())
-    # Rimuove i file crt e key
+    # Removes crt and key files
     os.remove(safe_pathcrt)
     os.remove(safe_pathkey)
-    # Download del file zip
+    # Downloads zip file
     return send_file(safe_zip_path, as_attachment=True)
     
 @app.route('/profile')
@@ -419,7 +416,7 @@ def deleteUser():
     user = Utente.query.filter_by(username=email).first()
     db.session.delete(user)
     db.session.commit()
-    # Print a message of correctly deleted user on the page
+    # Prints a message of correctly deleted user on the page
     flash("User correctly deleted!", "info")
     return redirect(url_for('list'))
 

@@ -1,108 +1,148 @@
-import psycopg2
-from settings import postgresql as settings
-import time
 import json
-from app import bcrypt
+import yaml
+from app import bcrypt, db
+from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
+from sqlalchemy import text
+import os
 
-test_data = {
-    "UTENTE": [
-        ('Luca', 'Lombardi', 'luca@nebularat.com', bcrypt.generate_password_hash('luca')),
-        ('Marco', 'Marchi', 'marco@nebularat.com', bcrypt.generate_password_hash('marco')),
-        ('Stefano', 'Paparella', 'stefano@nebularat.com', bcrypt.generate_password_hash('stefano')),
-        ('admin', 'admin', 'administration@admin.nebularat.com', bcrypt.generate_password_hash('admin')),
-        ('Antonio', 'Monelli', 'antonio@nebularat.com', bcrypt.generate_password_hash('antonio')),
-        ('Pasquale', 'Basta', 'pasquale@nebularat.com', bcrypt.generate_password_hash('pasquale')),
-        ('Test', 'RealUser', 'nebulasrs@gmail.com', bcrypt.generate_password_hash('test'))
-    ],
-    "CERT": [
-        (1,"""-----BEGIN NEBULA CERTIFICATE-----
-            CmQKBmFkbWluMhIK5MihhQyA/v//DyiU3bezBjCUvrmzBjognides04bE5q5oLFu
-            b9DFRyw5F6ybQ06GSmKcZEVM1W5KIKEMXGhjCUfmR6zpDw5OE13aJqAZ5UBh6rbM
-            2PJe9OHuEkAuv+YZGe+AXTmS4B37npr1qURxWhwXJBkzth08Y5csRse8whAhNSCR
-            m/kjOt3u8F09VOszUJJsbNr/gHP8w0wC
-            -----END NEBULA CERTIFICATE-----"""),
-        (2,"""-----BEGIN NEBULA CERTIFICATE-----
-            CnkKB2xhcHRvcDESCovIoYUMgP7//w8iCExhcHRvcFNEIghTZXJ2ZXJTRCiqye2t
-            BjCQsPK8Bjogb5TKN0XccSK9B3hcUIywSUpVvbmsH8/ZkuHrOZNeki9KIKEMXGhj
-            CUfmR6zpDw5OE13aJqAZ5UBh6rbM2PJe9OHuEkBwSdgyl6y6/2yYGlFDRfzApCKu
-            vVps8qfR/QukM4827MJ77g/ACe/cturaT4BPfreS0IuQ2dOyMUzkkPgwKpcK
-            -----END NEBULA CERTIFICATE-----"""),
-        (3, """-----BEGIN NEBULA CERTIFICATE-----
-            CjwKCk15b3JnLCBJbmMokcntrQYwkbDyvAY6IFxDdM4weRdch/weZFibIWzp3GAR
-            GC2k+wF0UuzEFYkIQAESQFM9qMuKKRXKPmmxWdcEt2xT++oShUZlURDPLa0b9Hk1
-            jzPw370QRwAggKolbxCxhhDw6GoF6AZRxVdbKgUYHAA=
-            -----END NEBULA CERTIFICATE-----""")
-    ],
-    "MACCHINA": [
-        ('macchina1', '192.168.1.1', 1),
-        ('macchina2', '192.168.1.2', 2),
-        ('macchina3', '192.168.1.3', 3)
-    ],
-    "REGOLA": [
-        ('in', 1, 'PortStort', 'Prot1', 'Host_aggio', 'Myorg, Inc', 'group', '192.168.100.111/32'),
-        ('out', 1, 'PortDritt', 'Prot2', 'Host_ello', 'ca_name', 'group', '192.168.100.112/32'),
-        ('in', 2, 'PortStort2', 'Prot1_2', 'Host_enta', 'Myorg, Inc', 'group2', '192.168.100.113/32'),
-        ('out', 2, 'PortDritt2', 'Prot2_2', 'Host_inato', 'ca_name2', 'group2', '192.168.100.121/32'),
-        ('in', 3, 'PortStort3', 'Prot3_1', 'Host_aggio', 'Myorg, Inc', 'rickrolls', '192.168.100.114/32'),
-        ('out', 3, 'PortDritt3', 'Never', 'Host_inato', 'ca_name3', 'rickrolls', '192.168.100.122/32')
-    ],
-    "USA":[
-        (1, 1),
-        (1, 2),
-        (2, 1),
-        (2, 2),
-        (3, 1)
-    ],
-    "TEST": [
-        (1,'CULO'),
-        (2,'PALLE'),
-        (3,"altre palle"),
-        (4,"più palle"),
-        (5,"ancora più palle")
+# App configuration
+app = Flask(__name__)
+
+# Retrieve environment variables for DB connection
+db_user = os.environ.get('DB_USERNAME')
+db_password = os.environ.get('DB_PASSWORD')
+db_host = os.environ.get('DB_HOST')
+db_port = '5432' 
+db_name = os.environ.get('DB_PGDB')
+secret = os.environ.get('FLASK_SECRET')
+
+
+# Set up Flask app and DB
+db_uri = f"postgresql+psycopg2://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+app.config['SECRET_KEY'] = secret
+db = SQLAlchemy(app)
+
+# Define SQLAlchemy models
+class Cert(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    descrizione = db.Column(db.String(511), nullable=False)
+
+class Macchina(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    descrizione = db.Column(db.String(255))
+    ip_addr = db.Column(db.String(20), unique=True, nullable=False)
+    cert = db.Column(db.Integer, db.ForeignKey('cert.id'), nullable=False)
+
+class Regola(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    inout = db.Column(db.String(10), nullable=False)
+    macchina_id = db.Column(db.Integer, db.ForeignKey('macchina.id'), nullable=False)
+    port = db.Column(db.String(10))
+    proto = db.Column(db.String(10))
+    host = db.Column(db.String(255))
+    ca_name = db.Column(db.String(255))
+    gruppi = db.Column(db.String(500))
+    cidr = db.Column(db.String(20))
+
+class Utente(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(255), nullable=False)
+    cognome = db.Column(db.String(255), nullable=False)
+    username = db.Column(db.String(255), unique=True, nullable=False)
+    password = db.Column(db.LargeBinary, nullable=False)
+    auth = db.Column(db.Integer, default=0)
+    admin = db.Column(db.Integer, default=0)
+
+class Usa(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    utente_id = db.Column(db.Integer, db.ForeignKey('utente.id'), nullable=False)
+    macchina_id = db.Column(db.Integer, db.ForeignKey('macchina.id'), nullable=False)
+    db.UniqueConstraint('utente_id', 'macchina_id', name='unique_utente_macchina')
+
+# Function to extract the certificate
+def extract_description_from_cert_file(cert_file_path):
+    with open(cert_file_path, 'r') as cert_file:
+        cert_content = cert_file.read()
+    return cert_content.strip()  # Remove whitespace at the beginning and end
+
+# Function to populate UTENTE table from JSON file
+def populate_utenti_from_json(json_file):
+    with open(json_file, 'r') as file:
+        data = json.load(file)
+
+        for entry in data:
+            hashed_password = bcrypt.generate_password_hash(entry["password"])
+            utente = Utente(
+                nome=entry['nome'],
+                cognome=entry['cognome'],
+                username=entry['username'],
+                password=hashed_password,
+                auth=int(entry['auth']),
+                admin=int(entry['admin'])
+            )
+            db.session.add(utente)
+        db.session.commit()
+
+# Function to populate tables from JSON files
+def populate_tables_from_json(json_file):
+    with open(json_file, 'r') as file:
+        data = json.load(file)
+
+        for entry in data:
+            # Populates the CERT table
+            cert_descrizione = extract_description_from_cert_file(entry['cert'])
+            cert = Cert(descrizione=cert_descrizione)
+            db.session.add(cert)
+            db.session.commit()
+
+            # Populate the MACCHINA table
+            macchina = Macchina(descrizione=entry['descrizione'],
+                                ip_addr=entry['nebula_ip'],
+                                cert=cert.id)
+            db.session.add(macchina)
+            db.session.commit()
+
+            # Reads the YAML configuration file
+            config_file_path = entry['config']
+            with open(config_file_path, 'r') as config_file:
+                config_data = yaml.safe_load(config_file)
+
+            # Function to populate firewall rules
+            def add_rules_from_yaml(rules, inout):
+                for regola in rules:
+                    new_regola = Regola(
+                        inout=inout,
+                        macchina_id=macchina.id,
+                        port=regola.get('port', '/'),
+                        proto=regola.get('proto', '/'),
+                        host=regola.get('host', '/'),
+                        ca_name=regola.get('ca_name', '/'),
+                        gruppi=regola.get('group', '/'),
+                        cidr=regola.get('cidr', '/')
+                    )
+                    db.session.add(new_regola)
+                    db.session.commit()
+
+            # Populate the inbound and outbound rules
+            if 'firewall' in config_data:
+                if 'outbound' in config_data['firewall']:
+                    add_rules_from_yaml(config_data['firewall']['outbound'], 'outbound')
+                if 'inbound' in config_data['firewall']:
+                    add_rules_from_yaml(config_data['firewall']['inbound'], 'inbound')
+
+# Function to drop tables if they exist and create new ones
+def reset_tables():
+    drop_statements = [
+        text("DROP TABLE IF EXISTS usa;"),
+        text("DROP TABLE IF EXISTS regola;"),
+        text("DROP TABLE IF EXISTS macchina;"),
+        text("DROP TABLE IF EXISTS cert;"),
+        text("DROP TABLE IF EXISTS utente;")
     ]
-}
-
-def insert_in_table(conn, table_name, data):
-    try:
-        # Create a cursor object to execute SQL queries
-        cur = conn.cursor()
-        
-        # Define the SQL query to insert data
-        if table_name == "MACCHINA":
-            query = f"INSERT INTO {table_name} (descrizione, ip_addr, cert) VALUES (%s, %s, %s)"
-        elif table_name == "UTENTE":
-            query = f"INSERT INTO {table_name} (nome, cognome, username, password) VALUES (%s, %s, %s, %s)"
-        elif table_name == "USA":
-            query = f"INSERT INTO {table_name} (utente_id, macchina_id) VALUES (%s, %s)"
-        elif table_name == "CERT":
-            query = f"INSERT INTO {table_name} (id, descrizione) VALUES (%s, %s)"
-        elif table_name == "REGOLA":
-            query = f"INSERT INTO {table_name} (inout, macchina_id, port, proto, host, ca_name, gruppi, cidr) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-        elif table_name == "TEST":
-            query = f"INSERT INTO {table_name} (id, description) VALUES (%s, %s)"
-        else: 
-            print("Table not found")
-            return "Table not found"
-        
-        # Execute the SQL query for each data row
-        for row in data:
-            cur.execute(query, row)
-        
-        # Commit the changes to the database
-        conn.commit()
-        
-        # Close the cursor
-        cur.close()
-        
-    except (psycopg2.DatabaseError, Exception) as error:
-        print("Error while filling table:", error)
-        return str(error)
-
-def create_test_tables(conn):
-    #this tables do not have the references and are just to test if the queries work correctly
-    """ Create tables in the PostgreSQL database"""
-    commands = (
-        """ 
+    create_statements = [
+        text("""
         CREATE TABLE UTENTE (
             id SERIAL PRIMARY KEY,
             nome VARCHAR(255) NOT NULL,
@@ -111,147 +151,63 @@ def create_test_tables(conn):
             password BYTEA NOT NULL,
             auth INTEGER DEFAULT 0,
             admin INTEGER DEFAULT 0
-		);
-        """,
-        """
+        );
+        """),
+        text("""
         CREATE TABLE CERT (
             id SERIAL PRIMARY KEY,
             descrizione VARCHAR(511) NOT NULL
         );
-        """,
-        """
+        """),
+        text("""
         CREATE TABLE MACCHINA (
             id SERIAL PRIMARY KEY,
             descrizione VARCHAR(255),
             ip_addr VARCHAR(20) UNIQUE NOT NULL,
             cert  INTEGER NOT NULL REFERENCES CERT(id)
         );
-        """,
-        """
+        """),
+        text("""
         CREATE TABLE REGOLA(
-			id SERIAL NOT NULL,
-			inout varchar(10) NOT NULL,
-			macchina_id INTEGER NOT NULL REFERENCES MACCHINA(id),
-			port VARCHAR(10),
-			proto VARCHAR(10),
-			host VARCHAR(255),
-			ca_name VARCHAR(255),
-			gruppi VARCHAR(500),
-			cidr VARCHAR(20)
+            id SERIAL NOT NULL,
+            inout varchar(10) NOT NULL,
+            macchina_id INTEGER NOT NULL REFERENCES MACCHINA(id) ON DELETE CASCADE,
+            port VARCHAR(10),
+            proto VARCHAR(10),
+            host VARCHAR(255),
+            ca_name VARCHAR(255),
+            gruppi VARCHAR(500),
+            cidr VARCHAR(20)
         );
-        """,
-        """
+        """),
+        text("""
         CREATE TABLE USA (
-        	id SERIAL PRIMARY KEY,
+            id SERIAL PRIMARY KEY,
             utente_id INTEGER NOT NULL REFERENCES UTENTE(id) ON DELETE CASCADE,
             macchina_id INTEGER NOT NULL REFERENCES MACCHINA(id) ON DELETE CASCADE,
             UNIQUE (utente_id, macchina_id)
         );
-        """,
-        """
-        CREATE TABLE TEST (
-            id SERIAL PRIMARY KEY,
-            description VARCHAR(255) NOT NULL
-        );
-        """
-    )
-    try:
-        cur = conn.cursor()
-        for command in commands:
-            cur.execute(command)
-    except (psycopg2.DatabaseError, Exception) as error:
-        print(error)
+        """)
+    ]
+    # Execute drop statements
+    for statement in drop_statements:
+        db.session.execute(statement)
+    # Execute create statements
+    for statement in create_statements:
+        db.session.execute(statement)
+    db.session.commit()
 
-def upload_test_data(conn):
+if __name__ == '__main__':
+    with app.app_context():
+        # Drop existing tables and create new ones
+        reset_tables()
 
-    # Commit the changes to the database
-    conn.commit()
-    try:
-        # Create a cursor object to execute SQL queries
-        cur = conn.cursor()
+        # Populate UTENTE table from the specified JSON file
+        utenti_json_file = 'nebulaFiles/users.json'
+        populate_utenti_from_json(utenti_json_file)
 
-        # Drop all existing tables
-        cur.execute("DROP TABLE IF EXISTS USA, REGOLA, MACCHINA, CONF, CERT, UTENTE, TEST")
-        create_test_tables(conn)
+        # Populate other tables from the specified JSON file
+        network_config_json_file = 'nebulaFiles/networkConfig.json'
+        populate_tables_from_json(network_config_json_file)
 
-        for table_name, data in test_data.items():
-            
-            # Truncate the table to remove all data
-            #cur.execute(f"TRUNCATE TABLE {table_name}")
-            
-            # Insert data into the table
-            insert_in_table(conn, table_name, data)
-
-            # Sets the admin flag
-            cur.execute("UPDATE UTENTE SET admin = 1 WHERE username = 'administration@admin.nebularat.com'")
-
-            # Fetch all the data from the current table
-            cur.execute(f"SELECT * FROM {table_name}")
-            rows = cur.fetchall()
-
-            # Print the data
-            for row in rows:
-                print(row)
-
-            # Add a sleep of 2 seconds
-            time.sleep(2)
-
-        # Close the cursor and connection
-        cur.close()
-    except (psycopg2.DatabaseError, Exception) as error:
-        print("Error while filling table:", error)
-        return str(error)
-
-def upload_machines(conn, filepath):
-    try:
-        # Read the data from networkConfig.json
-        with open("nebulaFiles/networkConfig.json") as file:
-            data = json.load(file)
-
-        # Extract the required values from the data
-        values = []
-        for machine in data:
-            values.append((machine["descrizione"], machine["cert"], machine["config"]))
-        
-        # Insert the values into the MACCHINA table
-        #insert_in_table(conn, "MACCHINA", values)
-
-        # upload of certificate values
-
-        # upload of config data in CONF table
-
-        # upload of single rules in REGOLA table
-
-
-    except (psycopg2.DatabaseError, Exception) as error:
-        print("Error while filling table:", error)
-        return str(error)    
-
-
-
-
-def main():
-    try:
-        # Connect to the PostgreSQL database
-        conn = psycopg2.connect(
-            user=settings['pguser'],
-            password=settings['pgpassword'],
-            host=settings['pghost'],
-            port=settings['pgport'],
-            database=settings['pgdb']
-        )
-    except (psycopg2.DatabaseError, Exception) as error:
-        print("Error while connecting to PostgreSQL", error)
-        return str(error)
-    
-    upload_test_data(conn)
-    #upload_machines(conn, "file.json")
-
-    # Close the connection
-    conn.close()
-
-
-
-
-if __name__ == "__main__":
-    main()
+    print("Dati popolati con successo nelle tabelle UTENTE, CERT, MACCHINA, REGOLA.")
