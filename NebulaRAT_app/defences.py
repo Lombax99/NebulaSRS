@@ -4,7 +4,7 @@ import os
 # user_input: the file name to check
 # dir_name: name of the directory to check for the file in
 # can throw ValueError if no file is specified
-def check_pathTraversal(user_input, dir_name="nebulaFiles"):
+def is_pathTraversal(user_input, dir_name="nebulaFiles"):
     current_dir = os.getcwd()
     # Define base path as a safe location for stored images   
     base_path = os.path.join(current_dir, dir_name)
@@ -41,5 +41,5 @@ def check_pathTraversal(user_input, dir_name="nebulaFiles"):
 if __name__ == "__main__":
     if not os.getcwd().endswith("NebulaRAT_app"):
         os.chdir("NebulaRAT_app/")
-    print("test 1: " + check_pathTraversal("../app.py"))        # should print "error: path traversal detected"
-    print("test 2: " + check_pathTraversal("ca.crt"))           # should print the absolute path to ca.crt
+    print("test 1: " + is_pathTraversal("../app.py"))        # should print "error: path traversal detected"
+    print("test 2: " + is_pathTraversal("ca.crt"))           # should print the absolute path to ca.crt
