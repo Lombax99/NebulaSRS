@@ -25,13 +25,13 @@ def is_pathTraversal(user_input, dir_name="nebulaFiles"):
 
     common_base = os.path.commonpath([base_path, safe_path]) 
     if common_base != base_path:
-        print("error: path traversal detected")
+        print("error: path traversal detected - common base")
         return True
 
     # Verify basename of resolved path matches original file
     if os.path.basename(safe_path) != user_input:
         # Invalid - path traversal detected
-        print("error: path traversal detected")
+        print("error: path traversal detected - basename")
         return True
 
     # If all checks pass, return False

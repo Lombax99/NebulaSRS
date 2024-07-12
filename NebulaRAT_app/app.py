@@ -15,7 +15,7 @@ import os
 from sqlalchemy import text
 from flask import send_file
 from tfaLib import *
-
+from defences import is_pathTraversal
 # Database URI
 db_uri = f"postgresql+psycopg2://{psql['pguser']}:{psql['pgpassword']}@{psql['pghost']}:{psql['pgport']}/{psql['pgdb']}"
 # App configuration
@@ -304,7 +304,7 @@ def printFwRules():
     # Riceve il valore dell'IP della macchina da cercare
     ip_addr = str(request.form['bottone'])
     # Ricava le rules dall'IP della macchina
-    rules = db.session.execute(text(queries.firewall % ip_addr))
+    rules = db.session.execute(text(queries.firewall), {'ip_addr': ip_addr}).all()
 
     # Differenziazione tra admin e basic user
     if current_user.admin == 1:
@@ -320,16 +320,15 @@ def list():
     return render_template('list_users.html', users=users, username=current_user.nome)
 
 @app.route('/assign', methods=['POST'])
-@login_required
 def assign():
     # Riceve il nome e il cognome dell'utente
     email = str(request.form['user'])
-    nomeC = db.session.execute(text(queries.whois % email)).first()
+    user = Utente.query.filter_by(username=email).first()
     # Ricava le lista delle macchine a cui l'utente già accede
-    accede = db.session.execute(text(queries.acc % email)).all()
+    accede = db.session.execute(text(queries.acc), {'email': email}).all()
     # Retrieves all machines
     macchine  = db.session.execute(text(queries.mac))
-    return render_template('assign.html', email=email, nomeC=nomeC, accede=accede, macchine=macchine, username=current_user.nome)
+    return render_template('assign.html', email=email, id=user.id, nomeC=user.nome, cognomeC=user.cognome,  accede=accede, macchine=macchine, username=current_user.nome)
 
 @app.route('/assignment/<idut>', methods=['GET','POST'])
 def assignment(idut):
@@ -343,14 +342,13 @@ def assignment(idut):
 
 
 @app.route('/revoke', methods=['POST'])
-@login_required
 def revoke():
     # Receives the name and surname of the user
     email = str(request.form['user'])
-    nomeC = db.session.execute(text(queries.whois % email)).first()
+    user = Utente.query.filter_by(username=email).first()
     # Retrieves the list of machines that the user already has access to
     accede = db.session.execute(text(queries.revocation % email)).all()
-    return render_template('revoke.html', email=email, nomeC=nomeC, accede=accede, username=current_user.nome)
+    return render_template('revoke.html', email=email, id=user.id, nomeC=user.nome, cognomeC=user.cognome, accede=accede, username=current_user.nome)
 
 @app.route('/revokation/<idut>', methods=['GET','POST'])
 def revokation(idut):
@@ -375,25 +373,20 @@ def generate():
     print(f"duration: {duration}")
     # Generates the certificate for the machine
     pathcrt, pathkey, outputDir = generate_Certificate(session["nome"], cidr, duration)
-    # Safe paths for cert and key
-    safe_pathcrt = os.getcwd()
-    safe_pathkey = os.getcwd() 
     # Creates a zip file with crt and key 
     zip_path = os.path.join(outputDir, session["nome"] + ".zip")
-    # Zip file safe path
-    safe_zip_path = os.getcwd()
     # Path traversal check
-    if os.path.commonprefix((pathcrt, )) != safe_pathcrt or os.path.commonprefix((pathkey ,safe_pathkey)) != safe_pathkey or os.path.commonprefix((zip_path ,safe_zip_path)) != safe_zip_path: 
-        return redirect(url_for('errorPage')) #Bad user!
-    #Bad user!
-    with zipfile.ZipFile(safe_zip_path, 'w') as zip_file:
-        zip_file.write(safe_pathcrt, os.path.basename(safe_pathcrt).lower())
-        zip_file.write(safe_pathkey, os.path.basename(safe_pathkey).lower())
-    # Removes crt and key files
-    os.remove(safe_pathcrt)
-    os.remove(safe_pathkey)
-    # Downloads zip file
-    return send_file(safe_zip_path, as_attachment=True)
+    if is_pathTraversal(os.path.basename(pathcrt)) or is_pathTraversal(os.path.basename(pathkey)) or is_pathTraversal(os.path.basename(zip_path)):
+        return render_template('404.html') #Bad user!
+    else:
+        with zipfile.ZipFile(zip_path, 'w') as zip_file:
+            zip_file.write(pathcrt, os.path.basename(pathcrt))
+            zip_file.write(pathkey, os.path.basename(pathkey))
+        # Removes crt and key files
+        os.remove(pathcrt)
+        os.remove(pathkey)
+        # Downloads zip file
+        return send_file(zip_path, as_attachment=True)
     
 @app.route('/profile')
 def profile():

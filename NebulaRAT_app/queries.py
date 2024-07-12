@@ -16,20 +16,14 @@ firewall = f"""
         SELECT *
         FROM REGOLA AS R
         JOIN MACCHINA AS M ON M.ID = R.MACCHINA_ID
-        WHERE M.IP_ADDR = '%s';
-        """
-
-whois = f"""
-        SELECT id, nome, cognome
-        FROM UTENTE
-        WHERE username = '%s';
+        WHERE M.IP_ADDR = :ip_addr;
         """
 
 acc = f"""SELECT m.ip_addr
         FROM UTENTE u
         JOIN USA as ua ON u.id = ua.utente_id
         JOIN MACCHINA as m ON ua.macchina_id = m.id
-        WHERE u.username = '%s'
+        WHERE u.username = :email
         ORDER BY m.id;
         """
 
