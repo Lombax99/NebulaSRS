@@ -218,10 +218,10 @@ def change_password():
 @login_required
 def dashboard():
     # Username to show in the dashboard
-    username = session["nome"] + " " + session["cognome"]
+    nominativo = session["nome"] + " " + session["cognome"]
     # Show only the machines that the user has permission to access
-    macchine = db.session.execute(text(queries.sel_macchine % session["username"]))
-    return render_template('dashboard.html', macchine=macchine, username=username)
+    macchine = db.session.execute(text(queries.sel_macchine), {'email': session["username"]})
+    return render_template('dashboard.html', macchine=macchine, username=nominativo)
 
 @app.route('/dashboard_admin')
 @login_required
@@ -316,10 +316,10 @@ def printFwRules():
 @login_required
 def list():
     # Retrieving degli utenti escluso l'admin
-    users = db.session.execute(text(queries.utenti % session["admin"]))
+    users = db.session.execute(text(queries.utenti), {'flag': 1}).all()
     return render_template('list_users.html', users=users, username=current_user.nome)
 
-@app.route('/assign', methods=['POST'])
+@app.route('/assign', methods=['GET', 'POST'])
 def assign():
     # Riceve il nome e il cognome dell'utente
     email = str(request.form['user'])
@@ -347,7 +347,7 @@ def revoke():
     email = str(request.form['user'])
     user = Utente.query.filter_by(username=email).first()
     # Retrieves the list of machines that the user already has access to
-    accede = db.session.execute(text(queries.revocation % email)).all()
+    accede = db.session.execute(text(queries.revocation), {'email': email}).all()
     return render_template('revoke.html', email=email, id=user.id, nomeC=user.nome, cognomeC=user.cognome, accede=accede, username=current_user.nome)
 
 @app.route('/revokation/<idut>', methods=['GET','POST'])

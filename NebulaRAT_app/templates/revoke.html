@@ -86,18 +86,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for macchina in accede %}
-                                        <tr>
-                                            <td>{{ macchina[1] }}</td>
-                                            <td>{{ macchina[2] }}</td>
-                                            <td>
-                                                <input type="checkbox" class="form-check-input" name="macc" value="{{ macchina[0] }}">
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
+                                    {% if accede %}
+                                        {% for macchina in accede %}
+                                            <tr>
+                                                <td>{{ macchina[1] }}</td>
+                                                <td>{{ macchina[2] }}</td>
+                                                <td>
+                                                    <input type="checkbox" class="form-check-input" name="macc" value="{{ macchina[0] }}">
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
                                 </tbody>
                             </table>
-                            <button type="submit" class="btn btn-primary py-3 w-45 mb-4 mt-5">Revoke</button>
+                                    <button type="submit" class="btn btn-primary py-3 w-45 mb-4 mt-5">Revoke</button>
+                                        
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="3"><h5 class="text-white">No machines available for revocation.</h5></td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                                <button type="submit" class="btn btn-primary py-3 w-45 mb-4 mt-5">Back</button>
+                                    {% endif %}
                     </form>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 tutte = "SELECT m.ip_addr, m.descrizione, r.cidr FROM MACCHINA m JOIN REGOLA as r ON r.macchina_id = m.id WHERE r.ca_name = 'Myorg, Inc';"
-utenti = f"SELECT nome, cognome, username FROM UTENTE WHERE admin != '%s';"
+utenti = f"SELECT nome, cognome, username FROM UTENTE WHERE admin != :flag;"
 mac  = "SELECT id, ip_addr, descrizione FROM MACCHINA;"
 
 sel_macchine = f"""
@@ -8,7 +8,7 @@ sel_macchine = f"""
         JOIN USA as ua ON u.id = ua.utente_id
         JOIN MACCHINA as m ON ua.macchina_id = m.id
         JOIN REGOLA as r ON r.macchina_id = m.id
-        WHERE u.username = '%s'
+        WHERE u.username = :email
         AND r.ca_name='Myorg, Inc';
         """
 
@@ -31,6 +31,6 @@ revocation = f"""SELECT ua.id, m.ip_addr, m.descrizione
         FROM UTENTE u
         JOIN USA as ua ON u.id = ua.utente_id
         JOIN MACCHINA as m ON ua.macchina_id = m.id
-        WHERE u.username = '%s'
+        WHERE u.username = :email
         ORDER BY m.id;
         """
