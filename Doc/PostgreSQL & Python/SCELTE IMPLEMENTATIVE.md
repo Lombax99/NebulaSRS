@@ -8,9 +8,6 @@ Regole di lettura:
 - Un **utente** può **usare** più **macchine**
 - Più **macchine** possono essere **usate** da più **utenti**.
 
-### IDEA PER SPRINT 2 --> Creare una tabella "ACCESSI", in cui si inserisce l'id della coppia utente-macchina che interessa l'accesso, più un timestamp con data e ora.
-
-
 
 ![[ER_MODEL.png]]
 
