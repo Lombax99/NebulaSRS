@@ -1,4 +1,5 @@
 - [ ] Update Terraform doc file
+- [ ] Remove Old Credential file
 - [ ] Test demo locale
 - [ ] Check 2fa doc file
 - [ ] Finisci Framework doc file
