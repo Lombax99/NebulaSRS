@@ -45,7 +45,7 @@ Link utili:
 - Introduction to Azure BLOB Storage: https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction
 
 ##### MongoDB o PostgreSQL?
-![[Pasted image 20240507173320.png]]
+![[MongoVSPostgres.png]]
 
 PostgreSQL sfrutta un DB relazionale --> Meglio, perché così basta sfruttare la sintassi di SQL e stiamo a posto, senza dover rappresentare i documenti come file JSON. Inoltre, è scalabile ed effettua il load balancing. Cosa molto importante: ==POSTGRESQL GARANTISCE ACID SEMPRE E COMUNQUE==, mentre MongoDB solo in scenari limitati e dalla versione 4.0 in poi (nabbo).
 
@@ -132,11 +132,43 @@ Abbiamo bisogno di:
 			- Faccio le macchine come vm e faccio il setup del network tutto su azure.
 			- Il gestore è una web app.
 
+#### Test di distribuzione 
+##### Azure load tester quick start
+[Quickstart: Run a load test on a website](https://go.microsoft.com/fwlink/?linkid=2225968)
+[Identify performance bottlenecks](https://go.microsoft.com/fwlink/?linkid=2226130)
+[Create a load test with a JMeter script](https://go.microsoft.com/fwlink/?linkid=2226327)
+[Test applications with authentication](https://go.microsoft.com/fwlink/?linkid=2226328)
+##### Automate load testing
+[Continuous load testing with GitHub Actions](https://go.microsoft.com/fwlink/?linkid=2226033)
+[Continuous load testing with Azure Pipelines](https://go.microsoft.com/fwlink/?linkid=2226033)
+
+##### Test di sicurezza (owasp zap, snyk, git guardian)
+[Owasp Zap](https://www.zaproxy.org/)
+[snyk](https://app.snyk.io/org/lombax99/)
+[git guardian](https://dashboard.gitguardian.com/workspace/553882/get-started)
+
+
+
 ### Design of the application
 ##### Django vs Flask?
 guarda: [[Framework utilizzato]]
 
 
+### Piano di progettazione
+1) Definizione dell'ambiente e setup CI/CD
+2) Sviluppo dell'applicazione
+	- front end
+	- back end
+	- integrazione col db
+	- generazione dei certificati temporanei
+	- gestione degli utenti e dei ruoli
+	- gestione dei dati delle macchine (config e cert)
+3) Implementazione dei tool azure con la nostra applicazione (application insight, application backup, key vault, microsoft defender for cloud, auto heal, transparent data encryption, backup del DB)
+4) Test di distribuzione (azure load tester)
+5) Test di sicurezza (owasp zap, snyk)
+6) Correzione applicazione con i risultati dei test
+7) Analisi dei costi (anche in termini di crescita futura)
+8) Report e Presentazione
 
 
 

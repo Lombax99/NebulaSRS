@@ -63,7 +63,7 @@ Ci sono due possibilità:
 - Rendere l’autenticazione a due fattori obbligatoria e quindi incorporarla nel processo di registrazione
 
 Nell'esempio che vedremo, si opta per la seconda cosa, ovvero una volta registrato, all’utente viene mostrata una pagina di configurazione dell’autenticazione a due fattori, che si presenta così:
-![[Pasted image 20240702172108.png]]
+![[2FA_QR.png]]
 
 Qui l'utente deve avviare l'app del generatore di token sullo smartphone e usarla per scansionare il codice QR. Questo è tutto ciò che serve per registrare il segreto condiviso e le informazioni dell'account sul telefono. Dopo aver completato questo passaggio, l'utente può andare alla pagina di accesso e accedere utilizzando password e token per la prima volta.
 
