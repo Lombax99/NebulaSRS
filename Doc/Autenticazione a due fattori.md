@@ -1,12 +1,8 @@
-Lasciare che gli utenti si autentichino ad un’applicazione solo con username e password, risulta essere molto rischioso, perché quando la password viene compromessa, l’aggressore ottiene l’accesso completo. Per ridurre questo rischio, le applicazioni attente alla sicurezza, possono implementare l’autenticazione a più fattori, che richiede all'utente di fornire oltre all’username e alla password, anche un ulteriore informazione, che può essere per esempio una password monouso (token).
+Esistono diversi algoritmi per password monouso, alcuni proprietari, altri standard aperti come **HOTP** e TOTP**.**
+- **HOTP**: genera token basati su un segreto e un contatore, entrambi noti al dispositivo di generazione token e al server di autenticazione. Ogni volta che viene utilizzato un token, il contatore viene incrementato su entrambi i lati e ciò fa sì che l'algoritmo generi un token diverso per il successivo tentativo di accesso.
+- **TOTP**: anche questo standard utilizza un segreto condiviso, ma elimina il contatore, che viene sostituito dall'ora corrente. Con questo algoritmo il token cambia a intervalli di tempo predefiniti, solitamente ogni 30 secondi.
 
-L’idea delle password monouso è che esse siano valide solo per una singola sessione di accesso. Queste password vengono generate algoritmicamente da un dispositivo hardware o da un'app per smartphone. Per convalidare una password monouso, il server esegue lo stesso algoritmo e confronta il risultato con la password fornita dall'utente. Esistono diversi algoritmi per password monouso, alcuni proprietari, altri standard aperti come HOTP e TOTP.
-
-- HOTP: genera token basati su un segreto e un contatore, entrambi noti al dispositivo di generazione token e al server di autenticazione. Ogni volta che viene utilizzato un token, il contatore viene incrementato su entrambi i lati e ciò fa sì che l'algoritmo generi un token diverso per il successivo tentativo di accesso.
-
-- TOTP: anche questo standard utilizza un segreto condiviso, ma elimina il contatore, che viene sostituito dall'ora corrente. Con questo algoritmo il token cambia a intervalli di tempo predefiniti, solitamente ogni 30 secondi.
-
-Il vantaggio di TOTP rispetto a HOTP è che i token sono una funzione del tempo e quindi cambiano costantemente. Ciò significa che anche se un aggressore può dare un'occhiata al token corrente visualizzato sulla tua app per smartphone, pochi secondi dopo verrà sostituito da uno nuovo. Lo svantaggio di TOTP è che richiede che il generatore di token e il server di autenticazione abbiano i loro orologi impostati approssimativamente sulla stessa ora. Questo non è un problema per lo smartphone, ma sul server è consigliabile eseguire un client NTP per evitare che l'orologio si sposti.
+Il vantaggio di **TOTP** rispetto a **HOTP** è che i token sono una funzione del tempo e quindi cambiano costantemente. Lo svantaggio di **TOTP** è che richiede che il generatore di token e il server di autenticazione abbiano i loro orologi impostati approssimativamente sulla stessa ora.
 
 ### Esempio di seguito, usa TOTP:
 Per questa applicazione, ho utilizzato Flask-SQLAlchemy, Flask-Login, Flask-WTF e Flask-Bootstrap. Per quanto riguarda, l’implementazione dell’algoritmo TOTP, andiamo ad usare il pacchetto **onetimepass** (piccola libreria che supporta HOTP e TOTP, ed è compatibile con **Python 2** e **3.**
@@ -63,7 +59,7 @@ Ci sono due possibilità:
 - Rendere l’autenticazione a due fattori obbligatoria e quindi incorporarla nel processo di registrazione
 
 Nell'esempio che vedremo, si opta per la seconda cosa, ovvero una volta registrato, all’utente viene mostrata una pagina di configurazione dell’autenticazione a due fattori, che si presenta così:
-![[Pasted image 20240702172108.png]]
+![[2FA_QR.png]]
 
 Qui l'utente deve avviare l'app del generatore di token sullo smartphone e usarla per scansionare il codice QR. Questo è tutto ciò che serve per registrare il segreto condiviso e le informazioni dell'account sul telefono. Dopo aver completato questo passaggio, l'utente può andare alla pagina di accesso e accedere utilizzando password e token per la prima volta.
 

@@ -1,6 +1,6 @@
 
 ### DB da utilizzare?
-Avevamo tre possibilità: postgres, azure sql e mongodb. abbiamo scelto postgres, poiché è SEMPRE conforme  alle proprietà ACID, a differenza di Mongo che non lo è e azure sql, che lo è solo con determinati motori di archiviazione
+Avevamo tre possibilità: postgres, azure sql e mongodb. abbiamo scelto postgres, poiché è SEMPRE conforme  alle proprietà ACID, a differenza di Mongo che non lo è e azure sql, che lo è solo con determinati motori di archiviazione. Vedi [[IMPLEMENTAZIONE DB (Sté)]] per le scelte fatte sui dati da inserire
 
 ### Libreria python da usare?
 Le possibilità erano due:
