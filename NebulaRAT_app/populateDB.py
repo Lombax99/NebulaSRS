@@ -73,12 +73,11 @@ def populate_utenti_from_json(json_file):
         data = json.load(file)
 
         for entry in data:
-            hashed_password = bcrypt.generate_password_hash(entry["password"])
             utente = Utente(
                 nome=entry['nome'],
                 cognome=entry['cognome'],
                 username=entry['username'],
-                password=hashed_password,
+                password=entry['password_hash'].encode('utf-8'),
                 auth=int(entry['auth']),
                 admin=int(entry['admin'])
             )
