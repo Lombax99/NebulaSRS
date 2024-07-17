@@ -307,13 +307,32 @@ Abbiamo bisogno di:
 ##### Automate load testing
 [Continuous load testing with GitHub Actions](https://go.microsoft.com/fwlink/?linkid=2226033)
 [Continuous load testing with Azure Pipelines](https://go.microsoft.com/fwlink/?linkid=2226033)
-
 ##### Test di sicurezza (owasp zap, snyk, git guardian)
-[Owasp Zap](https://www.zaproxy.org/)
+[Owasp Zap](https://www.zaproxy.org/) (ritenuto ridondante, non è stato utilizzato)
 [snyk](https://app.snyk.io/org/lombax99/)
 [git guardian](https://dashboard.gitguardian.com/workspace/553882/get-started)
+#### Analisi dei Costi
+1) **Primo test basilare**:
+	- WebApp Pricing plan: B1 (Super basilare, costo al mese 12.30 Euro)
+	- Database Plan: Standard_B1ms (1 vCore) (Super Basilare, costo al mese 13.60 Euro)
 
+![[StatsTest50usersBasicPlan.png]]
+*test con 50 utenti*
+![[StatsTest100usersBasicPlan.png]]
+*test con 100 utenti*
 
+**NOTA**: anche con i servizi più basilari che Azure mette a disposizione la webapp riesce a gestire un carico di 50 utenti contemporaneamente mantenendo un response time inferiore al secondo. Già con 100 utenti il tempo di risposta medio aumenta sopra il secondo. Nella maggior parte dei casi comunque riuscire a gestire 50 utenti contemporaneamente può essere ritenuto sufficiente (ricordo che questa applicazione ha come utente ultimo solo un ristretto gruppo di persone in una azienda).
+
+2) **Test con servizi Premium**
+	- WebApp Pricing plan: B1 (Minimum premium plan, costo al mese 79.266 Euro)
+	- Database Plan: Premium v3 P0V3 (1 vCore) (Minimum premium plan, costo al mese 108. Euro)
+
+![[StatsTest500usersPremiumPlan.png]]
+*test con 500 utenti*
+![[StatsTest1000usersPremiumPlan.png]]
+*test con 1000 utenti*
+
+**NOTA**: Migliorando l'hardware vediamo un netto miglioramento delle prestazioni arrivando a gestire 500 utenti contemporaneamente in modo agevolo. Questo risultato è importante per escludere un immediato collo di bottiglia nel codice. Azure inoltre permette di scalare a servizi con performance ancora migliori, con ovviamente un aumento del costo proporzionale, ma non reputiamo la cosa necessaria.
 
 ### Design of the application
 ##### Django vs Flask?

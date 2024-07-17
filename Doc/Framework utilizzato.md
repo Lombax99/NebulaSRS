@@ -36,3 +36,4 @@ Usare Flask per creare l'interfaccia web potrebbe essere una scelta ragionevole 
 Altri punti a nostro favore:
 - Django ha una curva di apprendimento più ripida rispetto a Flask
 - Il microframework di Flask potrebbe adattarsi bene al concetto di microservizi che si cerca di ottenere in cloud. Questo punto verrà confermato solo dopo aver accumulato abbastanza esperienza e aver lavorato un minimo al progetto.
+
