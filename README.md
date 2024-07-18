@@ -23,3 +23,4 @@ Application to implement an assistant tool for management of a [Nebula](https://
     <td><b>Pasquale Basta</b></td>
   </tr>
 </table>
+

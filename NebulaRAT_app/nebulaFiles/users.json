@@ -1,34 +1,34 @@
 [
-  {
-    "nome": "Gianmarco",
-    "cognome": "Marpioni",
-    "username": "administration@admin.nebularat.com",
-    "password": "admin",
-    "auth": "0",
-    "admin": "1"
-  },
-  {
-    "nome": "Paolo",
-    "cognome": "Verdi",
-    "username": "budino83@nebularat.com",
-    "password": "paolo",
-    "auth": "0",
-    "admin": "0"
-  },
-  {
-    "nome": "Luca",
-    "cognome": "Lombardi",
-    "username": "luca@nebularat.com",
-    "password": "luca",
-    "auth": "0",
-    "admin": "0"
-  },
-  {
-    "nome": "Stefano",
-    "cognome": "Paparella",
-    "username": "stefano@nebularat.com",
-    "password": "stefano",
-    "auth": "0",
-    "admin": "0"
-  }
+    {
+        "nome": "Gianmarco",
+        "cognome": "Marpioni",
+        "username": "administration@admin.nebularat.com",
+        "auth": "0",
+        "admin": "1",
+        "password_hash": "$2b$12$/Z11HCWdjZYbcoUhmoyiK.8WM0CkIAWME2dzDljzjMzGxNHXDAgvK"
+    },
+    {
+        "nome": "Paolo",
+        "cognome": "Verdi",
+        "username": "budino83@nebularat.com",
+        "auth": "0",
+        "admin": "0",
+        "password_hash": "$2b$12$sU3Y3gI9bkcTly1soINHDuLpiLcmskDnr2fv0EtDHwqW0VynaSKOi"
+    },
+    {
+        "nome": "Luca",
+        "cognome": "Lombardi",
+        "username": "luca@nebularat.com",
+        "auth": "0",
+        "admin": "0",
+        "password_hash": "$2b$12$n.XWpFg9RQTXEPlM3nxeuOufC/Bq8VeWHMGevI9AMFogIIDdyh/Yi"
+    },
+    {
+        "nome": "Stefano",
+        "cognome": "Paparella",
+        "username": "stefano@nebularat.com",
+        "auth": "0",
+        "admin": "0",
+        "password_hash": "$2b$12$00BM4bzKkDaNq3bbT.W3F.xl/qJ1NqPSgzqRks1Ls6Av9qs2M6jB6"
+    }
 ]
