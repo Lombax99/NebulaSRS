@@ -160,9 +160,9 @@
 
     <!-- Flashes a message if the user was successfully deletes-->
     {% for category, message in get_flashed_messages(with_categories=true) %}
-    {% if message=='User deleted successfully!' %}
-    <script>alert('{{ message }}')</script>
-    {% endif %}
+        {% if message=="User deleted successfully!" %}
+        <script>alert('{{ message }}')</script>
+        {% endif %}
     {% endfor %}
     <!-- End of alert script -->
 </body>

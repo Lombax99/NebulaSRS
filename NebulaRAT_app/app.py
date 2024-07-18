@@ -78,13 +78,13 @@ class RegisterForm(FlaskForm):
 
     submit = SubmitField('Add user', render_kw={"type":"submit", "class":"btn btn-primary py-3 mb-4"})
 
-    def validate_username(self, username):
+    """def validate_username(self, username):
         existing_user_username = Utente.query.filter_by(
             username=username.data).first()
         if existing_user_username:
             raise ValidationError(
                 'Username already exists. Please try a different username.')
-
+"""
 # Form for login       
 class LoginForm(FlaskForm):
     username = StringField(validators=[InputRequired()], render_kw={"type":"email", "class":"form-control","aria-describedby":"emailHelp", "placeholder":"mariorossi12@nebularat.com"})
@@ -233,6 +233,7 @@ def dashboard_admin():
 @app.route('/adduser', methods=['GET','POST'])
 @login_required
 def adduser():
+    print("ENTRA")
     msg=""
     # Creates form object
     formReg = RegisterForm()

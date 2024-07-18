@@ -42,7 +42,7 @@
                             <img src="{{url_for('static', filename='red_rat.ico')}}" style="width: 15%; height: 15%;">
                             <h3 class="d-inline-block ms-3">Add new user</h3>
                         </div>
-                        <form action="" method="POST">
+                        <form action="/adduser" method="POST">
                             <div class="mb-3">
                                 <label class="form-label">Nome</label>
                                 {{ form.hidden_tag() }}
