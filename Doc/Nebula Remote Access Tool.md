@@ -335,9 +335,32 @@ Abbiamo bisogno di:
 **NOTA**: Migliorando l'hardware vediamo un netto miglioramento delle prestazioni arrivando a gestire 500 utenti contemporaneamente in modo agevolo. Questo risultato è importante per escludere un immediato collo di bottiglia nel codice. Azure inoltre permette di scalare a servizi con performance ancora migliori, con ovviamente un aumento del costo proporzionale, ma non reputiamo la cosa necessaria.
 
 ### Design of the application
+##### Infrastructure as a code
+L'infrastruttura dell'applicazione è stata definita tramite Terraform, tutti i dettagli in [[Terraform + Azure setup]].
 ##### Django vs Flask?
-guarda: [[Framework utilizzato]]
+Python dispone di vari Framework web, i quali consentono lo sviluppo rapido di funzionalità come l'autenticazione, l'interfacciamento con il database, la gestione degli utenti ed altro. Tra i vari framework disponibili, abbiamo scelto di utilizzare Flask, per vari motivi:
 
+- **Semplicità e leggerezza**: semplice da utilizzare e facile da imparare
+- **Flessibilità:** flask è altamente flessibile, siccome si possono aggiungere varie estensioni per gestire diverse funzionalità, infatti noi abbiamo usato Flask-Login, Flask-SqlAlchemy.
+- **Azure e Flask**: Azure offre supporto per applicazioni Flask, attraverso Azure App Service che semplifica il deployment e la gestione dell'applicazione web Flask su Azure
+- *Django* ha una curva di apprendimento più ripida rispetto a Flask
+
+Una cosa molto importante in Flask sono le route, che sono i punti di accesso alle diverse funzioni e risorse dell'applicazione web. Per definire una route utilizzeremo il decoratore '@app.route()' seguito dall'URL desiderato come argomento. All'interno del decoratore, oltre all'URL, è possibile specificare i metodi HTTP (GET e POST). All'interno della nostra app, abbiamo deciso di realizzare due route per quanto riguarda l'assegnamento e la revoca della macchina, perché una route si occuperà di mostrare le varie opzione, scelte all'utente autorizzato, mentre l'altra route gestirà l'azione effettiva e l'elaborazione dei dati. Un'altra scelta progettuale è state quella di definire una route per la dashboard dell'utente standard, ed un'altra route per la dashboard dell'admin. Questa separazione è importante per separare chiaramente le responsabilità, dal momento che avremo l'utente standard potrà visualizzare semplicemente la dashboard, con solo la tabella delle macchine disponibili, mentre l'admin oltre a visualizzare la dashboard, potà effettuare delle funzionalità aggiuntive, ovvero l'aggiunte di un nuovo utente, e operazioni di gestione, ovvero l'assegnazione e la revoca di una macchina, e la rimozione di un utente. Quindi, differenziare queste due route permette di gestire in maniera efficiente e sicuro l'accesso delle diverse tipologie di utenti. Uno sviluppo futuro, sarebbe quello di utilizzare una singola route per entrambe le dashboard, gestendo in maniera dinamica i contenuti basati sul ruolo dell'utente.
+
+Maggiori dettagli in [[Framework utilizzato]].
+##### Populate DB 
+Abbiamo deciso di creare uno script, che legge dei file di configurazioni iniziali, simulando in questo modo la config dell'azienda utilizzatrice della nostra web app. Questi file dovranno essere in formato JSON, e tramite i dati che recupera da questi file, va a popolare le tabelle presenti all'interno del database. La scelta di utilizzare questo script che popola automaticamente le tabelle permette di avere:
+
+- **Automazione ed efficienza**: utilizzare uno script consente di popolare in maniera automatica il database. Questo è molto vantaggioso quando si hanno molti dati o quando i dati vengono aggiornati spesso. Inoltre lo script riduce il rischio di errori umani, e consente di risparmiare tempo e sforzi.
+- **Scalabilità**: con uno script, è più facile gestire grandi quantità di dati. Si può semplicemente modificare lo script, per gestire più dati o per aggiungere nuovi campi senza dover ripetere manualmente il processo di inserimento dei dati.
+- **Consistenza dei dati**: l'utilizzo dello script garantisce la coerenza e la validità dei dati inseriti nelle tabelle e questo è molto importante quando si tratta di dati strutturati in modo complesso.
+
+Quindi abbiamo detto che i file di configurazione devono essere in formato JSON, questo perché:
+
+- **Struttura dei dati**: JSON è adatto per dati strutturati come i nostri, e quindi permette una facile comprensione e manipolazione dei dati sia per gli sviluppatori che per le macchine.
+- **Interoperabilità**: diversi linguaggi di programmazione e framework supportano JSON e quindi questo rende tutto più facile l'integrazione dei dati estratti
+
+Abbiamo ipotizzato che ci siano due file di configurazione iniziali, uno che contiene le informazioni relative alla configurazione delle rete, ed uno che contiene i dati relativi all'utente. Inizialmente, avevamo previsto che nei file di configurazione relativo all'utente, avevamo previsto che la password fosse quella di default e che venisse mostrata in chiara, presupponendo che l'utente la cambiasse al primo accesso. Tuttavia, per motivi di sicurezza abbiamo deciso di inserire nel file JSON, l'hash della password, evitando di mostrarla in chiaro.
 
 ### Piano di progettazione
 1) Definizione dell'ambiente e setup CI/CD
