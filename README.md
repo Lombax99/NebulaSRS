@@ -8,6 +8,7 @@ Application to implement an assistant tool for management of a [Nebula](https://
 Nebula is a zero-trust overlay networking tool designed to be fast, secure, and scalable. Connect any number of hosts with on-demand, encrypted tunnels that work across any IP network and without opening firewall ports.  </br>
 The project’s goal is to implement a web application to allow one or more admins of a Nebula network to access assigned machines through Nebula itself. The project’s main focus is to use Nebula-generated certificates to bypass firewall configurations of the nodes. For this reason, security will be a top priority in managing permissions, roles, and certificate emissions. We will leverage the power of Azure cloud services to host the web app and the database. 
 </br></div>
+
 <div align="center"> 
 The project does not focus on Nebula host configuration or certificate management. We will assume to work with a correctly pre-configured network.</br>
 CI/CD has been achieved using Azure combined with Github Actions while Terraform has been used to implement infrastructure as a code.
