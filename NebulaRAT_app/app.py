@@ -412,7 +412,7 @@ def deleteUser():
     db.session.delete(user)
     db.session.commit()
     # Prints a message of correctly deleted user on the page
-    flash("User correctly deleted!", "info")
+    flash("User deleted successfully!", "info")
     return redirect(url_for('list'))
 
 @app.route('/errorPage')
