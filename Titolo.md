@@ -1,4 +1,0 @@
-# Sottotitoli
-
-con del testo
-
