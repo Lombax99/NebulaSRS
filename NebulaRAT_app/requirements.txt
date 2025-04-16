@@ -20,6 +20,6 @@ pyotp==2.9.0
 SQLAlchemy==2.0.31
 typing_extensions==4.12.2
 tk==0.1.0
-Werkzeug==3.0.3
+Werkzeug==3.0.6
 WTForms==3.1.2
 zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
